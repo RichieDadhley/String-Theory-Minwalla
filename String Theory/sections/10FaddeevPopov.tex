@@ -1,0 +1,234 @@
+\chapter{Faddeev-Popov Method}
+
+We have brought our problem to the following path integral
+\bse 
+    Z = \frac{1}{\text{Vol}} \int DX Dg e^{-S_{\text{poly}}[X,g]},
+\ese 
+where $S_{\text{poly}}$ is of course the Polyakov action. Note that we have included a $1/$Vol term, which is used to account for the fact that we are only interested in physically distinct configurations; that is it is the volume of the space spanned by configurations that can be equated via diffeomorphisms and/or Weyl transformations. Essentially what we are talking about is integrating over a gauge fixing, which we achieve by integrating over everything and then use the Vol term to mod-out the contributions from the gauge orbits. 
+
+\begin{center}
+    \btik 
+        \draw[thick, ->] (0,0) .. controls (1,2) and (2,1) .. (3,3);
+        \draw[thick, ->, xshift = 1cm, yshift=-0.5cm] (0,0) .. controls (1,0.5) and (1.5,2) .. (3,3);
+        \draw[thick, ->, xshift = 2cm, yshift=-1cm] (0,0) .. controls (1,2.5) and (2.5,1) .. (3,3);
+        \draw[dashed] (4,-1) .. controls (3,2) and (2,1) .. (1,2.5);
+        \node at (0.4,3) {Gauge};
+        \node at (0.4,2.5) {Fixing};
+        \node at (4.75,3) {Gauge Orbits};
+    \etik 
+\end{center}
+
+As we mentioned at the end of the previous lecture, we are actually going to change the form of our path integral by using the Faddeev-Popov method. The idea is this: along a given gauge orbit, all any metrics are equivalent up to a diffeo/Weyl transformation, and so we simply consider a representative for each gauge orbit (we obviously take the one that lies on our gauge fixing) and then use a delta function. More concretely, if we let $\zeta$ represent both diffeomorphisms and Weyl transformations, then we have the relation 
+\be 
+\label{eqn:InverseFaddeevPopov}
+    \int d\tau D\zeta \, \del\big(g - g_0^{\zeta}(\tau) \big) \Delta_{FP}[g] = 1,
+\ee 
+where we have introduced the parameter $\tau$ which just labels which gauge orbit we are in. In case of potential confusion, let's just explain what \Cref{eqn:InverseFaddeevPopov} means again: we want to consider a specific metric, which we call $g$, and we do this by considering gauge transformations ($\zeta$) of a given representative of a gauge orbit ($g_0$) and then considering all the orbits ($\tau$) to make sure we don't just get zero.\footnote{By that we mean that we consider the gauge orbit that our $g$ lies in.} The term $\Delta_{FP}$ is the so-called \textit{Faddeev-Popov determinant} and it arises to take into account the Jacobian factor.\footnote{Its origin is analgous to the result $\int dx \del\big(f(x)\big) = 1/|f'|$.} 
+
+To ground ourselves in why on earth we are talking about this, it follows immediately that if we chose our $g$ to be the $g$ integrated over in our path integral, the delta function will remove this integral and replace it with integrals over $\tau$ and $\zeta$. The $\zeta$ integral, though, is just the integral over the gauge orbits and so will just give exactly the Vol factor, and so that will go. We are therefore left with just the integral over $\tau$. In doing this, we essentially have inserted the Faddeev-Popov determinant into the path integral. It is important, therefore, to have an expression for it. Before doing that, it is instructive to do the following things. 
+
+\bcl
+\label{claim:InvariantMeasure}
+The measure in \Cref{eqn:InverseFaddeevPopov} is the analogue to the Haar measure in Lie groups. That is it is left and right action invariant:
+\be
+\label{eqn:MeasureInvariantFP}
+    D(\zeta\zeta') = D\zeta = D(\zeta'\zeta)
+\ee 
+\ecl 
+
+\bl 
+The Faddeev-Popov determinant is gauge invariant. 
+\el 
+
+\bq 
+By definition we have 
+\bse 
+    \int d\tau D\zeta \, \del\big(g^{\zeta'} - g_0^{\zeta}(\tau) \big) \Delta_{FP}\big[g^{\zeta'}\big] = 1.
+\ese 
+Then using the invariance of the measure we have 
+\bse 
+    \begin{split}
+        \int d\tau D\zeta \, \del\big(g^{\zeta'} - g_0^{\zeta}(\tau) \big) \Delta_{FP}\big[g^{\zeta'}\big] & = \int d\tau D\zeta \, \del\big(g - g_0^{(\zeta')^{-1}\zeta}(\tau) \big) \Delta_{FP}[g] \\
+        & = \int d\tau D\zeta'' \, \del\big(g - g_0^{\zeta''}(\tau) \big) \Delta_{FP}[g],
+    \end{split}
+\ese 
+where $\zeta'' := (\zeta')^{-1}\zeta$. Finally just relabelling $\zeta'' \to \zeta$ in the last line gives us 
+\be 
+\label{eqn:FaddeevPopovInvariant}
+    \Delta_{FP}\big[g^{\zeta'}\big] = \Delta_{FP}[g].
+\ee 
+\eq 
+
+So we have a formula that includes the Faddeev-Popov determinant, but we don't know how to calculate it yet. In order to do this, let's consider gauge transformations close to the identity. In this case the metric transforms as 
+\bse
+    \del \hat{g}_{\a\beta} = \nabla_{\a} v_{\beta} + \nabla_{\beta}v_{\a} + \phi \hat{g}_{\a\beta},
+\ese 
+where $v$ is the infinitesimal diffeomorphism and $\phi$ the Weyl transformation. Note we have replaced the subscript $0$ for a hat notation, this is just to make the notation a bit less cluttered. We also need to take into account the deviation of the metric as we move between gauge orbits, i.e. the derivative w.r.t. $\tau$. Now $\tau$ is what that takes us from one gauge orbit to another. There is no reason it needs to only be one factor, in the sense that multiple things could contribute to moving from one orbit to another, and so we introduce an index $\tau_i$. So the full transformation is 
+\bse
+    \del \hat{g}_{\a\beta} = \nabla_{\a} v_{\beta} + \nabla_{\beta}v_{\a} + \phi \hat{g}_{\a\beta} + \frac{\p \hat{g}}{\p\tau_i} \del\tau_i.
+\ese 
+Plugging this into \Cref{eqn:InverseFaddeevPopov}, we have 
+\bse 
+    \int d\tau_i Dv D\phi \, \del \bigg( \nabla_{\a} v_{\beta} + \nabla_{\beta}v_{\a} + \phi \hat{g}_{\a\beta} + \frac{\p \hat{g}}{\p\tau_i} \del\tau_i\bigg) \Delta_{FP}[g] = 1.
+\ese 
+
+Now recall that the Fourier form of a delta function is 
+\bse 
+    \del(x) = \int dp e^{2\pi i px}.
+\ese 
+We want to use something similar here to make our expression look nicer, however we need to take into account that what we have is a delta function\textit{al}; it restricts an entire function! We therefore have 
+\bse 
+    \int d\tau_i Dv D\phi DB \, \exp\bigg[2\pi i \int d^2\sig \sqrt{\hat{g}} B^{\a\beta} \bigg( \nabla_{\a} v_{\beta} + \nabla_{\beta}v_{\a} + \phi \hat{g}_{\a\beta} + \bigg(\frac{\p \hat{g}}{\p\tau_i}\bigg)_{\a\beta} \del\tau_i\bigg)\bigg] = \Delta_{FP}^{-1},
+\ese 
+where $B^{\a\beta}$ is a symmetric 2-tensor on the worldsheet of the string, and where we have used the fact that $\Delta_{FP}$ is not a function of any of the integration variables. 
+
+So we have an expression for $\Delta_{FP}^{-1}$, but what we need is an expression for $\Delta_{FP}$ itself. So what do we do? We use our trained observation skills to notice that the exponential is a quadratic expression. To understand why that helps us we interrupt the programme for a brief discussion of Berezin and Grassmann integration.
+
+\section{Berezin and Grassmann Integration}
+
+This section is by no means a complete discussion on the topic, but is just focused on the specific result we want and is included for completeness of the method we need. A more complete discussion of some of the preliminaries for what is presented here can be found via Dr. David Skinner's Supersymmetry course, available via the \href{http://www.damtp.cam.ac.uk/user/dbs26/SUSY.html}{Cambridge website}.
+
+Grassmann variables are antisymmetric under exchange, and so obey anti-commutation relations\footnote{Some texts will talk of Fermionic variables here. The important thing is just that they are antisymmetric under exchange.}. We want to be able to define integration of these Grassmann variables. First let's consider a function of a single variable, labelled $\psi$. Due to the antisymmetric nature, we know that any such function must be of the form 
+\bse 
+    F[\psi] = f + g\psi,
+\ese
+for some scalar fields $f,g$. It suffices, therefore, to just define the integrals $\int d\psi$ and $\int \psi d\psi$. 
+
+We impose that the integral be translation invariant, 
+\bse 
+    \int \psi d\psi = \int (\psi + \eta) d\psi,
+\ese 
+which tells us that 
+\be 
+\label{eqn:Berezin0}
+    \int 1 d\psi = 0.
+\ee
+Then we just choose our normalisation such that 
+\be
+\label{eqn:Berezin1}
+    \int \psi d\psi = 1.
+\ee 
+\br 
+Note that for Grassmann (or Fermionic) variables we have 
+\bse 
+    \int (A + Ba) ada = A,
+\ese 
+which we get from \Cref{eqn:Berezin0} and \Cref{eqn:Berezin1}. Comparing this to the symmetric (or Bosonic) expression
+\bse 
+    \int (A+Ba) \del(a) da = A,
+\ese
+we see that a Fermionic variable behaves analogously to a Bosonic delta function.
+\er 
+
+We then extend the idea to a function of $n$ Grassmann variables:
+\bse 
+    \int \psi^{a_1}\psi^{a_2}...\psi^{a_n} d^n\psi = \int \psi^{a_1}\psi^{a_2}...\psi^{a_n} d\psi^{a_n}d\psi^{a_{n-1}}...d\psi^{a_1} = \epsilon^{a_1a_2...a_n},
+\ese
+where the Levi-Civita symbol is there to account for the minus signs picked up under exchange. Note that it is only when \textit{all} the variables are in the integrand that we don't get a vanishing answer. 
+
+Now consider the case of a Gaussian integral with Grassmann variables, 
+\bse 
+    \begin{split}
+        \int e^{-\frac{1}{2}A_{ab}\psi^a\psi^b} d^{2N}\psi & = \int \sum_{n=1}^{N} \frac{(-1)^n}{2^n n!} \big(A_{ab}\psi^a\psi^b\big)^n d^{2N}\psi \\
+        & = \frac{(-1)^N}{2^NN!} \int A_{a_1a_2}A_{a_3a_4}...A_{a_{2N-1}a_{2N}} \psi^{a_1}\psi^{a_2}...\psi^{2N-1}\psi^{2N} d^{2N}\psi \\
+        & = \frac{(-1)^N}{2^NN!} A_{a_1a_2}A_{a_3a_4}...A_{a_{2N-1}a_{2N}} \epsilon^{a_1a_2...a_{2N}}
+    \end{split}
+\ese
+where we have used the fact that only the $N$ term in the sum doesn't give vanishing result along with the results above. The RHS here looks gross and so we introduce a definition
+\bd 
+The Pfaffian of a $2N\times 2N$ antisymmetric matrix is given by 
+\bse 
+    \text{Pfaff}(A) := \frac{1}{2^NN!} A_{a_1a_2}A_{a_3a_4}...A_{a_{2N-1}a_{2N}} \epsilon^{a_1a_2...a_{2N}}.
+\ese 
+\ed 
+
+\bcl 
+We claim without proof\footnote{Although a quick Google search should do the trick for anyone interested.} that, for Grassmann variables the following holds 
+\bse 
+    \big(\text{Pfaff}(A)\big)^2 = \det A.
+\ese 
+\ecl 
+
+This claim tells us, then, the for our Gaussian integral we have 
+\bse 
+    \int e^{-\frac{1}{2}A_{ab}\psi^a\psi^b} d^{2N}\psi = \pm \sqrt{\det A}.
+\ese 
+This now looks more interesting. Recall that for our Bosonic (i.e. symmetric variables) Gaussian integral, we have the following result: let $B$ be a symmetric, positive definite matrix, then 
+\bse 
+    \int e^{-\frac{1}{2}B_{ab}\phi^a\phi^b} d^{2N}\phi = \sqrt{\frac{(2\pi)^{2N}}{\det B}},
+\ese 
+and so we seem up to a factor, switching between symmetric and antisymmetric Gaussian integral is equivalent to inverting the determinant on of the matrix. This is exactly what we need for our problem, and so we return to our scheduled programme. 
+
+\section{Ghost Fields}
+
+So we have a quadratic exponential in terms of the variables $B,v,\phi$ and $\tau$, which are all symmetric under exchange. So if we exchange all these for Grassmann (or Fermionic) variables, then we get an expression for $\Delta_{FP}$ itself.
+
+Before doing this substitution though, we are first going to massage our expression. This is what we have:
+\bse 
+    \int d\tau_i Dv D\phi DB \, \exp\bigg[2\pi i \int d^2\sig \sqrt{\hat{g}} B^{\a\beta} \bigg( \nabla_{\a} v_{\beta} + \nabla_{\beta}v_{\a} + \phi \hat{g}_{\a\beta} + \bigg(\frac{\p \hat{g}}{\p\tau_i}\bigg)_{\a\beta} \del\tau_i\bigg)\bigg] = \Delta_{FP}^{-1},
+\ese 
+The first thing we do is consider the $\phi$ integral. We see that this integral simply constrains $B$ to be traceless, and so our integral over $B$ is restricted to an integral over traceless, symmetric 2-tensors. Motivated by this, we can subtract the trace part of the $\nabla_{\a}v_{\beta}+\nabla_{\beta}v_{\a}$ term. We have 
+\bse 
+    \int d\tau_i Dv DB \, \exp\bigg[2\pi i \int d^2\sig \sqrt{\hat{g}} B^{\a\beta} \bigg( \nabla_{\a} v_{\beta} + \nabla_{\beta}v_{\a}  - \hat{g}_{\a\beta}\nabla\cdot v + \bigg(\frac{\p \hat{g}}{\p\tau_i}\bigg)_{\a\beta} \del\tau_i\bigg)\bigg] = \Delta_{FP}^{-1}.
+\ese 
+
+We now make the substitutions, changing all our symmetric (Bosonic) variables to antisymmetric (Fermionic) variables. We use the notation 
+\be 
+\label{eqn:BosonicFermionicChange}
+    v_{\a} \to c_{\a}, \qquad B^{\a\beta} \to b^{\a\beta}, \qquad \del\tau_i \to \xi_i.
+\ee 
+We therefore have\footnote{Note that the derivative of $\Hat{g}$ w.r.t $\tau_i$ doesn't change to a $\xi_i$.}
+\be 
+    \Delta_{FP} = \int d\xi_i Dc  Db \, \exp\bigg[2\pi i \int d^2\sig \sqrt{\hat{g}} b^{\a\beta} \bigg( \nabla_{\a} c_{\beta} + \nabla_{\beta}c_{\a}  - \hat{g}_{\a\beta}\nabla\cdot c + \bigg(\frac{\p \hat{g}}{\p\tau_i}\bigg)_{\a\beta} \xi_i\bigg)\bigg].
+\ee 
+Then we do the integral over the $\xi_i$, using the fact that 
+\bse 
+    \int e^{A\xi} d\xi = A,
+\ese 
+which comes from \Cref{eqn:Berezin0} and \Cref{eqn:Berezin1}. We have 
+\bse 
+    \Delta_{FP} = A \int Dc  Db \, \exp\bigg[2\pi i \int d^2\sig \sqrt{\hat{g}} b^{\a\beta} \bigg( \nabla_{\a} c_{\beta} + \nabla_{\beta}c_{\a}  - \hat{g}_{\a\beta}\nabla\cdot c\bigg)\bigg],
+\ese 
+where 
+\bse 
+    A = \prod_{j} 2\pi i \int d^2\sig \sqrt{\Hat{g}} b^{\a\beta} \bigg(\frac{\p \hat{g}}{\p\tau_j}\bigg)_{\a\beta}.
+\ese
+Now we can rescale the $b$ and $c$ fields such that we get a $1/2\pi$ in the exponential, making it more comparable to our Polyakov action. In this way we define the
+\mybox{
+Ghost Action
+\be 
+\label{eqn:Sghost}
+    S_{\text{ghost}} := \frac{1}{2\pi} \int d^2\sig \sqrt{\Hat{g}}b^{\a\beta} \bigg( \nabla_{\a}c_{\beta} + \nabla_{\beta} c_{\a} - \Hat{g}_{\a\beta}\nabla\cdot c\bigg).
+\ee 
+}
+\noindent Finally, rotating back to Euclidean space (so that the factor of $i$ disappears from $\Delta_{FP}$), we have 
+\mybox{
+\be 
+\label{eqn:PartionWithGhost}
+    Z[\Hat{g}] = A \int DXDcDb \exp\Big( -S_{\text{Poly}}[X,\Hat{g}] - S_{\text{ghost}}[b,c,\Hat{g}]\Big),
+\ee
+}
+\noindent where we have used the comment made above \Cref{claim:InvariantMeasure} about inserting \Cref{eqn:InverseFaddeevPopov} into our path integral.
+
+\section{The Conformal Transformations}
+
+So what we've seen is that fixing the gauge of our system has resulted in the introduction of ghost fields which appear on an equal footing to do the dynamical $X$ fields. This statement is not quite true. In fact choosing our metric up to Weyl and diffeomorphisms as we have done does not completely fix the gauge of the system. This is just the discussion we had previously, and the remaining gauge comes from the conformal transformations. There is an actual problem associated with this: the space of conformal transformations is infinite, and so, left unchecked, our integral will just give infinity. 
+
+This problem is actually something we have just been hiding during the whole lecture. It is something we should have addressed when we first introduced the Faddeev-Popov determinant. Why? Well because without fixing it we simply get $\Delta_{FP}=0$, which is useless. This follows because in \Cref{eqn:InverseFaddeevPopov} all we have done is fix the metric, but once the metric is fixed there could still be an unfixed gauge freedom corresponding to a conformal transformation and so we actually have an infinite number of `clicks' in our $g$ delta function. 
+
+Thankfully, this is easily fixed. We simply pick a certain number of points (which as we will see depends on the topology of the system) and fix them w.r.t diffeomorphisms. In doing this, we essentially pick a particular conformal choice and so only get one `click' in our delta function. Mathematically, we have 
+\be 
+    1 = \int d\tau D\zeta \, \del\big(g-\Hat{g}^{\zeta}(\tau)\big) \prod_j \del \big( v_{\a}(\Hat{\sig}_j )\big) \Delta_{FP}[g],
+\ee 
+where we have encapsulated the fixing of the coordinates by the fact that we require that $v_{\a}$ (the infinitesimal diffeomorphism) vanish at these points. 
+
+Following the method of above, again replacing $v_{\a}\to c_{\a}$, and using the fact that, because they are Grassmann variables, 
+\bse
+    \del\big(c_{\a}(\hat{\sig}_j)\big) = \prod_{\a=1}^2c_{\a}(\hat{\sig}_j),
+\ese 
+we get the corrected partition function
+\bse 
+    Z[\Hat{g}] = A \int DXDcDb \exp\Big( -S_{\text{Poly}}[X,\Hat{g}] - S_{\text{ghost}}[b,c,\Hat{g}]\Big)\prod_{j,\a} c_{\a}(\hat{\sig}_j).
+\ese 
+
+\section{Inserting Vertex Operators}

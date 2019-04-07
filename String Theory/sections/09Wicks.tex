@@ -1,0 +1,209 @@
+\chapter{Wick's Theorem \& Scattering Amplitudes}
+
+\section{Wick's Theorem}
+
+In order to prevent potential confusion from the applications of Wick's theorem in the previous lecture when discussing conformal normal ordering, we shall include a section here explaining in more detail what Wick's theorem is. This section is not meant as an introduction to Wick's theorem, but as an explanation of where it comes from. It is therefore assumed that you are familiar with/have used Wick's theorem before in a QFT course, for example. 
+
+\br
+\label{rem:WicksTheorem}
+To readers, it might seem strange to include this section \textit{after} using Wick's theorem instead of before. The reason I have written it this way, is because this is the order it was taught. In fact this discussion of Wick's theorem appears to have been an inclusion on Dr. Minwalla's behalf due to the previous lecture's content. 
+\er 
+
+Recall that, given the Gaussian integral 
+\bse 
+    I = \int d^nx \exp \bigg[ -\frac{\a_{ij}x^ix^j}{2} \bigg],
+\ese
+for some real, symmetric $\a_{ij}$, that the two point function is
+\be 
+\label{eqn:GaussianTwoPoint}
+    \langle x^i x^i \rangle = G^{ij} := (\a^{-1})^{ij}.
+\ee 
+We also have the following relation for Gaussian integrals\footnote{The denominator is just included to normalise the result. It corresponds to removing the prefactor $\sqrt{\frac{(2\pi)^n}{\det{A}}}$.} 
+\bse 
+    \frac{\int d^nx \exp\bigg[-\frac{1}{2}\a_{ij}x^ix^j\bigg]F(x)}{\int d^nx \exp\bigg[-\frac{1}{2}\a_{ij}x^ix^j\bigg]} = \exp\bigg[\frac{1}{2}G^{ij}\frac{\p}{\p x^i}\frac{\p}{\p x^j}\bigg] F(x)\bigg|_{x=0}.
+\ese
+Now let's take the case $F(x) = x^a x^b$ for fixed $a,b$. Then, Taylor expanding the right-hand side, we see that the only contributing term is the first order term (note that we set $x=0$ and so the identiy piece vanishes). That is, 
+\bse 
+    \exp\bigg[\frac{1}{2}G^{ij}\frac{\p}{\p x^i}\frac{\p}{\p x^j}\bigg] x^ax^b\bigg|_{x=0} = G^{ab},
+\ese 
+where we have used the fact that $G^{ab}$ is symmetric to remove the factor of $1/2$. Now imagine we have $F(x) = x^ax^bx^cx^d$. We now have higher order contributions:
+\bse 
+    \begin{split}
+        \exp\bigg[\frac{1}{2}G^{ij}\frac{\p}{\p x^i}\frac{\p}{\p x^j}\bigg] x^ax^bx^cx^d\bigg|_{x=0} & = G^{ab} x^c x^d + G^{ac}x^bx^d  + ... + G^{ab}G^{cd} + G^{ac}G^{bd} + ... \\
+        & = \langle x^a x^b\rangle x^cx^d + \langle x^a x^c\rangle x^bx^d +  ... \langle x^ax^b\rangle \langle x^cx^d\rangle +  \langle x^ax^c\rangle \langle x^bx^d\rangle + ...,
+    \end{split}
+\ese 
+where the ellipses indicate similar terms, and where we have used \Cref{eqn:GaussianTwoPoint} to get to the final line. 
+
+This is just the content of Wick's theorem as we know it: take the function and cross contract in all possible ways and leave anything left over outside. It is left as an exercise to check that when $a=b$ (or similarly for the other indices) that the factors we get from Wick's theorem also arise. 
+
+Actually we have ignored an important part here: we haven't set $x=0$ on the RHS, and so the terms that aren't completely contracted vanish. This is a problem, as these terms do not vanish when we consider normal ordering something. We shall now fix this point. 
+
+\subsection{Normal Ordering}
+
+We now want to look at normal ordering. We define 
+\be 
+\label{eqn:NormalOrdering}
+    F(x) = \cl \exp\bigg[\frac{1}{2}G^{ij}\frac{\p}{\p x^i}\frac{\p}{\p x^j}\bigg] F(x)\cl,
+\ee 
+where we no longer require the evaluation at $x=0$. 
+
+What we have with \Cref{eqn:NormalOrdering} is essentially a map from functions to functions, which we see clearly from the discussion in the previous section: if $F(x)$ is a quadratic function, then, as we are not setting $x=0$ anymore, we just get the normal ordering of $F(x)$ and some constant, $G^{ab}$. We therefore can ask the question of whether we can invert \Cref{eqn:NormalOrdering} to get an expression for $\cl F(x)\cl$. The answer is as we might expect: simply multiply $F(x)$ by the inverse exponential to get 
+\be 
+\label{eqn:NormalOrderF}
+    \cl F(x) \cl = \exp \bigg[ - \frac{1}{2}G^{ij}\frac{\p}{\p x^i}\frac{\p}{\p x^j}\bigg] F(x).
+\ee 
+
+\subsubsection*{Multiple Functions}
+
+The next thing we need to consider is the product of two normal ordered functions, $\cl F(x)\cl \cl G(x)\cl$. As we know, we want to be able to write this as the normal order of the product, $\cl F(x)G(x)\cl$. The question is: how do we get this? 
+
+Consider the direct manipulation
+\bse 
+    \begin{split}
+        \cl F(x) \cl \cl G(x) \cl & = \exp \bigg[ - \frac{1}{2}G^{ij}\frac{\p}{\p x^i}\frac{\p}{\p x^j}\bigg] F(x) \exp \bigg[ - \frac{1}{2}G^{ij}\frac{\p}{\p y^i}\frac{\p}{\p y^j}\bigg] G(y) \bigg|_{x=y} \\
+        & = \exp\bigg[ -\frac{1}{2}G^{ij} \bigg( \frac{\p}{\p x^i} + \frac{\p}{\p y^i}\bigg) \bigg( \frac{\p}{\p x^j} + \frac{\p}{\p y^j}\bigg)\bigg] \exp\bigg[-G^{ij}\frac{\p}{\p x^i}\frac{\p}{\p y^j}\bigg]F(x)G(y)\bigg|_{x=y} \\
+        &= \cl \exp\bigg[-G^{ij}\frac{\p}{\p x^i}\frac{\p}{\p y^j}\bigg]F(x)G(y)\cl \bigg|_{x=y},
+    \end{split}
+\ese
+where we have used \Cref{eqn:NormalOrderF} and several properties of the terms (e.g. the fact that $G^{ij}$ is symmetric). This result matches what we do when we consider the product of normal ordered functions, we cross contract (which we see from the fact that we have one $x$ and one $y$ derivative) and then normal order what ever is left over. 
+
+\subsubsection*{An Example}
+
+As it has been written, we are considering discrete points in spacetime (we are using indices $i,j=0,...,d$). We will want to rewrite this in the context of field theory, in which case we simply replace $x^i \to X(\sig)$ and get 
+\bse 
+    F(X) = \cl \exp\bigg[ \int d\sig d\sig' \frac{1}{2} G(\sig-\sig') \frac{\del}{\del X(\sig)} \frac{\del}{\del X(\sig')}\bigg] F(X) \cl.
+\ese 
+
+Let's now consider the example 
+\bse 
+    \cl e^{ik_1X(\sig_1)}\cl \cl e^{ik_2X(\sig_2)}\cl = \cl \exp \bigg[ -\frac{\a'}{2} \int d\sig_1 d\sig_2 \ln (\sig_1-\sig_2)^2 \frac{\del}{\del X(\sig_1)} \frac{\del}{\del X(\sig_2)} \bigg] e^{ik_1X(\sig_1)}e^{ik_2X(\sig_2)} \cl,
+\ese
+where we have used \Cref{eqn:ExpectationXX}. Now, using the fact that the derivatives will only `click' when we get the $X(\sig_1)/X(\sig_2)$ in the exponentials, we have 
+\bse 
+    \cl e^{ik_1X(\sig_1)}\cl \cl e^{ik_2X(\sig_2)}\cl = \exp\bigg[\frac{\a'}{2} k_1k_2 \ln\big[ (z-z_2)(\Bar{z}_1-\Bar{z}_2)\big]\bigg] \cl e^{ik_1X(\sig_1)} e^{ik_2X(\sig_2)} \cl,
+\ese 
+where we have switched to the $z\Bar{z}$ notation in the log. Simplifying, we have 
+\bse 
+    \cl e^{ik_1X(\sig_1)}\cl \cl e^{ik_2X(\sig_2)}\cl = \big[(z_1-z_2)(\Bar{z}_1-\Bar{z_2})\big]^{\a'k_1k_2/2} \cl e^{ik_1X(\sig_1)} e^{ik_2X(\sig_2)} \cl.
+\ese 
+Now consider expanding $X(\sig_1)$ about $X(\sig_2)$, then to first order we have 
+\bse 
+    \cl e^{ik_1X(\sig_1)} \cl \cl e^{ik_2X(\sig_2)} \cl = \big[(z_1-z_2)(\Bar{z}_1-\Bar{z_2})\big]^{\a'k_1k_2/2} \cl e^{i(k_1+k_2)X(\sig_1)} \cl,
+\ese 
+which is consistent with what we have discussed previously. To see why, recall that for a general OPE of two holomorphic functions of weight $h_1$, $h_2$, we have 
+\bse 
+    \cO_1 \cO_2 = \frac{\cO_3}{(z_1-z_2)^{h_1+h_2-h_3}}.
+\ese 
+Then also recall that $h=\a'k^2/4$ for the exponentials and so, using $k_3=k_1k_2$, the fraction becomes 
+\bse 
+    \frac{1}{(z_1-z_2)^{\frac{\a'}{4} \big[k_1^2 + k_2^2 - (k_1k_2)^2\big]}} = (z_1-z_2)^{\a'k_1k_2/2},
+\ese 
+and where the $\Bar{z}$ term is achieved similarly. 
+
+\br 
+In the above discussion, we have assumed there is only one $X$. However, it is easy to convince yourself that the above extends to higher dimensions by simply considering the dot products everywhere. That is $k_1X(\sig_1) \to k_1\cdot X(\sig_1)$ and $k_1 k_2\to k_1\cdot k_2$.
+\er 
+
+\section{Scattering Amplitudes}
+
+We have now studied enough 2D CFT to move on, and go back to considering our strings. The main thing we want to consider in our 2D string theory is \textit{scattering amplitudes}. In order to highlight some important points in our theory, let's first recall what we do with Feynman diagrams for particles. 
+
+We consider the free propagation of the two interacting particles until they meet, considering all possible paths taken by these particles (i.e. we take the path integrals over them). We then consider the state after the interaction (say they become one particle), and we consider the free propagation of that. If this new particle then, say, decays into two other particles, we then just consider the free propagation of those particles. So everything is free propagation, apart from the points where the particles meet. At these points, we have something that appears highly singular on the worldline. We then develop a set of rules to tell us what is going on at these points, that is we develop the Feynman rules for those interaction vertices.
+
+\begin{center}
+    \btik 
+        \draw[ thick, decoration={markings, mark=at position 0.5 with {\arrow{>}}}, postaction={decorate}] (-1,-1) -- (0,0);
+        \draw[ thick, decoration={markings, mark=at position 0.5 with {\arrow{<}}}, postaction={decorate}] (1,-1) -- (0,0);
+        \draw[ thick, decoration={markings, mark=at position 0.5 with {\arrow{>}}}, postaction={decorate}] (0,0) -- (0,1);
+        \draw[ thick, decoration={markings, mark=at position 0.5 with {\arrow{>}}}, postaction={decorate}] (0,1) -- (-1,2);
+        \draw[ thick, decoration={markings, mark=at position 0.5 with {\arrow{<}}}, postaction={decorate}] (0,1) -- (1,2);
+        \draw[->] (-1,0.5) -- (-0.1,0.1);
+        \draw[->] (-1,0.5) -- (-0.1,0.9);
+        \node at (-1.8,0.5) {\large{non-free}};
+    \etik 
+\end{center}
+
+The main point to understand above is that understanding the free propagation of a particle is not enough to be able to understand the scattering behaviour of two particles. We might think that the same thing is true for our 2D string theory. However, it amazingly turns out that this is not the case, and it is indeed enough to know about the free propagation of the strings. We can motivated why this is true by considering the diagram for our string scattering.
+
+\begin{center}
+    \btik 
+        \draw[thick] (-2,-2) .. controls (0,0) .. (2,-2);
+        \draw[thick, rotate around={90:(0,0.5)}] (-2,-2) .. controls (0,0) .. (2,-2);
+        \draw[thick] (-2,3) .. controls (0,1) .. (2,3);
+        \draw[thick, rotate around={90:(0,0.5)}] (-2,3) .. controls (0,1) .. (2,3);
+        \draw[thick, rotate around={-45:(-2.25,-1.75)}] (-2.25,-1.75) ellipse (0.35 and 0.1);
+        \draw[thick, rotate around={45:(-2.25,2.75)}] (-2.25,2.75) ellipse (0.35 and 0.1);
+        \draw[thick, rotate around={45:(2.25,-1.75)}] (2.25,-1.75) ellipse (0.35 and 0.1);
+        \draw[thick, rotate around={-45:(2.25,2.75)}] (2.25,2.75) ellipse (0.35 and 0.1);
+    \etik 
+\end{center}
+
+There is no point on this surface that you can point to and say `this point is special' or `this is where the interaction happens'. To put it another way, no matter where you point, cutting the surface at that point will always give a loop, and so can be thought of as a snapshot in the propagation of a \textit{free} string. Note in order to say this, its important that our worldsheet theory is local.
+
+Now we might say `well I could work out where the interaction happens by taking equally spaced slices of the worldsheet and waiting for the point where we go from two tubes to one.' The problem with this is that the position of this transition depends on how you choose to do the slicings. That is, slicing horizontally will give a different result to doing it vertically. 
+
+\br
+This actually highlights another, unexpected result in string theory. Recall that for the worldline description, there were different channels each with a distinct Feynman diagram. That is, we have both scattering and annihilation diagrams. For the worldsheet theory, these diagrams look identical! This is something we shall comment on again soon. \textcolor{red}{If he doesn't comment on it, come back and say something.}
+\er 
+
+Now, we still need to work something out; we require that the end tubes extend off to infinity.\footnote{For a explanation of why we require this, see the start of chapter 6 in Dr. Tong's notes.} Doing this actually allows us to make the problem look a lot nicer; we use the state-operator map. The end points are just our initial and final states, but we know that these are just represented by the insertion of a local operator. This local operator is known as a \textit{vertex operator} and is just the operator dual to the state required. So essentially we just have a sphere (which represents the middle part of the diagram above) with four insertions.
+
+\begin{center}
+    \btik 
+        \draw[thick] (0,0) circle (2cm);
+        \node at (1,1) {\large{$\cross$}};
+        \node at (-1,1) {\large{$\cross$}};
+        \node at (1,-1) {\large{$\cross$}};
+        \node at (-1,-1) {\large{$\cross$}};
+    \etik 
+\end{center}
+
+Now, our path integral involves considering all possible metric embeddings into the spacetime of the Polyakov action\footnote{It's written in Euclidean coordinates here.}
+\bse 
+    \int DX Dg \exp \bigg[ -\frac{1}{4\pi\a'} \int d^2\sig \sqrt{g} g^{\a\beta} \p_{\a}X^{\mu}\p_{\beta}X_{\mu} \bigg],
+\ese
+and we therefore need to also consider diagrams with holes in them. That is, things of the form 
+
+\begin{center}
+    \btik 
+        \draw[thick] (-2,-2) .. controls (0,0) .. (2,-2);
+        \draw[thick, rotate around={90:(0,0.5)}] (-2,-2) .. controls (0,0) .. (2,-2);
+        \draw[thick] (-2,3) .. controls (0,1) .. (2,3);
+        \draw[thick, rotate around={90:(0,0.5)}] (-2,3) .. controls (0,1) .. (2,3);
+        \draw[thick, rotate around={-45:(-2.25,-1.75)}] (-2.25,-1.75) ellipse (0.35 and 0.1);
+        \draw[thick, rotate around={45:(-2.25,2.75)}] (-2.25,2.75) ellipse (0.35 and 0.1);
+        \draw[thick, rotate around={45:(2.25,-1.75)}] (2.25,-1.75) ellipse (0.35 and 0.1);
+        \draw[thick, rotate around={-45:(2.25,2.75)}] (2.25,2.75) ellipse (0.35 and 0.1);
+        \draw[thick] (-0.5,0.5) .. controls (-0.25,0.25) and (0.25,0.25) .. (0.5,0.5);
+        \draw[thick] (-0.35,0.4) .. controls (-0.175,0.5) and (0.175,0.5) .. (0.35,0.4);
+    \etik 
+\end{center}
+which corresponds to a final diagram of a torus with 4 vertex operators
+
+\begin{center}
+    \btik 
+        \draw[thick] (0,0) circle (2cm);
+        \node at (1,1) {\large{$\cross$}};
+        \node at (-1,1) {\large{$\cross$}};
+        \node at (1,-1) {\large{$\cross$}};
+        \node at (-1,-1) {\large{$\cross$}};
+        \draw[thick] (-0.5,0) .. controls (-0.25,-0.25) and (0.25,-0.25) .. (0.5,0);
+        \draw[thick] (-0.35,-0.1) .. controls (-0.175,0) and (0.175,0) .. (0.35,-0.1);
+    \etik 
+\end{center}
+Similarly we should consider multiple holes (i.e. like a figure 8 torus etc). Note that these diagrams correspond to the loop diagrams in Feynman diagrams. That is, if we slice the worldsheet across the hole, we end up with two strings in the interaction part that then join back to one. 
+
+The next question we need to ask is `where do we put these vertex operators?' Of course, because of diffeomorphisms, we need to consider all possible positions. Another way to see this is the fact that in the initial cross type diagram we drew for the string interaction, we could have moved the legs around, which would correspond to moving the vertex insertions around on the sphere (or torus or whatever we're looking at).
+
+So our problem is reduced to doing a path integral with four vertex insertions. The question is `how do we do it?' As we will see, there is a nice method that allows us change the integral. The general idea comes stems from the following claim. 
+
+\bcl 
+Given any metric, we can use our diffeomorphism and Weyl gauge symmetries to fix the metric to an element in an \textit{equivalence class} of metrics. The elements of these equivalence classes are related to the \textit{genus} of the manifold being considered. 
+\ecl 
+
+\br 
+Note this is \textit{not} the same as saying we can make any metric into a metric that we like. It corresponds to the idea of having gauge orbits and using a gauge fixing to fix the specific metric to the representative from the orbit. 
+\er 
+
+The idea then is to replace the integral over the metric in our path integral with an integral over the parameter used to label which gauge orbit we are in. The contents of this method is the so-called \textit{Faddeev-Popov Method}, and we shall discuss it properly in the next lecture. 

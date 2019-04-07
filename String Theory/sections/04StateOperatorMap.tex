@@ -1,0 +1,376 @@
+\chapter{State-Operator Map \& Ward Identities}
+
+So far we have taken a some what shaky approach to studying first quantised string theory. This allowed us to get some nice insights to the theory, however, as we noted at the end of the last lecture, our goal now is to go back and start again. We try to develop the theory in a nicer way, which will prove beneficial when we start considering things such as \textit{interacting} strings. 
+
+The approach we are going to take is basically conformal field theory, and so it is obviously important that we know what this is. For this reason why shall spend the next few lectures discussing CFT for a cylinder (as we obviously want to use it on the string after). We are going to study theories that are conformally invariant and then ask the question about when they are also Weyl invariant, in order to be able to touch base with the Polyakov action. 
+
+\section{Euclidean Space}
+
+In order to simplify the following calculations, we shall work in Euclidean space, achieved by taking a Wick rotation on our coordinates. This short section is just here to highlight the conventions we are going to use. 
+
+We define $(\sig^1,\sig^2) = (\sig^1,i\sig^0)$ as the Euclidean coordinates on the worldsheet. In other words we consider imaginary time, also known as Euclidean time. We then introduce the complex coordinates 
+\be
+\label{eqn:ComplexCoordinates}
+    z = \sig^1 + i\sig^2, \qquad \Bar{z} = \sig^1 - i\Bar{\sig}^2.
+\ee 
+This is just the light cone coordinates on the worldsheet. We can use this as a justification to refer to the holomorphic functions\footnote{A complex-valued function that is complex differentiable in a neighbourhood around every point on the function.} (i.e. $z$) as left-moving and the anti-holomorphic\footnote{Same as holomorphic but now the derivative is taken wrt the complex conjugate.} (i.e. $\Bar{z}$) as right-moving. The line element in these coordinates is simply 
+\be 
+\label{eqn:LineElementComplex}
+    ds^2 = dz d\Bar{z},
+\ee 
+which is equivalent to
+\be 
+\label{eqn:MetricComponentsComplex}
+    g_{zz} = 0 = g_{\Bar{z}\bar{z}}, \qquad g_{z\bar{z}} = \frac{1}{2}.
+\ee 
+It follow, then, that 
+\be
+\label{eqn:NablaSquaredComplex}
+    \nabla^2 = g^{z\bar{z}} \p_{z}\p_{\bar{z}} + g^{\bar{z}z}\p_{\bar{z}}\p_z = 4\p_z\p_{\bar{z}},
+\ee 
+and our volume element is 
+\be 
+\label{eqn:VolumeElementComplex}
+    dzd\bar{z} = 2d\sig^1d\sig^2.
+\ee 
+Finally our holomorphic and antiholomorphic derivatives are
+\be 
+\label{eqn:HolomorphicDerivatives}
+    \p := \p_z = \frac{1}{2}\big(\p_1 -i\p_2\big), \qquad \text{and} \qquad \bar{\p} := \p_{\bar{z}} = \frac{1}{2}\big(\p_1 +i\p_2\big).
+\ee 
+
+\section{Path Integrals}
+
+For completeness, and to help with the following discussion, we shall briefly discuss path integrals. We will not give a super rigorous discussion here, but just outline the ideas. 
+
+Path integrals give us transition amplitudes. For now let's just consider a $(1+1)$-dimensional theory, in which the state of a particle is described by a single spatial coordinate and a temporal coordinate. The question we want to ask is `What is the probability of the particle going from position $x_i$ at time $t_i$ to $x_f$ at $t_f$?' The idea is to split this path into lots of discrete time slices and then ask about the probability to go between these slices subject to the constraint that it we must start at $x_i$ and end at $x_f$. We consider all of the different \textit{paths} between the two points and sum the probabilities. We then take the limit that the time separation goes to zero, giving us an integral. 
+
+Mathematically, we break up the transition amplitude into $N$ sections by inserting the identity projectors 
+\be
+\label{eqn:BasesStates}
+    \b1 = \int dx_i \ket{x_i}\bra{x_i},
+\ee 
+where $x_i$ is the position on the $i$-th slice. We then take the limit $N\to\infty$. Then, recalling that the time evolution of the system is given by the Hamiltonian, we can show that\footnote{If you aren't familiar with how to get to this result, I highly encourage you to go away and read it up before continuing.} 
+\bse 
+    \bra{x_f} e^{-iH}\ket{x_i} = \int_{x(t_i)=x_i}^{x(t_f)=x_f} Dx\, e^{iS[x]},
+\ese 
+where $S[x]$ is the action of the system. 
+
+This idea is easily extended to higher dimensional field theories, but now instead of just specifying a single position $x_i/x_f$ we have to specify a field configuration at the times, $\phi_i/\phi_f$. The path integral simply becomes 
+\bse 
+    \bra{\phi_f} e^{-iH}\ket{\phi_i} = \int_{\phi(t_i)=\phi_i}^{\phi(t_f)=\phi_f} D\phi \, e^{iS[\phi]}.
+\ese 
+
+The next question to ask is `How do we insert a local operator, $\cO_1$, at some position $x_1$ at time $t_1$ into the path integral, taking into account the effect it has on the result?' The answer comes from following the same method as above but now we the operator inserted where it needs to go. This gives us the following \textit{correlation function} (in the Heisenberg picture) 
+\bse 
+    \bra{\phi_f,t_f} \cO_1 \ket{\phi_i,t_i} = \int_{\phi(t_i)=\phi_i}^{\phi(t_f)=\phi_f} D\phi \, e^{iS[\phi]} \cO_1(x_1).
+\ese 
+
+We can then insert more operators and repeat the same process as above. However it is important to keep the operators \textit{time ordered}.\footnote{That is put the operators that act at the latest times to the left.}
+
+Ok, so that's the quickest crash course on path integrals ever given, so back to our scheduled programme.
+
+\section{States}
+
+As the title of this lecture indicates, its important that we understand what states and operators are in quantum field theory. 
+
+Let's start with states. We saw above that the transition amplitudes are given by path integrals. We can use the path integrals to define \textit{states} of our system. 
+
+First, consider again the $(1+1)$-dimensional problem. If the system starts off in some state $\ket{\psi_i}$, with corresponding wavefunction\footnote{Note we use wavefunctions because we inserted a basis of states above \Cref{eqn:BasesStates}, and so we are working with wavefunctions.} $\psi_i(x_i,t_i)$, then the path integral tells us that the system evolves to the state $\ket{\psi_f}$ with wavefunction\footnote{We've ignored the normalisation conditions here, but they're just numbers.}
+\bse 
+    \psi_f(x_f;t_f) = \int dx_i \int_{x(t_i)=x_i}^{x(t_f)=x_f} Dx \, e^{iS[x]} \psi_i(x_i;t_i).
+\ese 
+The extension to the field path integrals is clear 
+\be 
+\label{eqn:StatePathIntegral}
+    \psi_f[\phi_f(\sig);t_f] = \int D\phi_i \int_{\phi(t_i)=\phi_i}^{\phi(t_f)=\phi_f} D\phi \, e^{iS[\phi]} \psi_i[\phi_i(\sig);t_i].
+\ee 
+
+\br 
+Note we now have wavefunction\textit{als}, as we are considering whole field configurations, not just points in space.
+\er 
+
+\br 
+Note that the initial state acts as a weighting to the initial boundary conditions. We shall use this insight shortly.
+\er 
+
+So what we have is a prescription for finding the state of the system as a functional of the final field configuration. Another way to understand what we're on about here is to view the state of the system as a \textit{cut} of the path integral at a constant time. That is, we write the state
+\bse 
+    \ket{\psi} = e^{-iH}\ket{\phi_i} = \int_{\phi(t_i)=\phi_i} D\phi \, e^{iS[\phi]},
+\ese 
+where we don't specify the upper integration limit. From here we see that the path integral for the amplitude is just given by taking two cuts and considering the bounded part of the path integral. The wavefunctional expression is just obtained by taking $\braket{\phi_2}{\psi}$ and then inserting \Cref{eqn:BasesStates}. 
+
+\br 
+By extension of the above argument, we can form the whole Hilbert space of our system by taking constant time cuts of all possible path integrals.
+\er 
+
+\section{Radial Quantisation}
+
+So far we have a theory on a cylinder. We are now going to attempt to turn this into a theory on a plane. This is done via simple transformations. First let $\omega$ be the complex coordinate on the cylinder, i.e. 
+\bse 
+    \omega = \sig +i\tau,
+\ese 
+and then define 
+\bse 
+    z = e^{-i\omega} = e^{-i\sig+ \tau},
+\ese 
+which is a set of concentric circles on the plane, where each circle corresponds to an equal time slice on the cylinder. 
+\begin{center}
+    \btik
+        \draw[thick] (0,0) -- (0,5);
+        \draw[thick] (2,0) -- (2,5);
+        \draw[thick] (1,5) ellipse (1 and 0.18);
+        \draw[thick] (0,0) arc (180:360: 1 and 0.18);
+        \draw[thick, dashed] (0,0) arc (180:360: 1 and -0.18); 
+        \draw[thick] (6,0) -- (11,0) -- (11,5) -- (6,5) -- (6,0);
+        \draw (8.5,0) -- (8.5,5);
+        \draw (6,2.5) -- (11,2.5);
+        \draw[dashed] (8.5,2.5) circle (0.5cm);
+        \draw[dashed] (8.5,2.5) circle (1cm);
+        \draw[dashed] (8.5,2.5) circle (1.5cm);
+        \draw[dashed] (8.5,2.5) circle (2cm);
+        \draw[dashed] (8.5,2.5) circle (2.5cm);
+        \draw[ultra thick, ->] (3,2.5) -- (5,2.5);
+    \etik 
+\end{center}
+
+Initially there might seem to be a problem at the origin. To see why consider $\omega = i\ln z$, giving
+\bse 
+    d\omega d\bar{\omega} = \frac{dzd\bar{z}}{z\bar{z}}, 
+\ese 
+which diverges for $z=0$. However we are considering a theory that is Weyl invariant, and so we can simply transform away the denominator, saving us from potential problems. 
+
+On the cylider, evolution in time was given by the Hamiltonian 
+\bse 
+    H = \p_{\tau},
+\ese 
+which becomes the \textit{dilatation} operator on the plane 
+\be 
+\label{eqn:DilatationOperator}
+    D = z\p + \bar{z}\bar{\p}.
+\ee 
+
+This tells us that time increases with the radius of the circle, and the origin corresponds to the infinite past (i.e. the bottom of the cylinder). This process is known as \textit{radial quantisation}. 
+
+\br 
+There is another way to think of the above map from the cylinder to the plane. We place the cylinder on top of the plane, and we draw a line connecting the top of the cylinder to the plane. The point on the cylinder that the line passes through corresponds to the point on the plane the line touches. From here it is easy to see that the bottom of the cylinder is the origin on the plane and that higher times (i.e. further up the cylinder) corresponds to larger circles. This is the idea of a conformal mapping. 
+\er 
+
+\section{The State-Operator Map}
+
+Now that we have a way to turn our theory on the cylinder to a theory on the plane we are in a position to derive a surprising result in our\footnote{The result actually holds for any CFT that allows us to map the cylinder to the plane. For general dimension, it works when its possible to map $\R\times S^{d-1}$ to $\R^d$.} CFT. 
+
+\mybox{
+\bt[State-Operator Map]
+The state-operator map gives us a one-to-one correspondence between states of the theory and \textbf{local} operators.
+\et 
+}
+
+Before we prove this, let's first note how surprising this result is. First note that we are not saying there is a one-to-one correspondence between states and operators, but only to \textit{local} operators. However, even with this restriction, the result is still unexpected: as we explained before, states live on entire spatial slices, whereas local operators are only defined at a single point; equally we can think of a state as a $n$-column matrix (its a vector in the Hilbert space) but an operator is a $n\times n$ matrix! This all seems rather crazy, but for a hopefully we will de-crazy this now. 
+
+\subsection{State From Operator}
+
+We have seen that a state of the system corresponds to a constant time cut of the path integral. We have also seen that a constant time slice on the plane is a circle around the origin. So, to find a state on the plane, what we need to do is the path integral over the area inside the circle; \Cref{eqn:StatePathIntegral} becomes\footnote{We are using Euclidean time here, so $iS[\phi] \to -S[\phi]$.} 
+\bse 
+    \psi_f[\phi_f(\sig); r_f] = \int D\phi_i \int_{\phi(r_i)=\phi_i}^{\phi(r_f)=\phi_f} D\phi \, e^{-S[\phi]}\psi_i[\phi_i(\sig);r_i].
+\ese 
+Pictorially we are looking at 
+\begin{center}
+    \btik 
+        \draw[thick] (0,0) -- (5,0) -- (5,5) -- (0,5) -- (0,0);
+        \draw[dashed,pattern=north west lines, pattern color=black] (2.5,2.5) circle (2cm);
+        \draw[dashed, fill=white] (2.5,2.5) circle (1cm);
+        \draw[] (2.5,0) -- (2.5,5);
+        \draw[] (0,2.5) -- (5,2.5);
+        \node at (3,3) {$r_i$};
+        \node at (4.1,4.1) {$r_f$};
+    \etik 
+\end{center}
+
+Now we simply take $r_i\to 0$, which corresponds to $\tau \to -\infty$. We are now integrating over the whole disc area up to $r_f$, and the only effect from the initial state is a change of the weighting of path integral at $z=0$; this is just the definition of a local operator! So for each local operator at $z=0$ we obtain a state of the system via 
+\bse 
+    \psi[\phi_f;r] = \int^{\phi(r)=\phi_f} D\phi \, e^{-S[\phi]} \cO(z=0).
+\ese 
+
+This is actually a rather trivial result: all we are doing is taking a state (which is the vacuum state at the origin) and acting on it with some local operator and saying that this gives us a new state. 
+
+\br 
+Note if we want the vacuum operator at $r$ then we use the identity operator at the origin.
+\er 
+
+\subsection{Operator From State}
+
+We now want to do something much less trivial: given a state we want to be able to uniquely define a local operator. We want this prescription to work so that if we placed the local operator produced inside a path integral we would get back the state we started with. The procedure is as follows.
+
+First we consider a state at radius $r$. W.l.o.g. we shall take $r=1$. Now imagine we have a bunch of known operator insertions \textit{exterior} to the disc. We can take the path integral over the exterior of the disc and use the initial boundary conditions to give us our state at the boundary (i.e. weight the path integral by $\psi_i[\phi_i;1]$). This just gives us a number.\footnote{Note if we did not use the initial state to weigh the integral, we would get an infinite number of numbers, one for each possible initial field configuration.}
+
+Now specifying a local operator amounts to a local modification of the path integral that allows you to associate to the path integral, and any number of other insertions, a number. Put another way, given that we already have a set of operators $\{\cO_1,...,\cO_N\}$, if we want to introduce a new operator, $\cO_{new}$, we need to know the set of rules for arbitrary number of insertions of $\cO_{new}$, and all other $\cO_i$s, inside the path integral. 
+
+If we insert our $\cO_{new}$ at the origin, we're half way there given the previous subsection. However we have the problem that we are not taking just a local deformation to the path integral, but we are deforming it over the whole interior of the disc. 
+
+\begin{center}
+    \btik 
+        \draw[thick, pattern=north west lines, pattern color=black] (0,0) -- (5,0) -- (5,5) -- (0,5) -- (0,0);
+        \draw[] (2.5,0) -- (2.5,5);
+        \draw[] (0,2.5) -- (5,2.5);
+        \draw[dashed, fill=white] (2.5,2.5) circle (1cm);
+        \node at (4,3) {$\cO_1$};
+        \node at (2,4) {$\cO_2$};
+        \node at (1,1) {$\cO_3$};
+        \node at (2.5,2.5) {$\cO_{new}$};
+        \node at (4,1.8) {$\psi_i[\phi_i;1]$};
+    \etik 
+\end{center}
+
+The question is `can we somehow make this a local deformation?' The answer is, yes. We simply consider the circle at radius $r/2=1/2$ and we define the state at this new circle to be the one that gives the same result to the path integral, when it is now done from the smaller circle. In other words it needs to be the state that once path integrated over the annulus separating the two states gives the state we started with at $r=1$. This is just equivalent to translating the state at $r=1$ (backwards) in time to the state at radius $1/2$, which is achieved using \Cref{eqn:DilatationOperator}. So all we do is start from the inner circle and weight the path integral by both the initial state on the circle of $r=1$ \textit{and} the time dilatation operator between the two circles. But if we can do this, we can do it again and keep going until we reach the origin itself, giving us a local deformation in the path integral. 
+
+\br 
+Note in the above we have assumed that all of the operators are exterior to our initial circle. If this was not the case, we simply take a smaller starting circle such that it is. We can always do this, apart from when one of the operators also lies at the origin. If this turned out to be the case, you can simply move your new operator to a new point where there is no other operators and define that point to be the origin. 
+\er 
+
+\br 
+The CFTness of the problem came in when we took the infinite dilatation operator to get the local operator. In our theory this results in a single point, the origin. However, in a more general theory going back to $t=-\infty$ wont necessarily be a point (for example for Minkowski spacetime, you get a whole 3-dimensional spatial slice) and so we can not say we have a local operator. 
+\er 
+
+\br 
+We should note that the correspondance we have described here is (most likely) something you have never encountered before. You might\footnote{I didn't it's only by reading Dr. Tong's notes that it crossed my mind...} think that this is just like the idea of building a Fock space using creation operators on the vacuum. However, the creation operators are Fourier transforms of local operators, and so are about as far from local as you can get!
+\er 
+
+\subsection{Operator Product Expansion}
+
+There is a really nice consequence of the state-operator map: given two\footnote{It need not be two, but we shall use two for arguments sake.} operators near the origin that we can circle without circling other operators, we can rewrite these as a sum over local operators at the origin. 
+
+\begin{center}
+    \btik 
+        \draw[thick] (0,0) -- (5,0) -- (5,5) -- (0,5) -- (0,0);
+        \draw[dashed] (2.5,2.5) circle (1.5cm);
+        \node at (3,3) {$\cO_1$};
+        \node at (2,1.5) {$\cO_2$};
+        \node at (1,4) {$\cO_3$};
+        \node at (4.5,2) {$\cO_4$};
+        \node at (3,0.5) {$\cO_5$};
+        \draw[ultra thick, ->] (5.5,2.5) -- (6.5,2.5);
+        \draw[thick] (7,0) -- (12,0) -- (12,5) -- (7,5) -- (7,0);
+        \draw[dashed] (9.5,2.5) circle (1.5cm);
+        \node at (9.5,2.5) {$\sum_m\cO_m^{basis}$};
+        \node at (8,4) {$\cO_3$};
+        \node at (11.5,2) {$\cO_4$};
+        \node at (10,0.5) {$\cO_5$};
+    \etik 
+\end{center}
+
+This is not too hard to see. We know that the two inside operators are going to produce some state on the circle. We then know that this state will correspond to some local operator at the origin. However, we also know that states in a Hilbert space can always be expanded in a basis of other states, and so it follows that the local operator can be expanded in terms of some local basis operators. The coefficients of the basis elements will of course depend on the initial positions of the operators $\cO_1/\cO_2$ (i.e. they have $\sig$ dependence). This process is known as the \textit{operator product expansion} (OPE).
+
+\br 
+Its important to note that the above result is true \textit{locally}. That is, it does not depend in any way on our knowledge of the external operators $\cO_{3,4,5}$. It is therefore a statement about the operators \textit{themselves} and not about particular correlation functions.
+\er 
+
+\br 
+Although in the above we have chosen to give the result at the origin, we need not do this. We can right choose to do it about the positions of one of the operators itself if we wish. 
+\er 
+
+Bearing in mind the previous remarks, we do not need to take the OPE near the origin, and we can write it generally as 
+
+\be 
+\label{eqn:OPE}
+    \langle\cO_i(z,\bar{z}) \cO_j(\omega,\bar{\omega})...\rangle = \sum_{k} C^k_{ij}(z-\omega,\bar{z}-\bar{\omega}) \langle\cO_k(\omega,\bar{\omega})...\rangle,
+\ee 
+where we see the constants only depend on the separations. 
+
+\br 
+Note on the right-hand side of \Cref{eqn:OPE} we use $(\omega,\bar{\omega})$ and not $(z,\bar{z})$. The reason for this is that we are using a correlation function, and the operators are always time ordered, and so we know from the right-hand side that $|z|>|\omega|$ and so we expand around the inner operator.
+\er 
+
+\br 
+\label{rem:OPESingular}
+We will see that the OPEs have singular behaviour as the two operators approach each other, i.e. as $z\to\omega$. This singular behaviour will prove to be very interesting when considering the commutation of operators (see section \Cref{sec:CommutatorOfCharges}).
+\er 
+
+\section{Noether Currents and Ward Identities}
+
+Recall that Noether's theorem tells us that for every classical symmetry of the system we have a conserved charge. In field theory we see this charge gives rise to a conserved current. We now want to cast this result in terms of path integrals. 
+
+Assume we have the path integral
+\bse 
+    \int D\phi \, e^{-S[\phi]}.
+\ese 
+Now assume our system has some symmetry corresponding to 
+\bse 
+    \phi \to \phi' = \phi + \epsilon \del \phi,
+\ese 
+for some infinitesimal $\epsilon$. The fact that it is a symmetry means that both the action and the measure are left invariant\footnote{Technically we only need there combined product to be invariant, but this detail isn't too important here.}
+\bse 
+    S[\phi] = S[\phi'], \qquad \text{and} \qquad D\phi = D\phi'.
+\ese 
+We now do a clever trick\footnote{More details on this trick can be found in Dr. Tong's notes at the start of Chapter 4.} and let $\epsilon$ become a function of the coordinates, $\epsilon(\sig)$. Now, of course in general this will leave neither the action nor the measure invariant, but will result in a modification of the path integral. We do know, however, that this modification must vanish whenever $\epsilon$ is constant. We, conclude, therefore that the path integral is of the form 
+\bse 
+    \int D\phi' \, \exp \bigg( -S[\phi'] + \int J^{\mu} \p_{\mu}\epsilon \bigg) = \int D\phi' \, e^{-S[\phi']} \bigg( 1 + \int J^{\mu}\p_{\mu}\epsilon\bigg),
+\ese 
+for some $J^{\mu}$, where we have used the fact that we are considering a small change to go to the right-hand side. Now, the value of the path integral (which is the partition function) can't have changed, as all we've done is a change of variables. This must hold for all $\epsilon(\sig)$, and so (after integration by parts to shift the derivative off $\epsilon$) we conlcude 
+\be 
+\label{eqn:NoetherQM}
+    \langle \p_{\mu}J^{\mu} \rangle = 0,
+\ee 
+where the $\langle (...)\rangle$ notation means $\int D\phi e^{-S[\phi]}(...)$. This is the quantum mechanical conservation of the charge. 
+
+We can do better though. Let's now insert some operators into the system. The operators will transform as 
+\be 
+\label{eqn:OperatorTransform}
+    \cO_i \to \cO_i + \epsilon(\sig) \del \cO_i
+\ee 
+First let's assume that $\epsilon(\sig)$ only has support in regions on the plane that contain no operator insertions:
+\begin{center}
+    \btik 
+        \draw[thick] (0,0) -- (5,0) -- (5,5) -- (0,5) -- (0,0);
+        \draw[fill=lightergray, dashed] (1,2.5) circle (0.7cm);
+        \node at (1,2.5) {$\epsilon(\sig)$};
+        \node at (3,3) {$\cO_1$};
+        \node at (2,1.5) {$\cO_2$};
+        \node at (1,4) {$\cO_3$};
+        \node at (4.5,2) {$\cO_4$};
+        \node at (3,0.5) {$\cO_5$};
+    \etik 
+\end{center}
+and so the operators are invariant under this transformation. Then we know that
+\bse 
+    \langle \p_{\mu} J^{\mu} \cO_1...\cO_5 \rangle = 0,
+\ese 
+but because this holds for arbitrary insertions, we can think of it as being equivalent to \Cref{eqn:NoetherQM}.
+
+Now let's assume that $\epsilon(\sig)$ is non-zero in some region that contains an operator insertion. This this operator will transform as \Cref{eqn:OperatorTransform}. Then, following as above, we get 
+\be 
+\label{eqn:WardIdentity}
+    \int_{\epsilon} \p_{\mu}\big\langle J^{\mu} \cO_1(\sig_1)...\cO_n(\sig_n)\big\rangle = \sum_{m=1}^n \big\langle \cO_1(\sig_1)...\del\cO_m(\sig_m)...\cO_n(\sig_n)\big\rangle,
+\ee 
+where we have taken the derivative out of the correlation function. This is known as the \textit{Ward Identity}.
+
+However, there appears to be a problem here. The current $J^{\mu}$ is meant to be conserved, so why when we happen to insert other operators does it suddenly appear to not be conserved? (i.e. why is the right-hand side not zero?) The answer to this question comes from recalling that path integrals \textit{time order} operator insertions, and so in our $\langle (...)\rangle$ we really have a bunch of terms with Heaviside functions inserted to give us the time ordering. When we then take the derivative back inside the correlation function, it will also act on these Heaviside functions with the time derivative. We then end up with a bunch of commutation relations between $J^0$ and the operators, and this gives us precisely the contact terms on the right-hand side. In other words, in order to take the derivative out of the correlation function, we have to compensate by taking away the terms on the right-hand side. 
+
+\subsection{Ward Identities in 2D}
+
+So far we haven't used the fact that we are considering a two dimensional theory. If we now talk about the $(\sig^1,\sig^2)$ plane as defined previously, we have, using Stokes' Theorem 
+\bse 
+    \int_{\epsilon} \p_{\a} J^{\a} = \oint_{\p\epsilon} J_{\a} \Hat{n}^{\a} = \oint_{\p\epsilon} J_1d\sig^2 - J_2d\sig^1, 
+\ese 
+where $\Hat{n}$ is the normal vector to the constant time circles. We can rewrite this in terms of the complex coordinates $z/\bar{z}$ as
+\bse 
+    \int_{\epsilon} \p_{\a} J^{\a} = \oint_{\p\epsilon} J_zdz - J_{\bar{z}} d\bar{z}.
+\ese 
+Putting this into the Ward identity result \Cref{eqn:WardIdentity} we get 
+\be 
+\label{eqn:WardIdentity2D}
+    \frac{i}{2\pi}\oint_{\p\epsilon} dz \big\langle J_z(z,\bar{z}) \cO_1(\sig_1) ... \big\rangle  - \frac{i}{2\pi}\oint_{\p\epsilon} d\bar{z} \big\langle J_{\bar{z}}(z,\bar{z}) \cO_1(\sig_1) ... \big\rangle = \sum_{m=1}^n \big\langle \cO_1(\sig_1)...\del\cO_m(\sig_m)...\cO_n(\sig_n)\big\rangle,
+\ee 
+where we have included a normalisation constant for a reason that will become clear in the next lecture.
+
+Note, the conservation of $J$ also tells us that 
+\be 
+\label{eqn:JzDerivatives}
+    \p J_{\bar{z}} + \bar{\p} J_z = 0.
+\ee 
+This it obviously satisfied when the two terms cancel. However, the more interesting case is when the two terms vanish in themselves. In that case $J_z$ is a holomorphic function and $J_{\bar{z}}$ an antiholomorphic function. In that case, the conserved charge splits into two conserved charges, one which is holomorphic and one which is antiholomorphic. This is a very powerful result, as then \Cref{eqn:WardIdentity2D} just picks up the residue between $J_z/J_{\bar{z}}$ and the operators. For example if it is only $\cO_1$ that is within the support of $\epsilon(\sig)$, then we would have for the holomorphic current
+\be 
+\label{eqn:WardResidue}
+    \big\langle \del\cO_1(\sig_1)...\big\rangle = \frac{i}{2\pi} \oint_{\p\epsilon} dz \big\langle J_z(z)\cO_1(\sig_1) ...\big\rangle = \text{Res}[J_z\cO_1].
+\ee 
+Here we mean the residue in relation to the OPE of the two operators, i.e. what we referred to in \Cref{rem:OPESingular}. If this all seems rather confusing, we shall return to this exact point next lecture (see \Cref{rem:ConformalResidue}) and show what we mean, so just bear with it. 

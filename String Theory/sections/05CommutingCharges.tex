@@ -1,0 +1,342 @@
+\chapter{Commuting Charges}
+
+\section{The Stress-Energy Tensor}
+
+We are now going to apply Noether's Theorem to the particular symmetry associated to translations. So what we want to consider is the transformation
+\bse 
+    \sig^{\a} \to \sig^{\a} + \epsilon^{\a}.
+\ese
+Note, that we do not require $\a=1,2$ here, as this part of the argument holds for general theories in any dimension. We shall specialise to 2D CFT soon and use $\a=1,2$. Our fields then transform as\footnote{The minus sign arises because we are considering an \textit{active} transformation. For more info on this see Dr. Tong's QFT notes.} 
+\bse 
+    \del \phi = - \epsilon^{\a}\p_{\a} \phi
+\ese
+
+There a particularly nice trick in order to solve this problem. Let's suppose that we are considering a theory that we can couple to some dynamical background metric $g_{\a\beta}(\sig)$, which we can set to be the flat metric at the end if we wish. Then, we can ensure our theory remains invariant under the translation if we compensate for the above transformations by transforming the metric in the required way
+\bse 
+    \del g_{\a\beta} = \nabla_{\a}\epsilon_{\beta} + \nabla_{\beta}\epsilon_{\a}.
+\ese 
+So, if we only make the initial transformation in our theory, then we know that the change in the action must be given by the opposite of the change of the metric
+\bse 
+    \del S = \int d^d\sig \frac{\p S}{\p g_{\a\beta}} \del g_{\a\beta}.
+\ese 
+We then define the \textit{stress-energy} tensor to be 
+\mybox{
+\be 
+\label{eqn:StressEnergyTensor}
+    T^{\a\beta} := -\frac{4\pi}{\sqrt{g}} \frac{\p S}{\p g_{\a\beta}},
+\ee 
+}
+where we have added a normalisation constant. So the change in the action is simply
+\bse 
+    \del S = -\frac{1}{4\pi}\int d^d\sig \sqrt{g} T^{\a\beta} \del g_{\a\beta}.
+\ese 
+We also know from QFT that the Noether current for translations is given by the dot of the stress tensor with the vector in the translation direction. Our aim here is to show we get the same result using the path integral formulation from last lecture. 
+
+\subsection{Noether Charge From Path Integral}
+
+Substituting the change in the metric above into the last equation, and using the fact that we can make the stress-energy tensor symmetric\footnote{For a nice explanation of this see Dr. Tong's QFT notes at the end of section 1.3.2}, we have 
+\bse 
+    \del S = \frac{1}{2\pi} \int d^d\sig T^{\a\beta}\nabla_{\a}\epsilon_{\beta},
+\ese 
+but then, by the discussion of how to identify the charge from the previous lecture, we have that 
+\be 
+    (J^{\a})^{\beta} = T^{\a\beta}. 
+\ee 
+The $\beta$ index here tells us which translation we are considering, and so the charge for the translation $\epsilon_{1}$, say, is just 
+\bse 
+    (J^{\a})^1 = T^{\a 1}\epsilon_1,
+\ese 
+which was the result we wanted. We can write this result in the following way 
+\bse 
+    J^{\a}_{(\beta)} = T^{\a\beta} \epsilon_{\beta},
+\ese 
+where the subscript on $J$ tells us which translation direction we're considering. 
+
+\br 
+Note from the fact that $\p_{\a}J^{\a}_{(\beta)} =0$, i.e. it is conserved, we know that $\p_{\a}T^{\a\beta} = 0$, as the derivative on the right-hand side would have to hold for all $\epsilon_{\beta}$. This is the conservation of the stress-energy tensor!
+\er 
+
+\section{Conformal Transformations}
+
+We now want to deal with a CFT. We know that conformal transformations are a symmetry of the system, and so we now want to ask the question of what the corresponding Noether charges are. 
+
+Recall that a conformal transformation is the combined effort of taking a coordinate diffeomorphism and a Weyl transformation. Let's first consider the case where the fields are invariant under Weyl transformations. In this case, the transformations of the fields under conformal transformations is just a diffeomorphism. So in our 2D theory, what we want to find is the Noether currents that arise from the diffeomorphisms 
+\bse 
+    z' = z + v(z), \qquad \text{and} \qquad \Bar{z}' = \Bar{z} + \bar{v}(\Bar{z}).
+\ese
+Let's concentrate on the holomorphic term first. Now to get the Noether current, we are meant to multiply by some small parameter of the coordinates $\epsilon(z,\bar{z})$. However, we already know that any $z$ dependence in $\epsilon$ will not contribute, as we could just absorb it into the definition of $v(z)$ and then we know this is a symmetry. So we only need to consider the $\bar{z}$ dependence of $\epsilon$. We can actually conclude from this that we expect the Noether current that arises from this to be a holomorphic function (as we will have $\bar{\p}\epsilon(z,\bar{z})$ and so the term before it will have an upper $\bar{z}$ index and a lower $z$ index). We will show this explicitly now. 
+
+So we have
+\bse 
+    \del S = \frac{1}{2\pi} \int d^2\sig T^{\a\beta}\nabla_{\a} \big( v(z) \epsilon_{\beta}(z,\bar{z})\big) = \frac{1}{2\pi} \int d^2\sig T^{\a\bar{z}}\nabla_{\a} \big( v(z) \epsilon_{\bar{z}}(z,\bar{z})\big),
+\ese
+where we have used the fact that $\epsilon(z,\bar{z})$ only has a $\bar{z}$ coordinate. Now this gives us two terms. One with a $z$ derivative and one with a $\bar{z}$ derivative. However, we said that this part of our theory was invariant under any arbitrary change in the $z$ coordinate. That is, its only the $\bar{z}$ term that changes the path integral. We require that when this change in $\bar{z}$ is a constant, that the action doesn't change at all (i.e. when we took $\epsilon$ in the previous lecture to be a constant), and so for consistency we require the term with the $z$ derivative to always vanish. This is achieved by simply setting 
+\bse 
+    T^{z\bar{z}} = 0.
+\ese 
+This result is nothing surprising though. We required our theory by Weyl invariant, and so the transformation $\del g_{\a\beta} = \epsilon g_{\a\beta}$ must leave the action invariant. Plugging this into the equation for the change of the action we get 
+\bse 
+    0 = -\frac{1}{4\pi} \int d^2\sig \sqrt{g} {T^{\a}}_{\a} \epsilon,
+\ese 
+for all $\epsilon$, and so we conclude that the stress-energy tensor is traceless:
+\be 
+\label{eqn:TracelessStressEnergy}
+    {T^{\a}}_{\a} = 0.
+\ee 
+
+Then from the rest of the calculation, with the identification procedure for the conserved current, we have
+\be 
+\label{eqn:JzConserved}
+    J^{\bar{z}} = v(z)T(z)
+\ee 
+conserved. Following a similar process for the transformations of $\bar{z}$, we obtain the conserved current
+\be
+\label{eqn:JzBarConserved}
+    \bar{J}^z = \bar{v}(\bar{z})\bar{T}(\bar{z}),
+\ee 
+where we have introduced the notation 
+\be
+\label{eqn:TNotation}
+    T := T_{zz}, \qquad \text{and} \qquad \bar{T} := T_{\bar{z}\bar{z}}.
+\ee 
+Then, using $\p_{\a}T^{\a\beta}=0$ with $T^{z\bar{z}} = 0 = T^{\bar{z}z}$, we have 
+\be 
+\label{eqn:TTbarConserved}
+    \bar{\p}T = 0, \qquad \text{and} \qquad \p \bar{T} = 0,
+\ee 
+and so we see that the currents are holomoprhic and antiholomorphic respectively, 
+\be 
+\label{eqn:JHolomorphic}
+    \bar{\p} J^{\bar{z}} = 0, \qquad \text{and} \qquad \p \bar{J}^{z} = 0.
+\ee 
+
+\br 
+The above is in the notation Dr. Tong uses, where we have $J^z$ with an upper index. We can easily convert it to Dr. Minwalla's notation (where the index is lower) by using the metric. This turns a $z \leftrightarrow \bar{z}$, so we have\footnote{There's a factor of 2 floating around, but that doesn't change the holomorphisity/conservedness of the problem.}
+\bse 
+    J_z^v = v(z) T(z), \qquad \text{and} \qquad \bar{J}_{\bar{z}}^{\bar{v}} = \bar{v}(\bar{z})\bar{T}(\bar{z}),
+\ese 
+and then similarly for \Cref{eqn:JHolomorphic}. We have also introduced a $v/\bar{v}$ on the $J/\bar{J}$ to remind us that its associated to the $v/\bar{v}$; it is \textit{not} a coordinate index. This notation has the nice advantage that the non-barred $J$ goes with the non-barred $z$ and vice versa. 
+\er 
+
+\br 
+We didn't need to take the transformation as we did; we could have taken a real transformation (i.e. of the $\sig$). The result of doing this will end up with one big conserved current, which can be decomposed into exactly the result we have.
+\er 
+
+\br 
+\label{rem:ConformalResidue}
+Note we are now in exactly the situation we were discussing at the end of the last lecture; we are considering conserved charges for a 2D theory where the resulting currents are holomorphic/antiholomorphic. So we are working with things like \Cref{eqn:WardResidue}. We shall use this in the next section.
+\er 
+
+\section{Commutator Of Charges}
+\label{sec:CommutatorOfCharges}
+
+Suppose we have two currents $J^1$ and $J^2$, say, with associated charges 
+\bse 
+    Q^i = \frac{1}{2\pi i} \oint J^i(z) dz,
+\ese
+where the factor is included for a reason that will become clear in a moment. We now want to ask the question `what is the commutator of the two charges associated to these currents?' So we're looking to find something of the form 
+\bse 
+    Q^1Q^2 - Q^2Q^1,
+\ese
+but the obvious question is `what determines which is on the left/right?' (i.e. what makes $Q^1Q^2$ different from $Q^2Q^1$). The answer comes when we remind ourselves that the charges will appear inside correlation functions, which time order the entries, with the later times to the left. So in the radial quantisation picture, this means the larger circles to the left. Pictorially this looks like 
+\begin{center}
+    \btik 
+        \draw[thick] (0,0) -- (5,0) -- (5,5) -- (0,5) -- (0,0);
+        \draw[blue, decoration={markings, mark=at position 0.15 with {\arrow{>}}}, postaction={decorate}] (2.5,2.5) circle (2cm);
+        \draw[red, decoration={markings, mark=at position 0.15 with {\arrow{>}}}, postaction={decorate}] (2.5,2.5) circle (1.5cm);
+        \node at (3.3,3.3) {$z_2$};
+        \node at (4.2,4.2) {$z_1$};
+        \draw[ultra thick] (6,2.5) -- (6.5,2.5);
+        \draw[thick] (7.5,0) -- (12.5,0) -- (12.5,5) -- (7.5,5) -- (7.5,0);
+        \draw[red, decoration={markings, mark=at position 0.15 with {\arrow{>}}}, postaction={decorate}] (10,2.5) circle (2cm);
+        \draw[blue, decoration={markings, mark=at position 0.15 with {\arrow{>}}}, postaction={decorate}] (10,2.5) circle (1.5cm);
+        \node at (10.8,3.3) {$z_1$};
+        \node at (11.7,4.2) {$z_2$};
+    \etik 
+\end{center}
+where the blue circle is $Q^1$ and the red circle $Q^2$. We then take the limit that the circles approach each other to get an equal time relation.
+
+So we need to do the integral
+\bse 
+    \bigg(\oint \frac{dz_1}{2\pi i}\oint \frac{dz_2}{2\pi i} - \oint \frac{dz_2}{2\pi i}\oint \frac{dz_1}{2\pi i} \bigg)J^1(z_1) J^2(z_2)
+\ese 
+This seems like a daunting task, but then we recall that our currents are holomorphic (or antiholomorphic), and so by Cauchy's theorem, we can distort them. The trick to solving this is to fix the position of one of them, say the $z_2$ one, in both diagrams and to just do the integrals over the other both the $z_1$ ones. 
+
+\begin{center}
+    \btik 
+        \draw[thick] (0,0) -- (5,0) -- (5,5) -- (0,5) -- (0,0);
+        \draw[blue, decoration={markings, mark=at position 0.15 with {\arrow{>}}}, postaction={decorate}] (2.5,2.5) circle (2cm);
+        \node at (3.75,3.75) {\textcolor{red}{$\cross$}};
+        \draw[blue, decoration={markings, mark=at position 0.15 with {\arrow{<}}}, postaction={decorate}] (2.5,2.5) circle (1.5cm); 
+        \draw[ultra thick] (6,2.45) -- (6.5,2.45);
+        \draw[ultra thick] (6,2.55) -- (6.5,2.55);
+        \draw[thick] (7.5,0) -- (12.5,0) -- (12.5,5) -- (7.5,5) -- (7.5,0);
+        \node at (11.25,3.75) {\textcolor{red}{$\cross$}};
+        \draw[blue, decoration={markings, mark=at position 0.15 with {\arrow{>}}}, postaction={decorate}] (11.25,3.75) circle (0.5cm);
+    \etik 
+\end{center}
+
+\br 
+Note in the above we have used the fact that we know $J^1$ is holomorphic at any point where there's no other insertions, but it may not be holomorphic when it means another insertion (i.e. the Ward Identity). In this case our other insertion is $J^2$ at a particular point.
+\er 
+
+So we have a pole given by the residue of the OPE of $J^1$ and $J^2$. So our integral becomes 
+\bse 
+    \frac{1}{2\pi i} \oint dz_2 \,  \text{Res}[J^1J^2](z_2),
+\ese 
+but we know what this residue is, it comes from the OPE as discussed previously. We get a residue when in the OPE of $J^1$ and $J^2$ we have some term 
+\bse 
+    J^1(z_1)J^2(z_2) = ... + \frac{J^3(z_2)}{z_1-z_2} + ...,
+\ese 
+so if we define 
+\bse 
+    Q_3 = \frac{1}{2\pi i } \oint J^3(z_2) dz_2,
+\ese
+we get the commutation relation 
+\be 
+    [Q_1,Q_2] = Q_3.
+\ee 
+
+\br 
+The term in the above expression might not seem like a residue (recall it is the $\bar{\p}_{\bar{z_1}}$ we use). However one can show that 
+\bse 
+    \bar{\p}_{\bar{z}} \frac{1}{z-\omega} = 2\pi \del(z-\omega,\bar{z}-\bar{\omega}),
+\ese 
+and so we really do have a pole here.
+\er 
+
+\br 
+To emphasise the point made before, what we have seen is that commutation relations between two charges that correspond to holomorphic (or antiholomorphic) currents in a 2D conformal field theory turn into a statement about the OPE of the currents. In other words, if you want to see if two charges commute or not, you can just consider the OPE of their currents and see if this OPE contains a pole. If it doesn't then the two charges commute, but if it does the commutation is given by the charge corresponding to the residue of the pole.
+\er 
+
+\br 
+We can also conclude that the commutator of a holomorphic with and antiholomorphic charge must be zero. Why? Because \Cref{eqn:OPE} tells us that the coefficients only depend on differences $z-\omega$ and $\bar{z}-\bar{\omega}$. So if your first charge only has a $z$ dependence then the coefficients must only have a $(z-\omega)$ dependence, but if the second only a $\bar{\omega}$ dependence, the coefficients must have only a $\bar{z}-\bar{\omega}$ dependence. It can't be both, and so must vanish. 
+\er 
+
+\subsection{Action of Operators On States}
+
+Suppose now we are interested not in two charges, but one charge and one operator. We can repeat the above procedure but now with the fixed position part really corresponding to jus the position of our local operator, $\cO_1$, say. We then only have the one contour integral (as there is only one charge) and so we simply just have
+\begin{center}
+    \btik 
+        \draw[thick] (0,0) -- (5,0) -- (5,5) -- (0,5) -- (0,0);
+        \draw[] (2.5,0) -- (2.5,5);
+        \draw[] (0,2.5) -- (5,2.5);
+        \draw[blue, decoration={markings, mark=at position 0.15 with {\arrow{>}}}, postaction={decorate}] (4,4) circle (0.5cm);
+        \node at (4.6,4.6) {\textcolor{blue}{$J$}};
+        \node at (4,4) {$\cross$};
+        \node at (4.3,3.7) {$\cO_1$};
+    \etik 
+\end{center}
+This is just what we were saying back at \Cref{eqn:WardResidue}; the transformation of the local operator due to the current $J_z$ is given by the residue. 
+
+Now let's consider what happens when we place the operator at the origin. The state-operator map tells us that a local operator at the origin corresponds to a wavefunction (and therefore a state) away from the origin. So our question about how does the operator change when a current is introduced becomes a question about how a state changes under the application of the charge operator. This is a much more familiar question! The result turns out super nicely: if the residue corresponds to come operator $\cO_2$, then we have 
+\bse
+    Q\ket{\cO_1} = \ket{\cO_2},
+\ese 
+where we have used the notation $\ket{\cO_i}$ to mean the state corresponding to the local operator $\cO_i$ at the origin. 
+
+\br 
+We might think initially that there is a flaw in the above; when we're at the origin we can't place a smaller circle inside it. However, a bit of thought shows us that this isn't really a problem. The inner circle was just deformed away to nothing when we started considering a fixed point, so we need not even consider it when talking about operators. 
+\er 
+
+\br 
+To again emphasise the might of the OPE, we have seen that the OPE between currents and arbitrary operators tell us how:
+\ben
+    \item An arbitrary local operator transforms under the symmetry that gives rise to the current, 
+    \item The state generated by that local operator transforms under the symmetry, and
+    \item When applied to integrals over local operators in terms of charges, charges transform under each other. 
+\een
+\er 
+
+\section{The Virasoro Algebra (Making a start)}
+
+Now that we understand the above, we can now apply it to the concrete example of the stress-energy tensor. We first need to find the OPE of $v(z_1)T(z_1)$ with $v(z_2)T(z_2)$ (see \Cref{eqn:JzConserved}). To do this, we need to know the OPE for two stress-energy tensors in a 2D CFT. We want to calculate the OPE for $T(z_1)T(z_2)$. 
+
+\bp 
+$T$ is a dimension\footnote{If you are not familiar with what we mean by dimension $d$, basically we're working in units $c=\hbar=1$ and we say $[m]=1$ for the mass. We then work out the dimensions of other quantities from this. For example, $[z]=-1$ for distance.} $d$ in a $d$-dimensional CFT.
+\ep 
+
+\bq
+Recall that the spatial integral of $T$ will give us the energy or momentum. Both of these have dimension $1$. The integral contributes dimension $-1$ for each integration variable. So we have $1=[T]-(d-1)$, or $[T]=d$. 
+\eq
+
+We therefore require what ever appears on the right-hand side of our OPE to be a holomorphic, dimension 4 object. We are only interested in the terms in the OPE that produce poles. 
+
+\bcl 
+In a unitary CFT there are no negative dimension operators, and the only dimension 0 operator is the identity, $\b1$. (We will show these results within the next few lectures.)
+\ecl 
+
+So, if we consider unitary CFTs, we know that the most singular term in the OPE must be proportional to $\b1/z^4$. We choose (for convenience) this proportionality constant to be $c/2$. So we have 
+\bse 
+    T(z_1)T(z_2) = \frac{c/2}{(z_{12})^4} + ...,
+\ese 
+where we have dropped the $\b1$ to lighten notation, and where we have introduced the notation $z_{12}=z_1-z_2$. The next possible term would be proportional to $1/z^3$, where we would need to insert a dimension $1$ operator in the numerator. However, we can show this term doesn't appear. 
+
+Consider 
+\bse 
+    T(z_1)T(z_2) - T(z_2)T(z_1) = \bigg[\frac{c/2}{(z_{12})^4} + \frac{\cO(z_2)}{(z_{12})^3} + ... \bigg] - \bigg[\frac{c/2}{(z_{21})^4} + \frac{\cO(z_1)}{(z_{21})^3} + ... \bigg] = \frac{\cO(z_2)+\cO(z_1)}{(z_{12})^3} + ...,
+\ese 
+Now, the left-hand side is taken to appear inside a correlation function, and so, by time ordering, it must vanish. Now we can Taylor expand $\cO(z_2)$ about $z_1$, 
+\bse 
+    \cO(z_2) = \cO(z_1) - z_{12}\p\cO(z_1) + ...,
+\ese 
+and so we see, up to terms that are less singular (i.e. $(z_{12})^{-2}$ and $(z_{12})^{-1}$), this term must vanish. That is, because we only have the identity at a more singular term, there is no way to take something away from the $(z_{12})^{-3}$ term, and so the coefficient in front of the operator itself must vanish. 
+
+We deal with the next two terms in one swoop via the following claim (which we verify towards the start of the next lecture): 
+
+\bcl
+\label{claim:TOTransformation}
+Let $\cO$ be a dimension $h$ holomorphic operator. Then the OPE of $T$ with $\cO$ is given by 
+\bse 
+    T(z_1) \cO(z_2) = ... + h\frac{\cO(z_2)}{(z_{12})^2} + \frac{\p \cO(z_2)}{z_{12}} + ...
+\ese 
+\ecl 
+
+
+This finally gives us that 
+\be 
+\label{eqn:TTOPE}
+    T(z_1) T(z_2) = \frac{c/2}{(z_{12})^4} + \frac{2T(z_2)}{(z_{12})^2} + \frac{\p T(z_2)}{z_{12}} + ... 
+\ee 
+
+\br 
+We can actually obtain the $\p T(z_2)$ term via the same method that we used to remove the cubic term before. However, there is no point in doing that here because we already have the answer.
+\er 
+
+\subsection{The Stress-Energy Currents}
+
+What we did before was work out the OPE between the stress-energy tensors themselves. What we want to work out is the OPE between the currents that generated them, i.e. from \Cref{eqn:JzConserved}, we want the OPE
+
+\bse 
+    J_1(z_1) J_2(z_2) = v_1(z_1)T(z_1) v_2(z_2)T(z_2)
+\ese 
+We do this simply by using \Cref{eqn:TTOPE} and Taylor expanding one of the $v_1(z_1)$. So the pole terms are 
+\bse 
+    \begin{split}
+        J_1(z_1) J_2(z_2) & = v_1(z_1)v_2(z_2) \bigg( \frac{c/2}{(z_{12})^4} + \frac{2T(z_2)}{(z_{12})^2} + \frac{\p T(z_2)}{z_{12}} + ... \bigg) \\
+        & = v_2(z_2) \sum_{n} \frac{v_1^{(n)}(z_2)}{n!} (z_{12})^n \bigg( \frac{c/2}{(z_{12})^4} + \frac{2T(z_2)}{(z_{12})^2} + \frac{\p T(z_2)}{z_{12}} + ... \bigg) \\
+        & =  \frac{v_2}{z_{12}} \bigg(v_1\p T + 2v_1'T + \frac{v_1''' c}{12}\bigg) + ...,
+    \end{split}
+\ese 
+where we have dropped the $(z_2)$ in the last line to lighten the notation. So the commutator of the charges corresponding to the two currents is 
+\bse 
+    [Q_1,Q_2] = Q_3,
+\ese
+where 
+\be 
+\label{eqn:ChargeForJJ}
+    \begin{split}
+        Q_3 & = \oint \frac{dz_2}{2\pi i } \bigg(v_1v_2\p T + 2v_1'v_2T + \frac{v_1''' v_2}{12}c\bigg)(z_2) \\ 
+        & = \oint \frac{dz_2}{2\pi i } \bigg(\big( v_1'v_2 - v_1v_2'\big)T + \frac{v_1''' v_2}{12}c\bigg)(z_2),
+    \end{split}
+\ee 
+where we have done an integration by parts. The first term in the integrand is what you would get just by taking the commutator of the vector fields $[v_1\p_{v_1},v_2\p_{v_2}]$, however the second term is something completely unexpected. 
+
+We can repeat all of the above for the antiholomorphic currents and arrive at the result
+\be 
+\label{eqn:TbarTbar}
+    \bar{T}(\bar{z}_1) \bar{T}(\bar{z}_2) = \frac{\Tilde{c}/2}{(\bar{z}_{12})^4} + \frac{2\bar{T}(\bar{z}_2)}{(\bar{z}_{12})^2} + \frac{\p \bar{T}(\bar{z}_2)}{\bar{z}_{12}} + ...,
+\ee 
+and similarly for the other expressions. 
+
+What we have started here is the discussion of the Virasoro algebra. We will continue to discuss this in the next lecture. 

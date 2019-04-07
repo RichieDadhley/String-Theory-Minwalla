@@ -1,0 +1,337 @@
+\chapter{The Free  Bosonic Scalar Field}
+
+Although we have obviously not given a complete discussion of 2D CFT, however, we have now discussed enough to be able to get back on track and start looking at its applications in string theory. This lecture is going to look at the free bosonic scalar field, that is the $x^{\mu}$s from the start of the course. 
+
+\br 
+It appears as though we have developed a set of pretty powerful results in the last few lectures, however it turns out that these tools are not enough to be able to classify\footnote{In the sense that we can classify all continuous symmetries, as they map to Lie Groups and we have a classification of all possible Lie Groups.} all 2D CFTs. This is still an open area of research. 
+\er 
+
+\br 
+\textcolor{red}{I am going to start using capital $X$s for the scalar fields. I used lower case ones at the beginning out of habit, but have now noticed that it is common notation to use capitals. I've written this remark in red to remind me to later go back and change the lower cases to capitals.}
+\er 
+
+\bcl 
+If we take the  mode expansion solutions we obtained towards the start of the course, transform them to the plane, and go to Euclidean coordinates we obtain 
+\be 
+\label{eqn:ModeExpansionsPlane}
+    \p X^{\mu} = -i \sqrt{\frac{\a'}{2}}\sum_{m=-\infty}^{\infty} \frac{\a_m^{\mu}}{z^{m+1}}, \qquad \text{and} \qquad \overline{\p} X^{\mu} = -i \sqrt{\frac{\a'}{2}}\sum_{m=-\infty}^{\infty} \frac{\widetilde{\a}_m^{\mu}}{z^{m+1}},
+\ee 
+with 
+\be 
+    \a_0 := i \sqrt{\frac{\a'}{2}}p. 
+\ee 
+\ecl 
+
+\bq 
+The mode expansions on the \textit{Euclidean} cylinder, whose coordinates we label by $(\omega,\overline{\omega})$, are (dropping the $\mu$ index for now)
+\bse 
+    X(\omega,\overline{\omega}) = x_0 + \a'p\tau + i\sqrt{\frac{\a'}{2}} \sum_{m\neq0} \frac{1}{n}\big(\a_m e^{im\omega} + \widetilde{\a}_m e^{im\overline{\omega}}\big).
+\ese 
+Now take the derivative w.r.t. $\omega$, 
+\bse 
+    \p_{\omega} X(\omega) = -\sqrt{\frac{\a'}{2}}\sum_{m=-\infty}^{\infty} \a_m e^{im\omega}, \qquad \a_0 := i\sqrt{\frac{\a'}{2}}p.
+\ese 
+Finally take the transformation $z = e^{-i\omega}$ and use the fact that the derivative of $X$ is a primary operator of weight $h=1$ to give 
+\bse 
+    \p X(z) = \big(\p_{\omega}z\big)^{-1} \p_{\omega}X(\omega) = -i\sqrt{\frac{\a'}{2}} \sum_{m=-\infty}^{\infty} \frac{\a_m}{z^{m+1}}.
+\ese 
+The same method holds for the $\p_{\overline{\omega}}$ derivative.
+\eq 
+
+\br 
+As we just did in the proof, we shall now drop the $\mu$ index, and simply consider a single scalar field. Obviously we do this for mere notational brevity. 
+\er 
+
+Now, we want to reproduce \Cref{eqn:AlphaCommutationRelations} on the plane. We invert the expression above to give 
+\be 
+\label{eqn:AlphaContourIntegral}
+    \a_m = i \sqrt{\frac{2}{\a'}} \oint \frac{dz}{2\pi i } z^m \p X(z).
+\ee 
+
+\br 
+Note that in doing this, we see that the $\a_m$s are charges and the $\p X$s are currents, analogously to the $L_m$s and $T$. We also note that $\p X$ is a holomorphic function, and so is arbitrary $z$ derivatives of it, as well as multiplication by other holomorphic functions. We see, therefore, that for the free theory we have a huge set of a conserved currents. 
+\er 
+
+Then we just proceed as always:\footnote{Note here $\omega$ is now once again a coordinate on the plane, not the cylinder as we did in the proof above.}
+\bse 
+    [\a_m,\a_n]  = -\frac{2}{\a'} \bigg(\oint\frac{dz}{2\pi i} \oint \frac{d\omega}{2\pi i} - \oint\frac{d\omega}{2\pi i} \oint \frac{dz}{2\pi i}\bigg) z^mz^{n}\p X(z) \p X(\omega),
+\ese 
+but now we run into a problem: we don't yet know the OPE for $\p X(z)\p X(\omega)$. So we need to find this. 
+
+Start by recalling the Polyakov action\footnote{Note we loose the overall minus sign as we are in Euclidean space.}
+\bse 
+    S = \frac{1}{4\pi\a'}\int d^2\sig \p_{\a}X\p^{\a}X,
+\ese 
+where we have used the fact that the plane has a flat metric (so $\sqrt{-g} =1$). So our partition function is 
+\bse 
+    Z = \int DX e^{-S} = \int DX \exp\bigg(-\frac{1}{4\pi\a'}\int d^2\sig (\p X)^2\bigg).
+\ese
+Now we use the fact that the path integral of a total derivative vanishes (in the same way that the regular integral of a total derivative does), and consider the following
+\bse 
+    \begin{split}
+        0 & = \int DX \frac{\del}{\del X(\sig)}\big( X(\sig') e^{-S}\big) \\
+        & = \int DX e^{-S} \big[\del(\sig -\sig') +\frac{1}{2\pi\a'}\p^2X(\sig) X(\sig') \big],
+    \end{split}
+\ese 
+where to get to the second line we have done integration by parts in the exponential before taking the derivative. If we then divide by the partition function, we get 
+\bse 
+    \langle \p^2 X(\sig) X(\sig') \rangle = -2\pi\a'\del(\sig-\sig').
+\ese 
+Then, as we have done several times already, we move the derivatives outside the correlation brackets and solve this as a differential equation for the propagator $ G(\sig,\sig') = \langle X(\sig)X(\sig')\rangle$. 
+
+The solution to this differential equation comes from an application of Stokes' theorem. Let $\sig = \sig_1 + i\sig_2$, and consider the integral
+\bse 
+    \begin{split}
+        \int d^2\sig \p_2 \ln\sig^2 & = \int d^2 \sig \p_2 \ln (\sig_1^2 +\sig_2^2) \\
+        & = \int d^2\sig \p^{\a} \bigg( \frac{2\sig_{\a}}{\sig_1^2 +\sig_2^2}\bigg) \\
+        & = 2 \oint \frac{\sig_1d\sig^2 - \sig_2d\sig^1}{\sig_1^2 +\sig_2^2} \\
+        & = 2\int \frac{r^2d\theta}{r^2} \\
+        & = 4\pi = 4\pi\int d\sig \del(\sig),
+    \end{split}
+\ese
+where we've changed to polar coordinates $\sig_1+\sig_2 = re^{i\theta}$. The final result is proportional to the right-hand side of our differential equation with $\sig'=0$. We can reinsert this and conclude 
+\be 
+\label{eqn:ExpectationXX}
+    \langle X(\sig)X(\sig') \rangle = -\frac{\a'}{2}\ln(\sig-\sig')^2 = -\frac{\a'}{2}\ln z\overline{z}.
+\ee 
+
+\section{Conformal Normal Ordering}
+
+So we want to find the OPE $\p X(z) \p X(\omega)$. We will see that in order to do this, we want to take the limit $z\to\omega$. However, we first need to note something important. Classically, if you took the expectation value 
+\bse 
+    \langle \p X(z) \p X(0) \rangle, 
+\ese 
+as $z\to 0$, you would just get $\langle (\p X(0))^2\rangle$, but in our theory this blows up. So what we need to do is define some well defined insertion into the path integral that corresponds to this case. For the free scalar field case, we have a very nice way of doing this.
+
+\mybox{
+\bd[Conformal Normal Ordering]
+We define the \textit{conformal normal order} of two fields as
+\be 
+\label{eqn:ConformalNormalOrdering}
+    \cl \p X \p X\cl := \lim_{z\to\omega}\big[ \p X(z) \p X(\omega) - \langle \p X(z) \p X(\omega) \rangle\big].
+\ee 
+\ed
+}
+
+Note that, by construction, the expectation value of the conformal normal order vanishes. This might hint to what's to come.\footnote{For those that want to know now... it's the stress-energy tensor!} 
+
+\br 
+It is important to understand that it is only the expectation value that vanishes, and not arbitrary correlation functions. If the latter was the case, we would have basically define a null insertion for our path integral, which would be basically no use whatsoever. In fact it's true that any operator of definite scaling dimension has vanishing expectation value. 
+\er 
+
+\section{The Commutation Relation}
+
+Firstly we note that 
+\bse 
+    \langle \p X(z) \p X(\omega) \rangle = - \frac{\a'}{2(z-\omega)^2},
+\ese
+which will be the most singular contribution to our OPE. Then we note that 
+\bse 
+    \cl \p X(z) \p X(\omega) \cl = \cl \sum_n \frac{(z-\omega)^n}{n!} \p^{(n+1)} X(\omega) \p X(\omega) \cl, 
+\ese 
+which has no poles and so does not contribute to the residue. So we obtain 
+\be 
+\label{eqn:pXpXOPE}
+    \p X(z) \p X(\omega) = - \frac{\a'}{2(z-\omega)^2} + \text{non-singular}.
+\ee 
+
+We can now plug this into our commutation relation, giving us 
+\bse 
+    \begin{split}
+        [\a_m,\a_n] & = - \frac{2}{\a'} \bigg(\oint\frac{dz}{2\pi i}\oint\frac{d\omega}{2\pi i} - \oint\frac{d\omega}{2\pi i}\oint\frac{dz}{2\pi i}\bigg) z^m\omega^n \bigg( -\frac{\a'}{2(z-\omega)^2} + ... \bigg) \\
+        & = -\frac{2}{\a'} \oint \frac{d\omega}{2\pi i} \text{Res} \bigg[ z^m \omega^n \bigg(-\frac{\a'}{2(z-\omega)^2} + ... \bigg)\bigg] \\
+        & = m \oint \frac{d\omega}{2\pi i} \omega^{n+m-1} \\
+        & = m \del_{n+m,0},
+    \end{split}
+\ese 
+which is exactly the result we want. 
+
+\section{The Stress-Energy Tensor}
+
+Recall \Cref{eqn:StressEnergyTensor},
+\bse 
+    T_{\a\beta} := -\frac{4\pi}{\sqrt{g}} \frac{\p S}{\p g^{\a\beta}}.
+\ese 
+We can work this out for our free theory with action
+\bse 
+    S = \frac{1}{4\pi\a'}\int d^2\sig \p_{\a}X\p^{\a}X,
+\ese
+simply giving 
+\bse 
+    T_{\a\beta} = -\frac{1}{\a'} \Big( \p_{\a}X\p_{\beta}X - \frac{1}{2}g_{\a\beta}(\p X)^2\Big).
+\ese 
+Then using the fact that the metric in complex coordinates is $g_{zz}=0=g_{\overline{z}\overline{z}}$ and $g_{z\overline{z}} = 2$, we have 
+\bse 
+    T = -\frac{1}{\a'} \p X\p X, \qquad \overline{T} = - \frac{1}{\a'} \overline{\p}X\overline{\p}X, \qquad \text{and} \qquad T_{z\overline{z}} = 0.
+\ese 
+This is the classical result, we want the QM result. We might just be tempted to say `it's of the same form', however, there's a problem with that: recall our equation of motion required that the expectation value of the trace of the stress tensor vanish. Luckily, we've just discussed how to fix this problem: conformal normal ordering. So our stress-energy tensor is 
+\be 
+    T = -\frac{1}{\a'} \cl\p X\p X\cl, \qquad \text{and} \qquad \overline{T} = - \frac{1}{\a'} \cl\overline{\p}X\overline{\p}X\cl.
+\ee 
+
+\section{OPEs With $T$}
+
+We are now going to look a few OPEs using $T$. In order to do these, we have to invoke Wick's theorem\footnote{A discussion of Wick's theorem is given at the start of the next lecture. See \Cref{rem:WicksTheorem} for why it's there and not here.}. It is likely that when you were first introduced to Wick's theorem, it was in the context of time ordered products and creation/annihilation operators. It might seem strange to use it here, but it turns out that it still holds here. The contractions here correspond to the propagator, i.e. 
+\bse 
+    \overbrace{\p X(z)\p X(\omega)} = -\frac{\a'}{2(z-\omega)^2}. 
+\ese 
+
+\subsection{$T(z)\p X(\omega)$}
+
+The first one worth doing is $T(z)\p X(\omega)$, as this will further confirm that $\p X(\omega)$ is indeed a primary operator of weight $(1,0)$. 
+\bse 
+    \begin{split}
+        T(z)\p X(\omega) & = -\frac{1}{\a'}\cl\p X(z)\p X(z)\cl \p X(\omega) \\
+        & = -\frac{1}{\a'} \Big( 2 \p X(z)\overbrace{\p X(z)\p X(\omega)} + \cl \p X(z)\p X(z)\p X(\omega)\cl \Big) \\ 
+        & = \frac{\p X(z)}{(z-\omega)^2} + ... \\
+        & = \frac{\p X(\omega)}{(z-\omega)^2} + \frac{\p\p X(\omega)}{(z-\omega)} + ...,
+    \end{split}
+\ese 
+which is the transformation of a primary operator of holomorphic weight $h=1$. If you now repeated the process with $\overline{T}(\overline{z})$ along with the fact that 
+\bse 
+    \overbrace{\overline{\p}X(\overline{z})\p X(\omega)} = 0,
+\ese 
+you get $\widetilde{h}=0$.
+
+\subsection{$T(z)T(\omega)$}
+
+Now let's consider the OPE of $T$ with itself. 
+
+\bse 
+    \begin{split}
+        T(z)T(\omega) & = \frac{1}{(\a')^2}\cl \p X(z)\p X(z)\cl \cl \p X(\omega) \p X(\omega) \cl \\
+        & = \frac{1}{(\a')^2}\bigg( 2\overbrace{\p X(z)\p X(\omega)}\overbrace{\p X(z)\p X(\omega)} + 4\cl \p X(z) \p X(\omega)\cl  \overbrace{\p X(z)\p X(\omega)}  + ...  \bigg) \\
+        & = \frac{1}{(\a')^2} \bigg( \frac{2(\a')^2}{4(z-\omega)^4} - \frac{4\a'\cl \p X(z)\p X(\omega)\cl}{2(z-\omega)^2} + ... \bigg) \\
+        & = \frac{1/2}{(z-\omega)^4} - \frac{2\cl \p X(\omega)\p X(\omega)\cl }{\a'(z-\omega)^2} -\frac{2\p\cl\p X(\omega)\p X(\omega) \cl}{\a'(z-\omega)} + ...\\
+        & = \frac{1/2}{(z-\omega)^4} + \frac{2T(\omega)}{(z-\omega)^2} - \frac{2}{\a'}\frac{\p T(\omega)}{z-\omega} + ...,
+    \end{split}
+\ese 
+where the $...$ on the first two lines is the total conformally ordered term 
+\bse 
+    \cl \p X(z)\p X(z) \p X(\omega) \p X(\omega)\cl,
+\ese 
+and then on the final two lines it includes some other non-singular terms from the Taylor expansion. Comparing this result to \Cref{eqn:TTOPE}, we see straight away that for a free field theory $c=1$. A similar argument will give $\widetilde{c}=1$.
+
+\section{States of the System}
+
+We can use the state-operator map to start working out what the states in the theory look like. 
+
+\subsection{The Vacuum}
+We can now show (more convincingly, perhaps, then the arguments we've given previously) that the state produced by inserting the identity at the origin is the vacuum. We recall that, provided there are no contact terms, $\overline{\p} \p X(z) = 0$, which tells us that $\p X(z)$ is holomorphic everywhere. So we know from \Cref{eqn:AlphaContourIntegral} that when we insert the identity at the origin that $\a_m\ket{\b1} =0$ for all $m>0$. Putting this together with the fact that we've just shown that we meet our commutation relations from the start of the course, and with \Cref{eqn:CreationAnnihilationOperatos}, we see that this is the statement at the state $\ket{\b1}$ is annihilated by \textit{all} annihilation operators. This is just the definition of the vacuum. 
+
+\subsection{$\ket{\p X}$}
+
+Let's now consider acting the annihilation operators on the state produced by inserting the operator $\p X$ at the origin. 
+
+\bse 
+    \begin{split}
+        \a_m \ket{\p X} & = i \sqrt{\frac{2}{\a'}} \oint \frac{dz}{2\pi i} z^m \p X(z) \p X(0) \\
+        & = i\sqrt{\frac{2}{\a'}} \oint \frac{dz}{2\pi i} z^m \bigg( - \frac{\a'}{2z^2} + \cl \p X(z) \p X(0)\cl \bigg) \\
+        & = i \sqrt{\frac{2}{\a'}} \text{Res}\bigg[ z^m\bigg( - \frac{\a'}{2z^2} + \cl \p X(z) \p X(0)\cl \bigg)\bigg] \\
+        & = i \sqrt{\frac{2}{\a'}} \text{Res}\bigg[-\frac{\a'}{2}z^{m-2} + z^m\cl \p X(z) \p X(0)\cl\bigg].
+    \end{split}
+\ese
+
+Now, if $m<0$ we are considering creation operators, and this won't tell us much about how to build the state $\ket{\p X}$ from the vacuum. Therefore, we shall just consider $m>0$, and so the conformally normal ordered term doesn't contribute to the residue and we have
+\be 
+\label{eqn:AlphaOnpX}
+    \a_1\ket{\p X} = -i\sqrt{\frac{\a'}{2}}\ket{\b1}, \qquad \text{and} \qquad  \a_m\ket{\p X} = 0 \quad \forall m\geq 2.
+\ee 
+It follows from this, then, that 
+\bse 
+    \ket{\p X} = -i\sqrt{\frac{\a'}{2}}\a_{-1}\ket{\b1}.
+\ese 
+
+We can actually generalise the above to the following claim. 
+
+\bcl 
+Let $m>0$ then, 
+\be 
+    \ket{\p^mX} = -i(m!) \sqrt{\frac{\a'}{2}} \a_{-m}\ket{\b1}.
+\ee 
+\ecl 
+
+\bq 
+Proceed as above 
+\bse 
+    \begin{split}
+        \a_n \ket{\p^mX} & = i\sqrt{\frac{2}{\a'}} \oint \frac{dz}{2\pi i} z^n \p X(z) \p^m X(0) \\
+        & = i\sqrt{\frac{2}{\a'}} \text{Res}\bigg[ z^n\p^{m-1} \bigg(\frac{-\a'}{2z^2}\bigg) + z^n\cl \p X(z)\p^mX(0)\cl \bigg] \\
+        & = i\sqrt{\frac{2}{\a'}} \text{Res}\bigg[ \frac{-\a'}{2} z^n (m!) z^{-(m+1)} + z^n\cl \p X(z)\p^mX(0)\cl \bigg] \\
+        & = -i \sqrt{\frac{\a'}{2}} (m!) \del_{m,n} \ket{\b1},
+    \end{split}
+\ese 
+where again we've used the fact that we're only interested in $n>0$. Then inverting this gives the claim.
+\eq 
+
+\bcl 
+Let $m_1,m_2,...m_N >0$, then 
+\be 
+    \ket{\cl\p^{m_1}X \p^{m_2}X ... \p^{m_N}X\cl} = A \a_{-m_1}\a_{-m_2}...\a_{-m_N}\ket{\b1},
+\ee 
+where $A$ is a constant determined by the values of $m_1,...,m_N$.\footnote{I tried to find a nice compact expression for it, but it wasn't so easy when you consider that some of the $m_i$s might be equal. If someone reading this can find a nice compact expression please feel free to email me it and I'll add it and dish out some credit.}
+\ecl 
+
+\br 
+Note that this last claim actually covers the fact that we only considered $m>0$ above. That is, it tells us how creation operators act on the states $\ket{\p^mX}$.
+\er 
+
+So we have a prescription for creating our entire Fock space for the free theory, \textit{except} for the zero mode contributions. We will now go on to discuss these, but first note that in this non-zero mode part of the theory the only primary operators are the identity and $\p X$, and so every state is a descendant of one of these two. 
+
+\section{The Free Particle States}
+
+We already have some idea of what we expect the zero mode part to give us. Recall from our discussion at towards the start of the course, that the Hilbert space for our theory is given by the product of the harmonic oscillator space and a free particle state, which we can label by the momentum of the particle. So far we have only considered particles with zero momenta. How do we know this? Well, because we've only seen the identity (which obviously has no momentum) and states given by \textit{derivatives} of the scalar fields, but we expect to pick up a momentum term when shifting $X$. The derivative of a constant shift vanishes, and so we must have zero momentum. 
+
+The natural OPE to consider is with the operator given by $e^{ikX(\omega)}$. Again, we need to take the conformal normal order. 
+
+\bse 
+    \begin{split}
+        T(z) \cl e^{ikX(\omega)}\cl & = -\frac{1}{\a'} \cl \p X(z)\p X(z) \cl \cl e^{ikX(\omega)}\cl \\
+        & = -\frac{1}{\a'} \cl \p X(z) \p X(z) \cl \cl \sum_{n=0}^{\infty}  \frac{(ik)^n}{n!} X^n(\omega)\cl.
+    \end{split}
+\ese
+The question is, what is the this contraction? Well consider first the OPE 
+\bse
+    \begin{split}
+        \p X(z) \cl \sum_{n=0}^{\infty}  \frac{(ik)^n}{n!} X^n(\omega)\cl & = \sum_{n=0}^{\infty} \frac{(ik)^n}{n!} n \cl X^{n-1}(\omega) \cl \bigg( -\frac{\a'}{2} \frac{1}{z-\omega}\bigg) + ...\\
+        & = -\frac{ik\a'}{2}\frac{\cl e^{ikX(\omega)\cl}}{z-\omega} + ...,
+    \end{split}
+\ese 
+and so we have 
+\bse 
+    \begin{split}
+        T(z)\cl e^{ikX(\omega)}\cl & = \frac{\a' k^2}{4}\frac{\cl e^{ikX(\omega)}\cl }{(z-\omega)^2} + ik\frac{\cl \p X(z) e^{ikX(\omega)}\cl}{z-\omega} + ... \\
+        & =  \frac{\a' k^2}{4}\frac{\cl e^{ikX(\omega)}\cl }{(z-\omega)^2} + \frac{\p_{\omega} \cl e^{ikX(\omega)}\cl}{z-\omega} + ...,
+    \end{split}
+\ese 
+where to go to the last line, we have Taylor expanded the derivative term and then had it act on the conformal normal ordered exponential. We see, therefore, that $\cl e^{ikX(\omega)}\cl$ is a new primary operator of holomorphic weight 
+\be 
+\label{eqn:WeighteikX}
+    h = \frac{\a'k^2}{4}.
+\ee 
+
+Show $\a_m\ket{\cl e^{ikX}\cl} = 0$ for all $m>0$. 
+
+So we see that, in the harmonic oscillator part of the Hilbert space, this state is just the identity. However, we see that it has momentum $k$ in the momentum part as if we shift $X \to X + a$ then we get pick up a $e^{ika}$ term.
+
+\bcl
+The state $\ket{\cl e^{ikX}\cl}$ is purely free particle, i.e. it has identity in the harmonic oscillator sector:
+\be 
+\label{eqn:eikXNoHarmonic}
+    \a_m\ket{\cl e^{ikX}\cl} = 0 \qquad \forall m>0.
+\ee
+\ecl 
+
+\bq 
+By direct calculation.
+\bse 
+    \begin{split}
+        \a_m\ket{\cl e^{ikX}\cl} & = i \sqrt{\frac{2}{\a'}} \oint \frac{dz}{2\pi i} z^m \p X(z) \cl \sum_{n=0}^{\infty} \frac{(ik)^n}{n!} X^n(0)\cl \\
+        & = i\sqrt{\frac{2}{\a'}} \oint \frac{dz}{2\pi i} z^m \bigg( - \frac{ik\a'}{2} \frac{\cl e^{ikX}\cl}{z} + ... \bigg) \\
+        & = \sqrt{\frac{\a'}{2}}k \text{Res} \bigg[ z^m \frac{\cl e^{ikX}\cl}{z}\bigg] \\
+        & = 0 \qquad \forall m>0.
+    \end{split}
+\ese 
+\eq 
+
+So we can now built up our entire Hilbert space by taking the product of the Fock space made with the creation operators acting on the vacuum and the state $\ket{\p X}$ and the momentum state $\ket{\cl e^{ikX}\cl}$.

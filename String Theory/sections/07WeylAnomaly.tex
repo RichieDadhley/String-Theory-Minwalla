@@ -1,0 +1,308 @@
+\chapter{Weyl Anomaly \& Verma Module}
+
+\section{Weyl Anomaly}
+
+Recall that we defined a holomorphic primary operator of weight $h$ to be one that transforms as 
+\bse 
+    \cO(z) = \bigg(\frac{\p \omega}{\p z}\bigg)^{h} \cO(\omega)
+\ese 
+under the conformal transformation $z\to \omega(z)$. Now we note the transformation of purely covariant tensors under diffeomorphisms\footnote{We're considering flat space here, so don't need to worry about covariant derivatives and Christoffel symbols.}
+\bse 
+   A_{\a\beta\gamma...}(z) = \bigg(\frac{\p \widetilde{\a}}{\p\a}\bigg) \bigg(\frac{\p \widetilde{\beta}}{\p \beta}\bigg) \bigg( \frac{\p\widetilde{\gamma}}{\p\gamma} ...\bigg)  A_{\widetilde{\a}\widetilde{\beta}\widetilde{\gamma}...}(\omega) 
+\ese
+so if we take $\a=\beta=\gamma = ... = z$, where there is a total of $h$ terms and similarly $\widetilde{\a} = ...= \omega$ we simply get 
+\bse 
+    A_{z...}(z) = \bigg(\frac{\p \omega}{\p z}\bigg)^h A_{\omega...}(\omega),
+\ese 
+which matches our primary operator transformation. It is important to note, though, that the primary operator transformation is for \textit{conformal} transformations, whereas the tensor is for \textit{diffeomorphisms}. 
+
+\br 
+As normal we have only considered the holomorphic case, but clearly there is nothing special about it over the antiholomorphic part, and so we have an analogous expression for that. 
+\er 
+
+\br 
+Note also that if we took a \textit{contravariant} tensor (i.e. indices upstairs) we would get a primary operator of weight $-h$. 
+\er 
+
+Now recall the transformation of the stress-energy tensor under a conformal transformation: we take the residue of $\epsilon(z)T(z)T(\omega)$, where the OPE is given by
+\bse 
+    T(z)T(\omega) = \frac{c/2}{(z-\omega)^4} + \frac{2T(\omega)}{(z-\omega)^2} + \frac{\p T(\omega)}{z-\omega} + \text{non-singular}. 
+\ese 
+The final two terms in this are the transformation of a weight $(2,0)$ primary operator, but we also know that $T$ is a rank-2 covariant tensor, and so we conclude that both of these terms come from the diffeomorphic part of the conformal transformation. This also means that the first term \textit{must} come from the Weyl part of the conformal transformation. We have already argued this fact when we were discussing the $\del_{m+n,0}$ term present in the Virasoro algebra commutation relations --- again it was the $c$ term that was related to the Weyl transformation --- however we now have further justification for this claim.
+
+As we did before, we see that the change in the stress-energy tensor for the Weyl transformation is
+\bse 
+    \del_W T(\omega) = \frac{c}{12}\epsilon'''(\omega),
+\ese
+where the $W$ indicates that we're only considering the Weyl part. We now want to ask the question `What Weyl factor gives rise to this transformation?' --- i.e. what is $\phi$ equal to in $g \to e^{\phi}g$.\footnote{In the original definition we gave, we used $e^{2\phi}$. However, for consistency with Dr. Minwalla's working, we shall absorb the $2$ into the definition of $\phi$ and go from there.} 
+
+If we're considering the infinitesimal diffeomorphism transformation $z \to \omega = z +\epsilon(z)$, and similarly for $\overline{z}$, the line element transforms to
+\bse 
+    d\omega d\overline{\omega} = \big(1 + \p\epsilon(z)\big) \big(1 + \overline{\p}\overline{\epsilon}(\overline{z})\big) dz d\overline{z}.
+\ese 
+We can rewrite this as 
+\bse 
+    d\omega d\overline{\omega} = e^{\p\epsilon(z) + \overline{\p}\overline{\epsilon}(\overline{z})}dz d\overline{z},
+\ese 
+where we are only considering first order terms. We conclude, therefore, that the required Weyl factor to return to flat space is 
+\bse 
+    \del\phi(z,\overline{z}) = - \big[\p\epsilon(z) + \overline{\p}\overline{\epsilon}(\overline{z})\big],
+\ese 
+where the minus sign comes from the fact that we need to undo the effect of the diffeomorphism. This in turn gives us 
+\bse 
+    \del_WT(z,\overline{z}) = -\frac{c}{12} \p^2\del\phi(z,\overline{z}), \qquad \text{and} \qquad \del_W\overline{T}(z,\overline{z}) = -\frac{\widetilde{c}}{12} \overline{\p}^2\del\phi(z,\overline{z}),
+\ese
+where we have included the antiholomorphic term too.\footnote{Note they appear as separate expressions as $\del\phi(z,\overline{z})$ is a sum of a holomorphic and an antiholomorphic term, and so the unwanted terms vanish when we take the derivatives.}
+
+So we've found how two particular components of $T$ transform. However, what we really want is the covariant expression (i.e. how all the components transform). Its easy to convince yourself that the general expression takes the form 
+\bse 
+    \del_WT_{\a\beta} = a \p_{\a}\p_{\beta} \del\phi + b\nabla^2 g_{\a\beta} \del\phi,
+\ese 
+for some constants $a,b$. Note, as it is a covariant expression, this does not depend on the choice of basis, and so we could have $\a,\beta = \sig^1,\sig^2$ or we could have $\a,\beta=z,\overline{z}$. If we use the $z,\overline{z}$ coordinates, it follows immediately that (recall $g_{zz} = 0 = g_{\overline{z}\overline{z}}$ in the conformally flat space)
+\bse 
+    -\frac{c}{12} = a = -\frac{\widetilde{c}}{12}.
+\ese 
+
+This gives us our first nice result: 
+\mybox{
+a gravitational anomaly
+\be 
+    c = \widetilde{c}.
+\ee 
+}
+
+Next, recall that $T$ is conserved, i.e. $\p^{\a}T_{\a\beta} = g^{\a\gamma}\p_{\gamma}T_{\a\beta} = 0$. This gives us 
+\bse 
+    \begin{split}
+        0 & = a g^{\a\gamma}\p_{\gamma}\p_{\a}\p_{\beta} \del\phi + b g^{\a\gamma}\p_{\gamma}\nabla^2g_{\a\beta} \del\phi \\
+        & = (a + b) \nabla^2 \p_{\beta}\del\phi \\
+        \implies a & = -b.
+    \end{split}
+\ese 
+
+\br 
+We have actually cheated slightly here because we've ignored the terms that arise from the derivatives of the metric (which has coordinate dependence through $\phi(z,\overline{z})$). However, we claim, without proof, that these cancel exactly with the Christoffel symbols we didn't include before. 
+\er 
+
+Now we consider the trace. 
+
+\bse
+    \begin{split}
+        \del {T^{\a}}_{\a} & = g^{\a\beta}\del T_{\a\beta} \\
+        & = -\frac{c}{12} \big[ g^{\a\beta}\p_{\a}\p_{\beta} - g^{\a\beta}\nabla^2g_{\a\beta} \big]\del\phi \\
+        & = - \frac{c}{12} \big[\nabla^2 - 2\nabla^2\big]\del\phi \\
+        & = \frac{c}{12}\nabla^2\del\phi,
+    \end{split}
+\ese 
+where we have used the fact that we are considering a 2D CFT and so the trace of the metric is 2.
+
+\bcl
+The Ricci scalar for our transformation is given by 
+\be 
+\label{eqn:RicciScalarConformal}
+    R = -\nabla^2\del\phi.
+\ee 
+\ecl 
+
+We shall not prove this here,\footnote{Mainly because I did it, but ended up with an overall factor of $2$ out, and I didn't want to have to recalculate all the $\Gamma$s etc.} but just use it. We therefore have 
+\bse    
+    \del{T^{\a}}_{\a} = - \frac{c}{12}R.
+\ese
+
+Now, we should be careful here, what we are actually considering is the expectation value, and so we write the above properly as
+\mybox{
+The Weyl Anomaly 
+\be 
+\label{eqn:WeylAnomaly}
+    \langle {T^{\a}}_{\a} \rangle = -\frac{c}{12}R
+\ee 
+}
+
+\br 
+A different, but similar, approach to proving this result is given by Dr. Tong in section 4.4.2.
+\er 
+
+Now a few comments are in order:
+\begin{itemize}
+    \item For flat space we have $\langle {T^{\a}}_{\a}\rangle = 0$. This agrees with our \textit{classical} result that the stress-energy tensor is traceless. However, when we introduce curvature into the problem, this no longer holds. 
+    \item This result makes sense. We argue that the result must be the same for all states in the system. This comes from the idea that we are only considering small, local deformations of the metric, and so we are considering short distances. But at short distances, all finite energy states looks more and less the same, and so we expect the result to hold for any state. If it holds for any state, the result must depend only on the background metric and not the states themselves. So we need something which is dimension 2, a scalar and depends on the background metric... 10 points to anyone who can think of such an object that is not the Ricci scalar. 
+\end{itemize}
+
+\subsection{Liouville Field Theory}
+
+\textcolor{red}{I am not overly happy with my understanding of what Dr. Minwalla was doing here. I follow the idea, however I do not wish to butcher the explanation and lead to confusion for anyone else. However, I feel like this discussion is not vitally important for the quantised Nambu-Goto string as we require Weyl invariance, and so for that reason I am leaving it out for now. If it turns out to be important later, I shall return and fill this in, otherwise, I shall wait until I find some time to read more properly about Liouville field theory and return to fill it in here. From a quick read up, this is related to so-called non-critical strings, which do not have $d=26$. I have written this in red to remind myself to come back. The part of the video is 43:00 - 1:10:00}
+
+\section{Verma Module}
+
+\subsection{Imposing Unitarity}
+
+Let us once again recall the definition for the transformation of a primary operator under a conformal transformation 
+\bse 
+    \phi(\omega) = \bigg(\frac{\p z}{\p \omega} \bigg)^h \phi\big(z(\omega)\big),
+\ese 
+where we've used $\phi$ instead of our usual $\cO$ and reversed the roles of $\omega$ and $z$.\footnote{These are just labels so of course we can do this freely.} Now lets consider the specific case for the transformation from the cylinder to the plane, which we recall is given by 
+\bse 
+    \omega = \sig + i\tau, \qquad z = e^{-i\omega}.
+\ese 
+Note this is why we changed the roles of $\omega$ and $z$ above, because we're used to calling $z$ the coordinate on the plane. Now plugging this in simply gives 
+\be 
+\label{eqn:PhiTransformationCylinderPlane}
+    \phi(\omega) = (-i)^h z^h \phi(z).
+\ee 
+If we now assume again that $\phi(z)$ is holomorphic everywhere expect possibly at the origin (as we have done many times already), we can expand it as a Laurent series, 
+\bse 
+    \phi(z) = \sum_{n} \frac{\phi_n}{z^{n+h}},
+\ese 
+where we have included a factor of $h$ in the power of $z$ as it will cancel nicely in \Cref{eqn:PhiTransformationCylinderPlane}, giving 
+\bse 
+    \phi(\omega) = (-i)^h \sum_n z^{-n} \phi_n = (-i)^h \sum_n e^{in\omega} \phi_n.
+\ese 
+
+Now, we want a a unitary theory, as this gives us Minkowski spacetime probabilities that are conserved. However, we are working in Euclidean space (that is we have taken the Wick rotation in defining $\omega$ with the $i$ in it), so we first go back to Lorentzian space (which is where our problem really lies, and so we should impose the condition here), 
+\bse 
+    \phi(\omega_L) = (-i)^h \sum_n e^{in(\sig+\tau)}\phi_n.
+\ese 
+We then see, up to a potential minus sign, that
+\be
+\label{eqn:PhinDagger}
+    \phi_n^{\dagger} = \phi_{-n}.
+\ee 
+Note if we had taken the complex conjugate in Euclidean space, we would not have got this result (due to the extra factor of $i$). However, once we have this result, we can just impose it on the Euclidean expression.
+
+\bp 
+The $\phi_n$s have energy $-n$.
+\ep 
+
+\bq 
+Consider the commutator $[L_0,\phi_n]$ for the $\phi_n$ defined above. We write both in terms of their integrals over $T(z)$ and $\phi(\omega)$, respectively, and use the method we used previously. We have 
+\bse 
+    \begin{split}
+        [L_0,\phi_n] & = \bigg(\oint \frac{dz}{2\pi i}\oint \frac{d\omega}{2\pi i} - \oint \frac{d\omega}{2\pi i}\oint \frac{dz}{2\pi i}\bigg) zT(z) \omega^{n+h-1}\phi(\omega) \\
+        & = \oint\frac{d\omega}{2\pi i} \text{Res}\bigg[ z\omega^{n+h-1}\bigg( \frac{h\phi(\omega)}{(z-\omega)^2} + \frac{\p\phi(\omega)}{z-\omega} + ...\bigg)\bigg] \\
+        & = \oint \frac{d\omega}{2\pi i} \big[ \omega^{n+h}\p\phi(\omega) + h\omega^{n+h-1}\phi(\omega) \big] \\
+        & = \oint \frac{d\omega}{2\pi i} (-n-h +h)\omega^{n+h-1}\phi(\omega) \\
+        & = -n \phi_n.
+    \end{split}
+\ese 
+\eq 
+
+\br 
+In the proof above we showed that the commutator gave $-n\phi_n$, so you might question why that means that the energy is $-n$. That is, what we have really shown is
+\bse 
+    L_0\phi_n\ket{\cO} = (-n+h)\phi_n\ket{\cO},
+\ese 
+where the $h$ comes from the action of $L_0$ on the primary state $\ket{\cO}$. We could obviously just consider putting the identity at the origin and then $h=0$ and so you get $L_0\ket{\phi_n} = -n\ket{\phi_n}$. But this is exactly what we're doing; we're imagining placing $\phi(\omega)$ at the origin. 
+\er 
+
+Notice that what we have just done is exactly the same as the idea of expanding $T$ in terms of the $L_m$s, and so \Cref{eqn:PhinDagger} tells us
+\bse 
+    L_m = L_{-m}^{\dagger}.
+\ese 
+
+We can now go back and put some weight to come of the claims we've made thus far. First consider the square of the action of $L_1$ on some quasi-primary state,
+\bse 
+    \begin{split}
+        |L_{-1} \ket{\cO}|^2 & = \bra{\cO}L_1 L_{-1}\ket{\cO} \\
+        & = \bra{\cO} [L_1,L_{-1}] \ket{\cO} + \bra{\cO} L_{-1}L_1\ket{\cO} \\
+        & = 2\bra{\cO}L_0\ket{\cO} \\
+        &= 2h \braket{\cO}{\cO},
+    \end{split}
+\ese 
+where we have used the fact that $L_1\ket{\cO}=0$ and $L_0\ket{\cO} = h\ket{\cO}$ for quasi-primary states. So we see that $L_{-1}$ annihilates a state if and only if the corresponding operator has $h=0$. We can do an identical calculation for $\widetilde{L}_{-1}$ and get that the condition but with $h\to \widetilde{h}$. Now, recalling that the $L_{-1}$ operator corresponds to taking a derivative, we see that having $h=0$ is the same as being an antiholomorphic operator, and similarly for $\widetilde{h}=0$. So, if an operator has weight $(0,0)$ then it doesn't depend on either $z$ nor $\overline{z}$, and so it is completely independent of where we put it. There is only one such operator... the identity. This is just the statement that we made that the only state annihilated by $L_{-1}$ and $\widetilde{L}_{-1}$ is the vacuum. 
+
+\subsection{Verma Module}
+
+Now, recall \Cref{rem:VermaRemark}, which says that a primary operator's energy is at a minimum. Now, if we expect to have a physical theory, we want some minimum energy bound, at which point the state is annihilated by any attempt to further lower its energy. This is just the primary states. In other words, any state in the Hilbert space can be taken to a primary state by repeated application of the $L_m$s for $m>0$. Turning this on its head, given the set of all independent primary operators, we can generate \textit{any} state in the Hilbert space by applying the $L_m$s for $m<0$. This is the statement that the representations of the Virasoro algebra can be formed by applying the $L_m$s with $m<0$ to the primary operators. This will result in an infinite tower of states,\footnote{Note this is an infinite tower for two reasons: firstly we can apply any of the $L_m$s an arbitrary amount of times, and secondly, there is no limit to the value of $m$.} with each obtained state known as a \textit{descendant} of the starting primary state, and the complete set of states known as the \textit{Verma module} for that primary state. 
+
+If $\ket{\phi}$ is the initial primary state, whose operator has weight $h$, then the Verma module is 
+\bse 
+    \begin{gathered}
+        \ket{\phi} \\
+        L_{-1}\ket{\phi} \\
+        (L_{-1})^2\ket{\phi}, \quad L_{-2}\ket{\phi} \\
+        (L_{-1})^3\ket{\phi}, \quad L_{-1}L_{-2}\ket{\phi}, \quad L_{-3}\ket{\phi},
+    \end{gathered}
+\ese     
+et cetera. In fact that representation built is an irreducible representation. So if we know the spectrum of all the independent primary states, we can find the complete spectrum of our theory.
+
+\br 
+There is a subtle point to be noted. It is not necessarily true that all of the elements within a Verma module are independent. For example,\footnote{Thanks to Dr. Tong for giving this example and sparing me the trouble of finding one.} if 
+\bse 
+    c = \frac{2h(5-8h)}{(2h+1)},
+\ese
+then the combination
+\bse 
+    L_{-2}\ket{\phi} - \frac{3}{2(2h+1)} (L_{-1})^2\ket{\phi}
+\ese 
+has vanishing norm. These combined states are known as \textit{null states}, and, as we have just seen, depend on $c$ and $h$.
+\er 
+
+\br 
+We now also see a further justification for why we even introduced primary operators in the first place; they play a vital role in the representation theory. 
+\er 
+
+Note as we go down\footnote{Or up, I guess, depending on how you write it...} the Verma module the value of $h$ increases. We can call the subset with equal $h$ a \textit{level} of the Verma module. We start the level label at $N=0$ for the primary operator itself. On each level we can define a matrix, whose elements are given by the inner products of the members of the level. At level $N=1$ we only have one element given by 
+\bse 
+    \bra{\phi}L_1L_{-1}\ket{\phi} = 2h\braket{\phi}{\phi},
+\ese 
+which, from the fact that the inner product is positive semi-definite, tells us $h\geq 0$. This is something we have already seen. 
+
+Now consider the $N=2$ level. Define 
+\bse 
+    \ket{1} := (L_{-1})^2\ket{\phi}, \qquad \text{and} \qquad \ket{2} := L_{-2}\ket{\phi}.
+\ese 
+Then our matrix elements are given by
+\bse 
+    \begin{split}
+        \braket{2}{2} & = \bra{\phi}L_2L_{-2}\ket{\phi} \\
+        & = (4h+c/2)\braket{\phi}{\phi},
+    \end{split}
+\ese 
+
+\bse 
+    \begin{split}
+        \braket{1}{2} & = \bra{\phi} L_1L_1L_{-2}\ket{\phi} \\
+        & = 3\bra{\phi} L_1 L_{-1}\ket{\phi} \\
+        & = 6h \braket{\phi}{\phi} \\
+        & = \braket{2}{1},
+    \end{split}
+\ese 
+and 
+\bse 
+    \begin{split}
+        \braket{1}{1} & = \bra{\phi} L_1L_1L_{-1}L_{-1}\ket{\phi} \\
+        & = 2\bra{\phi} L_1 L_0 L_{-1}\ket{\phi} + \bra{\phi} L_1 L_{-1} L_1 L_{-1}\ket{\phi} \\
+        & = 2\bra{\phi} L_1 L_{-1}\ket{\phi} + 2\bra{\phi} L_1 L_{-1} L_0\ket{\phi} + 2\bra{\phi} L_1 L_{-1} L_0\ket{\phi} \\
+        & = 4h\braket{\phi}{\phi} + 8h^2\braket{\phi}{\phi} \\
+        & = 4h(1 + 2h)\braket{\phi}{\phi}. 
+    \end{split}
+\ese 
+That is, 
+\bse 
+    M = \begin{pmatrix}
+    4h(1+2h) & 6h \\
+    6h & 4h + c/2
+    \end{pmatrix}.
+\ese 
+Then, from the requirement at the matrix by positive semi-definite (i.e. its determinant must be non-negative), along with $h\geq 0$, we have
+\bse 
+    \frac{1}{2}c + (c-5)h + 8h^2 \geq 0.
+\ese 
+
+This gives us further constraints to the allowed values of $c$. Simply solving the quadratic for $h$ and imposing $h\geq 0$ you get 
+\bse 
+     c \leq 1, \qquad \text{or} \qquad c\geq 9.
+\ese
+However, we also have 
+\bse 
+    |L_{-n}\ket{\phi}|^2 = \bigg(2nh + \frac{c}{12}n(n^2-1)\bigg) \braket{\phi}{\phi} \geq 0.
+\ese
+Now if $n=1$ the $c$ term vanishes, so let's just consider $n>1$. Solving this simply gives 
+\bse 
+    c \geq \frac{24h}{n^2-1},
+\ese 
+which, along with $h\geq0$ tells us that $c\geq0$. So we finally obtain: the allowed values of the central charge for a unitary theory are
+\be 
+\label{eqn:cValuesUnitary}
+    0 \leq c \leq 1 \qquad \text{or} \qquad c \geq 9.
+\ee 

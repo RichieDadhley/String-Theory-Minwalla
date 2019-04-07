@@ -1,0 +1,487 @@
+\chapter{Mode Expansions and Quantisation of Bosonic String}
+
+So far we have we have fixed the gauge of our problem such that the worldsheet metric is the flat metric. However, we also showed that this gauge fixing is not complete, that is we still have a gauge associated to conformal diffeomorphisms. We can express this condition as an equivalence class 
+\be 
+\label{eqn:ConformalDiffeoEquivClass}
+   x^{\mu}\big( f_1(\sig_-), g_1(\sig_+)\big) \sim x^{\mu}(\sig_+, \sig_-) \sim x^{\mu}\big( f_2(\sig_+), g_2(\sig_-)\big),
+\ee 
+where we have included a subscript on the $f/g$ to indicate that it need they need not be the same functions. 
+
+As mentioned in the previous lecture, we shall use this remaining gauge invariance in a crucial way in a moment. First, though, let's consider the equations of motion arising from varying \Cref{eqn:PolyakovActionLightcone} wrt $x^{\mu}$. Direct calculation gives us 
+\be 
+\label{eqn:EOMLightcone}
+    \p_+\p_-x^{\mu} = 0.
+\ee 
+The most general solution to this problem is 
+\be 
+\label{eqn:EOMLightconeGeneralSolution}
+    x^{\mu}(\tau,\sig) = x^{\mu}_L(\sig_+) + x^{\mu}_R(\sig_-),
+\ee 
+where the $L/R$ subscripts denote the left/right moving waves respectively. We can expand this out as Fourier modes, 
+\be 
+\label{eqn:FourierModesLightcone}
+    \begin{split}
+        x^{\mu}_L(\sig_+) & = a^{\mu} + b^{\mu} \sig_+ + \sum_{n\neq0} c^{\mu}_n e^{-in\sig_+}, \\
+        x^{\mu}_R(\sig_-) & = \widetilde{a}^{\mu} + \widetilde{b}^{\mu} \sig_- + \sum_{n\neq0} \widetilde{c}^{\mu}_n e^{-in\sig_-},
+    \end{split}
+\ee 
+for $n\in\Z$.
+
+Now recall that we imposed the periodic condition 
+\bse 
+    x^{\mu}(\tau,\sig+2\pi) = x^{\mu}(\tau,\sig).
+\ese 
+In the Fourier series above the exponential terms are fine, but if we want the $b^{\mu}/\widetilde{b}^{\mu}$ terms to give an overall period term we require 
+\bse 
+    b^{\mu} = \widetilde{b}^{\mu},
+\ese 
+as then this term in $x^{\mu}(\tau,\sig)$ just becomes 
+\bse 
+    b^{\mu} (\sig_+ + \sig_-) = 2b^{\mu}\tau,
+\ese
+which clearly is unaffected by the periodic condition. 
+
+\section{Lightcone Gauge}
+
+As it stands $x^{\mu}$ has $d$ degrees of freedom (one for each $\mu$), however this clearly cannot be right. To understand why, consider a real string tied at both ends. Now ask the question about the how the string can move/oscillate. Clearly the answer is it can move along either of the transverse modes (i.e. it can move left-right or up-down). The longitudinal mode (along the string) is not accessible, and it sounds absurd to talk about it oscillating in the time dimension! So the number of degrees of freedom we have $4-2=2$. It is easy to convince yourself that this argument extends to some $d$-dimensional spacetime, in which case we expect $d-2$ degrees of freedom. 
+
+So how do we reconcile this? The answer, of course, is use the gauge freedom and the constraints we place on the system. Consider first the gauge freedom. We are free to redefine $\sig_{\pm}$ as any one variable function of $\sig_{\pm}$. We can, therefore, choose to fix this gauge such that we isolate one of our coordinates. We can do this in such a way as to identify (up to a factor) this coordinate with $\sig_{\pm}$ itself (in exactly the same way that we did for the point like particle and the temporal coordinate). In other words, we can choose a gauge such that the exponential terms in \Cref{eqn:FourierModesLightcone} for a \textit{single}, given, $\mu$ vanish. 
+
+We shall, in-fact, not do it for any of our current space-time coordinates, but instead do it for some rather strange choice of combination. 
+
+\bd 
+We define 
+\be 
+\label{eqn:xpm}
+    x^{\pm} := t \pm x^{d-1}.
+\ee 
+\ed 
+
+\br 
+Note in making this choice we have broken Lorentz invariance --- we have singled out two of your coordinates and made them `more important' then the others. Nevertheless, we continue.
+\er 
+
+We now fix our gauge such that 
+\be 
+\label{eqn:xplus}
+    x^+ = \a'p^+\tau = \frac{1}{2}\a'p^+ (\sig_+ +\sig_-),
+\ee 
+for some constant $p^+$. In other words we have 
+\be 
+\label{eqn:xplusLR}
+    x^+_L = \frac{\a'p^+}{2} \sig_+, \qquad \text{and} \qquad x^+_R = \frac{\a'p^+}{2}\sig_-.
+\ee 
+
+\br 
+To see why we have used the notation $p^+$, consider the following argument. The above scalar field has no $\sig$ dependence, and so it follows from \Cref{eqn:PolyakovActionFlat} that 
+\bse 
+    S = \frac{1}{2\a'} \int d\tau (\dot{x}^+)^2.
+\ese
+But this is the action for a relativistic particle of mass $m=1/\a'$. Then recall the conjugate momenta is simply $p=m\dot{x}$, which using the definition of $x^+$ gives
+\bse 
+    p = m \a' p^+ = \frac{1}{\a'} \a' p^+ = p^+.
+\ese 
+We shall see a more convincing argument for this when we move on to the quantisation. 
+\er 
+
+Ok, so we've managed to remove one of the degrees of freedom through this gauge fixing, leaving us with $d-1$ degrees of freedom. How do we remove the other? As mentioned above, we use the constraint we placed on the system at the end of the last lecture, 
+\bse 
+    (\p_+x)^2 := \p_+x^{\mu}\p_+x_{\mu} = 0,
+\ese 
+and similarly for $\p_-$. Expanding this out gives\footnote{We are using $x^0=t$, as we did in defining $x^{\pm}$.}
+\bse 
+    \begin{split}
+        0 & = -\p_+t\p_+t + \sum_{i=1}^{d-1} \p_+x^i\p_+x_i  \\
+        & = -\p_+t\p_+t + \p_+x^{d-1}_L\p_+x_{d-1,L} + \sum_{j=1}^{d-2} \p_+x^j_L\p_+x_{j,L} \\
+        & = -\p_+x^+_L\p_+x^-_L + \sum_{j=1}^{d-2} \p_+x^j_L\p_+x_{j,L}, 
+    \end{split}
+\ese 
+where we've used the fact that only the left-wave part depends on $\sig_+$. Then, using our fixture of gauge for $x^+$, gives a condition for $x^-_L$, namely 
+\be 
+\label{eqn:xmLCondition}
+    \frac{\a'p^+}{2} \p_+x^-_L = \sum_{j=1}^{d-2} \p_+x^j_L\p_+x_{j,L}.
+\ee 
+The same method for the $(\p_-x)^2=0$ equation gives us the condition for $x^-_R$,
+\be 
+\label{eqn:xmRCondition}
+    \frac{\a'p^+}{2} \p_+x^-_R = \sum_{j=1}^{d-2} \p_+x^j_R\p_+x_{j,R}.
+\ee 
+So, apart from the constant factor (the $a/\widetilde{a}$ in \Cref{eqn:FourierModesLightcone}), we can determine $x^-$ given that we know the remaining $d-2$ scalar field solutions. So we have successfully reduced the problem to one with only $d-2$ degrees of freedom, which represent the different transverse modes of the string.
+
+\br 
+Note the fact that we have no longitudinal modes makes perfect sense when we remember we have a gauge freedom associated to spatial diffeomorphisms. The easiest way to think of this would be to imagine having beads\footnote{Be careful to not take this analogy too far and think about the string being made up of particles. The idea of string theory is that the string is the fundamental building block of nature!} on our string. A longitudinal mode would move these beads along the direction of the string, but that is just equivalent to a spatial diffeomorphism --- the string is still the string.
+\er 
+
+\subsection{Mode Expansion Coeffients} 
+
+In light of what is to come, we want to renormalise \Cref{eqn:FourierModesLightcone} to be 
+\be 
+\label{eqn:FourierModesNormalised}
+    \begin{split}
+        x^{\mu}_L (\sig_+) & = \frac{1}{2}x^{\mu}_0 + \frac{1}{2}\a'p^{\mu} \sig_+ + i\sqrt{\frac{\a'}{2}}\sum_{n\neq0} \frac{\a^{\mu}_n}{n} e^{-in\sig_+} \\
+        x^{\mu}_R (\sig_-) & = \frac{1}{2}x^{\mu}_0 + \frac{1}{2}\a'p^{\mu} \sig_- + i\sqrt{\frac{\a'}{2}}\sum_{n\neq0} \frac{\widetilde{\a}^{\mu}_n}{n} e^{-in\sig_-},
+    \end{split}
+\ee 
+where we have labelled the zero-order term $x^{\mu}_0$, because, as we shall see, it corresponds to the position of the string's centre of mass. We have also included the rooted fraction before the summations. This is done in order for our Poisson bracket (and so the commutation relations) to come out in a nice way. It is for the same reason that we have divided by $n$ inside the summations.
+
+Now, if we are to interpret $x^{\mu}_0$ as the position of the centre of mass of the string, we also need it present in the definitions of $x^{\pm}$, i.e. we need 
+\be 
+    x^+ = x^+_0 + \a' p^+ \tau.
+\ee 
+Note, the constraints we have placed on $x^-$ will not give us the value of $x^-_0$, it is an integration constant. 
+
+\br 
+It worth remarking the following condition. The $x^{\mu}_{L/R}$ are obviously real, and so it follows that 
+\be 
+\label{eqn:FourierAlphaConjugate}
+    \a^{\mu}_n = \big(\a^{\mu}_{-n}\big)^*, \qquad \text{and} \qquad \widetilde{\a}^{\mu}_n = \big(\widetilde{a}^{\mu}_{-n}\big)^*.
+\ee 
+This will become important once we quantize the system and start to related $\a/\widetilde{\a}$ to creation/annihilation operators.
+\er 
+
+\section{Quantisation}
+
+We now wish to quantise our classical theory of a string to obtain a quantum theory. Before moving on to do this, let's first make a comment on the potential ways we could do this. 
+
+There are in-fact two way we could go about quantising our string. The method we are going to use (as we've already begun doing it...) is to first impose the constraints onto the classical system (as we did above to remove two degrees of freedom) and then seek to quantise this constrained system. However, this was not the only option. We could have decided to first quantise the system (i.e. way back before we'd even defined the lightcone gauge, $x^{\pm}$) and then placed our constraints onto the quantised system. This procedure is known as \textit{covariant quantisation}. We shall not discuss the covariant quantisation approach here\footnote{If anyone thinks it would be particularly beneficial to add it to these notes, feel free to contact me and I shall try add a short section.} as problems arise from it (namely we get so-called \textit{ghost} states --- states with negative norm!). The interested reader, however, can read the short explanation given in Section 2.1 of Dr. Tong's notes.
+
+\subsection{Poisson Brackets and Sympletic Forms}
+
+A Poisson bracket is an important structure in classical mechanics. It is the classical equivalent to the quantum mechanical commutation relations, and it is through the Poisson bracket that we seek our commutation relations. Mathematically: 
+
+\bd[Poisson Bracket] 
+A Poisson bracket is a bilinear operator 
+\bse 
+    \{ \cdot, \cdot \} : C^{\infty}(\cF) \times  C^{\infty}(\cF) \to  C^{\infty}(\cF),
+\ese 
+where $C^{\infty}(\cF)$ is the space of smooth functions on phase space, $\cF$, of the system. It obeys the following properties: 
+\ben 
+\item Anticommutivity: $\{f,g\} = -\{g,f\}$, 
+\item Binlineatity: $\{af+g,bh+\ell\} = ab\{f,h\} + a\{f,\ell\} + b\{g,h\} + \{g,\ell\}$,
+\item Leibniz: $\{fg,h\} = f\{g,h\} + \{f,h\}g$,
+\item Jaccobi: $\{f,\{g,h\}\} + \{g,\{h,f\}\} + \{h,\{f,g\}\} =0$.
+\een 
+\ed 
+
+We can find a set of canonical coordinates\footnote{That is a set of coordinates on the phase space that can be used to define the physical state of the system --- i.e. the `position' and `momentum' of the system.} such that the Poisson brackets take a particularly neat form:
+\be 
+\label{eqn:PoissonCanonical}
+    \{q^i,p^j\} = \del_{ij}, \qquad \{p^i,p^j\} = 0 = \{q^i,q^j\},
+\ee 
+where $p^i/q^i$ are the $i$-th canonical position/momentum, respectively. 
+
+\bd[Sympletic Form]
+Let $\cM$ be a $2n$-dimensional manifold. A 2-form $\omega$ on $\cM$ that is globally nondegenerate,
+\bse 
+    \omega(X,Y) = 0 \quad \forall Y \implies X = 0,
+\ese 
+closed
+\bse 
+    d\omega = 0,
+\ese 
+is called a \textit{symplectic form} (and $\cM$ is a symplectic manifold). 
+\ed 
+
+\bcl
+The phase space of a system is a symplectic manifold. 
+\ecl
+We shall not prove this here as the details are not too important.\footnote{The argument comes from the fact that the phase space can be viewed as the cotangent bundle to the manifold describing the set of all possible configurations, along with the fact that in classical mechanics cotangent bundles are symplectic manifolds.}
+
+\bt[Darboux] 
+A symplectic $2n$-dimensional manifold $(\cM,\omega)$ is locally isomorphic to $(\R^{2n},\omega)$. In other words, we can find local coordinates $\{q^i,p^i\}$ for $i=1,...,n$, such that 
+\bse
+    \omega = dq^i \wedge dp_i.
+\ese 
+\et 
+
+\br 
+Note the above summation only works for the canonical coordinates such that \Cref{eqn:PoissonCanonical} hold. See \Cref{prop:PoissonSymplecticForm} for more clarity.
+\er 
+
+\bp 
+In canonical coordinates, the Poisson bracket on the phase space can be written 
+\bse 
+    \{f,g\} = \omega(X_f,X_g) = \cL_{X_g} f,
+\ese 
+where 
+\bse 
+    X_{p^i} := \frac{\p}{\p q^i}, \qquad X_{q^i} := -\frac{\p}{\p p^i},
+\ese 
+and $\cL$ is the so-called Lie derivative.\footnote{For those unfamiliar, as far as we are concerned here it is just the regular derivative as we are considering scalar fields.}
+\ep 
+
+\bq 
+Due to the bilinearity of the Poisson bracket it suffices to show the result for the coordinate basis (i.e. prove \Cref{eqn:PoissonCanonical})
+\bse 
+    \begin{split}
+        \{q^i, p^j\} & = \cL_{\frac{\p}{\p q^j}} q^i = \frac{\p}{\p q^j} q^i = \del_{ij}, \\ 
+        \{p^i, p^j\} & = \cL_{\frac{\p}{\p q^j}} p^i = \frac{\p}{\p q^j} p^i = 0,
+    \end{split}
+\ese 
+and similarly for $\{q^i,q^j\}$.
+\eq 
+
+\br 
+The proof that the four Poisson bracket conditions are satisfied via the above definition is given on the \href{https://en.wikipedia.org/wiki/Poisson_bracket}{Wiki page}.
+\er 
+
+\mybox{
+\bp 
+\label{prop:PoissonSymplecticForm}
+Let $(\cM,\omega)$ be a symplectic manifold of dimension $2d$. Let $\{q^i,p^i\}$ with $i=1,...,d$ be a set of canonical coordinates with Poisson bracket relations \Cref{eqn:PoissonCanonical}. Let $\{e^n\}$ for $n=1,...,2d$ be a new set of coordinates given by a canonical transformation.\footnote{I.e. they do not mix $q$ and $p$.}  The the Poisson bracket relations for $\{e^n\}$ can be represented by a $2d\times 2d$ antisymmetric matrix
+\bse 
+    \{e^n,e^m\} = \omega^{nm},
+\ese 
+such that the symplectic form (in the dual basis formed using the new coordinates) is
+\bse 
+    \omega = \frac{1}{2}\omega_{nm}de^n\wedge de^m,
+\ese 
+where $\omega_{nm}$ is the inverse of $\omega^{nm}$.
+\ep
+}
+
+ 
+The easiest way to see that this is true is to consider the following examples in turn.\footnote{I am going to be being fairly sloppy with indices here, but the main parts of the argument hold.} 
+
+\bex 
+First consider the trivial transformation
+\bse
+    e^{2i-1} := q^i, \qquad e^{2i} := p^i,
+\ese 
+for $i=1,...,d$. From \Cref{eqn:PoissonCanonical} we know that 
+\bse 
+    \{e^{2i-1},e^{2j}\} = \del^{ij}, \qquad \text{and} \qquad \{e^{2i-1},e^{2j-1}\} = 0 = \{e^{2i},e^{2j}\}. 
+\ese 
+Finally defining the matrix $(\omega^{nm})$ to be
+\bse 
+    (\omega^{nm}) := \begin{pmatrix}
+    M & 0 & 0 & ... \\
+    0 & M & 0 & ... \\
+    \vdots & \vdots & \vdots & \vdots \\
+    0 & 0 & ... & M 
+    \end{pmatrix}, \qquad M := \begin{pmatrix}
+    0 & 1 \\ 
+    -1 & 0 
+    \end{pmatrix},
+\ese 
+gives us $\{e^n,e^m\} = \omega^{nm}$.
+
+Now, from the definition of the exterior derivative, we have
+\bse 
+    de^{2i-1} = dq^i, \qquad de^{2i} = dp^i,
+\ese 
+from which it follows that 
+\bse 
+    de^n\wedge de^m = \begin{cases}
+    dp^i \wedge dp^j & \text{for } n=2i, m=2j \\
+    dq^i \wedge dq^j & \text{for } n=2i-1, m=2j-1 \\
+    dq^i \wedge dp^j & \text{for } n=2i-1, m=2j \\
+    dp^i \wedge dq^j = - dq^j \wedge dp^i & \text{for } n=2i, m=2j-1 
+    \end{cases}
+\ese 
+So, if we wanted to write 
+\bse 
+    \omega = \sum_i dq^i\wedge dp^i = \frac{1}{2}\omega_{nm}de^n\wedge de^m,
+\ese 
+we would need\footnote{Note that we used the convention that in $\omega^{nm}$ the $n$ tells us the row and $m$ the column, so if we define $\omega_{nm}$ to be the inverse, we then have $n$ being the column and $m$ being the row. This is seen easily using the formula $\omega^{ab}\omega_{bc} =\del^a_c$.}
+\bse 
+    (\omega_{nm}) := \begin{pmatrix}
+    \widetilde{M} & 0 & 0 & ... \\
+    0 & \widetilde{M} & 0 & ... \\
+    \vdots & \vdots & \vdots & \vdots \\
+    0 & 0 & ... & \widetilde{M}
+    \end{pmatrix}, \qquad \widetilde{M} := \begin{pmatrix}
+    0 & -1 \\ 
+    1 & 0 
+    \end{pmatrix}.
+\ese 
+
+To see why/check, consider: 
+\begin{itemize}
+    \item When both $n$ and $m$ are even or odd the matrix element vanishes so there are no $dp^i\wedge dp^j$ or $dq^i\wedge dq^j$ terms. 
+    \item When $n$ is odd and $m$ is even we get $(-1)\cdot dp^i\wedge dq^i = dq^i\wedge dp^i$ terms and any $i\neq j$ terms vanish. 
+    \item When $n$ is even and $m$ is odd we get $1\cdot -dp^i\wedge dq^i = dq^i\wedge dp^i$ terms and any $i\neq j$ terms vanish. 
+    \item From the summation convention the two previous terms add together, but the $1/2$ in the $\omega$ definition cancels this. 
+\end{itemize}
+\eex 
+
+\bex 
+Showing the result for a less trivial transformation is much more tedious/super easy to make mistakes. For example consider the general canonical transformation
+\bse 
+    e^k = {a^k}_i p^i, \qquad \text{and} \qquad e^{\ell} = {b^{\ell}}_i q^i,
+\ese 
+for $i,k=1,...,d$, and $\ell=d+1,...,2d$, and the $a/b$s are constants. The Poisson relations for $p/q$ then tell us\footnote{For the final two cases recall we're using summation convention so we have two sums, the delta function removes but its important the other remains!}
+\bse 
+    \{e^n,e^m\} = \begin{cases}
+    0 & \text{for } n,m\in\{1,...,d\} \text{ or } n,m\in\{d+1,...,2d\} \\
+    \sum_{i=1}^d {a^k}_i {b^{\ell}}_i & \text{for } n=k, m=\ell \\
+    -\sum_{i=1}^d {a^k}_i {b^{\ell}}_i & \text{for } n=\ell, m=k 
+\end{cases}
+\ese 
+Therefore, we would need to define 
+\bse 
+    (\omega^{nm}) := \frac{1}{2}\begin{pmatrix}
+    0 & M \\
+    -M^T & 0 
+    \end{pmatrix},
+\ese 
+where $M$ is a $d\times d$ matrix given by 
+\bse 
+    M := \sum_{i=1}^d \begin{pmatrix}
+    {a^1}_i {b^{d+1}}_i & {a^1}_i {b^{d+2}}_i & ... & {a^1}_i {b^{2d}}_i \\
+    {a^2}_i {b^{d+1}}_i & ... & ... & ... \\
+    \vdots & \vdots & \vdots & \vdots \\
+    {a^d}_i {b^{d+1}}_i & ... & ... & {a^d}_i {b^{2d}}_i
+    \end{pmatrix}.
+\ese 
+Finding the inverse to this matrix is a nightmare!\footnote{If you can do it in a nice way and show it gives the result we need, please feel free to send me it via email and I shall write it up here and give you credit.} This nightmare is reflected in what you get when you look for $(\omega_{nm})$ using the exterior derivative. 
+
+First define ${a_k}^i := ({a^k}_i)^{-1}$ and similarly for the $b$s. Then we have 
+\bse 
+    \omega = \sum_i dq^i \wedge dp^i = \sum_i {a_k}^i{b_{\ell}}^i de^{\ell} \wedge de^k,
+\ese 
+which is a triple sum!\footnote{Again if you have some nice way of showing these two things are equivalent, please let me know!} However, I do not wish to leave you high and dry. So let's consider a specific example. 
+
+Let 
+\bse 
+    e^1 = 2q^1 + 3q^2, \quad e^2 = p^1 + 4p^2, \quad e^3 = 3q^1 - q^2, \quad e^4 = 2p^1 + 2p^2.
+\ese 
+Then the Poisson condition tells us 
+\bse 
+    \omega^{nm} = \begin{pmatrix}
+    0 & 14 & 0 & 10 \\
+    -14 & 0 & 1 & 0 \\
+    0 & -1 & 0 & 4 \\
+    -10 & 0 & -4 & 0 
+    \end{pmatrix} \implies \omega_{nm} = \frac{1}{66} \begin{pmatrix}
+    0 & -4 & 0 & -1 \\
+    4 & 0 & -10 & 0 \\
+    0 & 10 & 0 & -14 \\
+    1 & 0 & 14 & 0 
+    \end{pmatrix}.
+\ese 
+Then we also have 
+\bse 
+    \begin{split}
+        dq^1 & = \frac{1}{11} \big( de^1 + 3de^3\big), \qquad dp^2 = \frac{1}{11} \big( 3de^1 -2 de^3\big) \\
+        dp^1 & = \frac{1}{3} \big(2 de^4 - de^2\big), \qquad dp^2 = \frac{1}{6} \big( 2de^2 - de^4\big).
+    \end{split}
+\ese 
+So we have 
+\bse 
+    \begin{split}
+        \omega & = dq^1 \wedge dp^1 + dq^2 \wedge dp^2 \\
+        & = \frac{1}{33} \big( de^1 + 3de^3\big)\wedge \big( 2 de^4 - de^2\big) + \frac{1}{66} \big( 3de^1 -2 de^3\big)\wedge \big( 2de^2 - de^4\big) \\
+        & = \frac{1}{66} \big( 4 de^1\wedge de^2 + de^1\wedge de^4 + 10de^2\wedge de^3 + 14de^3\wedge de^4\big),
+    \end{split}
+\ese 
+which gives the same matrix for $\omega_{nm}$.
+\eex 
+
+\section{Quantising the String}
+
+Once you have the Poisson bracket relations for a classical system you can quantise it by promoting the position/momentum to operators and defining the quantum mechanical commutator relations\footnote{Note this equal sign is clearly none sense, the LHS is a quantum mechanical equation whereas the RHS is classical. However we get the idea.}
+
+\be 
+    [q^i,p_j] := i\hbar \{q^i,p_j\},
+\ee 
+where we have used a lower index for $p$ as this is standard notation. This is known as \textit{canonical quantisation}. 
+
+\br 
+We shall now replace $q^i \to x^i$, as this becomes consistent with the notation we've been using so far.
+\er 
+
+So our task of quantising the string consists of finding the conjugate momentum, defining the symplectic form, inverting the matrix we get to give us the Poisson bracket relations and then quantising these brackets. 
+
+Recall that our action is of the form 
+\bse 
+    S = - \frac{1}{4\pi\a'} \int d\sig d\tau \p_{\a}x^{\mu} \p_{\beta} x_{\mu} g^{\a\beta},
+\ese 
+where the metric here is the one on the worldsheet. Then using the definition 
+\bse 
+    p_{\mu} := \frac{\p\cL}{\p \dot{x}^{\mu}},
+\ese    
+we have 
+\be 
+\label{eqn:ConjugateMomentum}
+    p_{\mu} = \frac{1}{2\pi\a'} \dot{x}_{\mu},
+\ee 
+and so our symplectic form is given by\footnote{Note we get a factor of 2 for the $x^i$ terms. This comes from the fact that both the wedge and the matrix $\omega_{nm}$ are antisymmetric, so you get twice the terms.} 
+\be 
+\label{eqn:SymplecticFormLightconeGauge}
+    \begin{split}
+        \omega &= \frac{1}{2}\frac{1}{2\pi\a'}\int d\sig dx^{\mu} \wedge d\dot{x}_{\mu} \\
+        &= \frac{1}{4\pi\a'} \int d\sig \bigg( - dx^+\wedge d\dot{x}^- - dx^- \wedge d\dot{x}^+ + 2\sum_{i=1}^{2d-1} d x^i \wedge d\dot{x}^i\bigg),
+    \end{split}
+\ee 
+where we have used our lightcone gauge to go to the last line. 
+
+Now the first thing we notice is that, because we are integrating over $\sig \in [0,2\pi)$, if one of the terms in the wedge is purely zero mode (i.e. it doesn't have any exponential terms) then we only get a contribution if the other term in the wedge is also zero mode. That is, if we mix the zero modes with the oscillator terms we end up with
+\bse 
+    \int d\sig A e^{\pm i\sig}
+\ese 
+terms which vanish. This is a fantastic result because it means that all of the horrible oscillatory behaviour of $x^-$ goes (as $x^+$ is purely zero mode by construction). Therefore, if we want to work out the contribution to the symplectic form from the oscillator modes, we only need to worry about the $x^i$s; but we have a formula for these, 
+\bse 
+    x^i = x^i_0 + \a p^i \tau + i\sqrt{\frac{\a'}{2}} \sum_{n\neq0} \frac{\a^i_n}{n} e^{-in\sig^+} + \frac{\widetilde{\a}^i_n}{n} e^{-in\sig^-}.
+\ese 
+
+Again we need only worry with the terms in the summation (as the others drop out) and so we get 
+\bse 
+    \omega = \frac{1}{4\pi\a'} (i)^2 \frac{\a'}{2} (-i) 2\sum_{i=1}^{d-2} \sum_{n\neq 0} \sum_{m\neq 0} \int d\sig \bigg( \frac{d\a^i_n}{n} e^{-in\sig^+} + \frac{d\widetilde{\a}^i_n}{n} e^{-in\sig^-}\bigg)\wedge \bigg(d\a^i_m e^{-im\sig^+} + d\widetilde{\a}^i_m e^{-im\sig^-}\bigg).
+\ese 
+Now, this is going to give us four terms. Lets consider them in turn
+\begin{itemize}
+    \item When we have a $d\a_n \wedge d\a_m$ term the exponential is $e^{-i(n+m)\sig}$. So the only terms that remain after the integral is when $m=-n$. 
+    \item Similarly to above for the $d\widetilde{\a}_n\wedge d\widetilde{\a}_m$ terms. 
+    \item For the cross terms (i.e. one $\a$ and one $\widetilde{\a}$) we want $n=m$. Luckily, though, we're going to get $d\a_n\wedge d\widetilde{\a}_n + d\widetilde{\a}_n\wedge d\a_n= 0$, by the antisymmetry of the wedge product. 
+\end{itemize}
+
+So what we're left with is 
+\bse 
+    \omega = \frac{i}{2} \sum_{i=1}^{d-2} \sum_{n\neq0} \frac{1}{n} \big( d\a^i_n\wedge d\a^i_{-n} + d\widetilde{\a}^i_n \wedge d\widetilde{\a}^i_{-n}\big).
+\ese 
+Now note that 
+\bse 
+    \frac{1}{-n} d\a_{-n} \wedge d\a_n = \frac{1}{n}d\a_n \wedge d\a_{-n},
+\ese 
+and the same for the $\widetilde{\a}$ term. We can then consider only positive $n$ and introduce a factor of $2$, giving us 
+\bse 
+    \omega = i \sum_{n=1}^{\infty} \sum_{i=1}^{d-2} \frac{1}{n} \big( d\a^i_n\wedge d\a^i_{-n} + d\widetilde{\a}^i_n \wedge d\widetilde{\a}^i_{-n}\big).
+\ese
+Next note that we now have a flat (i.e. diagonal) expression, and so we don't have to worry about the $1/2$ factor in \Cref{prop:PoissonSymplecticForm} and so we have 
+\bse 
+    \omega_{ij} = \frac{i}{n} \b1_{d-2} \implies  \omega^{ij} = -in \b1_{d-2},
+\ese 
+where $\b1_{d-2}$ is the $d-2$ identity matrix. In terms of Poisson bracket relations, that is 
+\bse 
+    \{\a^i_n, \a^j_m\} = -in \del^{ij}\del_{n+m,0} = \{\widetilde{\a}^i_n, \widetilde{\a}^j_m\},
+\ese 
+which finally gives us the quantum mechanical commutation relations\footnote{In units $\hbar=1$.} 
+\be 
+\label{eqn:AlphaCommutationRelations}
+    [\a^i_n, \a^j_m] =  n \del^{ij}\del_{n+m,0} = [\widetilde{\a}^i_n, \widetilde{\a}^j_m].
+\ee 
+
+Recalling \Cref{eqn:FourierAlphaConjugate}, this result looks almost like the commutation relations for creation/annihilation operators of a quantum harmonic oscillator, the only problem is the $n$. This is easily fixed though; we define (dropping the $i$ index for a moment)
+
+\be 
+\label{eqn:CreationAnnihilationOperatos}
+    a_n = \frac{\a_n}{\sqrt{n}}, \qquad a^{\dagger}_n := \frac{\a_{-n}}{\sqrt{n}},
+\ee 
+for $n>0$, and similarly we define $\widetilde{a}_n/\widetilde{a}^{\dagger}_n$. 
+
+\br 
+So we see we have an two infinite (as $n$ runs to infinity) towers of creation/annihilation operators. We could now ask what the energy of these states are. The classical derivation of the Hamiltonian (which we do not do here\footnote{You have to consider the Hamiltonian density in terms of the $\cL$ and then plug in the conjugate momenta etc.}) gives us 
+\bse 
+    H = \frac{1}{2} \sum_{n=1}^{\infty} \sum_{i=1}^{d-2} (\a_n \a_{-n} + \a_{-n}\a_n)  + \frac{1}{2} \sum_{n=1}^{\infty} \sum_{i=1}^{d-2} (\widetilde{\a}_n \widetilde{\a}_{-n} + \widetilde{\a}_{-n}\widetilde{\a}_n),
+\ese
+which is just the classical Hamiltonian for the harmonic oscillator. After quantising we expect something of the form 
+\bse 
+    H^i_n = \omega \Big[ (a^i_n)^{\dagger}a^i_n  + 1/2 \Big]  + \omega  \Big[ (\widetilde{a}^i_n)^{\dagger}\widetilde{a}^i_n + 1/2 \Big],
+\ese 
+which, once combined with \Cref{eqn:CreationAnnihilationOperatos}, tells us that the energy spacing between the $n$-th and the $(n+1)$-th excitation of the $i$-th component is $n$. (i.e. $\omega=n$). 
+\er 
+
+\br 
+Note that all of this is just considering the oscillatory parts, we still need to do the rest. That is the topic of next lecture.
+\er 
