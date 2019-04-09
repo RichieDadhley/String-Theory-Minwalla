@@ -18,14 +18,14 @@ where $S_{\text{poly}}$ is of course the Polyakov action. Note that we have incl
     \etik 
 \end{center}
 
-As we mentioned at the end of the previous lecture, we are actually going to change the form of our path integral by using the Faddeev-Popov method. The idea is this: along a given gauge orbit, all any metrics are equivalent up to a diffeo/Weyl transformation, and so we simply consider a representative for each gauge orbit (we obviously take the one that lies on our gauge fixing) and then use a delta function. More concretely, if we let $\zeta$ represent both diffeomorphisms and Weyl transformations, then we have the relation 
+As we mentioned at the end of the previous lecture, we are actually going to change the form of our path integral by using the Faddeev-Popov method. The idea is this: along a given gauge orbit, all metrics are equivalent up to a diffeo/Weyl transformation, and so we simply consider a representative for each gauge orbit (we obviously take the one that lies on our gauge fixing) and then use a delta function. More concretely, if we let $\zeta$ represent both diffeomorphisms and Weyl transformations, then we have the relation 
 \be 
 \label{eqn:InverseFaddeevPopov}
     \int d\tau D\zeta \, \del\big(g - g_0^{\zeta}(\tau) \big) \Delta_{FP}[g] = 1,
 \ee 
-where we have introduced the parameter $\tau$ which just labels which gauge orbit we are in. In case of potential confusion, let's just explain what \Cref{eqn:InverseFaddeevPopov} means again: we want to consider a specific metric, which we call $g$, and we do this by considering gauge transformations ($\zeta$) of a given representative of a gauge orbit ($g_0$) and then considering all the orbits ($\tau$) to make sure we don't just get zero.\footnote{By that we mean that we consider the gauge orbit that our $g$ lies in.} The term $\Delta_{FP}$ is the so-called \textit{Faddeev-Popov determinant} and it arises to take into account the Jacobian factor.\footnote{Its origin is analgous to the result $\int dx \del\big(f(x)\big) = 1/|f'|$.} 
+where we have introduced the parameter $\tau$ which just labels which gauge orbit we are in. In case of potential confusion, let's just explain what \Cref{eqn:InverseFaddeevPopov} means again: we want to consider a specific metric, which we call $g$, and we do this by considering gauge transformations ($\zeta$) of a given representative of a gauge orbit ($g_0$) and then considering all the orbits ($\tau$) to make sure we don't just get zero.\footnote{By that we mean that we consider the gauge orbit that our $g$ lies in.} The term $\Delta_{FP}$ is the so-called \textit{Faddeev-Popov determinant} and it arises to take into account the Jacobian factor.\footnote{Its origin is analogous to the result $\int dx \del\big(f(x)\big) = 1/|f'|$.} 
 
-To ground ourselves in why on earth we are talking about this, it follows immediately that if we chose our $g$ to be the $g$ integrated over in our path integral, the delta function will remove this integral and replace it with integrals over $\tau$ and $\zeta$. The $\zeta$ integral, though, is just the integral over the gauge orbits and so will just give exactly the Vol factor, and so that will go. We are therefore left with just the integral over $\tau$. In doing this, we essentially have inserted the Faddeev-Popov determinant into the path integral. It is important, therefore, to have an expression for it. Before doing that, it is instructive to do the following things. 
+To ground ourselves on why on earth we are talking about this, it follows immediately that if we chose our $g$ to be the $g$ integrated over in our path integral, the delta function will remove this integral and replace it with integrals over $\tau$ and $\zeta$. The $\zeta$ integral, though, is just the integral over the gauge orbits and so will just give exactly the Vol factor, and so that will go. We are therefore left with just the integral over $\tau$. In doing this, we essentially have inserted the Faddeev-Popov determinant into the path integral. It is important, therefore, to have an expression for it. Before doing that, it is instructive to do the following things. 
 
 \bcl
 \label{claim:InvariantMeasure}
@@ -65,11 +65,11 @@ So we have a formula that includes the Faddeev-Popov determinant, but we don't k
 \ese 
 where $v$ is the infinitesimal diffeomorphism and $\phi$ the Weyl transformation. Note we have replaced the subscript $0$ for a hat notation, this is just to make the notation a bit less cluttered. We also need to take into account the deviation of the metric as we move between gauge orbits, i.e. the derivative w.r.t. $\tau$. Now $\tau$ is what that takes us from one gauge orbit to another. There is no reason it needs to only be one factor, in the sense that multiple things could contribute to moving from one orbit to another, and so we introduce an index $\tau_i$. So the full transformation is 
 \bse
-    \del \hat{g}_{\a\beta} = \nabla_{\a} v_{\beta} + \nabla_{\beta}v_{\a} + \phi \hat{g}_{\a\beta} + \frac{\p \hat{g}}{\p\tau_i} \del\tau_i.
+    \del \hat{g}_{\a\beta} = \nabla_{\a} v_{\beta} + \nabla_{\beta}v_{\a} + \phi \hat{g}_{\a\beta} + \bigg(\frac{\p \hat{g}}{\p\tau_i}\bigg)_{\a\beta} \del\tau_i.
 \ese 
 Plugging this into \Cref{eqn:InverseFaddeevPopov}, we have 
 \bse 
-    \int d\tau_i Dv D\phi \, \del \bigg( \nabla_{\a} v_{\beta} + \nabla_{\beta}v_{\a} + \phi \hat{g}_{\a\beta} + \frac{\p \hat{g}}{\p\tau_i} \del\tau_i\bigg) \Delta_{FP}[g] = 1.
+    \int d\tau_i Dv D\phi \, \del \bigg( \nabla_{\a} v_{\beta} + \nabla_{\beta}v_{\a} + \phi \hat{g}_{\a\beta} + \bigg(\frac{\p \hat{g}}{\p\tau_i}\bigg)_{\a\beta} \del\tau_i\bigg) \Delta_{FP}[g] = 1.
 \ese 
 
 Now recall that the Fourier form of a delta function is 
@@ -120,7 +120,7 @@ which we get from \Cref{eqn:Berezin0} and \Cref{eqn:Berezin1}. Comparing this to
 we see that a Fermionic variable behaves analogously to a Bosonic delta function.
 \er 
 
-We then extend the idea to a function of $n$ Grassmann variables:
+We then extend the integration definitions to a function of $n$ Grassmann variables:
 \bse 
     \int \psi^{a_1}\psi^{a_2}...\psi^{a_n} d^n\psi = \int \psi^{a_1}\psi^{a_2}...\psi^{a_n} d\psi^{a_n}d\psi^{a_{n-1}}...d\psi^{a_1} = \epsilon^{a_1a_2...a_n},
 \ese
@@ -143,7 +143,7 @@ The Pfaffian of a $2N\times 2N$ antisymmetric matrix is given by
 \ed 
 
 \bcl 
-We claim without proof\footnote{Although a quick Google search should do the trick for anyone interested.} that, for Grassmann variables the following holds 
+We claim without proof\footnote{Although a quick Google search should do the trick for anyone interested.} that, for Grassmann variables, the following holds 
 \bse 
     \big(\text{Pfaff}(A)\big)^2 = \det A.
 \ese 
@@ -157,7 +157,7 @@ This now looks more interesting. Recall that for our Bosonic (i.e. symmetric var
 \bse 
     \int e^{-\frac{1}{2}B_{ab}\phi^a\phi^b} d^{2N}\phi = \sqrt{\frac{(2\pi)^{2N}}{\det B}},
 \ese 
-and so we seem up to a factor, switching between symmetric and antisymmetric Gaussian integral is equivalent to inverting the determinant on of the matrix. This is exactly what we need for our problem, and so we return to our scheduled programme. 
+and so we see, up to a factor, switching between symmetric and antisymmetric Gaussian integral is equivalent to inverting the determinant on of the matrix. This is exactly what we need for our problem, and so we return to our scheduled programme. 
 
 \section{Ghost Fields}
 
@@ -191,7 +191,7 @@ which comes from \Cref{eqn:Berezin0} and \Cref{eqn:Berezin1}. We have
 \ese 
 where 
 \bse 
-    A = \prod_{j} 2\pi i \int d^2\sig \sqrt{\Hat{g}} b^{\a\beta} \bigg(\frac{\p \hat{g}}{\p\tau_j}\bigg)_{\a\beta}.
+    A = \prod_{j=1}^m 2\pi i \int d^2\sig \sqrt{\Hat{g}} b^{\a\beta} \bigg(\frac{\p \hat{g}}{\p\tau_j}\bigg)_{\a\beta}.
 \ese
 Now we can rescale the $b$ and $c$ fields such that we get a $1/2\pi$ in the exponential, making it more comparable to our Polyakov action. In this way we define the
 \mybox{
@@ -222,13 +222,138 @@ Thankfully, this is easily fixed. We simply pick a certain number of points (whi
 \ee 
 where we have encapsulated the fixing of the coordinates by the fact that we require that $v_{\a}$ (the infinitesimal diffeomorphism) vanish at these points. 
 
-Following the method of above, again replacing $v_{\a}\to c_{\a}$, and using the fact that, because they are Grassmann variables, 
-\bse
-    \del\big(c_{\a}(\hat{\sig}_j)\big) = \prod_{\a=1}^2c_{\a}(\hat{\sig}_j),
-\ese 
-we get the corrected partition function
+Following the method of above, again replacing $v_{\a}\to c_{\a}$. So, after taking the Fourier transform, we get an insertion of the form 
 \bse 
-    Z[\Hat{g}] = A \int DXDcDb \exp\Big( -S_{\text{Poly}}[X,\Hat{g}] - S_{\text{ghost}}[b,c,\Hat{g}]\Big)\prod_{j,\a} c_{\a}(\hat{\sig}_j).
+    \int d \theta e^{\theta^{\a} c_{\a}(\hat{\sig}_j) } = \prod_{\a=1}^2 c_{\a}(\hat{\sig}_j)
 \ese 
+where we have used the fact that we are considering Grassmann variables. We then get the corrected partition function
+\bse 
+    Z[\Hat{g}] = A \int DXDcDb \exp\Big( -S_{\text{Poly}}[X,\Hat{g}] - S_{\text{ghost}}[b,c,\Hat{g}]\Big)\prod_{j=1}^f \prod_{\a=1}^2 c_{\a}(\hat{\sig}_j),
+\ese 
+where we have used the label $f$ for the number of points we need to fix. 
 
 \section{Inserting Vertex Operators}
+
+We now want to return to our interacting picture. Recall that essentially what we have is the insertion of a set number of vertex operators (4 in the diagrams drawn previously) onto our sphere (or torus or whatever). We therefore need to insert these vertex operators into our path integral. For generality, let's say we are inserting $n$ vertex operators.
+
+Now, it is important that we preserve our diffeomorphism and Weyl invariance with these insertions, as otherwise we will not be considering our Nambu-Goto action. Our vertex insertions therefore take the form 
+\bse 
+    \int d\sig_i \sqrt{g} V(\sig_i),
+\ese 
+where $V$ is a scalar under diffeomorphisms and has the opposite Weyl transformation to $g$. So if we go with the convention 
+\bse 
+    g_{\a\beta} \to e^{-\phi} g_{\a\beta},
+\ese 
+we require that $V$ transforms under Weyl transformations with weight $1$. Putting these together means that $V$ transforms under conformal transformations as a tensor plus a Weyl factor, which is a primary operator! In fact, it is a weight $(1,1)$ primary operator.
+
+We can use the position fixings talked about in the last section to fix the position of $f$ of these $n$ vertex operators. That is, we just choose the positions of $f$ of the vertex operators to be the $\hat{\sig}_j$s. Inserting these we get an expression for the scattering amplitude path integral\footnote{We have dropped the factors of $2\pi i$ from the definition of $A$, just to slightly shorten the massive expression.}
+
+\mybox{
+\bse 
+    \begin{split}
+        \cA  =  \int DXDcDb \bigg[\prod_{k=1}^m \int d^2\sig \sqrt{\hat{g}} \bigg(\frac{\p \hat{g}}{\p \tau_k}\bigg)_{\a\beta} b^{\a\beta} \bigg] \bigg[ \prod_{j=1}^f & \prod_{\a=1}^2 c_{\a}(\hat{\sig}_j)  \sqrt{g} V_j(\hat{\sig}_j) \bigg] \\
+        &\times  \bigg[\prod_{j=f+1}^n \int d\sig_j \sqrt{g} V_j(\sig_j)\bigg] e^{-(S_{\text{P}} + S_{\text{g}})}
+    \end{split}
+\ese 
+}
+
+\br 
+There is a nice result in here about the number of vertex insertions compared to the number of points we fix. We will see that $f$ is a fixed number and for the sphere it is $f=3$. If we then only consider inserting $n=2$ vertex operators, we see that there is a position left unfixed by something and so we end up with an infinite result. This is just the condition that if we consider the amplitude for a propagator (which for us is clearly just two insertions) and impose the mass-shell condition (which we do here, as will become clearer later) we get an infinite result. 
+\er 
+
+\section{The $P$ Operator}
+
+\subsection{Checking $c$ and $b$}
+
+We need to be careful with the above expression. Remember that $b$ and $c$ are Grassman variables, and so if we don't have exactly the right number of each, our entire integral vanishes. To look at this problem, let's first go back and look at the ghost action again:
+\bse 
+    S_{\text{ghost}} := \frac{1}{2\pi} \int d^2\sig \sqrt{\hat{g}} b^{\a\beta} \Big( \nabla_{\a} c_{\beta} + \nabla_{\beta} c_{\a} - \hat{g}_{\a\beta} \nabla \cdot c\Big).
+\ese 
+We now introduce a map $P$ that maps a vector field to a symmetric, traceless 2-tensor such that 
+\be 
+\label{eqn:PMap}
+    Pc = \nabla_{\a} c_{\beta} + \nabla_{\beta} c_{\a} - \hat{g}_{\a\beta} \nabla \cdot c,
+\ee 
+from which we see we can write the ghost action as\footnote{We shall drop the $1/2\pi$ factor here, mainly because Dr. Minwalla doesn't have it and it's just a number so it's not vital to our understanding.} 
+\be 
+\label{eqn:SGhostWithP}
+    S_{\text{ghost}} =  (b,Pc),
+\ee
+where $(\cdot,\cdot)$ is the inner product on the worldsheet, defined by 
+\bse 
+    (A, B) :=  \int d^2\sig \sqrt{\hat{g}} A^{\a\beta} B_{\a\beta}.
+\ese 
+We want to study the map $P$ a bit more closely. 
+
+Recall that $Pc$ is the change in the metric due to infinitesimal $c$, after you then subtract a suitable Weyl part, to remove the change to the trace. Now suppose that the result of this vanishes, that is this Weyl transformation cancels everything. We are then considering an unfixed diffeomorphism for this specific vector field $c$, i.e. a conformal transformation w.r.t. $c$. What we are saying here is that there is a one-to-one correspondance between the zero modes of $c$ and the unfixed diffeomorphisms, which is just $f$
+
+Now note that, using integration by parts on our ghost action, we could equally have the inner product where it is the $b$ field that is acted on. As we have a good inner product this is just 
+\bse 
+    (b,Pc) = (P^{\dagger}b,c).
+\ese 
+Now, a zero mode of $P^{\dagger}$ means that for that $b$ \textit{any} $c$ field will give vanishing inner product $(b,Pc) = 0$. Which, as $Pc$ tells us about how the metric changes, means that $b$ lies in the space orthogonal to the space of metrics that can be obtained via traceless diffeomorphisms. In the gauge orbit drawing, we see this simply as the zero modes of $b$ being changes in equivalence classes, or changes in $\tau$, which is $m$
+
+To summarise:
+\begin{itemize}
+    \item The number of zero modes in $c$ is $f$, and 
+    \item The number of zero modes in $b$ is $m$.
+\end{itemize}
+These are exactly the conditions we need in order for our integral not to vanish!
+
+\subsection{$P^{\dagger}P$}
+
+Let's now consider the operator $P^{\dagger}P$, which maps vector fields to vector fields. Let's assume we are on some manifold and we have diagonalised this operator, with eigenvectors $c_m(\sig)$ and eigenvalues $\lambda_m$.  We use these eigenvectors as a basis, and so can express an arbitrary $c$ component-wise using these $c_m$s. 
+\bse 
+    c_{\a}(\sig) = \sum_m \gamma_m c_{m\a} (\sig),
+\ese 
+where by $c_{m\a}$ we obviously mean $(c_m)_{\a}$. 
+
+So we have\footnote{We drop the $(\sig)$ to lighten notation.} 
+\bse 
+    P^{\dagger}P c_m = \lambda_m c_m.
+\ese
+Now if $Pc_m$ is non-vanishing we also obtain an eigenvalue equation 
+\bse 
+    PP^{\dagger}(Pc_m) = \lambda (Pc_m),
+\ese 
+which is clearly related to the $b$ fields. So we see that the spectrum of $P^{\dagger}P$ and $PP^{\dagger}$ are identical, apart from in the zero mode sector. So, outside the zero mode part, for every $c_m$ we can define a corresponding $b_m := Pc_m$. These will make a basis for the $b$s and so we have 
+\bse 
+    b_{\a} = \sum_m \rho_m Pc_{m\a}
+\ese 
+outside the zero mode sector. Plugging this into our ghost action \Cref{eqn:SGhostWithP}, we have
+\bse 
+    \begin{split}
+        S_{\text{ghost}} & = \sum_{m,n} \rho_m \gamma_n (Pc_{m\a}, Pc_{n\beta}) \\
+        & = \sum_{m,n} \rho_m \gamma_n (c_{m\a}, P^{\dagger} Pc_{n\beta}) \\
+        & = \sum_{m,n} \rho_m \gamma_n \lambda_n (c_{m\a}, c_{n\beta}) \\
+        & = \sum_m \rho_m \gamma_m \lambda_m \delta_{\a\beta},
+    \end{split}
+\ese 
+where we have used the fact that the basis elements are orthonormal. So we see in this basis that the contribution to the amplitude from non-zero mode part of the ghost action is simply of the form 
+\bse 
+    \exp\bigg( - \sum_m \rho_m \gamma_m \lambda_m \delta_{\a\beta} \bigg).
+\ese 
+The zero mode contribution to the amplitude is contained completely within the products worked out before, i.e. the $m$ $b$ terms and the $f$ $c$ terms. Now, because there is no zero mode contribution to the exponential above, unless we have \textit{all} the zero modes in these product factors our integral will vanish (as there will be an integration variable that has nothing to act on, and these are Grassman variables). But each factor in the product is of the form 
+\bse 
+    \text{zero mode + non-zero mode},
+\ese 
+and so we we don't have any non-zero mode contributions in these product factors. Therefore, we can do the integral over the non-zero mode part and obtain the determinant of $P^{\dagger}P$, which we denote $\det'(P^{\dagger}P)$ where the $'$ tells us its only the non-zero mode part. 
+
+\subsection{Zero Mode Sector}
+
+Now what about the zero mode parts? First let's consider the $b$ part:
+\bse 
+    \prod_{k=1}^m \int d^2\sig \sqrt{\hat{g}} \bigg(\frac{\p\hat{g}}{\p\tau_k}\bigg)_{\a\beta} b^{\a\beta} = \prod_{k=1}^m \bigg( \frac{\p\hat{g}}{\p \tau_k} , b\bigg),
+\ese 
+where the RHS is the inner product. We only want to consider the zero mode parts, so if we label the eigenfunctions by $B^0_j$ and the coefficients by $\rho^0_j$ we get 
+\bse 
+   \int \prod_{k=1}^m d\rho^0_j \bigg( \frac{\p\hat{g}}{\p\tau_k}, B^0_j\bigg) \rho^0_j \sim \det\bigg( \frac{\p\hat{g}}{\p\tau_k}, B^0_j \bigg)
+\ese 
+
+This determinant is actually really important and is tied up in the fact that we want the result of our integral to be independent of how we choose to parameterise the $\tau_k$s. That is, it makes our integral invariant under $\tau_k \to \tau_k'$.
+
+Now what about the $c$ insertions? The same arguments will give us 
+\bse 
+    \det\Big( c^0_i(\hat{\sig}_j)\Big),
+\ese 
+where $i$ and $j$ tell us the position in the matrix. Unlike the $b$ case, this is not some Jacobian factor, but simply a determinant result. 
