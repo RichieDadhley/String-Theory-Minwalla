@@ -6,9 +6,9 @@ Recall that we defined a holomorphic primary operator of weight $h$ to be one th
 \bse 
     \cO(z) = \bigg(\frac{\p \omega}{\p z}\bigg)^{h} \cO(\omega)
 \ese 
-under the conformal transformation $z\to \omega(z)$. Now we note the transformation of purely covariant tensors under diffeomorphisms\footnote{We're considering flat space here, so don't need to worry about covariant derivatives and Christoffel symbols.}
+under the conformal transformation $z\to \omega(z)$. Now we note the transformation of (the components of) purely covariant tensors under diffeomorphisms\footnote{We have a flat metric and so we need not worry about covariant derivatives and Christoffell symbols.}
 \bse 
-   A_{\a\beta\gamma...}(z) = \bigg(\frac{\p \widetilde{\a}}{\p\a}\bigg) \bigg(\frac{\p \widetilde{\beta}}{\p \beta}\bigg) \bigg( \frac{\p\widetilde{\gamma}}{\p\gamma} ...\bigg)  A_{\widetilde{\a}\widetilde{\beta}\widetilde{\gamma}...}(\omega) 
+   A_{\a\beta\gamma...}(z) = \bigg(\frac{\p \widetilde{\a}}{\p\a}\bigg) \bigg(\frac{\p \widetilde{\beta}}{\p \beta}\bigg) \bigg( \frac{\p\widetilde{\gamma}}{\p\gamma}\bigg)...  A_{\widetilde{\a}\widetilde{\beta}\widetilde{\gamma}...}(\omega) 
 \ese
 so if we take $\a=\beta=\gamma = ... = z$, where there is a total of $h$ terms and similarly $\widetilde{\a} = ...= \omega$ we simply get 
 \bse 
@@ -17,11 +17,11 @@ so if we take $\a=\beta=\gamma = ... = z$, where there is a total of $h$ terms a
 which matches our primary operator transformation. It is important to note, though, that the primary operator transformation is for \textit{conformal} transformations, whereas the tensor is for \textit{diffeomorphisms}. 
 
 \br 
-As normal we have only considered the holomorphic case, but clearly there is nothing special about it over the antiholomorphic part, and so we have an analogous expression for that. 
+    As normal we have only considered the holomorphic case, but clearly there is nothing special about it over the antiholomorphic part, and so we have an analogous expression for that. 
 \er 
 
 \br 
-Note also that if we took a \textit{contravariant} tensor (i.e. indices upstairs) we would get a primary operator of weight $-h$. 
+    Note also that if we took a \textit{contravariant} tensor (i.e. indices upstairs) we would get a primary operator of weight $-h$.
 \er 
 
 Now recall the transformation of the stress-energy tensor under a conformal transformation: we take the residue of $\epsilon(z)T(z)T(\omega)$, where the OPE is given by
@@ -54,22 +54,19 @@ where the minus sign comes from the fact that we need to undo the effect of the 
 \ese
 where we have included the antiholomorphic term too.\footnote{Note they appear as separate expressions as $\del\phi(z,\overline{z})$ is a sum of a holomorphic and an antiholomorphic term, and so the unwanted terms vanish when we take the derivatives.}
 
-So we've found how two particular components of $T$ transform. However, what we really want is the covariant expression (i.e. how all the components transform). Its easy to convince yourself that the general expression takes the form 
+So we've found how two particular components of the Stress-Energy tensor transform. However, what we really want is the covariant expression (i.e. how all the components transform). Its easy to convince yourself that the general expression takes the form 
 \bse 
     \del_WT_{\a\beta} = a \p_{\a}\p_{\beta} \del\phi + b\nabla^2 g_{\a\beta} \del\phi,
 \ese 
-for some constants $a,b$. Note, as it is a covariant expression, this does not depend on the choice of basis, and so we could have $\a,\beta = \sig^1,\sig^2$ or we could have $\a,\beta=z,\overline{z}$. If we use the $z,\overline{z}$ coordinates, it follows immediately that (recall $g_{zz} = 0 = g_{\overline{z}\overline{z}}$ in the conformally flat space)
+for some constants $a,b$. Note, as it is a covariant expression, this does not depend on the choice of basis, and so we could have $\a,\beta = \sig^1,\sig^2$ or we could have $\a,\beta=z,\overline{z}$. If we use the $(z,\overline{z})$ coordinates, it follows immediately that (recall $g_{zz} = 0 = g_{\overline{z}\overline{z}}$ in the conformally flat space)
 \bse 
     -\frac{c}{12} = a = -\frac{\widetilde{c}}{12}.
 \ese 
 
-This gives us our first nice result: 
-\mybox{
-a gravitational anomaly
+This gives us our first nice result: a gravitational anomaly
 \be 
     c = \widetilde{c}.
 \ee 
-}
 
 Next, recall that $T$ is conserved, i.e. $\p^{\a}T_{\a\beta} = g^{\a\gamma}\p_{\gamma}T_{\a\beta} = 0$. This gives us 
 \bse 
@@ -81,7 +78,7 @@ Next, recall that $T$ is conserved, i.e. $\p^{\a}T_{\a\beta} = g^{\a\gamma}\p_{\
 \ese 
 
 \br 
-We have actually cheated slightly here because we've ignored the terms that arise from the derivatives of the metric (which has coordinate dependence through $\phi(z,\overline{z})$). However, we claim, without proof, that these cancel exactly with the Christoffel symbols we didn't include before. 
+    We have actually cheated slightly here because we've ignored the terms that arise from the derivatives of the metric (which has coordinate dependence through $\phi(z,\overline{z})$). However, we claim, without proof, that these cancel exactly with the Christoffel symbols we didn't include before. 
 \er 
 
 Now we consider the trace. 
@@ -97,11 +94,11 @@ Now we consider the trace.
 where we have used the fact that we are considering a 2D CFT and so the trace of the metric is 2.
 
 \bcl
-The Ricci scalar for our transformation is given by 
-\be 
-\label{eqn:RicciScalarConformal}
-    R = -\nabla^2\del\phi.
-\ee 
+    The Ricci scalar for our transformation is given by 
+    \be 
+    \label{eqn:RicciScalarConformal}
+        R = -\nabla^2\del\phi.
+    \ee 
 \ecl 
 
 We shall not prove this here,\footnote{Mainly because I did it, but ended up with an overall factor of $2$ out, and I didn't want to have to recalculate all the $\Gamma$s etc.} but just use it. We therefore have 
@@ -119,14 +116,27 @@ The Weyl Anomaly
 }
 
 \br 
-A different, but similar, approach to proving this result is given by Dr. Tong in section 4.4.2.
+    A different, but similar, approach to proving this result is given by Dr. Tong in section 4.4.2.
 \er 
 
 Now a few comments are in order:
 \begin{itemize}
     \item For flat space we have $\langle {T^{\a}}_{\a}\rangle = 0$. This agrees with our \textit{classical} result that the stress-energy tensor is traceless. However, when we introduce curvature into the problem, this no longer holds. 
-    \item This result makes sense. We argue that the result must be the same for all states in the system. This comes from the idea that we are only considering small, local deformations of the metric, and so we are considering short distances. But at short distances, all finite energy states looks more and less the same, and so we expect the result to hold for any state. If it holds for any state, the result must depend only on the background metric and not the states themselves. So we need something which is dimension 2, a scalar and depends on the background metric... 10 points to anyone who can think of such an object that is not the Ricci scalar. 
+    \item This result makes sense. We argue that the result must be the same for all states in the system. This comes from the idea that we are only considering small, local deformations of the metric, and so we are considering short distances. But at short distances, all finite energy states looks more or less the same, and so we expect the result to hold for any state. If it holds for any state, the result must depend only on the background metric and not the states themselves. So we need something which is dimension 2, a scalar and depends only on the background metric... 10 points to anyone who can think of such an object that is not the Ricci scalar. 
 \end{itemize}
+
+Now you might wonder why we call the above result an "anomaly". The answer to this is the fact that, as we have seen, Weyl transformations correspond to \textit{gauge} symmetries of our system and so must have no effect at all on the results --- that two theories related by a Weyl symmetry are the same point in the space of solutions. However we have just seen that the expectation value of the energy-momentum tensor is effected by such a Weyl transformation, and so the only way we can rescue our theory is to require 
+\mybox{
+\be 
+\label{eqn:c=0}
+    c=0.
+\ee 
+}
+We will see that this result has a massive impact on our results (see Lecture 11). 
+
+\br 
+    Recall that we called the metric in String theory a \textit{dynamical} metric, as it was not fixed in the action itself. The above result is sometimes worded, therefore, as "dynamical backgrounds require vanishing central charge".\footnote{Dr. Tong words it in a similar way to this at the start of Chapter 5.} There is an intuitive benefit to using this language: a dynamical background can be thought of as one that `wiggles about' and varies locally, and so has varying curvature. We then see straight away that we require $c=0$ in the above formula. This is, of course, exactly the same as talking about Weyl transformations, as Weyl transformations correspond to a locally deformation of the coordinates, which are the `wiggles'.
+\er 
 
 \subsection{Liouville Field Theory}
 
@@ -140,7 +150,7 @@ Let us once again recall the definition for the transformation of a primary oper
 \bse 
     \phi(\omega) = \bigg(\frac{\p z}{\p \omega} \bigg)^h \phi\big(z(\omega)\big),
 \ese 
-where we've used $\phi$ instead of our usual $\cO$ and reversed the roles of $\omega$ and $z$.\footnote{These are just labels so of course we can do this freely.} Now lets consider the specific case for the transformation from the cylinder to the plane, which we recall is given by 
+where we've used $\phi$ instead of our usual $\cO$ and reversed the roles of $\omega$ and $z$.\footnote{These are just labels so of course we can do this freely.} Now let's consider the specific case for the transformation from the cylinder to the plane, which we recall is given by 
 \bse 
     \omega = \sig + i\tau, \qquad z = e^{-i\omega}.
 \ese 
@@ -158,7 +168,7 @@ where we have included a factor of $h$ in the power of $z$ as it will cancel nic
     \phi(\omega) = (-i)^h \sum_n z^{-n} \phi_n = (-i)^h \sum_n e^{in\omega} \phi_n.
 \ese 
 
-Now, we want a a unitary theory, as this gives us Minkowski spacetime probabilities that are conserved. However, we are working in Euclidean space (that is we have taken the Wick rotation in defining $\omega$ with the $i$ in it), so we first go back to Lorentzian space (which is where our problem really lies, and so we should impose the condition here), 
+Now, we want a unitary theory, as this gives us Minkowski spacetime probabilities that are conserved. However, we are working in Euclidean space (that is we have taken the Wick rotation in defining $\omega$ with the $i$ in it), so we first go back to Lorentzian space (which is where our problem really lies, and so we should impose the condition here), 
 \bse 
     \phi(\omega_L) = (-i)^h \sum_n e^{in(\sig+\tau)}\phi_n.
 \ese 
@@ -170,28 +180,28 @@ We then see, up to a potential minus sign, that
 Note if we had taken the complex conjugate in Euclidean space, we would not have got this result (due to the extra factor of $i$). However, once we have this result, we can just impose it on the Euclidean expression.
 
 \bp 
-The $\phi_n$s have energy $-n$.
+    The $\phi_n$s have energy $-n$.
 \ep 
 
 \bq 
-Consider the commutator $[L_0,\phi_n]$ for the $\phi_n$ defined above. We write both in terms of their integrals over $T(z)$ and $\phi(\omega)$, respectively, and use the method we used previously. We have 
-\bse 
-    \begin{split}
-        [L_0,\phi_n] & = \bigg(\oint \frac{dz}{2\pi i}\oint \frac{d\omega}{2\pi i} - \oint \frac{d\omega}{2\pi i}\oint \frac{dz}{2\pi i}\bigg) zT(z) \omega^{n+h-1}\phi(\omega) \\
-        & = \oint\frac{d\omega}{2\pi i} \text{Res}\bigg[ z\omega^{n+h-1}\bigg( \frac{h\phi(\omega)}{(z-\omega)^2} + \frac{\p\phi(\omega)}{z-\omega} + ...\bigg)\bigg] \\
-        & = \oint \frac{d\omega}{2\pi i} \big[ \omega^{n+h}\p\phi(\omega) + h\omega^{n+h-1}\phi(\omega) \big] \\
-        & = \oint \frac{d\omega}{2\pi i} (-n-h +h)\omega^{n+h-1}\phi(\omega) \\
-        & = -n \phi_n.
-    \end{split}
-\ese 
+    Consider the commutator $[L_0,\phi_n]$ for the $\phi_n$ defined above. We write both in terms of their integrals over $T(z)$ and $\phi(\omega)$, respectively, and use the method we used previously. We have 
+    \bse 
+        \begin{split}
+            [L_0,\phi_n] & = \bigg(\oint \frac{dz}{2\pi i}\oint \frac{d\omega}{2\pi i} - \oint \frac{d\omega}{2\pi i}\oint \frac{dz}{2\pi i}\bigg) zT(z) \omega^{n+h-1}\phi(\omega) \\
+            & = \oint\frac{d\omega}{2\pi i} \text{Res}\bigg[ z\omega^{n+h-1}\bigg( \frac{h\phi(\omega)}{(z-\omega)^2} + \frac{\p\phi(\omega)}{z-\omega} + ...\bigg)\bigg] \\
+            & = \oint \frac{d\omega}{2\pi i} \big[ \omega^{n+h}\p\phi(\omega) + h\omega^{n+h-1}\phi(\omega) \big] \\
+            & = \oint \frac{d\omega}{2\pi i} (-n-h +h)\omega^{n+h-1}\phi(\omega) \\
+            & = -n \phi_n.
+        \end{split}
+    \ese 
 \eq 
 
 \br 
-In the proof above we showed that the commutator gave $-n\phi_n$, so you might question why that means that the energy is $-n$. That is, what we have really shown is
-\bse 
-    L_0\phi_n\ket{\cO} = (-n+h)\phi_n\ket{\cO},
-\ese 
-where the $h$ comes from the action of $L_0$ on the primary state $\ket{\cO}$. We could obviously just consider putting the identity at the origin and then $h=0$ and so you get $L_0\ket{\phi_n} = -n\ket{\phi_n}$. But this is exactly what we're doing; we're imagining placing $\phi(\omega)$ at the origin. 
+    In the proof above we showed that the commutator gave $-n\phi_n$, so you might question why that means that the energy is $-n$. That is, what we have really shown is
+    \bse 
+        L_0\phi_n\ket{\cO} = (-n+h)\phi_n\ket{\cO},
+    \ese 
+    where the $h$ comes from the action of $L_0$ on the primary state $\ket{\cO}$. We could obviously just consider putting the identity at the origin and then $h=0$ and so you get $L_0\ket{\phi_n} = -n\ket{\phi_n}$. But this is exactly what we're doing; we're imagining placing $\phi(\omega)$ at the origin. 
 \er 
 
 Notice that what we have just done is exactly the same as the idea of expanding $T$ in terms of the $L_m$s, and so \Cref{eqn:PhinDagger} tells us
@@ -223,22 +233,22 @@ If $\ket{\phi}$ is the initial primary state, whose operator has weight $h$, the
         (L_{-1})^3\ket{\phi}, \quad L_{-1}L_{-2}\ket{\phi}, \quad L_{-3}\ket{\phi},
     \end{gathered}
 \ese     
-et cetera. In fact that representation built is an irreducible representation. So if we know the spectrum of all the independent primary states, we can find the complete spectrum of our theory.
+et cetera. In fact the representation built is an irreducible representation. So if we know the spectrum of all the independent primary states, we can find the complete spectrum of our theory.
 
 \br 
-There is a subtle point to be noted. It is not necessarily true that all of the elements within a Verma module are independent. For example,\footnote{Thanks to Dr. Tong for giving this example and sparing me the trouble of finding one.} if 
-\bse 
-    c = \frac{2h(5-8h)}{(2h+1)},
-\ese
-then the combination
-\bse 
-    L_{-2}\ket{\phi} - \frac{3}{2(2h+1)} (L_{-1})^2\ket{\phi}
-\ese 
-has vanishing norm. These combined states are known as \textit{null states}, and, as we have just seen, depend on $c$ and $h$.
+    There is a subtle point to be noted. It is not necessarily true that all of the elements within a Verma module are independent. For example,\footnote{Thanks to Dr. Tong for giving this example and sparing me the trouble of finding one.} if 
+    \bse 
+        c = \frac{2h(5-8h)}{(2h+1)},
+    \ese
+    then the combination
+    \bse 
+        L_{-2}\ket{\phi} - \frac{3}{2(2h+1)} (L_{-1})^2\ket{\phi}
+    \ese 
+    has vanishing norm. These combined states are known as \textit{null states}, and, as we have just seen, depend on $c$ and $h$.
 \er 
 
 \br 
-We now also see a further justification for why we even introduced primary operators in the first place; they play a vital role in the representation theory. 
+    We now also see a further justification for why we even introduced primary operators in the first place; they play a vital role in the representation theory. 
 \er 
 
 Note as we go down\footnote{Or up, I guess, depending on how you write it...} the Verma module the value of $h$ increases. We can call the subset with equal $h$ a \textit{level} of the Verma module. We start the level label at $N=0$ for the primary operator itself. On each level we can define a matrix, whose elements are given by the inner products of the members of the level. At level $N=1$ we only have one element given by 
@@ -284,7 +294,7 @@ That is,
     6h & 4h + c/2
     \end{pmatrix}.
 \ese 
-Then, from the requirement at the matrix by positive semi-definite (i.e. its determinant must be non-negative), along with $h\geq 0$, we have
+Then, from the requirement that the matrix by positive semi-definite (i.e. its determinant must be non-negative), along with $h\geq 0$, we have
 \bse 
     \frac{1}{2}c + (c-5)h + 8h^2 \geq 0.
 \ese 

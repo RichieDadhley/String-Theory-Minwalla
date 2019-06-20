@@ -10,7 +10,8 @@
 \usepackage{xcolor,tikz}
 \usetikzlibrary{patterns}
 \usetikzlibrary{decorations.markings}
-\usepackage{amsmath,amssymb,amsthm,mathrsfs,amsfonts,xfrac,pifont,bbold,physics}
+\usepackage{amsmath,stix,amssymb,amsthm,mathrsfs,amsfonts,xfrac,pifont,bbold,physics} % Stix is the thing that changed the font for colons.
+
 \usepackage[utf8]{inputenc}
 \usepackage{amsthm}
 \usepackage[breakable, theorems, skins]{tcolorbox}
@@ -20,6 +21,10 @@
             citecolor = red,
             anchorcolor = red]{hyperref}
 \usepackage{cleveref}
+
+
+\usepackage{soul}
+\usepackage{frcursive}
 
 % -------------------------------------------------------------------
 % Theorem Styles
@@ -150,15 +155,15 @@
 \newpage
 \section*{Acknowledgements}
 
-This set of notes is intended to accompany the lecture course on String Theory taught by Dr. Shiraz Minwalla from August 2018 to February 2019. The videos for the course are available on YouTube via the following link
+This set of notes is intended to accompany the lecture course on String Theory taught by Dr. Shiraz Minwalla from August 2018 to March 2019. The videos for the course are available on YouTube via the following link
 
 \begin{center}
-    \href{https://www.youtube.com/watch?v=96RaoTmBsTw&list=PL3PVFGnaPl_sCp2A87NVD8GT5Z8Oqw3Yr&index=1}{Dr. Shiraz Minwalla's String Theory Course}
+    \href{https://www.youtube.com/watch?v=96RaoTmBsTw&list=PL3PVFGnaPl_sCp2A87NVD8GT5Z8Oqw3Yr&index=1}{Dr. Shiraz Minwalla’s String Theory Course}
 \end{center}
 
 I have tried to correct any typos and/or mistakes I think I have noticed over the course. I have also tried to include additional information that I think supports the taught material well, which sometimes has resulted in modifying the order the material was taught. Obviously, any mistakes made because of either of these points are entirely mine and should not reflect on the taught material in any way. \\
 
-One of the main sources I have used to obtain the additional information is Dr. David Tong's String Theory notes, available via the following link 
+One of the main sources I have used to obtain the additional information is Dr. David Tong’s String Theory notes, available via the following link
 
 \begin{center}
     \href{http://www.damtp.cam.ac.uk/user/tong/string.html}{http://www.damtp.cam.ac.uk/user/tong/string.html}
@@ -175,6 +180,13 @@ These notes are currently a work in progress, so for updated notes, as well as a
 \end{center}
 
 These notes are not endorsed by Dr. Minwalla or TIFR.
+
+\vspace{1cm}
+
+\begin{flushright}
+    \Huge{{\cursive\setul{0.1ex}{}\ul{~~Richie Dadhley~~}}}
+\end{flushright}
+
 
 % -------------------------------------------------------------------
 % Contents
@@ -199,6 +211,9 @@ These notes are not endorsed by Dr. Minwalla or TIFR.
 \input{sections/08FreeBosons.tex}
 \input{sections/09Wicks.tex}
 \input{sections/10FaddeevPopov.tex}
+\input{sections/11sghost.tex}
+\input{sections/12ghostcurrent.tex}
+
 
 % -------------------------------------------------------------------
 % Bibliography/Further Readings

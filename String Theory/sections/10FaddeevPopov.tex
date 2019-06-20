@@ -29,34 +29,34 @@ To ground ourselves on why on earth we are talking about this, it follows immedi
 
 \bcl
 \label{claim:InvariantMeasure}
-The measure in \Cref{eqn:InverseFaddeevPopov} is the analogue to the Haar measure in Lie groups. That is it is left and right action invariant:
-\be
-\label{eqn:MeasureInvariantFP}
-    D(\zeta\zeta') = D\zeta = D(\zeta'\zeta)
-\ee 
+    The measure in \Cref{eqn:InverseFaddeevPopov} is the analogue to the Haar measure in Lie groups. That is it is left and right action invariant:
+    \be
+    \label{eqn:MeasureInvariantFP}
+        D(\zeta\zeta') = D\zeta = D(\zeta'\zeta)
+    \ee 
 \ecl 
 
 \bl 
-The Faddeev-Popov determinant is gauge invariant. 
+    The Faddeev-Popov determinant is gauge invariant. 
 \el 
 
 \bq 
-By definition we have 
-\bse 
-    \int d\tau D\zeta \, \del\big(g^{\zeta'} - g_0^{\zeta}(\tau) \big) \Delta_{FP}\big[g^{\zeta'}\big] = 1.
-\ese 
-Then using the invariance of the measure we have 
-\bse 
-    \begin{split}
-        \int d\tau D\zeta \, \del\big(g^{\zeta'} - g_0^{\zeta}(\tau) \big) \Delta_{FP}\big[g^{\zeta'}\big] & = \int d\tau D\zeta \, \del\big(g - g_0^{(\zeta')^{-1}\zeta}(\tau) \big) \Delta_{FP}[g] \\
-        & = \int d\tau D\zeta'' \, \del\big(g - g_0^{\zeta''}(\tau) \big) \Delta_{FP}[g],
-    \end{split}
-\ese 
-where $\zeta'' := (\zeta')^{-1}\zeta$. Finally just relabelling $\zeta'' \to \zeta$ in the last line gives us 
-\be 
-\label{eqn:FaddeevPopovInvariant}
-    \Delta_{FP}\big[g^{\zeta'}\big] = \Delta_{FP}[g].
-\ee 
+    By definition we have 
+    \bse 
+        \int d\tau D\zeta \, \del\big(g^{\zeta'} - g_0^{\zeta}(\tau) \big) \Delta_{FP}\big[g^{\zeta'}\big] = 1.
+    \ese 
+    Then using the invariance of the measure we have 
+    \bse 
+        \begin{split}
+            \int d\tau D\zeta \, \del\big(g^{\zeta'} - g_0^{\zeta}(\tau) \big) \Delta_{FP}\big[g^{\zeta'}\big] & = \int d\tau D\zeta \, \del\big(g - g_0^{(\zeta')^{-1}\zeta}(\tau) \big) \Delta_{FP}[g] \\
+            & = \int d\tau D\zeta'' \, \del\big(g - g_0^{\zeta''}(\tau) \big) \Delta_{FP}[g],
+        \end{split}
+    \ese 
+    where $\zeta'' := (\zeta')^{-1}\zeta$. Finally just relabelling $\zeta'' \to \zeta$ in the last line gives us 
+    \be 
+    \label{eqn:FaddeevPopovInvariant}
+        \Delta_{FP}\big[g^{\zeta'}\big] = \Delta_{FP}[g].
+    \ee 
 \eq 
 
 So we have a formula that includes the Faddeev-Popov determinant, but we don't know how to calculate it yet. In order to do this, let's consider gauge transformations close to the identity. In this case the metric transforms as 
@@ -109,15 +109,15 @@ Then we just choose our normalisation such that
     \int \psi d\psi = 1.
 \ee 
 \br 
-Note that for Grassmann (or Fermionic) variables we have 
-\bse 
-    \int (A + Ba) ada = A,
-\ese 
-which we get from \Cref{eqn:Berezin0} and \Cref{eqn:Berezin1}. Comparing this to the symmetric (or Bosonic) expression
-\bse 
-    \int (A+Ba) \del(a) da = A,
-\ese
-we see that a Fermionic variable behaves analogously to a Bosonic delta function.
+    Note that for Grassmann (or Fermionic) variables we have 
+    \bse 
+        \int (A + Ba) ada = A,
+    \ese 
+    which we get from \Cref{eqn:Berezin0} and \Cref{eqn:Berezin1}. Comparing this to the symmetric (or Bosonic) expression
+    \bse 
+        \int (A+Ba) \del(a) da = A,
+    \ese
+    we see that a Fermionic variable behaves analogously to a Bosonic delta function.
 \er 
 
 We then extend the integration definitions to a function of $n$ Grassmann variables:
@@ -136,20 +136,20 @@ Now consider the case of a Gaussian integral with Grassmann variables,
 \ese
 where we have used the fact that only the $N$ term in the sum doesn't give vanishing result along with the results above. The RHS here looks gross and so we introduce a definition
 \bd 
-The Pfaffian of a $2N\times 2N$ antisymmetric matrix is given by 
-\bse 
-    \text{Pfaff}(A) := \frac{1}{2^NN!} A_{a_1a_2}A_{a_3a_4}...A_{a_{2N-1}a_{2N}} \epsilon^{a_1a_2...a_{2N}}.
-\ese 
+    The Pfaffian of a $2N\times 2N$ antisymmetric matrix is given by 
+    \bse 
+        \text{Pfaff}(A) := \frac{1}{2^NN!} A_{a_1a_2}A_{a_3a_4}...A_{a_{2N-1}a_{2N}} \epsilon^{a_1a_2...a_{2N}}.
+    \ese 
 \ed 
 
 \bcl 
-We claim without proof\footnote{Although a quick Google search should do the trick for anyone interested.} that, for Grassmann variables, the following holds 
-\bse 
-    \big(\text{Pfaff}(A)\big)^2 = \det A.
-\ese 
+    We claim without proof\footnote{Although a quick Google search should do the trick for anyone interested.} that, for Grassmann variables, the following holds 
+    \bse 
+        \big(\text{Pfaff}(A)\big)^2 = \det A.
+    \ese 
 \ecl 
 
-This claim tells us, then, the for our Gaussian integral we have 
+This claim tells us, then, that for our Gaussian integral we have 
 \bse 
     \int e^{-\frac{1}{2}A_{ab}\psi^a\psi^b} d^{2N}\psi = \pm \sqrt{\det A}.
 \ese 
@@ -187,7 +187,7 @@ Then we do the integral over the $\xi_i$, using the fact that
 \ese 
 which comes from \Cref{eqn:Berezin0} and \Cref{eqn:Berezin1}. We have 
 \bse 
-    \Delta_{FP} = A \int Dc  Db \, \exp\bigg[2\pi i \int d^2\sig \sqrt{\hat{g}} b^{\a\beta} \bigg( \nabla_{\a} c_{\beta} + \nabla_{\beta}c_{\a}  - \hat{g}_{\a\beta}\nabla\cdot c\bigg)\bigg],
+    \Delta_{FP} = \int Dc  Db \, A \exp\bigg[2\pi i \int d^2\sig \sqrt{\hat{g}} b^{\a\beta} \bigg( \nabla_{\a} c_{\beta} + \nabla_{\beta}c_{\a}  - \hat{g}_{\a\beta}\nabla\cdot c\bigg)\bigg],
 \ese 
 where 
 \bse 
@@ -205,14 +205,14 @@ Ghost Action
 \mybox{
 \be 
 \label{eqn:PartionWithGhost}
-    Z[\Hat{g}] = A \int DXDcDb \exp\Big( -S_{\text{Poly}}[X,\Hat{g}] - S_{\text{ghost}}[b,c,\Hat{g}]\Big),
+    Z[\Hat{g}] = \int DXDcDb \, A \exp\Big( -S_{\text{Poly}}[X,\Hat{g}] - S_{\text{ghost}}[b,c,\Hat{g}]\Big),
 \ee
 }
 \noindent where we have used the comment made above \Cref{claim:InvariantMeasure} about inserting \Cref{eqn:InverseFaddeevPopov} into our path integral.
 
 \section{The Conformal Transformations}
 
-So what we've seen is that fixing the gauge of our system has resulted in the introduction of ghost fields which appear on an equal footing to do the dynamical $X$ fields. This statement is not quite true. In fact choosing our metric up to Weyl and diffeomorphisms as we have done does not completely fix the gauge of the system. This is just the discussion we had previously, and the remaining gauge comes from the conformal transformations. There is an actual problem associated with this: the space of conformal transformations is infinite, and so, left unchecked, our integral will just give infinity. 
+So what we've seen is that fixing the gauge of our system has resulted in the introduction of ghost fields which appear on an equal footing to do the dynamical $X$ fields. This statement is not quite true. In fact, choosing our metric up to Weyl and diffeomorphisms, as we have done, does not completely fix the gauge of the system. This is just the discussion we had previously, and the remaining gauge comes from the conformal transformations. There is an actual problem associated with this: the space of conformal transformations is infinite, and so, left unchecked, our integral will just give infinity. 
 
 This problem is actually something we have just been hiding during the whole lecture. It is something we should have addressed when we first introduced the Faddeev-Popov determinant. Why? Well because without fixing it we simply get $\Delta_{FP}=0$, which is useless. This follows because in \Cref{eqn:InverseFaddeevPopov} all we have done is fix the metric, but once the metric is fixed there could still be an unfixed gauge freedom corresponding to a conformal transformation and so we actually have an infinite number of `clicks' in our $g$ delta function. 
 
@@ -222,13 +222,13 @@ Thankfully, this is easily fixed. We simply pick a certain number of points (whi
 \ee 
 where we have encapsulated the fixing of the coordinates by the fact that we require that $v_{\a}$ (the infinitesimal diffeomorphism) vanish at these points. 
 
-Following the method of above, again replacing $v_{\a}\to c_{\a}$. So, after taking the Fourier transform, we get an insertion of the form 
+Following the method of above (again replacing $v_{\a}\to c_{\a}$) after taking the Fourier transform, we get an insertion of the form 
 \bse 
     \int d \theta e^{\theta^{\a} c_{\a}(\hat{\sig}_j) } = \prod_{\a=1}^2 c_{\a}(\hat{\sig}_j)
 \ese 
 where we have used the fact that we are considering Grassmann variables. We then get the corrected partition function
 \bse 
-    Z[\Hat{g}] = A \int DXDcDb \exp\Big( -S_{\text{Poly}}[X,\Hat{g}] - S_{\text{ghost}}[b,c,\Hat{g}]\Big)\prod_{j=1}^f \prod_{\a=1}^2 c_{\a}(\hat{\sig}_j),
+    Z[\Hat{g}] = \int DXDcDb \, A \exp\Big( -S_{\text{Poly}}[X,\Hat{g}] - S_{\text{ghost}}[b,c,\Hat{g}]\Big)\prod_{j=1}^f \prod_{\a=1}^2 c_{\a}(\hat{\sig}_j),
 \ese 
 where we have used the label $f$ for the number of points we need to fix. 
 
@@ -258,7 +258,7 @@ We can use the position fixings talked about in the last section to fix the posi
 }
 
 \br 
-There is a nice result in here about the number of vertex insertions compared to the number of points we fix. We will see that $f$ is a fixed number and for the sphere it is $f=3$. If we then only consider inserting $n=2$ vertex operators, we see that there is a position left unfixed by something and so we end up with an infinite result. This is just the condition that if we consider the amplitude for a propagator (which for us is clearly just two insertions) and impose the mass-shell condition (which we do here, as will become clearer later) we get an infinite result. 
+    There is a nice result in here about the number of vertex insertions compared to the number of points we fix. We will see that $f$ is a fixed number and for the sphere it is $f=3$. If we then only consider inserting $n=2$ vertex operators, we see that there is a position left unfixed by something and so we end up with an infinite result. This is just the condition that if we consider the amplitude for a propagator (which for us is clearly just two insertions) and impose the mass-shell condition (which we do here, as will become clearer later) we get an infinite result. 
 \er 
 
 \section{The $P$ Operator}
@@ -285,13 +285,13 @@ where $(\cdot,\cdot)$ is the inner product on the worldsheet, defined by
 \ese 
 We want to study the map $P$ a bit more closely. 
 
-Recall that $Pc$ is the change in the metric due to infinitesimal $c$, after you then subtract a suitable Weyl part, to remove the change to the trace. Now suppose that the result of this vanishes, that is this Weyl transformation cancels everything. We are then considering an unfixed diffeomorphism for this specific vector field $c$, i.e. a conformal transformation w.r.t. $c$. What we are saying here is that there is a one-to-one correspondance between the zero modes of $c$ and the unfixed diffeomorphisms, which is just $f$
+Recall that $Pc$ is the change in the metric due to infinitesimal $c$, after you then subtract a suitable Weyl part, to remove the change to the trace. Now suppose that the result of this vanishes, that is this Weyl transformation cancels everything. We are then considering an unfixed diffeomorphism for this specific vector field $c$, i.e. a conformal transformation w.r.t. $c$. What we are saying here is that there is a one-to-one correspondance between the zero modes\footnote{Zero modes here correspond to lying in the kernel of $P$.} of $c$ and the unfixed diffeomorphisms, which is just $f$.
 
 Now note that, using integration by parts on our ghost action, we could equally have the inner product where it is the $b$ field that is acted on. As we have a good inner product this is just 
 \bse 
     (b,Pc) = (P^{\dagger}b,c).
 \ese 
-Now, a zero mode of $P^{\dagger}$ means that for that $b$ \textit{any} $c$ field will give vanishing inner product $(b,Pc) = 0$. Which, as $Pc$ tells us about how the metric changes, means that $b$ lies in the space orthogonal to the space of metrics that can be obtained via traceless diffeomorphisms. In the gauge orbit drawing, we see this simply as the zero modes of $b$ being changes in equivalence classes, or changes in $\tau$, which is $m$
+Now, a zero mode of $P^{\dagger}$ means that for that $b$ \textit{any} $c$ field will give vanishing inner product $(b,Pc) = 0$. Which, as $Pc$ tells us about how the metric changes, means that $b$ lies in the space orthogonal to the space of metrics that can be obtained via traceless diffeomorphisms. In the gauge orbit drawing, we see this simply as the zero modes of $b$ being changes in equivalence classes, or changes in $\tau$, of which there are $m$ many.
 
 To summarise:
 \begin{itemize}
@@ -299,6 +299,10 @@ To summarise:
     \item The number of zero modes in $b$ is $m$.
 \end{itemize}
 These are exactly the conditions we need in order for our integral not to vanish!
+
+\br 
+    Note that $f$ is actually the number of so-called \textit{conformal Killing vector fields}. This is just because the unfixed diffeomorphisms don't change the moduli and so give us the same metric equivalence class. We can therefore think of them as a symmetry between the equivalence classes of metrics, and so a Killing vector field. However, it is important to note that it is only the \textit{equivalence} class that is invariant (the representative metric does change), and hence why we call them \textit{conformal} Killing vector fields. 
+\er 
 
 \subsection{$P^{\dagger}P$}
 

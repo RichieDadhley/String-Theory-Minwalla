@@ -4,9 +4,11 @@ String theory studies the motion of a relativistic \textit{string} propagating t
 
 Before moving on to do that, we would like to just highlight a point here. As is standard when approaching a quantum field theory, we approach the problem by first studying it classically. So the results that follow (until specified) are all classical methods. We just mention this here because we need to remember certain things that are equal classically do not necessarily have quantised equivalence. The most obvious example of this is $xp-px =0$ classically, but once we promote the position and momentum to quantum operators, we arrive at their commutation relation $[x,p]=i\hbar$.
 
+We shall use capital $X$ to indicate the spacetime coordinates of the background in these notes, as this appears to be a standard notation for string theory.
+
 \section{The Relativistic Point Particle}
 
-First some quick notes on notation/convention. As is standard we shall use Greek indices to label spacetime coordinates (e.g. $\mu = 0,1,2,...$) and Latin indices to label spatial coordinates (e.g. $i=1,2,...$). There will be occasionally be exceptions to this (for example in this lecture we shall use $\a=1,2$ when discussing the coordinates on the string's worldsheet), however we shall try to be as explicit as possible. We will of course use Einstein's summation convention. 
+First some quick notes on notation/convention. As is standard we shall use Greek indices to label spacetime coordinates (e.g. $\mu = 0,1,2,...$) and Latin indices to label spatial coordinates (e.g. $i=1,2,...$). There will be occasionally be exceptions to this (for example we shall often use $\a=1,2$ when discussing the coordinates on the string's worldsheet), however we shall try to be as explicit as possible. We will of course use Einstein's summation convention. 
 
 As you are probably aware, string theory is a high dimensional theory, and so in preparation for this, we shall work in a $d$ dimensional theory\footnote{Note this means we have $d-1$ spatial dimensions} with Minkowski metric with signature\footnote{Note this is the opposite convention then is used in quantum field theory.} 
 
@@ -17,7 +19,7 @@ As you are probably aware, string theory is a high dimensional theory, and so in
 Ok so that's that settled. Now recall that the action of a point particle of mass $m$ (in a fixed frame) is 
 \be
 \label{eqn:PointActionSpatial}
-    S = -m\int dt \sqrt{1-\dot{x}_i\dot{x}^i},
+    S = -m\int dt \sqrt{1-\dot{X}_i\dot{X}^i},
 \ee 
 where the dot indicates the time derivative. The relativist would (or at least should) cause a fuss here; the action \Cref{eqn:PointActionSpatial} does not appear to be Lorentz invariant! The easiest way to see this is by the fact that the spatial coordinates are dynamical degrees of freedom, whereas the temporal coordinate is merely a label for the position. If a Lorentz transformation is meant to (at least potentially) mix space and time, we run into an immediate problem; you can't exchange a degree of freedom for a label. 
 
@@ -29,11 +31,11 @@ So what we really need to do is promote time to a `fake' degree of freedom, whic
 
 \be 
 \label{eqn:PointActionLorentz}
-    S = -m \int d\tau \sqrt{-\dot{x}^{\mu}\dot{x}_{\mu}},
+    S = -m \int d\tau \sqrt{-\dot{X}^{\mu}\dot{X}_{\mu}},
 \ee 
 where $\tau$ is some new parameter and
 \bse 
-    \dot{x}_{\mu} := \frac{d x_{\mu}}{d\tau}.
+    \dot{X}_{\mu} := \frac{d X_{\mu}}{d\tau}.
 \ese 
 
 Geometrically, what we are looking at here is the \textit{worldline} of the particle, and $\tau$ parameterises the motion along this worldline:
@@ -54,18 +56,18 @@ Geometrically, what we are looking at here is the \textit{worldline} of the part
         \draw[rotate around={70:(1.75,4)}] (1.75,3.8) -- (1.75,4.2);
     \etik
 \end{center}
-where the notches give increasing $\tau$ values. We see, then, that the action \Cref{eqn:PointActionLorentz} measures the length of this worldline, often known as the \textit{proper time}. It should be clear, therefore, that we expect the this action to be invariant under reparameterisation $\tau \to \widetilde{\tau}(\tau)$. That is, it doesn't matter how `quickly' we move along the line, the length of it is the length of it. Mathematically this is seen via 
+where the notches give increasing $\tau$ values. We see, then, that the action \Cref{eqn:PointActionLorentz} measures the length of this worldline, often known as the \textit{proper time}. It should be clear, therefore, that we expect this action to be invariant under reparameterisation $\tau \to \widetilde{\tau}(\tau)$. That is, it doesn't matter how `quickly' we move along the line, the length of it is the length of it. Mathematically this is seen via 
 \bse 
-d\tau \to \frac{d\tau}{d\widetilde{\tau}} d\widetilde{\tau}, \qquad \frac{dx_{\mu}}{d\tau} \to \frac{dx_{\mu}}{d\tau}\cdot  \frac{d\widetilde{\tau}}{d\widetilde{\tau}},
+    d\tau \to \frac{d\tau}{d\widetilde{\tau}} d\widetilde{\tau}, \qquad \frac{dX_{\mu}}{d\tau} \to \frac{dX_{\mu}}{d\widetilde{\tau}}\cdot  \frac{d\widetilde{\tau}}{d\tau},
 \ese 
 which gives the invariance result once plugged into \Cref{eqn:PointActionLorentz}. 
 
-This might seem like a strange result to show here, but it is exactly what we need as it allows us to remove the physical meaning form the temporal degree of freedom. In other words, we can use this invariance to give us a coordinate system in which $\tau=x^0(\tau)$, and seeing as the former has no physical meaning, so does the latter. Note, in this case we actually return to \Cref{eqn:PointActionSpatial}, which is seen from direct calculation.
+This might seem like a strange result to show here, but it is exactly what we need as it allows us to remove the physical meaning form the temporal degree of freedom. In other words, we can use this invariance to give us a coordinate system in which $\tau=x^0(\tau)$, and seeing as the former has no physical meaning, neither does the latter. Note, in this case we actually return to \Cref{eqn:PointActionSpatial}, which is seen from direct calculation.
 
 The invariance used above is an example of a \textit{gauge symmetry}. It has allowed us to express our action in a way that is manifestly Lorentz invariant, while retaining the number of physical degrees of freedom. This is a really important concept, and we shall return to it soon! 
 
 \br 
-It is important to note that, although we say gauge \textit{symmetry}, this is not a true symmetry (in relation to Noether's theorem). A true symmetry takes you from one physical state to another (for example a Lorentz boost), whereas a gauge symmetry does nothing to the system, i.e. it is a redundancy in our description of the state. Put another way, a real symmetry will take you from one element of the phase space of solutions to another element, whereas a gauge symmetry will not.
+    It is important to note that, although we say gauge \textit{symmetry}, this is not a true symmetry (in relation to Noether's theorem). A true symmetry takes you from one physical state to another (for example a Lorentz boost), whereas a gauge symmetry does nothing to the system, i.e. it is a redundancy in our description of the state. Put another way, a real symmetry will take you from one element of the phase space of solutions to another element, whereas a gauge symmetry will not.
 \er 
 
 \section{The Einbein}
@@ -74,7 +76,7 @@ Before moving on to discuss the action for the string, we want to make one final
 
 \be 
 \label{eqn:PointActionEinbein}
-    S = \frac{1}{2}\int d\tau \big( e^{-1} \dot{x}^{\mu}\dot{x}_{\mu} - em^2\big)
+    S = \frac{1}{2}\int d\tau \big( e^{-1} \dot{X}^{\mu}\dot{X}_{\mu} - em^2\big)
 \ee 
 
 Now if you're like me, before this you have never heard of an einbein and so have no idea where the above action came from. Not to worry, we are saved by David Zaslavsky via the following link: \href{http://www.ellipsix.net/blog/2010/08/the-origin-of-the-einbein.html}{http://www.ellipsix.net/blog/2010/08/the-origin-of-the-einbein.html}. It would be completely pointless for me to just rewrite what David has written there, so I simply refer you to his explanation. 
@@ -105,24 +107,24 @@ In light of everything we just did, we can begin to think of starting points for
 
 We wish to consider closed strings, and we choose to parameterise $\sig$ such that $\sig \in [0,2\pi)$ with periodicity, i.e. $\sig(x+2\pi)=\sig(x)$.
 
-\br 
-It is now that we introduce our first exception to our index convention. We, rather confusingly, choose to define $\sig^{\alpha} = (\sig,\tau)$. That is $\sig^1=\sig$ and $\sig^2=\tau$.  
-\er 
+\bnn 
+    It is now that we introduce our first exception to our index convention. We, rather confusingly, choose to define $\sig^{\alpha} = (\sig,\tau)$. That is $\sig^1=\sig$ and $\sig^2=\tau$.
+\enn 
 
 \br 
-It is important to note that we have two sets of coordinates here. We have the $\{x^{\mu}\}$ set which is the coordinate system for the background spacetime, and the $\{\sig\}$ which is the coordinate system on the worldsheet. We shall stick to this convention throughout these notes. We highlight this here, because as we shall shortly see, we are going to have multiple different kinds of indices, contracted using different metrics (one for the spacetime and one for the worldsheet). 
+    It is important to note that we have two sets of coordinates here. We have the $\{X^{\mu}\}$ set which is the coordinate system for the background spacetime, and the $\{\sig\}$ which is the coordinate system on the worldsheet. We shall stick to this convention throughout these notes. We highlight this here, because as we shall shortly see, we are going to have multiple different kinds of indices, contracted using different metrics (one for the spacetime and one for the worldsheet). 
 \er 
 
 Referring to the point particle's action \Cref{eqn:PointActionLorentz}, we see that we expect our action to be some kind of double integral (over $\tau$ and $\sig$) containing derivative terms 
 \bse 
-    \p_{1}x^{\mu} := \frac{\p x^{\mu}}{\p \sig}, \qquad \text{and} \qquad  \p_{2}x^{\mu} :=\frac{\p x^{\mu}}{\p \tau}.
+    \p_{1}X^{\mu} := \frac{\p X^{\mu}}{\p \sig}, \qquad \text{and} \qquad  \p_{2}X^{\mu} :=\frac{\p X^{\mu}}{\p \tau}.
 \ese 
 
 However, we should not be so quick as to just plug this in and claim something like 
 \bse 
-    S = A\int d\tau d\sig \sum_{\alpha,\beta=1}^2\sqrt{- \p_{\alpha}x^{\mu}\p_{\beta}x^{\mu}},
+    S = A\int d\tau d\sig \sum_{\alpha,\beta=1}^2\sqrt{- \p_{\alpha}X^{\mu}\p_{\beta}X^{\mu}},
 \ese 
-for some constant $A$, is what we want. In fact, this does not look good at all -- it contains a sum in it! 
+for some constant $A$, is what we want. In fact, this does not look good at all --- it contains a sum in it! 
 
 In order to get a better idea for what we want to write, consider Euclidean 2-space. Given some surface, we find its area by breaking it up into little `tiles', whose area we calculate, and then integrate over the whole surface. If $\Vec{d\ell_1}$ and $\Vec{d\ell_2}$ are our two infinitesimal vectors for a tile, we calculate the area of that title via 
 \bse 
@@ -142,7 +144,7 @@ where $\theta$ is the angle between the two vectors.
         \draw[thick, dashed] (1,2) -- (3,2);
     \etik
 \end{center}
-However, $\sin$ is not a nice function to have, it doesn't occur nicely in differential geometry, whereas $\cos$ on the other hand does -- from the dot product! After some rearranging we arrive at 
+However, $\sin$ is not a nice function to have, it doesn't occur nicely in differential geometry, whereas $\cos$ on the other hand does --- from the dot product! After some rearranging we arrive at 
 \bse 
     dA = \sqrt{|\Vec{d\ell_1}|^2|\Vec{d\ell_2}|^2 - (\Vec{d\ell_1}\cdot \Vec{d\ell_2})^2}.
 \ese 
@@ -155,40 +157,41 @@ This still looks a little messy, however we can make it look nicer by defining a
 \ese 
 giving 
 \bse 
-    dA = \sqrt{\det{M}}.
+    dA = \sqrt{\det M}.
 \ese 
 
 Translating this into a problem in Minkowski spacetime, and using the fact that the tangent vectors\footnote{To anyone unfamiliar with why this is the case, I refer you to any differential geometry textbook. The quick explanation is that these derivative terms lie tangent to the surface of the worldsheet, and so when you zoom in close enough, they make up small tiles on the surface.}
 \bse 
     \Vec{d\ell_1} = \frac{\p x}{\p \sig}, \qquad \text{and} \qquad \Vec{d\ell_2} = \frac{\p x}{\p \tau},
 \ese 
-where $x=(x^{\mu})$ are the spacetime coordinates, we arrive at our first reasonable action 
+where $X=(X^{\mu})$ are the spacetime coordinates, we arrive at our first reasonable action 
 \be 
 \label{eqn:StringActionDet}
-    S = -A \int d\sig d\tau \sqrt{-\det\big(\p_{\alpha}x^{\mu} \p_{\beta}x_{\mu}\big)}.
+    S = -A \int d\sig d\tau \sqrt{-\det\big(\p_{\alpha}X^{\mu} \p_{\beta}X_{\mu}\big)}.
 \ee 
 
 \br 
 Note here we do \textit{not} need a summation, the $\alpha,\beta$ indices label the entries of the matrix!
 \er 
 
-If we now introduce the notation $\dot{x}^{\mu} := \partial_1x^{\mu}$, ${x^{\mu}}' := \partial_2x^{\mu}$, $(\dot{x})^2 := \partial_1x^{\mu}\partial_1x_{\mu}$ and similarly for $(x')^2$ and $(\dot{x}\cdot x')$, we arrive at the so-called \textit{Nambu-Goto action}:
+If we now introduce the notation $\dot{X}^{\mu} := \partial_1X^{\mu}$, ${X^{\mu}}' := \partial_2X^{\mu}$, $(\dot{X})^2 := \partial_1X^{\mu}\partial_1X_{\mu}$ and similarly for $(X')^2$ and $(\dot{X}\cdot X')$, we arrive at the so-called \textit{Nambu-Goto action}:
 
 \mybox{
-\bd The Nambu-Goto action is
-\be
-\label{eqn:NambuGotoAction}
-    S = -T \int d\sig d\tau \sqrt{ -(\dot{x})^2(x')^2 + (\dot{x}\cdot x')^2 }.
-\ee 
+\bd 
+    The Nambu-Goto action is
+    \be
+    \label{eqn:NambuGotoAction}
+        S = -T \int d\sig d\tau \sqrt{ -(\dot{X})^2(X')^2 + (\dot{X}\cdot X')^2 }.
+    \ee 
 \ed 
 }
 
 \br 
-Note we have relabelled $A\to T$ in the above definition. The reason for this shall become clear soon.
+    Note we have relabelled $A\to T$ in the above definition. The reason for this shall become clear soon.
 \er 
 
 \br 
-Note that, just as \Cref{eqn:PointActionLorentz} was reparameterisation invariant, so is \Cref{eqn:NambuGotoAction} in both $\tau$ and $\sig$. Again this is a required fact to keep our physical degrees of freedom correct. These are both gauge symmetries, and reflect the fact that the coordinates used to describe the worldsheet have no physical meaning (just as $\tau$ has no physical meaning for the point-particle). Note also that the Nambu-Goto action is manifestly Lorentz invariant (which we had in mind when trying to derive it!). It is also interesting to note that this invariance holds without the requirement of inserting the root of the metric into the action (as is the case with Einstein's Field equations).
+    Note that, just as \Cref{eqn:PointActionLorentz} was reparameterisation invariant, so is \Cref{eqn:NambuGotoAction} in both $\tau$ and $\sig$. Again this is a required fact to keep our physical degrees of freedom correct. These are both gauge symmetries, and reflect the fact that the coordinates used to describe the worldsheet have no physical meaning (just as $\tau$ has no physical meaning for the point-particle). Note also that the Nambu-Goto action is manifestly Lorentz invariant (which we had in mind when trying to derive it!). It is also interesting to note that this invariance holds without the requirement of inserting the root of the metric into the action (as is the case with Einstein's Field equations).
 \er 
 
 \subsection{The Pullback/Induced Metric}
@@ -203,20 +206,20 @@ We are trying to find a way to calculate the area of the worldsheet traced out b
 
 Let us be a bit more rigorous. Consider a manifold equipped with a metric $(\cM,\cO,\cA,g)$ where $\cO$ and $\cA$ are the topology and atlas respectively.\footnote{See, e.g., Dr. Schuller's International Winter school for Gravity and Light course.} Now consider some submanifold $\cN\ss\cM$, where $\cN$ is described using coordinates $\xi^a$, $a=1,...,\dim \cN$. 
 
-We can embed $\cN$ into $\cM$ by defining the functions $x^{\mu}(\xi^a)$, $\mu=1,...,\dim\cM$, that tell us how $\cN$ sits in $\cM$. We can then induce a metric, $\g$, on $\cN$ from $g$ given by the following expression 
+We can embed $\cN$ into $\cM$ by defining the functions $X^{\mu}(\xi^a)$, $\mu=1,...,\dim\cM$, that tell us how $\cN$ sits in $\cM$. We can then induce a metric, $\g$, on $\cN$ from $g$ given by the following expression 
 \be 
 \label{eqn:PullbackMetric}
-    \g_{ab} = \p_a x^{\mu} \p_b x^{\nu} g_{\mu\nu}.
+    \g_{ab} = \p_a X^{\mu} \p_b X^{\nu} g_{\mu\nu}.
 \ee 
 
 \br 
-The previous equation makes sense. We take the metric on our larger manifold and multiply it factors that ask the question `how do the embedding functions change as we move along with sheet coordinates?' Clearly if we are not on the sheet (i.e. somewhere in $\cM\sm\cN$) then both of these terms vanish and so the induced metric vanishes. They also take into account the potential intrinsic curvature of the embedded surface, which we clearly want. In other words, we have basically just restricted the metric on $\cM$ to $\cN$ and then accounted for the potential curvature. 
+    The previous equation makes sense. We take the metric on our larger manifold and multiply it factors that ask the question `how do the embedding functions change as we move along with sheet coordinates?' Clearly if we are not on the sheet (i.e. somewhere in $\cM\sm\cN$) then both of these terms vanish and so the induced metric vanishes. They also take into account the potential intrinsic curvature of the embedded surface, which we clearly want. In other words, we have basically just restricted the metric on $\cM$ to $\cN$ and then accounted for the potential curvature. 
 \er 
 
 
 For us the induced metric simply comes out as
 \be 
-    \g_{\a \beta} = \p_{\a}x^{\mu} \p_{\beta} x^{\mu} \eta_{\mu\nu},
+    \g_{\a \beta} = \p_{\a}X^{\mu} \p_{\beta} X^{\mu} \eta_{\mu\nu},
 \ee 
 and the action, which is proportional to the area of the worldsheet, is given by 
 \be 
@@ -227,15 +230,15 @@ and the action, which is proportional to the area of the worldsheet, is given by
 This is the Nambu-Goto action, as is easily seen by writing the metric as a matrix
 \bse 
     \g = \begin{pmatrix}
-    (\dot{x})^2 & \dot{x}\cdot x' \\
-    x'\cdot \dot{x} & (x')^2
+    (\dot{X})^2 & \dot{X}\cdot X' \\
+    X'\cdot \dot{X} & (X')^2
     \end{pmatrix}.
 \ese 
 
 The useful piece of information, which we shall use shortly, comes when we consider the equations of motion that emerge from \Cref{eqn:StringActionDetMetric}. Recalling the result from general relativity,\footnote{Or looking it up if you're not familiar.} we arrive at 
 \be 
 \label{eqn:EOMInducedMetric}
-    \p_{\a}\Big(\sqrt{-\det\g} \g^{\a\beta}\p_{\beta}x^{\mu}\Big) = 0.
+    \p_{\a}\Big(\sqrt{-\det\g} \g^{\a\beta}\p_{\beta}X^{\mu}\Big) = 0.
 \ee 
 We shall return to this in a mo. 
 
@@ -247,11 +250,11 @@ Let us chose our gauge such that $t:= x^0=R\tau$, for some dimensionful $R$. Now
 \bse 
     \frac{\p\Vec{x}}{\p\tau} = 0.
 \ese 
-Then from the Nambu-Goto action it follows that 
+Then, from the Nambu-Goto action, it follows that 
 \bse
     S = - T \int d\sig d\tau R \sqrt{\bigg(\frac{\p \Vec{x}}{\p \sig}\bigg)^2} = -T \int dt L,
 \ese 
-where $L$ is the spatial length of the string. But the action has units [energy][time], and so it follows that $T$ has units [energy][length]$^{-1}$, which Newtons. We see, therefore, the $T$ has the dimensions at least of a tension, and so we interpret it as so. The explict form is given by
+where $L$ is the spatial length of the string. But the action has units [energy][time], and so it follows that $T$ has units [energy][length]$^{-1}$, which is Newtons. We see, therefore, the $T$ at least has the dimensions of a tension, and so we interpret it as so. The explicit form is given by
 
 \bse 
     T = \frac{1}{2\pi \a'}.
@@ -270,97 +273,94 @@ Now recall that with the point particle action, we (somewhat hand-wavingly) argu
 
 \mybox{
 \bd 
-The \textit{Polyakov action} is 
-\be 
-\label{eqn:PolyakovAction}
-    S = -\frac{1}{4\pi\a'} \int d\sig d\tau \sqrt{-g} g^{\a\beta} \p_{\a} x^{\mu} \p_{\beta} x_{\mu},
-\ee 
-where $g:=\det g$ and $g^{\a\beta}g_{\a\beta}=2$.
+    The \textit{Polyakov action} is 
+    \be 
+    \label{eqn:PolyakovAction}
+        S = -\frac{1}{4\pi\a'} \int d\sig d\tau \sqrt{-g} g^{\a\beta} \p_{\a} X^{\mu} \p_{\beta} X_{\mu},
+    \ee 
+    where $g:=\det g$.
 \ed 
 }
 
 \bp 
 \label{prop:PolyakovNambuGoto}
-The Polyakov action is classically equivalent, up to a gauge, to the Nambu-Goto action. 
+    The Polyakov action is classically equivalent, up to a gauge, to the Nambu-Goto action. 
 \ep 
 
 Before proving this proposition it is instructive to make some remarks and introduce a definition.
 
 \br 
-The equations of motion one obtains from the Polyakov action are 
-\be 
-\label{eqn:EOMDynamicMetric}
-    \p_{\a}\Big(\sqrt{-g} g^{\a\beta}\p_{\beta}x^{\mu}\Big) = 0,
-\ee 
-which is of exactly the same form as \Cref{eqn:EOMInducedMetric} with $\g \to g$. However, we should not be so quick to conclude that $g$ is therefore the induced metric. Recall, $\g$ was obtain from the flat Minkowski metric $\eta$, whereas $g$ is a independent variable, with its own equations of motion. These equations of motion will, necessarily,\footnote{Otherwise we would be introducing more degrees of freedom into our system.} fix the values of $g$, but we see that it is not the same thing as the induced metric. We can call $g$ the \textit{dynamical metric} on the worldsheet. 
+    The equations of motion one obtains from the Polyakov action are 
+    \be 
+    \label{eqn:EOMDynamicMetric}
+        \p_{\a}\Big(\sqrt{-g} g^{\a\beta}\p_{\beta}X^{\mu}\Big) = 0,
+    \ee 
+    which is of exactly the same form as \Cref{eqn:EOMInducedMetric} with $\g \to g$. However, we should not be so quick to conclude that $g$ is therefore the induced metric. Recall, $\g$ was obtain from the flat Minkowski metric $\eta$, whereas $g$ is a independent variable, with its own equations of motion. These equations of motion will, necessarily,\footnote{Otherwise we would be introducing more degrees of freedom into our system.} fix the values of $g$, but we see that it is not the same thing as the induced metric. We can call $g$ the \textit{dynamical metric} on the worldsheet. 
 \er 
 
 \bd 
-A \textit{Weyl transformation} is a local rescaling of a metric, 
-\bse 
-    g \to e^{2\phi(x)}g.
-\ese 
-It maps a metric to another metric of the same \textit{conformal class}, i.e. angles are preserved but lengths can vary locally.
+    A \textit{Weyl transformation} is a local rescaling of a metric, 
+    \bse 
+        g \to e^{2\phi(x)}g.
+    \ese 
+    It maps a metric to another metric of the same \textit{conformal class}, i.e. angles are preserved but lengths can vary locally.
 \ed 
 
 \br 
-Note, using 
-\bse 
-    g^{\a\beta} \to e^{\phi(x)}g^{\a\beta} 
-\ese 
-under Weyl transformation, we see that the Polyakov action is Weyl invariant. This tells us that any variation of the action wrt the dynamic metric that corresponds to a Weyl transformation must lead to a trivial result (i.e. 0=0). We will see that this is the case in the proof. 
+    Note, using 
+    \bse 
+        g^{\a\beta} \to e^{\phi(x)}g^{\a\beta} 
+    \ese 
+    under Weyl transformation, we see that the Polyakov action is Weyl invariant. This tells us that any variation of the action wrt the dynamic metric that corresponds to a Weyl transformation must lead to a trivial result (i.e. 0=0). We will see that this is the case in the proof. 
 \er 
 
 \bq (\Cref{prop:PolyakovNambuGoto}) 
-Let us vary the Polyakov action wrt $g^{\a\beta}$. Again, using the results from general relativity, we have 
-\be 
-\label{eqn:PolyakovVariation}
-    0 = \del S = \del g^{\a\beta} \Big( \sqrt{-g} \p_{\a} x^{\mu} \p_{\beta} x_{\mu} - \frac{1}{2}g_{\a\beta} \sqrt{-g} g^{\rho\g} \p_{\rho}x^{\mu} \p_{\g} x_{\mu}\Big) 
-\ee 
-
-Firstly lets show that the Weyl transformation leads to a trivial result, 
-
-\bse 
-\begin{split}
-     0 & = e^{\phi(x)}g^{\a\beta} \Big( \sqrt{-g} \p_{\a} x^{\mu} \p_{\beta} x_{\mu} - \frac{1}{2}g_{\a\beta} \sqrt{-g} g^{\rho\g} \p_{\rho}x^{\mu} \p_{\g} x_{\mu}\Big) \\
-     & = e^{\phi(x)} \sqrt{-g} \big( g^{\a\beta}\p_{\a}x^{\mu} \p_{\beta}x_{\mu} - \frac{1}{2}g^{\a\beta}g_{\a\beta} g^{\rho\g} \p_{\rho}x^{\mu} \p_{\g} x_{\mu}\big) \\
-     & = e^{\phi(x)} \sqrt{-g} \big( g^{\a\beta}\p_{\a}x^{\mu} \p_{\beta}x_{\mu} - \frac{2}{2} g^{\a\beta}\p_{\a}x^{\mu} \p_{\beta} x_{\mu}\big)  \\
-     & = 0.
-\end{split} 
-\ese 
-
-Next diving by $\del g^{\a\beta}\sqrt{-g}$ in \Cref{eqn:PolyakovVariation}, taking the determinant,  multiplying by $-1$, and then taking the square root, we have 
-\bse
-\begin{split}
-    \sqrt{-\det\big(\p_{\a}x^{\mu}\p_{\beta}x_{\mu}\big)} & = \sqrt{-\det\bigg( \frac{1}{2} \big(g^{\a\beta}\p_{a}x^{\mu} \p_{\beta} x_{\mu}\big) \cdot g_{\a\beta}\bigg)} \\
-    & = \sqrt{-g} \cdot \frac{1}{2}g^{\a\beta}\p_{\a}x^{\mu} \p_{\beta} x_{\mu},
-\end{split}
-\ese 
-where we have used the fact that $\det aM = a^2\det M$ for any scalar multiple $a$ and $2\times 2$ matrix $M$. Finally plugging either side into the respective actions (i.e. plugging the left-hand side into the Nambu-Goto action, or the right-hand side into the Polyakov action) gives the other. 
-
-Finally we note that the two are only equivalent if we take the equivalence class 
-\bse
-    g \sim \widetilde{g},
-\ese 
-where $\widetilde{g}$ is some Weyl transformation of $g$. It is easy to see why we need this, if we didn't the phase space of solutions for the Polyakov action would be infinitely times bigger then the phase space of the Nambu-Goto action. In other words, the equations of motion \Cref{eqn:EOMInducedMetric} and \Cref{eqn:EOMDynamicMetric} only have the same number of solutions if we take this equivalence class.
-
-This equivalence class corresponds to a (huge!) redundancy in the solutions and is a gauge symmetry (as promised by the proposition).
+    Let us vary the Polyakov action wrt $g^{\a\beta}$. Again, using the results from general relativity, we have 
+    \be 
+    \label{eqn:PolyakovVariation}
+        0 = \del S = \del g^{\a\beta} \Big( \sqrt{-g} \p_{\a} X^{\mu} \p_{\beta} X_{\mu} - \frac{1}{2}g_{\a\beta} \sqrt{-g} g^{\rho\g} \p_{\rho}X^{\mu} \p_{\g} X_{\mu}\Big) 
+    \ee 
+    Firstly lets show that the Weyl transformation leads to a trivial result, 
+    \bse 
+    \begin{split}
+         0 & = e^{\phi(x)}g^{\a\beta} \Big( \sqrt{-g} \p_{\a} X^{\mu} \p_{\beta} X_{\mu} - \frac{1}{2}g_{\a\beta} \sqrt{-g} g^{\rho\g} \p_{\rho}X^{\mu} \p_{\g} X_{\mu}\Big) \\
+         & = e^{\phi(x)} \sqrt{-g} \big( g^{\a\beta}\p_{\a}X^{\mu} \p_{\beta}X_{\mu} - \frac{1}{2}g^{\a\beta}g_{\a\beta} g^{\rho\g} \p_{\rho}X^{\mu} \p_{\g} X_{\mu}\big) \\
+         & = e^{\phi(x)} \sqrt{-g} \big( g^{\a\beta}\p_{\a}X^{\mu} \p_{\beta}X_{\mu} - \frac{2}{2} g^{\a\beta}\p_{\a}X^{\mu} \p_{\beta} X_{\mu}\big)  \\
+         & = 0.
+    \end{split} 
+    \ese 
+    Next dividing by $\del g^{\a\beta}\sqrt{-g}$ in \Cref{eqn:PolyakovVariation}, taking the determinant,  multiplying by $-1$, and then taking the square root, we have 
+    \bse
+    \begin{split}
+        \sqrt{-\det\big(\p_{\a}X^{\mu}\p_{\beta}X_{\mu}\big)} & = \sqrt{-\det\bigg( \frac{1}{2} \big(g^{\rho\gamma}\p_{\rho}X^{\mu} \p_{\gamma} X_{\mu}\big) \cdot g_{\a\beta}\bigg)} \\
+        & = \sqrt{-g} \cdot \frac{1}{2}g^{\a\beta}\p_{\a}X^{\mu} \p_{\beta} X_{\mu},
+    \end{split}
+    \ese 
+    where we have used the fact that $\det aM = a^2\det M$ for any scalar multiple $a$ and $2\times 2$ matrix $M$. Finally plugging either side into the respective actions (i.e. plugging the left-hand side into the Nambu-Goto action, or the right-hand side into the Polyakov action) gives the other. 
+    
+    Finally we note that the two are only equivalent if we take the equivalence class 
+    \bse
+        g \sim \widetilde{g},
+    \ese 
+    where $\widetilde{g}$ is some Weyl transformation of $g$. It is easy to see why we need this, if we didn't the phase space of solutions for the Polyakov action would be infinitely times bigger then the phase space of the Nambu-Goto action. In other words, the equations of motion \Cref{eqn:EOMInducedMetric} and \Cref{eqn:EOMDynamicMetric} only have the same number of solutions if we take this equivalence class.
+    
+    This equivalence class corresponds to a (huge!) redundancy in the solutions and is a gauge symmetry (as promised by the proposition).
 \eq 
 
 \br 
-We should make a important remark here. The Weyl invariance only holds because we are considering a 2-dimensional worldsheet. If we were considering a $d$ dimensional sheet we would get
-\bse 
-    S \to e^{\big(\frac{d}{2}-1\big)\phi(x)} S.
-\ese 
+    We should make a important remark here. The Weyl invariance only holds because we are considering a 2-dimensional worldsheet. If we were considering a $d$ dimensional sheet we would get
+    \bse 
+        S \to e^{\big(\frac{d}{2}-1\big)\phi(x)} S.
+    \ese 
 \er 
 
 \br 
-Just as the Einbein told us that we have coupled the scalar fields of a point particle's worldline to a 1d gravity, the Polyakov action tells us that we have coupled the scalar fields of the string to a 2d gravity. 
+    Just as the Einbein told us that we have coupled the scalar fields of a point particle's worldline to a 1d gravity, the Polyakov action tells us that we have coupled the scalar fields of the string to a 2d gravity. 
 \er 
 
 \subsection{Repercussions of Weyl Invariance}
 
-As we have just shown the Poylakov action is invariant under Weyl transformations. This is, obviously, not something general actions have, and so if we wish to maintain this invariance we need to be careful about how we modify \Cref{eqn:PolyakovAction}. For example, should we wont to include some potential $V(x)$ into the action, we could not simply include it as 
+As we have just shown the Poylakov action is invariant under Weyl transformations. This is, obviously, not something general actions have, and so if we wish to maintain this invariance we need to be careful about how we modify \Cref{eqn:PolyakovAction}. For example, should we want to include some potential $V(x)$ into the action, we could not simply include it as 
 \bse 
     \int d\sig d\tau \sqrt{-g} V(x),
 \ese 
@@ -377,14 +377,14 @@ As we have mentioned, the Polyakov action enjoys three gauge symmetries\footnote
 
 Now the worldsheet metric has three independent components. So we can use these gauges to fix them. 
 \bcl
-We can use the gauge symmetries to set $g_{\a\beta}$ such that it is the flat metric, i.e. 
-\be
-\label{eqn:FlatMetricPolyakov}
-    ds^2 = -d\tau^2 + d\sig^2.
-\ee
+    We can use the gauge symmetries to set $g_{\a\beta}$ such that it is the flat metric, i.e. 
+    \be
+    \label{eqn:FlatMetricPolyakov}
+        ds^2 = -d\tau^2 + d\sig^2.
+    \ee
 \ecl 
 
-We shall show this why this is true in more detail later, however as a rough argument now: we use the diffeomorphisms to give us something that is locally conformal to the flat metric,\footnote{Note here the $\sig=(\tau,\sig)$ notation is being used.} 
+We shall show why this is true in more detail later, however as a rough argument now: we use the diffeomorphisms to give us something that is locally conformal to the flat metric,\footnote{Note here the $\sig=(\tau,\sig)$ notation is being used.} 
 \bse 
     g_{\a\beta} = e^{\Phi(\sig)}\eta_{\a\beta}. 
 \ese 
@@ -437,7 +437,7 @@ However, we can choose our parameterisations such that $\tau$ and $\sig$ always 
 Now, using \Cref{eqn:FlatMetricPolyakov} the Polyakov action becomes
 \be 
 \label{eqn:PolyakovActionFlat}
-    S = -\frac{1}{4\pi\a'} \int d\sig d\tau \p^{\a} x^{\mu} \p_a x_{\mu}. 
+    S = -\frac{1}{4\pi\a'} \int d\sig d\tau \p^{\a} X^{\mu} \p_a X_{\mu}. 
 \ee 
 
 We now need to ask an important question: 
@@ -452,11 +452,11 @@ It is important that this question is understood, and so we word in yet another 
 
 To answer this question, consider the change of coordinates into the worldsheet light-cone coordinates: 
 \bd 
-The worldsheet light-cone coordinates are given by:
-\be 
-\label{eqn:WorldsheetLightConeCoord}
-    \sig_{\pm} := \tau\pm\sig.
-\ee 
+    The worldsheet light-cone coordinates are given by:
+    \be 
+    \label{eqn:WorldsheetLightConeCoord}
+        \sig_{\pm} := \tau\pm\sig.
+    \ee 
 \ed 
 
 Direct calculation tells us that 
@@ -481,36 +481,33 @@ for some functions $f,g$, and where $\widetilde{\sig}$ is some diffeomorphism of
 where the prime indicates the derivatives. This is just a local conformal factor and so we can remove it using a Weyl transformation. So we do have some left over gauge freedom, which we will make use of soon. 
 
 \br 
-A analogous result follows if we use $f(\widetilde{\sig}_-)$ and $g(\widetilde{\sig}_+)$. This is known as \textit{orientation reversal}. However we \textit{cannot} let $f$ or $g$ be a function of \textit{both} $\widetilde{\sig}_{\pm}$, as this would result in $d\sig_{\pm}^2$ terms in $ds^2$. Equally, we cannot have $f$ and $g$ being a function of the same $\widetilde{\sig}_{\pm}$.
+    A analogous result follows if we use $f(\widetilde{\sig}_-)$ and $g(\widetilde{\sig}_+)$. This is known as \textit{orientation reversal}. However we \textit{cannot} let $f$ or $g$ be a function of \textit{both} $\widetilde{\sig}_{\pm}$, as this would result in $d\sig_{\pm}^2$ terms in $ds^2$. Equally, we cannot have $f$ and $g$ being a function of the same $\widetilde{\sig}_{\pm}$.
 \er 
 
 \br 
-Note, that although we have an infinite amount of gauge invariance left (i.e. we can write $f$ and $g$ is all kinds of ways), this remaining gauge invariance is negligible compared to the amount of gauge invariance we started off with. The easiest way to see this is to consider the form the invariances came in. 
-For the three initial gauge invariances (the two diffeomorphisms and the Weyl transformation) came as functions of two variables; we used \textit{both} $\sig$ and $\tau$. However this reduced number of gauge invariances depend only on one variable each; $f$ and $g$ depend only on $\sig_+$ \textit{or} $\sig_-$ each. 
-
-Now simply from the taking the Taylor expansion of a two variable function about the second variable shows that the number of one variable functions is infinitesimal compared to the number of two variable functions; only the leading order term in the expansion is a one variable function, but every other term in the expansion is two variables. 
+    Note, that although we have an infinite amount of gauge invariance left (i.e. we can write $f$ and $g$ is all kinds of ways), this remaining gauge invariance is negligible compared to the amount of gauge invariance we started off with. The easiest way to see this is to consider the form the invariances came in. The three initial gauge invariances (the two diffeomorphisms and the Weyl transformation) came as functions of two variables; we used \textit{both} $\sig$ and $\tau$. However this reduced number of gauge invariances depend only on one variable each; $f$ and $g$ depend only on $\sig_+$ \textit{or} $\sig_-$ each. Now simply from the taking the Taylor expansion of a two variable function about the second variable shows that the number of one variable functions is infinitesimal compared to the number of two variable functions; only the leading order term in the expansion is a one variable function, but every other term in the expansion is two variables. 
 \er 
 
 From \Cref{eqn:WorldsheetLightConeCoord}, it follows by direct substitution that the Polyakov action can be written as 
 \be
 \label{eqn:PolyakovActionLightcone}
-    S = \frac{1}{\pi\a'}\int d\sig d\tau \p_+x^{\mu}\p_-x_{\mu}.
+    S = \frac{1}{\pi\a'}\int d\sig d\tau \p_+X^{\mu}\p_-X_{\mu}.
 \ee 
-However, we just remarked that the solutions to the equations of motion of this action will be infinitely redundant (one redundancy for each $f,g$ choice). Therefore we must mode out these conformal diffeomorphisms from our phase space. 
+However, we just remarked that the solutions to the equations of motion of this action will be infinitely redundant (one redundancy for each $f,g$ choice). Therefore we must mod out these conformal diffeomorphisms from our phase space. We shall do this next lecture.
 
-Now in light-cone coordinates, we have
+Finally note that in light-cone coordinates we have
 \bse 
     g_{++} = 0 = g_{--}, \qquad g_{+-} = -1 = g_{-+},
 \ese 
 and so \Cref{eqn:PolyakovVariation} tells us 
 \be 
 \label{eqn:PolyakovConstrainsLightcone}
-    (\p_+x)^2  = 0, \qquad \text{and} \qquad (\p_-x)^2  = 0,
+    (\p_+X)^2  = 0, \qquad \text{and} \qquad (\p_-X)^2  = 0,
 \ee 
 which we must apply as constraints to our solutions. 
 
 \br 
-Note \Cref{eqn:PolyakovVariation} in the light-cone coordinates also gives us our required trivial solution ($0=0$). We expect this term to follow from the $g_{+-}/g_{-+}$ terms (as these are what the only non-vanishing components), which it does --- try it via direct calculation!
+    Note \Cref{eqn:PolyakovVariation} in the light-cone coordinates also gives us our required trivial solution ($0=0$). We expect this term to follow from the $g_{+-}/g_{-+}$ terms (as these are what the only non-vanishing components), which it does --- try it via direct calculation!
 \er 
 
 To summarise, what we have done so far is to start off with the daunting task of trying to find the solutions to the equations of motion from the Nambu-Goto action, but through some clever tricks we have managed to reduce the problem to finding the solutions to the equations of motion of \Cref{eqn:PolyakovActionLightcone} subject to the constraints \Cref{eqn:PolyakovConstrainsLightcone}, modulo the conformal diffeomorphisms. Although the latter might sound complicated, it is in-fact a much, much easier problem to solve.\footnote{Indeed, whenever we include extra conditions to a problem it almost always makes the problem \textit{sound} more and more complicated, however in-fact we are normally making it easier to solve; we have extra conditions and so `force' the problem into an easier problem. If you don't understand what I mean, consider trying to solve a set of 3 simultaneous variables for 3 variables vs trying to solve for the same 3 variables but now I give you 10 simultaneous equations.} 

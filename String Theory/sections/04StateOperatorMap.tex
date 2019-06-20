@@ -11,7 +11,7 @@ In order to simplify the following calculations, we shall work in Euclidean spac
 We define $(\sig^1,\sig^2) = (\sig^1,i\sig^0)$ as the Euclidean coordinates on the worldsheet. In other words we consider imaginary time, also known as Euclidean time. We then introduce the complex coordinates 
 \be
 \label{eqn:ComplexCoordinates}
-    z = \sig^1 + i\sig^2, \qquad \Bar{z} = \sig^1 - i\Bar{\sig}^2.
+    z = \sig^1 + i\sig^2, \qquad \Bar{z} = \sig^1 - i\sig^2.
 \ee 
 This is just the light cone coordinates on the worldsheet. We can use this as a justification to refer to the holomorphic functions\footnote{A complex-valued function that is complex differentiable in a neighbourhood around every point on the function.} (i.e. $z$) as left-moving and the anti-holomorphic\footnote{Same as holomorphic but now the derivative is taken wrt the complex conjugate.} (i.e. $\Bar{z}$) as right-moving. The line element in these coordinates is simply 
 \be 
@@ -43,7 +43,7 @@ Finally our holomorphic and antiholomorphic derivatives are
 
 For completeness, and to help with the following discussion, we shall briefly discuss path integrals. We will not give a super rigorous discussion here, but just outline the ideas. 
 
-Path integrals give us transition amplitudes. For now let's just consider a $(1+1)$-dimensional theory, in which the state of a particle is described by a single spatial coordinate and a temporal coordinate. The question we want to ask is `What is the probability of the particle going from position $x_i$ at time $t_i$ to $x_f$ at $t_f$?' The idea is to split this path into lots of discrete time slices and then ask about the probability to go between these slices subject to the constraint that it we must start at $x_i$ and end at $x_f$. We consider all of the different \textit{paths} between the two points and sum the probabilities. We then take the limit that the time separation goes to zero, giving us an integral. 
+Path integrals give us transition amplitudes. For now let's just consider a $(1+1)$-dimensional theory, in which the state of a particle is described by a single spatial coordinate and a temporal coordinate. The question we want to ask is `What is the probability of the particle going from position $x_i$ at time $t_i$ to $x_f$ at $t_f$?' The idea is to split this path into lots of discrete time slices and then ask about the probability to go between these slices subject to the constraint that we must start at $x_i$ and end at $x_f$. We consider all of the different \textit{paths} between the two points and sum the probabilities. We then take the limit that the time separation goes to zero, giving us an integral. 
 
 Mathematically, we break up the transition amplitude into $N$ sections by inserting the identity projectors 
 \be
@@ -61,7 +61,7 @@ This idea is easily extended to higher dimensional field theories, but now inste
     \bra{\phi_f} e^{-iH}\ket{\phi_i} = \int_{\phi(t_i)=\phi_i}^{\phi(t_f)=\phi_f} D\phi \, e^{iS[\phi]}.
 \ese 
 
-The next question to ask is `How do we insert a local operator, $\cO_1$, at some position $x_1$ at time $t_1$ into the path integral, taking into account the effect it has on the result?' The answer comes from following the same method as above but now we the operator inserted where it needs to go. This gives us the following \textit{correlation function} (in the Heisenberg picture) 
+The next question to ask is `How do we insert a local operator, $\cO_1$, at some position $x_1$ at time $t_1$ into the path integral, taking into account the effect it has on the result?' The answer comes from following the same method as above but now with the operator inserted where it needs to go. This gives us the following \textit{correlation function} (in the Heisenberg picture) 
 \bse 
     \bra{\phi_f,t_f} \cO_1 \ket{\phi_i,t_i} = \int_{\phi(t_i)=\phi_i}^{\phi(t_f)=\phi_f} D\phi \, e^{iS[\phi]} \cO_1(x_1).
 \ese 
@@ -87,11 +87,11 @@ The extension to the field path integrals is clear
 \ee 
 
 \br 
-Note we now have wavefunction\textit{als}, as we are considering whole field configurations, not just points in space.
+    Note we now have wavefunction\textit{als}, as we are considering whole field configurations, not just points in space.
 \er 
 
 \br 
-Note that the initial state acts as a weighting to the initial boundary conditions. We shall use this insight shortly.
+    Note that the initial state acts as a weighting to the initial boundary conditions. We shall use this insight shortly.
 \er 
 
 So what we have is a prescription for finding the state of the system as a functional of the final field configuration. Another way to understand what we're on about here is to view the state of the system as a \textit{cut} of the path integral at a constant time. That is, we write the state
@@ -101,7 +101,7 @@ So what we have is a prescription for finding the state of the system as a funct
 where we don't specify the upper integration limit. From here we see that the path integral for the amplitude is just given by taking two cuts and considering the bounded part of the path integral. The wavefunctional expression is just obtained by taking $\braket{\phi_2}{\psi}$ and then inserting \Cref{eqn:BasesStates}. 
 
 \br 
-By extension of the above argument, we can form the whole Hilbert space of our system by taking constant time cuts of all possible path integrals.
+    By extension of the above argument, we can form the whole Hilbert space of our system by taking constant time cuts of all possible path integrals.
 \er 
 
 \section{Radial Quantisation}
@@ -153,7 +153,7 @@ which becomes the \textit{dilatation} operator on the plane
 This tells us that time increases with the radius of the circle, and the origin corresponds to the infinite past (i.e. the bottom of the cylinder). This process is known as \textit{radial quantisation}. 
 
 \br 
-There is another way to think of the above map from the cylinder to the plane. We place the cylinder on top of the plane, and we draw a line connecting the top of the cylinder to the plane. The point on the cylinder that the line passes through corresponds to the point on the plane the line touches. From here it is easy to see that the bottom of the cylinder is the origin on the plane and that higher times (i.e. further up the cylinder) corresponds to larger circles. This is the idea of a conformal mapping. 
+    There is another way to think of the above map from the cylinder to the plane. We place the cylinder on top of the plane, and we draw a line connecting the top of the cylinder to the plane. The point on the cylinder that the line passes through corresponds to the point on the plane the line touches. From here it is easy to see that the bottom of the cylinder is the origin on the plane and that higher times (i.e. further up the cylinder) corresponds to larger circles. This is the idea of a so-called stereographic projection. 
 \er 
 
 \section{The State-Operator Map}
@@ -162,11 +162,11 @@ Now that we have a way to turn our theory on the cylinder to a theory on the pla
 
 \mybox{
 \bt[State-Operator Map]
-The state-operator map gives us a one-to-one correspondence between states of the theory and \textbf{local} operators.
+    The state-operator map gives us a one-to-one correspondence between states of the theory and \textbf{local} operators.
 \et 
 }
 
-Before we prove this, let's first note how surprising this result is. First note that we are not saying there is a one-to-one correspondence between states and operators, but only to \textit{local} operators. However, even with this restriction, the result is still unexpected: as we explained before, states live on entire spatial slices, whereas local operators are only defined at a single point; equally we can think of a state as a $n$-column matrix (its a vector in the Hilbert space) but an operator is a $n\times n$ matrix! This all seems rather crazy, but for a hopefully we will de-crazy this now. 
+Before we prove this, let's first note how surprising this result is. First note that we are not saying there is a one-to-one correspondence between states and operators, but only to \textit{local} operators. However, even with this restriction, the result is still unexpected: as we explained before, states live on entire spatial slices, whereas local operators are only defined at a single point; equally we can think of a state as a $n$-column matrix (its a vector in the Hilbert space) but an operator is a $n\times n$ matrix! This all seems rather crazy, but hopefully we will de-crazy this now. 
 
 \subsection{State From Operator}
 
@@ -195,7 +195,7 @@ Now we simply take $r_i\to 0$, which corresponds to $\tau \to -\infty$. We are n
 This is actually a rather trivial result: all we are doing is taking a state (which is the vacuum state at the origin) and acting on it with some local operator and saying that this gives us a new state. 
 
 \br 
-Note if we want the vacuum operator at $r$ then we use the identity operator at the origin.
+    Note if we want the vacuum operator at $r$ then we use the identity operator at the origin.
 \er 
 
 \subsection{Operator From State}
@@ -225,15 +225,15 @@ If we insert our $\cO_{new}$ at the origin, we're half way there given the previ
 The question is `can we somehow make this a local deformation?' The answer is, yes. We simply consider the circle at radius $r/2=1/2$ and we define the state at this new circle to be the one that gives the same result to the path integral, when it is now done from the smaller circle. In other words it needs to be the state that once path integrated over the annulus separating the two states gives the state we started with at $r=1$. This is just equivalent to translating the state at $r=1$ (backwards) in time to the state at radius $1/2$, which is achieved using \Cref{eqn:DilatationOperator}. So all we do is start from the inner circle and weight the path integral by both the initial state on the circle of $r=1$ \textit{and} the time dilatation operator between the two circles. But if we can do this, we can do it again and keep going until we reach the origin itself, giving us a local deformation in the path integral. 
 
 \br 
-Note in the above we have assumed that all of the operators are exterior to our initial circle. If this was not the case, we simply take a smaller starting circle such that it is. We can always do this, apart from when one of the operators also lies at the origin. If this turned out to be the case, you can simply move your new operator to a new point where there is no other operators and define that point to be the origin. 
+    Note in the above we have assumed that all of the operators are exterior to our initial circle. If this was not the case, we simply take a smaller starting circle such that it is. We can always do this, apart from when one of the operators also lies at the origin. If this turned out to be the case, you can simply move your new operator to a new point where there is no other operators and define that point to be the origin. 
 \er 
 
 \br 
-The CFTness of the problem came in when we took the infinite dilatation operator to get the local operator. In our theory this results in a single point, the origin. However, in a more general theory going back to $t=-\infty$ wont necessarily be a point (for example for Minkowski spacetime, you get a whole 3-dimensional spatial slice) and so we can not say we have a local operator. 
+    The CFTness of the problem came in when we took the infinite dilatation operator to get the local operator. In our theory this results in a single point, the origin. However, in a more general theory going back to $t=-\infty$ wont necessarily be a point (for example for Minkowski spacetime, you get a whole 3-dimensional spatial slice) and so we can not say we have a local operator. 
 \er 
 
 \br 
-We should note that the correspondance we have described here is (most likely) something you have never encountered before. You might\footnote{I didn't it's only by reading Dr. Tong's notes that it crossed my mind...} think that this is just like the idea of building a Fock space using creation operators on the vacuum. However, the creation operators are Fourier transforms of local operators, and so are about as far from local as you can get!
+    We should note that the correspondance we have described here is (most likely) something you have never encountered before. You might\footnote{I didn't it's only by reading Dr. Tong's notes that it crossed my mind...} think that this is just like the idea of building a Fock space using creation operators on the vacuum. However, the creation operators are Fourier transforms of local operators, and so are about as far from local as you can get!
 \er 
 
 \subsection{Operator Product Expansion}
@@ -262,11 +262,11 @@ There is a really nice consequence of the state-operator map: given two\footnote
 This is not too hard to see. We know that the two inside operators are going to produce some state on the circle. We then know that this state will correspond to some local operator at the origin. However, we also know that states in a Hilbert space can always be expanded in a basis of other states, and so it follows that the local operator can be expanded in terms of some local basis operators. The coefficients of the basis elements will of course depend on the initial positions of the operators $\cO_1/\cO_2$ (i.e. they have $\sig$ dependence). This process is known as the \textit{operator product expansion} (OPE).
 
 \br 
-Its important to note that the above result is true \textit{locally}. That is, it does not depend in any way on our knowledge of the external operators $\cO_{3,4,5}$. It is therefore a statement about the operators \textit{themselves} and not about particular correlation functions.
+    Its important to note that the above result is true \textit{locally}. That is, it does not depend in any way on our knowledge of the external operators $\cO_{3,4,5}$. It is therefore a statement about the operators \textit{themselves} and not about particular correlation functions.
 \er 
 
 \br 
-Although in the above we have chosen to give the result at the origin, we need not do this. We can right choose to do it about the positions of one of the operators itself if we wish. 
+    Although in the above we have chosen to give the result at the origin, we need not do this. We can choose to do it about the positions of one of the operators itself, if we wish. 
 \er 
 
 Bearing in mind the previous remarks, we do not need to take the OPE near the origin, and we can write it generally as 
@@ -278,12 +278,12 @@ Bearing in mind the previous remarks, we do not need to take the OPE near the or
 where we see the constants only depend on the separations. 
 
 \br 
-Note on the right-hand side of \Cref{eqn:OPE} we use $(\omega,\bar{\omega})$ and not $(z,\bar{z})$. The reason for this is that we are using a correlation function, and the operators are always time ordered, and so we know from the right-hand side that $|z|>|\omega|$ and so we expand around the inner operator.
+    Note on the right-hand side of \Cref{eqn:OPE} we use $(\omega,\bar{\omega})$ and not $(z,\bar{z})$. The reason for this is that we are using a correlation function, and the operators are always time ordered, and so we know from the left-hand side that $|z|>|\omega|$ and so we expand around the inner operator.
 \er 
 
 \br 
 \label{rem:OPESingular}
-We will see that the OPEs have singular behaviour as the two operators approach each other, i.e. as $z\to\omega$. This singular behaviour will prove to be very interesting when considering the commutation of operators (see section \Cref{sec:CommutatorOfCharges}).
+    We will see that the OPEs have singular behaviour as the two operators approach each other, i.e. as $z\to\omega$. This singular behaviour will prove to be very interesting when considering the commutation of operators (see \Cref{sec:CommutatorOfCharges}).
 \er 
 
 \section{Noether Currents and Ward Identities}
@@ -337,7 +337,7 @@ and so the operators are invariant under this transformation. Then we know that
 \ese 
 but because this holds for arbitrary insertions, we can think of it as being equivalent to \Cref{eqn:NoetherQM}.
 
-Now let's assume that $\epsilon(\sig)$ is non-zero in some region that contains an operator insertion. This this operator will transform as \Cref{eqn:OperatorTransform}. Then, following as above, we get 
+Now let's assume that $\epsilon(\sig)$ is non-zero in some region that contains an operator insertion. This operator will transform as \Cref{eqn:OperatorTransform}. Then, following as above, we get 
 \be 
 \label{eqn:WardIdentity}
     \int_{\epsilon} \p_{\mu}\big\langle J^{\mu} \cO_1(\sig_1)...\cO_n(\sig_n)\big\rangle = \sum_{m=1}^n \big\langle \cO_1(\sig_1)...\del\cO_m(\sig_m)...\cO_n(\sig_n)\big\rangle,
@@ -348,7 +348,7 @@ However, there appears to be a problem here. The current $J^{\mu}$ is meant to b
 
 \subsection{Ward Identities in 2D}
 
-So far we haven't used the fact that we are considering a two dimensional theory. If we now talk about the $(\sig^1,\sig^2)$ plane as defined previously, we have, using Stokes' Theorem 
+So far we haven't used the fact that we are considering a two dimensional theory. If we now talk about the $(\sig^1,\sig^2)$ plane as defined previously, we have, using Stokes' Theorem,
 \bse 
     \int_{\epsilon} \p_{\a} J^{\a} = \oint_{\p\epsilon} J_{\a} \Hat{n}^{\a} = \oint_{\p\epsilon} J_1d\sig^2 - J_2d\sig^1, 
 \ese 

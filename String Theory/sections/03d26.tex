@@ -2,34 +2,34 @@
 
 So far we have managed to quantise just the oscillator parts of our scalar fields. We now look to include contributions from the zero mode parts. If we consider just the zero mode parts, our symplectic form, \Cref{eqn:SymplecticFormLightconeGauge}, gives us 
 \bse 
-    \{x^i_0 , p_j\} = \del^{ij}, \qquad \{x^+,p^-\} = -1 = \{x^-,p^+\},
+    \{X^i_0 , p_j\} = \del^{ij}, \qquad \{X^+,p^-\} = -1 = \{X^-,p^+\},
 \ese
 which gives us the commutation relations 
 \be 
-    [x^i_0,p^j] = i\del^{ij}, \qquad [x^+,p^-] = -i = [x^-,p^+].
+    [X^i_0,p^j] = i\del^{ij}, \qquad [X^+,p^-] = -i = [X^-,p^+].
 \ee 
 
 \section{Level Matching}
 So all is done, right? Well not quite, because we still haven't fully used up our constraints 
 \bse 
-    \p_+x^{\mu}\p_+x_{\mu} = 0 = \p_-x^{\mu}\p_-x_{\mu},
+    \p_+X^{\mu}\p_+X_{\mu} = 0 = \p_-X^{\mu}\p_-X_{\mu},
 \ese
 as we have not yet accounted for the zero mode contributions. The clever way to study this constraint is to actually study the integrals 
 \bse 
-    \int d\sig \p_+x^{\mu}\p_+x_{\mu} = 0,
+    \int d\sig \p_+X^{\mu}\p_+X_{\mu} = 0,
 \ese 
 and similarly for $\p_-$. In the lightcone gauge this simply reads 
 \bse 
-    \int d\sig \Big(-\p_+x^-\p_+x^+ -\p_+x^+\p_+x^- + \sum_{i=1}^{d-2}\p_+x^i\p_+x^i \Big)= 0,
+    \int d\sig \Big(-\p_+X^-\p_+X^+ -\p_+X^+\p_+X^- + \sum_{i=1}^{d-2}\p_+X^i\p_+X^i \Big)= 0,
 \ese 
 which, using again the fact that the cross terms with one zero mode and one oscillator cancel, gives us the condition
 \be 
 \label{eqn:LevelMatchingStep}
     \bigg(\frac{\a'}{2}\bigg)^2 p^{\mu}p_{\mu} + \frac{\a'}{2}\sum_{i=1}^{d-2} \sum_{n=1}^{\infty} \big( \a^i_n\a^i_{-n} + \a^i_{-n}\a^i_{n} \big) = 0.
 \ee 
-A similar expression is obtained using the $\p_-$ condition but with $\a\to\widetilde{\a}$. We now notice that the first term is (something times) the mass-squared; but this term is the same for both the $\a$ equation and the $\widetilde{\a}$ equation!
+A similar expression is obtained using the $\p_-$ condition but with $\a\to\widetilde{\a}$. We now notice that the first term is (something times) the mass-squared; but this term is the same for both the $\a$ equation and the $\widetilde{\a}$ equation! Let's consider what this means for us.
 
-Now Let's consider what this means for us. Our Hilbert space is given by the tensor product of an infinite number of harmonic oscillators (which come from the $\a/\widetilde{\a}$ commutation relations) \textit{tensored with} a spatial wavefunction of $d$ variables (which comes from the fact that we have $x/p$ commutation relations),\footnote{This is not some technical notation, its just some shorthand I've made up to say what we've just written. HO means harmonic oscillator and $L^2(\R,\mu)$ is the space of square integrable functions with respect to the measure $\mu$.}
+Our Hilbert space is given by the tensor product of an infinite number of harmonic oscillators (which come from the $\a/\widetilde{\a}$ commutation relations) \textit{tensored with} a spatial wavefunction of $d$ variables (which comes from the fact that we have $x/p$ commutation relations),\footnote{This is not some technical notation, its just some shorthand I've made up to say what we've just written. HO means harmonic oscillator and $L^2(\R,\mu)$ is the space of square integrable functions with respect to the measure $\mu$.}
 \bse 
     \cH = \cH_{HO}\otimes L^2(\R^d,\mu).
 \ese 
@@ -53,7 +53,7 @@ where we have put a hat on the LHS $p^{\mu}$ to indicate that it is an operator 
 Now things looks interesting: using \Cref{eqn:LevelMatchingStep} we get a sum $p^{\mu}p_{\mu}$, which is related to the mass of a particle, and so we see that different excitations of the harmonic oscillators in the system give rise to particles of different masses given by 
 \be 
 \label{eqn:MassOfExcitation}
-    m^2 = \frac{2}{\a'} \sum_{i=1}^{d-2}\sum_{n=1}^{\infty} \big( \a^i_n\a^i_{-n} + \a^i_{-n}\a^i_{n} \big)
+    m^2 = \frac{2}{\a'} \sum_{i=1}^{d-2}\sum_{n=1}^{\infty} \big( \a^i_n\a^i_{-n} + \a^i_{-n}\a^i_{n} \big).
 \ee 
 An alternative way to see this is to consider the Klein-Gordan equation
 \be 
@@ -62,7 +62,7 @@ An alternative way to see this is to consider the Klein-Gordan equation
 \ee 
 with the usual quantum prescription $p_{\mu} = -i\p_{\mu}$
 
-Now we said above that you obtain the same result but with $\a\to\widetilde{\a}$, giveing us the so-called level-matching condition
+Now we said above that you obtain the same result but with $\a\to\widetilde{\a}$, giving us the so-called level-matching condition
 \be
 \label{eqn:LevelMatching}
     \sum_{i=1}^{d-2}\sum_{n=1}^{\infty} \big( \a^i_n\a^i_{-n} + \a^i_{-n}\a^i_{n} \big) = \sum_{i=1}^{d-2}\sum_{n=1}^{\infty} \big( \widetilde{\a}^i_n\widetilde{\a}^i_{-n} + \widetilde{\a}^i_{-n}\widetilde{\a}^i_{n} \big) 
@@ -78,33 +78,33 @@ As nice as the the mass expression is, it would be nicer if we could write it in
 and similarly for $\widetilde{\a}$. This, in turn, changes the level matching condition to 
 \be 
 \label{eqn:LevelMatchingNormalOrder}
-    \sum_{i=1}^{d-2} \sum_{n=1}^{\infty} \a^i_{-n}\a^i_{n} = \sum_{i=1}^{d-2} \sum_{n=1}^{\infty} \widetilde{\a}^i_{-n}\widetilde{\a}^i_{n}
+    \sum_{i=1}^{d-2} \sum_{n=1}^{\infty} \a^i_{-n}\a^i_{n} = \sum_{i=1}^{d-2} \sum_{n=1}^{\infty} \widetilde{\a}^i_{-n}\widetilde{\a}^i_{n}.
 \ee 
 
 \br
-The origin of the level matching condition can be traced all the way back to the reparameterisation invariance $\sig \to \sig + \sig_0$ for some constant $\sig_0$. When we do this, $\sig^{\pm} \to \sig^{\pm} \pm \sig_0$, and so this shifting couples left moving minus right moving. The reason it comes out here is because this result was obtained from our constraint, which stemmed from diffeomorphism invariance. Specifically we are looking at the zero mode part of the constraint, which, if we are to respect the periodicity of $\sig$, can only be given by a shift in $\sig$. 
+    The origin of the level matching condition can be traced all the way back to the reparameterisation invariance $\sig \to \sig + \sig_0$ for some constant $\sig_0$. When we do this, $\sig^{\pm} \to \sig^{\pm} \pm \sig_0$, and so this shifting couples left moving minus right moving. The reason it comes out here is because this result was obtained from our constraint, which stemmed from diffeomorphism invariance. Specifically we are looking at the zero mode part of the constraint, which, if we are to respect the periodicity of $\sig$, can only be given by a shift in $\sig$. 
 \er 
 
 The above all looks rather nice, however we should not celebrate too quickly. The $n/2$ term in \Cref{eqn:MassNormalOrder} is divergent!
 
-Firstly we note, by the same argument as in the previous remark, that translations in $\tau$ are related to the addition the left and right travelling modes. The level matching condition, just equates the two terms and we get twice the left moving (or right moving) term. Translations in time are related to the Hamiltonian, and the level matching condition comes from setting the integrals above to zero, and so it follows that the Hamiltonian on the worldsheet of the string must vanish. Indeed this must be the case, because \textit{every} element of the stress-energy tensor must vanish.\footnote{See Dr. Tong's notes from equation (1.30)-(1.33).} This just tells us that the $n/2$ terms above are just the contributions to the zero-point energy, and our problem is the fact that we are trying to equate zero (Hamiltonian) to infinity (zero point energy).
+Firstly we note, by the same argument as in the previous remark, that translations in $\tau$ are related to the addition of the left and right travelling modes. The level matching condition, just equates the two terms and we get twice the left moving (or right moving) term. Translations in time are related to the Hamiltonian, and the level matching condition comes from setting the integrals above to zero, and so it follows that the Hamiltonian on the worldsheet of the string must vanish. Indeed this must be the case, because \textit{every} element of the stress-energy tensor must vanish.\footnote{See Dr. Tong's notes from equation (1.30)-(1.33).} This just tells us that the $n/2$ terms above are just the contributions to the zero-point energy, and our problem is the fact that we are trying to equate zero (Hamiltonian) to infinity (zero point energy).
 
 This is just the standard problem in quantum field theory for infinite zero point energy. There is one important difference here, though. In QFT this problem is often `dealt with' by chanting the mantra that only energy \textit{differences} are physically important and so who cares if we start at infinity, as long as we can still measure the differences. However, in string theory we are considering 2-dimensional \textit{gravity}, and gravity sees absolute energy!
 
 So what do we do? We add a counter term to our action such that our physical quantities make sense and behave how we like. There is a very natural choice of how to do this: we introduce the cosmological constant to our action, 
 
 \be 
-    S = -\frac{1}{4\pi\a'} \int d\sig d\tau \sqrt{-g} \big( g^{\a\beta} \p_{\a}x^{\mu} \p_{\beta} x_{\mu} + A\Lambda^2\big),
+    S = -\frac{1}{4\pi\a'} \int d\sig d\tau \sqrt{-g} \big( g^{\a\beta} \p_{\a}X^{\mu} \p_{\beta} X_{\mu} + A\Lambda^2\big),
 \ee 
 where $A$ is just some number. 
 
 \br 
-Note, by introducing the cosmological constant we have destroyed our Weyl invariance we so badly needed. It turns out that actually introducing this term will help us restore the Weyl invariance into the \textit{quantum} theory. The details of this are not discussed until later in the course, but we shall just assume it works and plow on nonetheless.\footnote{It is at points like this you might begin to notice that the title of this lecture included inverted commas around "proving".} 
+    Note, by introducing the cosmological constant we have destroyed our Weyl invariance we so badly needed. It turns out that actually introducing this term will help us restore the Weyl invariance into the \textit{quantum} theory. The details of this are not discussed until later in the course, but we shall just assume it works and plow on nonetheless.\footnote{It is at points like this you might begin to notice that the title of this lecture included inverted commas around "proving".} 
 \er 
 
-Now, lets insert the length of the string manually as $L$ (i.e. let's not insist it is $2\pi$ for the a bit), then the contribution to the energy by introducing the $A\Lambda^2$ is just $A\Lambda^2 L$. So the idea is, any contribution to the energy we get that is proportional to the length of the string we can remove by adding the negative of the term to the action. 
+Now, let's insert the length of the string manually as $L$ (i.e. let's not insist it is $2\pi$ for a bit), then the contribution to the energy by introducing the $A\Lambda^2$ is just $A\Lambda^2 L$. So the idea is that any contribution to the energy we get that is proportional to the length of the string we can remove by adding the negative of the term to the action. 
 
-It is important to note that it is \textit{only} the terms proportional to the length that we can remove.\footnote{well without having a potentially devastating effect to all the work we've done so far.} So any other terms that arise must be interpreted as something physical (unless some other method should arises that allows us to remove them too).
+It is important to note that it is \textit{only} the terms proportional to the length that we can remove.\footnote{Well without having a potentially devastating effect to all the work we've done so far.} So any other terms that arise must be interpreted as something physical (unless some other method should arises that allows us to remove them too).
 
 \subsection{Learning To Count}
 
@@ -129,10 +129,10 @@ We use $x = p/\Lambda$, so that our summation remains unchanged when $p << \Lamb
 \ese 
 
 \br 
-Note it is very important that our regulator is a function of $p$ not of $n$ itself. The reason for this is that $p$ is the conjugate to \textit{physical} length, whereas $n$ is conjugate to the length scale $L$. If we are going to cut off our theory using $f$ then it would be crazy to have this cut off directly related to $L$ --- as in this case the relative size of the string to the manifold it lives in has a say in the cut off point. This is clearly not what we want!
+    Note it is very important that our regulator is a function of $p$ not of $n$ itself. The reason for this is that $p$ is the conjugate to \textit{physical} length, whereas $n$ is conjugate to the length scale $L$. If we are going to cut off our theory using $f$ then it would be crazy to have this cut off directly related to $L$ --- as then the cut off would depend on the \textit{relative} size of the string to the manifold it lives in, so different embeddings would give different results. This is clearly not what we want!
 \er 
 
-We now introduce the result from the Euler–Maclaurin formula\footnote{See \href{https://en.wikipedia.org/wiki/Euler–Maclaurin_formula}{wiki} for full definition. I have included it here just to save space.} that tells us we can write the sum as
+We now introduce the result from the Euler–Maclaurin formula\footnote{See \href{https://en.wikipedia.org/wiki/Euler–Maclaurin_formula}{wiki} for full definition. I haven't included it here just to save space.} that tells us we can write the sum as
 \bse 
     \sum_{n=1}^{\infty} \frac{n}{L}f\bigg(\frac{n}{L\Lambda}\bigg) = \int_0^{\infty} \frac{n}{L}f\bigg(\frac{n}{L\Lambda}\bigg)dn -\frac{1}{12}\bigg[\frac{n}{L}f\bigg(\frac{n}{L\Lambda}\bigg)\bigg]'(0) + \frac{1}{4! 30}  \bigg[\frac{n}{L}f\bigg(\frac{n}{L\Lambda}\bigg)\bigg]'''(0) + ... 
 \ese 
@@ -143,7 +143,7 @@ Let's consider these terms individually. Using the change of variable $y=n/L\Lam
 \ese 
 where $A$ is the result from the integral (it's just some number). 
 
-Next consider the triple derivative term. We are evaluating at $n=0$ and so we need one of the derivative to act on the factor $n$ or else the term vanishes. This leaves us with 
+Next consider the triple derivative term. We are evaluating at $n=0$ and so we need one of the derivatives to act on the factor $n$ or else the term vanishes. This leaves us with 
 \bse 
     \frac{1}{4!30} \frac{1}{L} \bigg(\frac{1}{L\Lambda}\bigg)^2 f''\bigg(\frac{0}{L\Lambda}\bigg) = \frac{1}{4!30} \frac{1}{L} \bigg(\frac{1}{L\Lambda}\bigg)^2,
 \ese 
@@ -165,15 +165,15 @@ This is good; we can remove the first term by introducing a cosmological constan
 Before rewriting \Cref{eqn:MassNormalOrder} let's first simplify the notation slightly
 
 \bd 
-We define the so-called \textit{levels}
-\be
-\label{eqn:Levels}
-    N = \sum_{i=1}^{d-2} \sum_{n=1}^{\infty} \a^i_{-n}\a^i_{n}, \qquad \widetilde{N} = \sum_{i=1}^{d-2} \sum_{n=1}^{\infty} \widetilde{\a}^i_{-n}\widetilde{\a}^i_{n}.
-\ee 
+    We define the so-called \textit{levels}
+    \be
+    \label{eqn:Levels}
+        N := \sum_{i=1}^{d-2} \sum_{n=1}^{\infty} \a^i_{-n}\a^i_{n}, \qquad \widetilde{N} := \sum_{i=1}^{d-2} \sum_{n=1}^{\infty} \widetilde{\a}^i_{-n}\widetilde{\a}^i_{n}.
+    \ee 
 \ed 
 
 \br 
-Note these are not quite the number operators of quantum mechanics, $\hat{n}= a^{\dagger}a$ (there's factors of $n$ in there remember!). They get their name from the fact that they are related to the level matching condition.\footnote{Or vice versa?}
+    Note these are not quite the number operators of quantum mechanics, $\hat{n}= a^{\dagger}a$ (there's factors of $n$ in there remember!). They get their name from the fact that they are related to the level matching condition.\footnote{Or vice versa?}
 \er 
 
 So the situation is
@@ -181,12 +181,11 @@ So the situation is
 \label{eqn:MassSquared}
     m^2 = \frac{4}{\a'} \bigg(N - \frac{d-2}{24}\bigg) = \frac{4}{\a'} \bigg(\widetilde{N} - \frac{d-2}{24}\bigg).
 \ee
-
-There is one huge problem that should be weighing on our minds at this point: we broke the Lorentz invariance of our system when we chose the lightcone gauge! This often happens in quantum field theories, and it is always very important at the end of the calculations to check whether we have (by fluke, more then anything else!) managed to retain Lorentz invariance. We shall do this by considering the different states of the system and seeing if they are indeed symmetries of the Lorentz group.
+This looks good, however, there is one huge problem that should be weighing on our minds at this point: we broke the Lorentz invariance of our system when we chose the lightcone gauge! This often happens in quantum field theories, and it is always very important at the end of the calculations to check whether we have (by fluke, more then anything else!) managed to retain Lorentz invariance. We shall do this by considering the different states of the system and seeing if they are indeed symmetries of the Lorentz group.
 
 \subsubsection*{The Tachyon}
 
-Let's first consider the ground state, $\ket{0;p}$. Due to our normal ordering $N=\widetilde{N}=0$. This is a unique state (it's given by \Cref{eqn:VacuumState} and \Cref{eqn:GroundStateP}), and so it is clearly Lorentz invariant (there is nothing it can be rotated into).
+Let's first consider the ground state, $\ket{0;p}$. Normal ordering tells us that $N=\widetilde{N}=0$. This is a unique state (it's given by \Cref{eqn:VacuumState} and \Cref{eqn:GroundStateP}), and so it is clearly Lorentz invariant (there is nothing it can be rotated into).
 
 However, it looks terrible; we have a negative mass-squared:
 \be
@@ -214,11 +213,11 @@ So the negative mass is telling us that we have an maximum in the potential at $
 
 \subsubsection*{Wigner's Classification}
 
-The next thing to consider is the occupied states. We see straight away that these states are not unique; say we wish to produce a system in the $n$-th excited state, we could apply one creation operator $n$ times or we could apply $n$ creation operators once each. Of course there is a whole array of different ways in-between. Note also that the level matching condition says that if we create a $n$-th excited state with the $\a$s, we must also do so with the $\widetilde{\a}$s, giving us a multiplicative factor. 
+The next thing to consider is the occupied states. We see straight away that these states are not unique; say we wish to produce a system in the $n$-th excited state, we could apply one creation operator $n$ times or we could apply $n$ different creation operators once each. Of course there is a whole array of different ways in-between. Note also that the level matching condition says that if we create a $n$-th excited state with the $\a$s, we must also do so with the $\widetilde{\a}$s, giving us a multiplicative factor. 
 
 As the states are not unique, we will need to check that they preserve the relevant rotational invariance, and this is where Wigner's classification of the representations of the Poincar\'{e} group comes into play. We will not give a hugely detailed explanation here,\footnote{A large factor being that I am relatively new to this, and so do not wish to butcher the definitions etc. If I have made some mistake in my interpretation that you notice, please feel free to contact me with your corrections.} but shall just summarise the main points that we need. 
 
-Wigner's classification classifies the non-negative energy (and therefore mass) irreducible unitary representations of the Poincar\'{e} group. It classifies them into two groups: massive representations and massless representations. It does so by introducing a stabiliser for the momentum.
+Wigner's classification classifies the non-negative energy (and therefore mass), irreducible, unitary representations of the Poincar\'{e} group. It classifies them into two groups: massive representations and massless representations. It does so by introducing a stabiliser for the momentum.
 
 Consider a \textit{massive} particle. If we go to the particles rest frame, $p^{\mu}=(p,0,...,0)$, we can ask how the internal indices transform under the stabiliser subgroup (or \textit{little group}) $SO(d-1)$ of spatial rotations. The relevant result to us is that massive particles must form a representation of $SO(d-1)$ if we are to preserve Lorentz invariance. That is, we are requiring that all the states of the form $\ket{n;p}$, where $p$ is always chosen to be the timelike momentum as above, to be physically the same. In other words, we have chosen a frame that fixes one component of the particles momentum. We now consider a different state of the same particle that varies only by internal indices --- that is we only allow for the generation of $n$ by the different combinations of the application of the $\a$/$\widetilde{\a}$s. 
 
@@ -233,7 +232,7 @@ So let's consider the first excited state,
 \label{eqn:FirstExcitedState}
     \widetilde{a}^i_{-1}\a^j_{-1}\ket{0;p}.
 \ee 
-There are $(d-2)^2$ ways we can produce this state, each of the $\a^i_{-1}$ times each of the $\widetilde{\a}^i_{-1}$. Each of these terms transform in the vector representation of $SO(d-2)$. There is no way we are going to package these $(d-2)^2$ states into a representation of $SO(d-1)$, and so it follows that they cannot be massive particles. Luckily we can package these states into a representation of $SO(d-2)$, and so we therefore conclude that they \textit{must} be \textit{massless}.
+There are $(d-2)^2$ ways we can produce this state; each of the $\a^i_{-1}$ times each of the $\widetilde{\a}^i_{-1}$. Each of these terms transform in the vector representation of $SO(d-2)$. There is no way we are going to package these $(d-2)^2$ states into a representation of $SO(d-1)$, and so it follows that they cannot be massive particles. Luckily we can package these states into a representation of $SO(d-2)$, and so we therefore conclude that they \textit{must} be \textit{massless}.
 
 So what does this tell us? Well \Cref{eqn:MassSquared} gives us ($N=1$ for the first excited state)
 \bse 
@@ -250,7 +249,11 @@ or, equivalently,
 So our states transform in the $24\otimes 24$ representation of $SO(24)$.
 
 \br 
-\textcolor{red}{There is some information that could go here from Dr. Tong's lectures about the nature of these massless particles. However I feel like Dr. Minwalla will discuss these in the next few lectures and so shall not write it up. This is just a remark to myself that if it is not discussed in Dr. Minwalla's course, come back and insert this information.}
+    We can decompose the above representation into three irreducible representations, 
+    \bse 
+        \text{traceless symmetric} \oplus \text{antisymmetric} \oplus \text{singlet}.
+    \ese
+    We associate to each of these a massless field, whose quanta give the string oscillations. We denote them $G_{\mu\nu}(X)$, $B_{\mu\nu}(X)$ and $\Phi(X)$, respectively. The latter two are known as the \textit{Kalb-Ramond} field and the \textit{dilaton} field, respectively. It is actually the $G_{\mu\nu}$ term that is of most interest though. It corresponds to a massless spin-2 particle. It can be argued that \textit{any} theory of interacting massless spin-2 particles is equivalent to general relativity, and so we need to identify $G_{\mu\nu}$ as the spacetime metric. We do not present the arguments here, but a brief explanation is given on pages 43-45 of Dr. Tong's notes. 
 \er 
 
 \subsubsection*{Higher Excited States}
@@ -265,7 +268,6 @@ and similarly for $\widetilde{\a}$. So all together the set of states for this l
 \bse 
     \big(\a^i_{-1}\a^j_{-1}\oplus \a^i_{-2}\big)\otimes \big(\widetilde{\a}^i_{-1}\widetilde{\a}^j_{-1}\oplus \widetilde{\a}^i_{-2}\big)\ket{0;p}.
 \ese 
-
 The number of states in each sector is given by 
 \bse 
     \frac{1}{2} (d-2)(d-1) + (d-2) = \frac{1}{2}d(d-1) -1,
@@ -280,6 +282,6 @@ We have invested a considerable amount of time/effort into deriving the above re
 
 The Fermionic string theory shares all the nice results from the Bosonic string, but luckily do not share all the nasty things, namely there is no negative mass-squared terms appearing! So the next few lectures are going to be devoted to further studying the Bosonic string, in an attempt to also help with the understanding of the Fermionic string. The structure of this course will be to try and study the two strings side by side, making comparisons as we go. 
 
-When we say we aim to better understand the Bosonic string, what we mean is to develop the theory in a much nicer way. In the previous treatment we imposed some of shady looking conditions and then later to fix the problems that arouse further restricted our results. Well what happens is even more problem crop up when we further develop the theory? For example what will happen if we try and incorporate interactions between strings? With all this in mind, we shall proceed to tackle the problem via a path integral approach. In doing this, we will not need to use the light-cone gauge (which is where we broke Lorentz invariance) and so hopefully we are less likely to run into problems further down the line. We will, however, continue to work in the conformal gauge (i.e. we will still work with a worldsheet metric that is locally flat). 
+When we say we aim to better understand the Bosonic string, what we mean is to develop the theory in a much nicer way. In the previous treatment we imposed some of shady looking conditions and then later to fix the problems that arouse further restricted our results. Well what happens if even more problem crop up when we further develop the theory? For example what will happen if we try and incorporate interactions between strings? With all this in mind, we shall proceed to tackle the problem via a path integral approach. In doing this, we will not need to use the light-cone gauge (which is where we broke Lorentz invariance) and so hopefully we are less likely to run into problems further down the line. We will, however, continue to work in the conformal gauge (i.e. we will still work with a worldsheet metric that is locally flat). 
 
 Although we now seek a separate approach to the problem, it is worth highlighting again that the above approach was not worthless, and was worth studying. Firstly it forms a relatively intuitive description of what a string is and where the idea comes from. Besides that it has given us some fantastic results that will be highly beneficial with our proceedings. For example, we have seen that the system is both Weyl and diffeomorphic invariant, and so we know that the system is conformally redundant.\footnote{By that I mean that we have a gauge given by those diffeomorphisms that can be `undone' by a Weyl transformation, giving a redundancy in the phase space.} Besides this, the result that $d=26$ is true, and it is nice to see this result early on.  

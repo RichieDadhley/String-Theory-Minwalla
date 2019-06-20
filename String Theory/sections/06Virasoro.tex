@@ -20,7 +20,7 @@ Consider the case when we have $T$\footnote{Again we will just consider the holo
     \etik 
 \end{center}
 
-Now recall that $T$ is holomorphic, \Cref{eqn:TTbarConserved}. Also recall that the Ward identity said this way true, provided there was no contact terms between $T$ and any other insertions. In our situation then, we know that $T$ is holomorphic everywhere inside the circle, expect perhaps at the origin. We can, therefore, expand $T(z)$ as a Laurent series 
+Now recall that $T$ is holomorphic, \Cref{eqn:TTbarConserved}. Also recall that the Ward identity said this was true, provided there was no contact terms between $T$ and any other insertions. In our situation, then, we know that $T$ is holomorphic everywhere inside the circle, expect perhaps at the origin. We can, therefore, expand $T(z)$ as a Laurent series 
 \be
 \label{eqn:TLaurent}
     T(z) = \sum_{m=-\infty}^{\infty} \frac{L_m}{z^{m+2}},
@@ -32,11 +32,12 @@ where $L_m$ is a \textit{non-local} operator, given by inverting the above to gi
 \ee 
 
 \br 
-We have used $z^{m+2}$ above, and it is reasonable to ask `why $+2$?' The answer is, of course, its a useful convention. The reason for which is related to the fact that $[T]=2$. Note that in the integral we only have $z^{m+1}$. We can argue this simply because $[dz]=[z]$.
+\label{rem:LaurentZPowers}
+    We have used $z^{m+2}$ above, and it is reasonable to ask `why $+2$?' The answer is, of course, its a useful convention. The reason for which is related to the fact that $[T]=2$. Note that in the integral we only have $z^{m+1}$. We can argue this simply because $[dz]=[z]$.
 \er 
 
 \br 
-Note the operators $L_m$ act in the Hilbert space language, that is they act on radial slices. In other words, it is a loop on the diagram, and it acts on a circles, which correspond to states in our Hilbert space.
+    Note the operators $L_m$ act in the Hilbert space language; that is they act on radial slices. In other words, it is a loop on the diagram, and it acts on a circles, which correspond to states in our Hilbert space.
 \er 
 
 We now want to find the algebra of these $L_m$s, i.e. we want to find $[L_m,L_n]$. We just follow the same procedure as the previous lecture: we have a double integral, we fix one point and pick up a pole and then integrate over the remaining variable. We have 
@@ -74,22 +75,22 @@ Virasoro algebra
 where we have also included the results from the antiholomorphic part. 
 
 \br 
-We could have actually arrived at this result quite quickly given our results from the end of the last lecture. If we simply set $v_1=z^{m+1}$ and $v_2=z^{n+1}$ in \Cref{eqn:ChargeForJJ} we would get the same exact result. This makes sense, as all we have done is multiply $T$ by a holomorphic function and so, by the holomorphisity of $T$, we expect to get a new conserved charge. We have done it this way explicitly because it is standard notation and is worth seeing.
+    We could have actually arrived at this result quite quickly given our results from the end of the last lecture. If we simply set $v_1=z^{m+1}$ and $v_2=z^{n+1}$ in \Cref{eqn:ChargeForJJ} we would get the same exact result. This makes sense, as all we have done is multiply $T$ by a holomorphic function and so, by the holomorphisity of $T$, we expect to get a new conserved charge. We have done it this way explicitly because it is standard notation and is worth seeing.
 \er 
 
 \br 
-We see from the Virasoro algebra that our theory has an infinite number of conserved charges. This just reflects the fact that there is an infinite number of holomorphic functions out there by which we can multiply $T$.
+    We see from the Virasoro algebra that our theory has an infinite number of conserved charges. This just reflects the fact that there is an infinite number of holomorphic functions out there by which we can multiply $T$.
 \er 
 
-We now note something interesting. If the $L_{m+n}$ term was not present, we would have something akin to \Cref{eqn:AlphaCommutationRelations}, and so we would be looking at harmonic oscillator type behaviour. We then recall the comment made after \Cref{eqn:ChargeForJJ} that this second term comes from the commutation of the classical diffeomorphisms. We see, therefore, that this harmonic oscillator behaviour arises from the Weyl transformations!
+We now note something interesting. If the $L_{m+n}$ term was not present, we would have something akin to \Cref{eqn:AlphaCommutationRelations}, and so we would be looking at harmonic oscillator type behaviour. We then recall the comment made after \Cref{eqn:ChargeForJJ} that first term comes from the commutation of the classical diffeomorphisms. We see, therefore, that this harmonic oscillator behaviour arises from the Weyl transformations!
 
 \subsection{Witt Algebra}
 
 \bd 
-A complex Witt algebra is the quotient of the Virasoro algebra by its centre,\footnote{That is $c$.} i.e. it is an algebra with basis $L_m = z^{m+1}\p_z$ with lie bracket 
-\bse
-    [L_m,L_n] = (m-n)L_{m+n}.
-\ese 
+    A complex Witt algebra is the quotient of the Virasoro algebra by its centre,\footnote{That is $c$.} i.e. it is an algebra with basis $L_m = z^{m+1}\p_z$ with Lie bracket 
+    \bse
+        [L_m,L_n] = (m-n)L_{m+n}.
+    \ese 
 \ed 
 
 We see straight away from the Virasoro algebra that $m=0,\pm1$ form a closed subalgebra, and that it is a closed Witt subalgebra. The commutation relations are
@@ -99,23 +100,23 @@ We see straight away from the Virasoro algebra that $m=0,\pm1$ form a closed sub
 and all others vanish.
 
 \bp 
-The Witt subalgebra $\{L_{-1},L_0,L_1\}$ is isomorphic to the lie algebra $\mathfrak{sl}(2,\C)$.
+    The Witt subalgebra $(\{L_{-1},L_0,L_1\},[\cdot,\cdot])$ is isomorphic to the Lie algebra $\mathfrak{sl}(2,\C)$.
 \ep 
 
 \bq 
-Recall that $\mathfrak{sl}(2,\C)$ has three basis elements $e,f,h$ with commutators 
-\bse 
-    [e,f] = h, \qquad [f,h] = 2f, \qquad [h,e] = 2e.
-\ese 
-Define the injective embedding
-\bse 
-    \iota : \mathfrak{sl}(2,\C) \hookrightarrow Witt,
-\ese 
-that identifies $f$ with $L_{-1}$, $e$ with $-L_{-1}$ and $h$ with $-2L_0$. This map is clearly surjective into the subalgebra of concern, and by direct calculation it preserves the bracket structure, i.e. 
-\bse 
-    \iota([a,b]) = [\iota(L_a),\iota(L_b)],
-\ese 
-for $a,b=e,f,h$ and $L_a$ obviously being the associated element in our subalgebra. 
+    Recall that $\mathfrak{sl}(2,\C)$ has three basis elements $e,f,h$ with commutators 
+    \bse 
+        [e,f] = h, \qquad [f,h] = 2f, \qquad [h,e] = 2e.
+    \ese 
+    Define the injective embedding
+    \bse 
+        \iota : \mathfrak{sl}(2,\C) \hookrightarrow Witt,
+    \ese 
+    that identifies $f$ with $L_{-1}$, $e$ with $-L_{-1}$ and $h$ with $-2L_0$. This map is clearly surjective into the subalgebra of concern, and by direct calculation it preserves the bracket structure, i.e. 
+    \bse 
+        \iota([a,b]) = [\iota(L_a),\iota(L_b)],
+    \ese 
+    for $a,b=e,f,h$ and $L_a$ obviously being the associated element in our subalgebra. 
 \eq 
 
 Note the above conditions are equivalent to requiring that the transformation is well defined everywhere. Two potentially problematic points at $z=0$ and $z\to\infty$. When $z=0$ we require $m\geq-1$, so that we don't end up dividing by $0$. For $z\to\infty$, we first take the conformal transformation
@@ -146,15 +147,15 @@ Now note that this is the \textit{only} state that will be annihilated by $L_{-1
 \section{Weight Of Operators}
 
 \bd[Weight Of Operator]
-An operator $\cO$ is said to have weight $(h,\widetilde{h})$ is under the infinitesimal conformal transformation $(z,\overline{z}) \to (z + \epsilon z, \overline{z} + \overline{\epsilon}\overline{z})$, the operator transforms as
-\be 
-\label{eqn:WeightOfOperator}
-    \del \cO = -\epsilon(h\cO + z\p\cO) -\overline{\epsilon}(\widetilde{h}\cO + \overline{z}\overline{\p}\cO).
-\ee 
+    An operator $\cO$ is said to have weight $(h,\widetilde{h})$ if under the infinitesimal conformal transformation $(z,\overline{z}) \to (z + \epsilon z, \overline{z} + \overline{\epsilon}\overline{z})$, the operator transforms as
+    \be 
+    \label{eqn:WeightOfOperator}
+        \del \cO = -\epsilon(h\cO + z\p\cO) -\overline{\epsilon}(\widetilde{h}\cO + \overline{z}\overline{\p}\cO).
+    \ee 
 \ed 
 
 \br 
-Note it is \textit{not} true that all operators have well defined weight. We see this easily when we consider the state-operator map. We can take superpositions of states that correspond to operators with different weights, and so the resulting operator will not have a well defined weight. 
+    Note it is \textit{not} true that all operators have well defined weight. We see this easily when we consider the state-operator map. We can take superpositions of states that correspond to operators with different weights, and so the resulting operator will not have a well defined weight. 
 \er 
 
 In fact, this remark highlights a deeper understanding of what the weights represent: an operator only has well defined weight if the state corresponding to the operator is an eigenstate of dilatations and rotations. In other words, the $\epsilon h\cO$ term only appears in the transformation if the state is an eigenstate.\footnote{Note, that here we just have what looks like an eigenvalue equation anyway, $\del \cO = C\cO$ for some constant!} 
@@ -180,16 +181,16 @@ and so we see that the so-called \textit{scaling dimension} is given by
 \ee 
 
 \br 
-Note the name scaling dimension should make sense, as the dilatation operator corresponds to the Hamiltonian in the radial quantisation picture, and so corresponds to moving to higher radius rings. 
+    Note the name scaling dimension should make sense, as the dilatation operator corresponds to the Hamiltonian in the radial quantisation picture, and so corresponds to moving to higher radius rings. 
 \er 
 
 \br 
-We see from the dilatation operator and the relation $L_m = z^{m+1}\p_z$ that the energy is given by $L_0 +\widetilde{L}_0$. Now also notice that 
-\be 
-\label{eqn:L0LmCommutator}
-    [L_0,L_m] = -mL_m,
-\ee 
-and so, for $m>0$, $L_m$ lowers the energy of the system and, for $m<0$, $L_m$ raises the energy.
+    We see from the dilatation operator and the relation $L_m = z^{m+1}\p_z$ that the energy is given by $L_0 +\widetilde{L}_0$. Now also notice that 
+    \be 
+    \label{eqn:L0LmCommutator}
+        [L_0,L_m] = -mL_m,
+    \ee 
+    and so, for $m>0$, $L_m$ lowers the energy of the system and, for $m<0$, $L_m$ raises the energy.
 \er 
 
 We now see an interesting result. Recalling \Cref{eqn:JzConserved} we see from the Ward identity that the OPE of $J\cO$ will determine the $1/z^2$ term in the OPE of $T\cO$. That is, when we expand $J_z = zT$ about $\omega$, we get a $(z-\omega)$ term from the $z$, which couples to the $1/z^2$ term to give a pole. Recalling also that $T$ corresponds to conformal transformations, we therefore see that for an operator of well defined weight, the $T\cO$ OPE is given by 
@@ -197,21 +198,21 @@ We now see an interesting result. Recalling \Cref{eqn:JzConserved} we see from t
 \label{eqn:TOOPEWeight}
     \begin{split}
         T(z)\cO(\omega,\overline{\omega}) & = ... + h\frac{\cO(\omega,\overline{\omega})}{(z-\omega)^2} + \frac{\p\cO(\omega,\overline{\omega})}{z-\omega} + ... \\
-        \overline{T}(\overline{z})\cO(\omega,\overline{\omega}) & = ... + \widetilde{h}\frac{\cO(\omega,\overline{\omega})}{(\overline{z}-\overline{\omega})^2} + \frac{\p\cO(\omega,\overline{\omega})}{\overline{z}-\overline{\omega}} + ...,
+        \overline{T}(\overline{z})\cO(\omega,\overline{\omega}) & = ... + \widetilde{h}\frac{\cO(\omega,\overline{\omega})}{(\overline{z}-\overline{\omega})^2} + \frac{\overline{\p}\cO(\omega,\overline{\omega})}{\overline{z}-\overline{\omega}} + ...,
     \end{split}
 \ee 
 where we have included the antiholomorphic expression too. 
 
-We have, in fact, already used this result, It's \Cref{claim:TOTransformation}! In order to obtain \Cref{eqn:TTOPE}, we used the fact that $T$ has weight $(2,0)$. Why? You ask. We have already argued that the scaling dimension (before we just called it the dimension of $T$) of $T$ is 2, add to that the fact that the spin of $T$ is also 2 (as it is a symmetric 2-tensor), we are forced to conclude that $h=2$ and $\widetilde{h}=0$.
+We have, in fact, already used this result: it's \Cref{claim:TOTransformation}! In order to obtain \Cref{eqn:TTOPE}, we used the fact that $T$ has weight $(2,0)$. Why? You ask. We have already argued that the scaling dimension (before we just called it the dimension of $T$) of $T$ is 2, add to that the fact that the spin of $T$ is also 2 (as it is a symmetric 2-tensor), we are forced to conclude that $h=2$ and $\widetilde{h}=0$.
 
 \section{Primary Operators}
 
 \bd[Primary Operator] 
-Under a conformal transformation $z\to \omega(z)$, a so-called \textit{primary operator} transforms as 
-\be 
-\label{eqn:PrimaryOperators}
-    \widetilde{\cO}(\omega,\overline{\omega}) = \bigg(\frac{\p \omega}{\p z}\bigg)^{-h} \bigg(\frac{\p \overline{\omega}}{\p \overline{z}}\bigg)^{-\widetilde{h}} \cO(z,\overline{z}).
-\ee 
+    Under a conformal transformation $z\to \omega(z)$, a so-called \textit{primary operator} transforms as 
+    \be 
+    \label{eqn:PrimaryOperators}
+        \widetilde{\cO}(\omega,\overline{\omega}) = \bigg(\frac{\p \omega}{\p z}\bigg)^{-h} \bigg(\frac{\p \overline{\omega}}{\p \overline{z}}\bigg)^{-\widetilde{h}} \cO(z,\overline{z}).
+    \ee 
 \ed
 
 Let $\omega(z) = z + f(z)$ and let's consider the case when $f(z)$ is small. Then we have to first order 
@@ -222,7 +223,7 @@ and so
 \bse 
     \del \cO(z,\overline{z}) = -h\p f\cO(z,\overline{z}) - f\p\cO(z,\overline{z}),
 \ese
-and a similar expression for the antiholomorphic term. But then we know (via the Ward identity) that this gives us the residue of the OPE between $J\cO$, and so we can conclude that a primary operator's OPE with $T/\overline{T}$ must truncate at second order singularity, i.e. 
+and a similar expression for the antiholomorphic term. But then we know (via the Ward identity) that this gives us the residue of the OPE between $J\cO$, and so we can conclude that a primary operator's OPE with $T/\overline{T}$ must truncate at second order singularity (as we only have one derivative of $f$), i.e. 
 \be 
 \label{eqn:TOPrimary}
     \begin{split}
@@ -232,19 +233,19 @@ and a similar expression for the antiholomorphic term. But then we know (via the
 \ee 
 
 \br 
-\Cref{eqn:TOPrimary} is often given as an alternative definition for a primary operator. 
+    \Cref{eqn:TOPrimary} is often given as an alternative definition for a primary operator. 
 \er 
 
 \br 
-Note that having well define weight does not mean an operator is primary. For example, we've seen that $T$ has well defined weight, but it contains a $1/z^4$ term in its OPE with itself, and therefore is not primary.
+    Note that having well defined weight does not mean an operator is primary. For example, we've seen that $T$ has well defined weight, but it contains a $1/z^4$ term in its OPE with itself, and therefore is not primary.
 \er 
 
 \br 
-We might wonder why we are interested in primary operators at all. Well a na\"{i}ve explanation, is to go back and remind ourselves of the Polyakov action. We are taken derivatives of scalar fields (the $x^{\mu}$s), which transform as 
-\bse 
-    \frac{\p x^{\mu}(\omega)}{\p \omega} = \bigg(\frac{\p \omega}{\p z}\bigg)^{-1} \frac{\p x^{\mu}(z)}{\p z},
-\ese 
-which is a primary operator transformation. Note, however, that a second order derivative will not transform this way, and is therefore not a primary operator. 
+    We might wonder why we are interested in primary operators at all. Well a na\"{i}ve explanation is to go back and remind ourselves of the Polyakov action. We are taking derivatives of scalar fields (the $X^{\mu}$s), which transform as 
+    \bse 
+        \frac{\p X^{\mu}(\omega)}{\p \omega} = \bigg(\frac{\p \omega}{\p z}\bigg)^{-1} \frac{\p X^{\mu}(z)}{\p z},
+    \ese 
+    which is a primary operator transformation. Note, however, that a second order derivative will not transform this way, and is therefore not a primary operator. 
 \er 
 
 \subsection{Primary States}
@@ -280,24 +281,24 @@ where the ellipsis indicates non-singular terms. So let's consider the values of
 We call the states corresponding to primary operators (unsurprisingly) primary states.
 
 \br 
-Note the condition for $m=-1$ helps us to understand further why the only state that is annihilated by $L_{-1}$ comes from inserting the identity at the origin. That is, it is the only one with vanishing derivative, which corresponds simply to shifting the operator off the origin. 
+    Note the condition for $m=-1$ helps us to understand further why the only state that is annihilated by $L_{-1}$ comes from inserting the identity at the origin. That is, it is the only one with vanishing derivative, which corresponds simply to shifting the operator off the origin. 
 \er 
 
 \br 
-The condition for $m=0$ also makes sense. In this case, we are just considering scalings, and we've already seen that the derivative transforms with weight $h=1$ under such transformations. Then an operator of dimension $h$ can be thought of as $h$ derivatives, and so transforms with $h$.
+    The condition for $m=0$ also makes sense. In this case, we are just considering scalings, and we've already seen that the derivative transforms with weight $h=1$ under such transformations. Then an operator of dimension $h$ can be thought of as $h$ derivatives, and so transforms with $h$.
 \er 
 
 \br 
-Note that the conditions for $m=-1$ and $m=0$ hold for \textit{any} operator of well defined weight. That is, they need not be primary. We have seen this explicitly when considering $TT$. However, the condition for $m\geq 1$ is only true for primary operators.
+    Note that the conditions for $m=-1$ and $m=0$ hold for \textit{any} operator of well defined weight. That is, they need not be primary. We have seen this explicitly when considering $TT$. However, the condition for $m\geq 1$ is only true for primary operators.
 \er 
 
 \br 
-There is an interesting result we can note here. Recall that $L_0 = z\p$ in a basis, and so we see that the dilatation operator is $D = L_0 + \widetilde{L}_0$ and the momentum is $L = L_0 - \widetilde{L}_0$, but both of these are symmetries of our system (they're the energy and momentum on the cylinder) and so we can always find a basis in the Hilbert space such that the states have well defined $L_0$ action. This then corresponds to the fact that we can always find a basis such that $\cO_i$ in the basis have definite $h$ and $\widetilde{h}$.
+    There is an interesting result we can note here. Recall that $L_0 = z\p$ in a basis, and so we see that the dilatation operator is $D = L_0 + \widetilde{L}_0$ and the momentum is $L = L_0 - \widetilde{L}_0$, but both of these are symmetries of our system (they're the energy and momentum on the cylinder) and so we can always find a basis in the Hilbert space such that the states have well defined $L_0$ action. This then corresponds to the fact that we can always find a basis such that $\cO_i$ in the basis have definite $h$ and $\widetilde{h}$.
 \er 
 
 \br 
 \label{rem:VermaRemark}
-Recalling that $L_m$ for $m>0$ lowered the energy of the state, we see that for primary operators, we cannot lower the energy any further (as $L_m\ket{\cO} = 0$ for all $m\geq 1$). We shall return to this point next lecture when looking at the Verma module.
+    Recalling that $L_m$ for $m>0$ lowered the energy of the state, we see that for primary operators, we cannot lower the energy any further (as $L_m\ket{\cO} = 0$ for all $m\geq 1$). We shall return to this point next lecture when looking at the Verma module.
 \er 
 
 What we've derived above is obviously true, however we have slightly limited ourselves to placing our operators at the origin. We did this as it makes contact with the state-operator map and allows us to define primary states. However, it is also worth looking at (and we shall use it soon) the case when the operator is not at the origin. We just repeat the calculation, but now without assuming $\omega=0$. So we have 
@@ -327,15 +328,13 @@ As we have seen above the subalgebra containing $\{L_{-1},L_0,L_1\}$ is interest
 
 \subsection{Two/Three-Point Functions for Quasi-Primary Operators}
 
-Let's now consider the case where we have an arbitrary number of operator insertions anywhere expect at the infinite past or infinite future. So on the plane, there is no insertions at the origin or at an infinite distance from the origin. Now consider inserting the $\mathfrak{sl}(2,\C)$-algebra around these points: that is, in the plane picture, we take a closed loop around the origin and around the point that is infinity with any of $L_{-1},L_0,L_1$. We know that \textit{any} correlation function (i.e. any insertions at anywhere, subject to the constraints we just made) must vanish. The reason for this is simply that the vacuum is annihilated by all three of these operators. 
-
-To clarify taking the contour around the infinite point, we could just do what we did at the beginning and take the transformation $z\to 1/\omega$, and take it about the origin. Note that $L_{\pm1} \to L_{\mp1}$, $L_0\to L_0$ under this transformation, and so we don't leave our Witt subalgebra. 
+Let's now consider the case where we have an arbitrary number of operator insertions anywhere expect at the infinite past or infinite future. So on the plane, there is no insertions at the origin or at an infinite distance from the origin. Now consider inserting the $\mathfrak{sl}(2,\C)$-algebra around these points: that is, in the plane picture, we take a closed loop around the origin and all the insertions with any of $L_{-1},L_0,L_1$. We know that \textit{any} correlation function (i.e. any insertions at anywhere, subject to the constraints we just made) must vanish. This is because we can do what we did at the beginning and take the transformation $z\to 1/\omega$, and therefore take our contour around  origin. This combined with the fact that the vacuum is annihilated by the $\mathfrak{sl}(2,\C)$-algebra, gives us our result.  Note that $L_{\pm1} \to L_{\mp1}$, $L_0\to L_0$ under this transformation, and so we don't leave our Witt subalgebra. 
 
 Mathematically, what we have is 
 \bse 
-    \langle L_a ... L_a \rangle = 0, \qquad \forall a=-1,0,1.
+    \langle L_a ...\rangle = 0, \qquad \forall a=-1,0,1.
 \ese 
-where we can put anything in the middle. However, this is equivalent to saying the sum of the correlation functions of the poles vanishing:
+where we can put anything in the middle. However, this is equivalent to saying the sum of the correlation functions of the poles vanishes:
 \be 
     \langle \del \cO_1 \cO_2...\cO_n\rangle + \langle \cO_1 \del\cO_2 ... \cO_n \rangle + ... + \langle \cO_1\cO_2...\del\cO_n\rangle = 0.
 \ee 
@@ -435,5 +434,5 @@ where the operators have holomorphic weights $h_1,h_2,h_3$ respectively, is give
 \ee 
 
 \br 
-The constant $B$ here is not independent of $A$. In fact, once you choose a specific $A$ the constants for all higher point functions are determined.
+    The constant $B$ here is not independent of $A$. In fact, once you choose a specific $A$ the constants for all higher point functions are determined.
 \er 

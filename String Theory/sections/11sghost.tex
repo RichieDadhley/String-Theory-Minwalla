@@ -1,0 +1,481 @@
+\chapter{The $bc$ CFT}
+
+Recall \Cref{rem:cproblem}, which essentially told us that, unless we can introduce something that contributes a negative central charge, our theory is doomed. Well last lecture we did introduce something new, namely the ghost action. We now want to see what effect, if any, the ghost action has on the central charge.\footnote{Spoiler: it will contribute $c_{\text{ghost}}=-26$. Note the number $26$ should look familiar...}
+
+\section{Simplifying $S_{\text{ghost}}$}
+
+As it stands our ghost action looks like this 
+\bse 
+    S_{\text{ghost}} := \frac{1}{2\pi} \int d^2\sig \, \sqrt{\hat{g}} b^{\a\beta}\Big(\nabla_{\a} c_{\beta} + \nabla_{\beta} c_{\a} - \hat{g}_{\a\beta} \nabla\cdot c\Big).
+\ese 
+The first thing we want to do is to use the metric to lower the indices on $b$ and raise them on the $c$. So if we define
+\bse 
+    \nabla^{\a} := \hat{g}^{\a\beta}\nabla_{\beta},
+\ese 
+our ghost action becomes 
+\be 
+\label{eqn:ghostblower}
+    S_{\text{ghost}} := \frac{1}{2\pi} \int d^2\sig \, \sqrt{\hat{g}} b_{\a\beta}\Big(\nabla^{\a} c^{\beta} + \nabla^{\beta} c^{\a} - \hat{g}^{\a\beta} \nabla\cdot c\Big).
+\ee 
+We now work in conformal gauge, i.e. we set
+\bse 
+    \hat{g}_{\a\beta} = e^{2\phi} \gamma_{\a\beta},
+\ese 
+where $\gamma_{\a\beta}$\footnote{I have used the notation $\gamma$ here to avoid confusion with the delta function in the following proposition, although they are essentially the same thing.} is the Euclidean metric. As we have mentioned before, we can do this (at least locally\footnote{If it is not possible globally, we just inherit the behaviour into the transition functions. For now though, we shall ignore this.}) because of our gauge symmetries. 
+
+\bp 
+    In the conformal gauge, we can replace covariant derivatives in \Cref{eqn:ghostblower} with standard derivatives and replacing $\hat{g}\to \gamma$. 
+\ep
+
+\bq 
+    We have 
+    \bse 
+        \nabla_{\tau}c^{\beta} = \p_{\a}c^{\beta} + {\Gamma^{\beta}}_{\sig\tau}c^{\tau}.
+    \ese 
+    The Christoffel symbols are given by 
+    \bse
+        \begin{split}
+            {\Gamma^{\beta}}_{\sig\tau} & := \frac{1}{2}\hat{g}^{\beta\rho}\Big(\hat{g}_{\rho\tau,\sig} + \hat{g}_{\rho\sig,\tau} - \hat{g}_{\sig\tau,\rho}\Big) \\
+            & = \frac{1}{2}e^{-2\phi}\delta^{\beta\rho} \Big( 2e^{2\phi}\gamma_{\rho\tau}\p_{\sig}\phi + 2e^{2\phi}\gamma_{\rho\sig}\p_{\tau}\phi - 2e^{2\phi}\gamma_{\sig\tau}\p_{\rho}\phi\Big) \\
+            & = \delta^{\beta}_{\tau}\p_{\sig}\phi + \delta^{\beta}_{\sig}\p_{\tau}\phi - \gamma_{\sig\tau}\p^{\beta}\phi,
+        \end{split}
+    \ese 
+    where $\p^{\beta}:=\gamma^{\beta\rho}\p_{\beta}$. We then have 
+    \bse 
+        \hat{g}^{\a\tau}{\Gamma^{\beta}}_{\sig\tau} = e^{-2\phi}\Big( \gamma^{\a\beta}\p_{\sig}\phi + \delta^{\beta}_{\sig} \p^{\a}\phi - \delta^{\a}_{\sig} \p^{\beta}\phi\Big).
+    \ese 
+    We then notice that the last two terms are antisymmetric in $\a$ and $\beta$, so we have 
+    \bse 
+        \nabla^{\a}c^{\beta} + \nabla^{\beta}c^{\a} = e^{-2\phi}\Big[\p^{\a}c^{\beta} + \p^{\beta}c^{\a} + 2\gamma^{\a\beta} \big(\p_{\sig}\phi\big)c^{\sig} \Big].
+    \ese 
+    Next we have 
+    \bse 
+        \nabla\cdot c := \nabla_{\a}c^{\a} = \p_{\a}c^{\a} + {\Gamma^{\a}}_{\sig\a} c^{\sig},
+    \ese
+    where similar calculation to the above gives 
+    \bse 
+        \begin{split}
+            {\Gamma^{\a}}_{\sig\a} & = \gamma^{\a\tau}\Big( \gamma_{\tau\a}\p_{\sig}\phi + \gamma_{\tau\sig}\p_{\a}\phi - \gamma_{\a\sig}\p_{\tau}\phi\Big) \\
+            & = 2\p_{\sig}\phi + \p_{\sig}\phi - \p_{\sig}\phi \\
+            & = 2 \p_{\sig}\phi,
+        \end{split}
+    \ese 
+    where we have used $\gamma^{\a\sig}\gamma_{\a\sig}=2$, giving us 
+    \bse 
+        \hat{g}^{\a\beta}\nabla\cdot c = e^{2\phi}\gamma^{\a\beta}\p_{\sig}c^{\sig} + 2\gamma^{\a\beta}\big(\p_{\sig}\phi\big) c^{\sig}
+    \ese 
+    Finally using $\sqrt{\hat{g}} = e^{2\phi}\sqrt{\gamma} = e^{2\phi}$, we have
+    \bse 
+        S_{\text{ghost}} = \frac{1}{2\pi} \int d^2\sig e^{2\phi} b_{\a\beta} e^{-2\phi}\Big( \p^{\a}c^{\beta} + \p^{\beta}c^{\a} - \gamma^{\a\beta}\p \cdot c\Big),
+    \ese 
+    where we have defined $\p\cdot c := \p_{\a}c^{\a}$. Then just cancelling the exponential factors gives the result. 
+\eq 
+
+Now if we transform into $(z,\overline{z})$ coordinates, and use that $b$ is traceless (so $b_{z\overline{z}}=b_{\overline{z}z}=0$), and introduce the notation
+\be
+    b := b_{zz}, \qquad \overline{b} := b_{\overline{z}\overline{z}}, \qquad c := c_z, \qquad \overline{c} := c_{\overline{z}},
+\ee 
+we have 
+\be 
+\label{eqn:Sghostbc}
+    S_{\text{ghost}} = \frac{1}{2\pi} \int d^2z \Big( b\overline{\p}c + \overline{b}\p c\Big),
+\ee 
+where we have used our $\p/\overline{\p}$ notation.\footnote{Note that $\p = \p_z$ with the index down, so they are flipped for the raised indices, i.e. $\overline{\p} = \p^z$.} 
+
+So we have just shown that the ghost action, \textit{as we have written it}, has no Weyl dependence (i.e. $\phi$ doesn't appear in \Cref{eqn:Sghostbc}). This is the statement that $b$ and $c$ are Weyl neutral. We know they transform with diffeomorphism weight 
+\bse 
+    \begin{split}
+        b &\qquad (2,0), \\
+        \overline{b} &\qquad (0,2) \\
+        c &\qquad (-1,0) \\
+        \overline{c} &\qquad (0,-1),
+    \end{split}
+\ese 
+and so this is also their conformal weight. 
+
+\br 
+    As we emphasised above, the Weyl neutrality only holds for how we've written it, that is $b_{\a\beta}$ and $c^{\a}$. If we considered the raised $b^{\a\beta}$ and lowered $c_{\a}$ we would, of course, get a Weyl weight (just from the definition $c_{\a}=\hat{g}_{\a\beta}c^{\beta}$, and similarly for $b^{\a\beta}$), however their conformal weights would still turn out to be the same. To see this note that the ghost action still needs to be Weyl invariant and so $c_{\a}$ must transform with Weyl weight $(-2,0)$ in order to cancel the $(2,0)$ Weyl weight from the $\hat{g}_{\a\beta}$. Combining this with the $(1,0)$ diffeomorphism weight for $c_{\a}$ we get a total conformal weight of $(-1,0)$, as required. 
+\er 
+
+The equations of motion for \Cref{eqn:Sghostbc} give 
+\bse 
+    \overline{\p}b = \overline{\p}c = \p\overline{b} = \p\overline{c} = 0,
+\ese 
+telling us that $b$ and $c$ are holomorphic, and $\overline{b}$ and $\overline{c}$ are antiholomorphic. 
+
+\section{The OPE}
+
+Let's just consider the holomorphic part of the path integral, and employ the same methods we did for the bosonic fields. We have  
+\bse 
+    0 = \int DbDc \, \frac{\del}{\del b(\sig)}\Big[b(\sig') e^{-S_{\text{ghost}}}\Big] = \int Db Dc \, e^{-S_{\text{ghost}}} \Big[\del(\sig-\sig') + \frac{1}{2\pi} b(\sig')\overline{\p}c(\sig)\Big],
+\ese
+where we have used the anticommuting property to get a minus sign when moving the derivative past $b(\sig')$. We get a similar result if we differentiate w.r.t. $c(\sig)$. We therefore have 
+\bse 
+    \begin{split}
+        \la b(z_1)\overline{\p}c(z_2) \ra  & = -\del(z_2-z_1) \\
+        \la c(z_1)\overline{\p}b(z_2) \ra  & = -\del(z_2-z_1).
+    \end{split}
+\ese 
+These should look familiar from the bosonic field discussion, and so we have 
+\bse 
+    \begin{split}
+        \la c(z_1)b(z_2) \ra  & = \frac{1}{z_{12}} \\
+        \la b(z_1)c(z_2) \ra & = \frac{1}{z_{12}}.
+    \end{split}
+\ese 
+Note that we have used the anticommutativity and $z_{12}=-z_{21}$ to flip some signs around. The easiest way to remember the result is that $z_1$ always appears on the left and $z_2$ on the right, as above. 
+
+\section{The Stress Tensor}
+The next job is to find the stress tensor. We do actually have the specific form of the action, and so we could just vary this w.r.t. the metric and obtain the stress tensor. However, we shall derive the result here using an alternative method as it is instructive to see for similar cases but where the action is not known. The method is essentially to guess the answer and then to check it works out.\footnote{By which we mean that we will check it obeys the Virasoro algebra and that $b$ and $c$ have the correct weights.} 
+
+We have seen that the (holomorphic part of the) stress tensor has weight $(2,0)$. We have also seen that $b$ and $c$ have weight $(2,0)$ and $(-1,0)$, so if we are to make $T$ from these two objects, we want one of each and a derivative (which increases the weight by one, recall). We take our guess to be\footnote{Of course this is not really a guess, and is done in hindsight of knowing the answer.}
+\bse 
+    \begin{split}
+        T_{\l}(z) & = \cl\p b(z)c(z)\cl - \l\cl\p\big(b(z)c(z)\big)\cl \\
+        & = (1-\l)\cl \p b(z) c(z)\cl - \l \cl b(z) \p c(z)\cl,
+    \end{split}
+\ese 
+where $\lambda\in\R$ is some constant. It turns out that different values of $\lambda$ will correspond to different conformal field theories, and so (after we establish the required $\lambda$ for our theory) we will tend to leave it in explicitly, and only insert the value at stages for checks about our theory. 
+
+\subsection{Primary Fields}
+
+First let's find the OPE with $b/c$. We have 
+\bse 
+    \begin{split}
+        T_{\l}(z)c(\omega) & = \Big[(1-\l)\cl\p b(z)c(z)\cl c(\omega)\Big] - \Big[\l \cl b(z)\p c(z)\cl c(\omega)\Big] \\
+        & = \Big[(\l-1)\cl c(z)\p b(z)\cl c(\omega)\Big] + \Big[\l \cl \p c(z) b(z)\cl c(\omega)\Big] \\
+        & = -\frac{(\l-1)c(z)}{(z-\omega)^2} + \frac{\l \p c(z)}{z-\omega} + ...,
+    \end{split}
+\ese 
+from which we see that $\l=2$ if we want $c$ to be a weight $(-1,0)$ operator, i.e. we want the first coefficient to be $-1$. 
+
+For $b$ we have 
+\bse 
+    \begin{split}
+        T_{\l}(z)b(\omega) & = \Big[(1-\l)\cl\p b(z)c(z)\cl b(\omega)\Big] - \Big[\l \cl b(z)\p c(z)\cl b(\omega)\Big] \\
+        & = \frac{(1-\l)\p b(z)}{z-\omega} + \frac{\l b(z)}{(z-\omega)^2} + ... \\
+        & = \frac{\l b(z)}{(z-\omega)^2} + \frac{(1-\l)\p b(z)}{z-\omega} + ...,
+    \end{split}
+\ese 
+again from which we see we need $\l=2$ for $b$ to be have weight $(2,0)$. 
+
+\br 
+    Note that we have actually shown that $b$ and $c$ are primary operators. 
+\er 
+
+\subsection{The Ghost Central Charge}
+
+So let's put in $\l=2$ to simplify $T_{\l}$ a bit. We get 
+\be  
+\label{eqn:TGhost}
+    T(z) = 2\cl\p c(z) b(z)\cl + \cl c(z)\p b(z)\cl,
+\ee 
+where we have used the antisymmetry behaviour to get plus signs on both terms. 
+
+We can now try and find out what the ghost central charge for theory is, by considering the $T(z)T(\omega)$ OPE. We have 
+\bse 
+    \begin{split}
+        T(z)T(\omega) & = 4\Big[\cl\p c(z) b(z)\cl \cl\p c(\omega) b(\omega)\cl\Big] + 2\Big[ \cl\p c(z) b(z)\cl\cl c(\omega)\p b(\omega)\cl\Big] \\
+        & \qquad + 2\Big[ \cl c(z)\p b(z)\cl \cl\p c(\omega) b(\omega)\cl\Big] + \Big[ \cl c(z)\p b(z)\cl \cl c(\omega)\p b(\omega)\cl\Big].
+    \end{split}
+\ese 
+Let's consider this term by term. Firstly, we have (ignoring non-singular terms) 
+\bse 
+    \begin{split}
+        \cl\p c(z) b(z)\cl \cl\p c(\omega) b(\omega)\cl & = \overbrace{b(z)\p c(\omega)} \overbrace{\p c(z) b(\omega)} + \overbrace{b(z)\p c(\omega)}\cl \p c(z) b(\omega)\cl \\
+        & \qquad + (-1)^2\overbrace{\p c(z)b(\omega)}\cl b(z)\p c(\omega)\cl \\
+        & = \bigg(\frac{1}{(z-\omega)^2}\bigg)\bigg(\frac{-1}{(z-\omega)^2}\bigg) + \frac{\cl \p c(z)b(\omega)\cl}{(z-\omega)^2} - \frac{ \cl b(z)\p c(\omega)\cl }{(z-\omega)^2} \\
+        & = \frac{-1}{(z-\omega)^4} + \frac{\cl \p c(z)b(\omega)\cl}{(z-\omega)^2} - \frac{ \cl b(z)\p c(\omega)\cl }{(z-\omega)^2},
+    \end{split}
+\ese 
+where we have used the antisymmetry behaviour when `jumping' $c$s and $b$s over each other\footnote{I.e. $\p c(z) b(z) \p c(\omega) b(\omega) = - b(z)\p c(z)\p c(\omega) b(\omega) = (-1)^2 b(z)\p c(z) b(\omega) \p c(\omega)$.} along with the fact that the contraction
+\bse
+    b(z)\p c(\omega) = \p_{\omega} \bigg(\frac{1}{z-\omega}\bigg) = + \frac{1}{(z-\omega)^2}
+\ese
+to get the signs correct. 
+
+Similar calculations for the other terms gives 
+\bse 
+    \begin{split}
+        \cl\p c(z) b(z)\cl\cl c(\omega)\p b(\omega)\cl & = \frac{-2}{(z-\omega)^4} - \frac{4\cl b(z)c(\omega)}{(z-\omega)^3} + \frac{\cl \p c(z) \p b(\omega)\cl}{z-\omega}, \\
+        \cl c(z) \p b(z)\cl\cl \p c(\omega) b(\omega)\cl & = \frac{-2}{(z-\omega)^4} - \frac{2\cl c(z)b(\omega)\cl}{(z-\omega)^3} + \frac{\cl \p b(z)\p c(\omega)\cl}{z-\omega}, \\
+        \cl c(z) \p b(z) \cl \cl c(\omega) \p b(\omega) \cl & = \frac{-1}{(z-\omega)^4} - \frac{\cl c(z) \p b(\omega) \cl}{(z-\omega)^2} + \frac{\cl \p b(z) c(\omega) \cl}{(z-\omega)^2}.
+    \end{split}
+\ese 
+Putting all of this together, Taylor expanding, and using the antisymmetry behaviour we get 
+\bse 
+    T(z)T(\omega) = \frac{-13}{(z-\omega)^4} + \frac{2T(\omega)}{(z-\omega)^2} + \frac{\p T(\omega)}{z-\omega} + ...,
+\ese 
+which tells us 
+\mybox{
+\be 
+\label{eqn:cghost}
+    c_{\text{ghost}} = -26.
+\ee 
+}
+
+\br 
+    If we hadn't put $\l=2$ into the expressions above, we would have ended up with the result fourth-power singularity being 
+    \bse 
+        \frac{-1 +6\l -6\l^2}{(z-\omega)^4}.
+    \ese 
+    Of course if we put $\l=2$ here we get \Cref{eqn:cghost} back.
+\er 
+
+\section{The Critical Dimension}
+
+Now let's recap what we have said and done. We started this lecture by reminding ourselves of the need for something that contributes negative central charge, or else the only Weyl invariant theory we have is the trivial one (i.e. the one with no bosonic terms). This was all because we need the \textit{total} central charge to vanish. We have just shown that the ghost action contributes $-26$ to the central charge, and so we now need something(s) in our system to contribute $+26$, giving us $c_{\text{total}} = 0$. We showed previously that each bosonic term contributed $+1$ to the central charge, and so one thing we could do is simply require that we have 26 of them! In other words, we want 
+\bse 
+    c_{\text{boson}} = +26. 
+\ese 
+This is exactly the result \Cref{eqn:d26}.
+
+\subsection{$d=26$?}
+
+There is a important point Dr. Tong brings up that is worth noting here. What we have really shown (from lecture 4 onwards) is that each bosonic term contributes $+1$ to the central charge and that $c_{\text{ghost}}=-26$. We then got excited about reproducing \Cref{eqn:d26} and said that we conclude that there are 26 boson terms. It is this last part that we are not fully justified in doing. 
+
+Indeed \textit{if} there was 26 boson terms we would have $c_{\text{total}}=0$, and we would have Weyl invariance, however this is not the \textit{only} way we can get such a result. For example, if we were to introduce some new CFT (that in itself was Weyl invariant and all that good stuff) that contributed $c_{\text{new}} = +22$, we would then only need $c_{\text{boson}}=+4$, and so would have $d=4$. 
+
+We should therefore not really call it the critical \textit{dimension}, but the critical \textit{central charge}. In other words, we can think of the space that gives $c=+26$ as the space of possible solutions to string theory. 
+
+We did get the result that $d=26$ earlier in the course though, and so we shall take this to be our solution value. This subsection is just to point out that we have not actually shown here that we \textit{need} $d=26$. 
+
+The particular case given above with $c_{\text{new}}=+22$ is sometimes called the \textit{internal sector} and is often interpreted as the idea of having 22 `hidden' dimensions in our $d=4$ Minkowski spacetime. 
+
+\br 
+    \textcolor{red}{Dr. Tong says he will give some examples in section 7, so if Dr. Minwalla doesn't do it, have a look and type it up. Section 5.3.}
+\er 
+
+\section{State Operator Map}
+
+\subsection{Contour Manipulation}
+
+We now want to work out the Virasoro algebra for the $bc$ CFT. The first thing we need to do is take another look at the contour manipulation we did back in Lecture 5. There we have \textit{bosonic} (i.e. symmetric) operators, whereas now we have fermionic (i.e. antisymmetric) ones, and so we need to rethink how to get the correct contour. 
+
+The thing we have to remember is that operators appear in correlation functions in a time ordered manner, whereas in a path integral they need not. For the bosonic case this did not matter, because the operators commuted and so we could just switch the order of the operators in the path integral to be in time-ordered fashion. However, antisymmetric charges do not commute and will pick up a minus sign for every operator switched in the path integral. The operators are already ordered in the correlation function and so we do not pick up compensating minus signs from there. We must, therefore, come up with some prescription of how we want the path integral to look \textit{before} we take the correlation function. To be more specific
+\bse 
+    \int D\phi e^{iS[\phi]}\cO(t_n)...\cO(t_1) = \la \cO(t_n) ... \cO(t_1)\ra,
+\ese 
+for $t_n>t_{n-1}>...>t_1$. Now provided we do not change this $t_n$ condition, the right-hand side will always appear like that, no matter what order the operators appear on the left-hand side. So if we were clumsy and just assumed the operators could appear in any order on the left-hand side, provided the right-hand side is time ordered, we could write something like 
+\bse 
+    \int D\phi e^{iS[\phi]}\cO(t_n)...\cO(t_1)\cO(t_2) = \la \cO(t_n) ... \cO(t_1)\ra,
+\ese
+for $t_n>...>t_1$.
+
+We know, however, that $\cO(t_1)\cO(t_2)=-\cO(t_2)\cO(t_1)$ and so the two left-hand sides differ by a minus sign, which gives us 
+\bse 
+    \la \cO(t_n) ... \cO(t_1)\ra = - \la \cO(t_n) ... \cO(t_1)\ra,
+\ese
+and so it must vanish! 
+
+We must therefore be more careful then we (perhaps) were with the bosonic case, and \textit{first} ensure that the left-hand side is time ordered and \textit{then} take the correlation functions. So how does this translate into our contour integrals? Well let's assume $\widetilde{Q}^1$ and $\widetilde{Q}^2$ are fermionic charges given by 
+\bse 
+    \widetilde{Q}^i = \frac{1}{2\pi i}\oint \widetilde{J}^idz,
+\ese
+for some current $\widetilde{J}^i$. We want something of the form \Cref{eqn:ContourIntegral}. We have 
+\bse 
+    \widetilde{Q}^1(z_1)\widetilde{Q}^2(z_2) = \oint \frac{dz_1}{2\pi i}\oint \frac{dz_2}{2\pi i} \widetilde{J}^1(z_1)\widetilde{J}^2(z_2),
+\ese 
+and 
+\bse 
+    \widetilde{Q}^2(z_2)\widetilde{Q}^1(z_1) = \oint \frac{dz_1}{2\pi i}\oint \frac{dz_2}{2\pi i} \widetilde{J}^2(z_2)\widetilde{J}^1(z_1).
+\ese
+Now we can use the antisymmetric behaviour to change the latter equation to
+\bse 
+    \widetilde{Q}^2(z_2)\widetilde{Q}^1(z_1) = - \oint \frac{dz_1}{2\pi i}\oint \frac{dz_2}{2\pi i} \widetilde{J}^1(z_1)\widetilde{J}^2(z_2).
+\ese 
+It is important to note that this represents \textit{the exact same} contour. We therefore see that the fermionic version of \Cref{eqn:ContourIntegral} comes from
+\bse 
+    \widetilde{Q}^1(z_1)\widetilde{Q}^2(z_2) + \widetilde{Q}^2(z_2)\widetilde{Q}^1(z_1) =: \big\{\widetilde{Q}^1(z_1), \widetilde{Q}^2(z_2)\big\},
+\ese 
+which is the anticommutator.
+
+\subsection{The $bc$ Anticommutator}
+
+We can use the above formula for finding the anticommutator of two fermionic operators, provided they are holomorphic (the condition needed to do the contour integrals). Both $b$ and $c$ meet these conditions and so we can try find their anticommutator. 
+
+We start by Laurent expanding 
+\bse 
+    b(z) = \sum_{n=-\infty}^{\infty} \frac{b_n}{z^{n+2}}, \qand c(z) = \sum_{n=-\infty}^{\infty} \frac{c_n}{z^{n-1}},
+\ese 
+where the $+2$ and $-1$ come because of the weights of the operators.\footnote{See \Cref{rem:LaurentZPowers} if you need reminding why.} We then invert these to give us 
+\bse 
+    b_n = \oint \frac{dz}{2\pi i}z^{n+1} b(z), \qand c_n = \oint \frac{dz}{2\pi i}z^{n-2} c(z).
+\ese 
+We therefore have 
+\bse 
+    \begin{split}
+        \big\{c_n(z_1), b_m(z_2)\big\} & = \bigg(\oint \frac{dz_1}{2\pi i}\oint\frac{dz_2}{2\pi i} - \oint \frac{dz_2}{2\pi i}\oint\frac{dz_1}{2\pi i}\bigg) z_1^{n-2}z_2^{m+1} c(z_1)b(z_2) \\
+        & = \oint \frac{dz_2}{2\pi i} \Res\bigg[\frac{z_1^{n-2}z_2^{m+1}}{z_{12}}\bigg] \\
+        & = \oint \frac{dz_2}{2\pi i} z_1^{n-2}z_2^{m+1},
+    \end{split}
+\ese 
+which vanishes unless $(n-2)+(m+1)=-1$. Using this along with the fact that the OPE of $c$ with itself and $b$ with itself vanish, we have
+\mybox{
+\be 
+\label{eqn:cbanticommutator}
+    \begin{split}
+        \{c_n,b_m\} & = \del_{n+m,0} \\
+        \{c_n,c_m\} & = 0 \\
+        \{b_n,b_m\} & = 0.
+    \end{split}
+\ee 
+}
+
+\subsection{`Spin' States}
+
+As before $n$ tells us the energy of the state and so operators with $n>0$ correspond to lowering operators and $n<0$ correspond to raising operators. In other words, the vacuum of the theory is the state such that 
+\bse 
+    c_n\ket{0} = 0, \qand b_n\ket{0} = 0,
+\ese 
+for all $n>0$. 
+
+The next obvious question is "what are $c_0$ and $b_0$?" Let's label the state annihilated by $b_0$ as $\ket{\downarrow}$, i.e. 
+\bse 
+    b_0\ket{\downarrow} = 0.
+\ese 
+Let's also label the state 
+\bse 
+    \ket{\uparrow} := c_0\ket{\downarrow}.
+\ese 
+Now from the anticommutator $\{c_0,b_0\}=1$, we have 
+\bse 
+    b_0\ket{\uparrow} = b_0c_0\ket{\downarrow} = \ket{\downarrow} - c_0b_0\ket{\downarrow} = \ket{\downarrow}.
+\ese 
+We also have 
+\bse 
+    c_0\ket{\uparrow} = c_0c_0\ket{\uparrow} = 0.
+\ese 
+So we see that the $n=0$ part of the algebra forms a closed system with two states. Our vacuum state, therefore, is two-fold degenerate. That is, we can have either $\ket{\uparrow}$ or $\ket{\downarrow}$ as our starting point and build on these using the creation operators $c_n/b_n$ for $n<0$. 
+
+This looks an awful lot like the spin state system (hence the labelling using arrows). Just as we say $\ket{\uparrow}$ has spin $+1/2$ and $\ket{\downarrow}$ has spin $-1/2$ for the spin system, we associate a \textit{ghost number} to the states $\ket{\uparrow}/\ket{\downarrow}$ here. We shall say $\ket{\uparrow}$ has ghost number $+1$ and $\ket{\downarrow}$ has ghost number $-1$. 
+
+\br 
+    Note that although we have an infinite number of excitations (as $n$ can take any value from $-\infty$ to $\infty$), we do not have the `double infinity' that we had for the bosonic fields.\footnote{See footnote 6 in Lecture 7.} This is because we cannot apply the same $c_n/b_n$ more then once without annihilating the system (as $c_n^2=0=b_n^2$). That is the \textit{occupation number} for each excitation state in the ghost system is $0$ or $1$. This is of course the characteristic behaviour of a fermionic state. 
+\er 
+
+\subsection{Identity State}
+
+Let's consider the identity state $\ket{\b1}$. The state operator map tells us that 
+\bse 
+    c_n\ket{\b1} = \oint\frac{dz}{2\pi i} z^{n+2} c(z),
+\ese 
+which vanishes for $n\geq2$. So we have 
+\bse 
+    c_n\ket{\b1} = 0, \qquad \forall n\geq 2.
+\ese 
+Similarly we have 
+\bse 
+    b_n\ket{\b1} = 0, \qquad \forall b\geq -1.
+\ese 
+So what is the state $\ket{\b1}$? Well we see that it is annihilated by $b_0$ and so it must be related to $\ket{\downarrow}$. However, this is not the end of the story. We see that it is also annihilated by $b_{-1}$ and so it must already contain a $b_{-1}$ action (as $b_{-1}^2=0$). We see therefore
+\be 
+\label{eqn:IdentityStateBC}
+    \ket{\b1} = b_{-1}\ket{\downarrow}.
+\ee 
+This makes sense with the $c_n$ condition as we do not expect it to vanish for $c_1$ as $\{c_1,b_{-1}\}=1$. 
+
+\Cref{eqn:IdentityStateBC} tells us that the identity state is \textit{not} a lowest energy state (as was the case for the bosonic theory) but is actually an excited state with occupation number $1$ in the $b_{-1}$ sector. 
+
+\subsection{The $\ket{c}$, $\ket{b}$, $\ket{\downarrow}$ \& $\ket{\uparrow}$ States}
+
+We now want to find out what $\ket{\downarrow}$ and $\ket{\uparrow}$ are in terms of $b$ and $c$. 
+
+First let's consider $\ket{\downarrow}$. We know it obeys 
+\bse
+    \begin{split}
+        c_n\ket{\downarrow} & = 0, \qquad \forall n\geq 1 \\
+        b_n\ket{\downarrow} & = 0, \qquad \forall n\geq 0,
+    \end{split}
+\ese 
+the question is, how do we make this from $c$s and $b$s? Well we know that 
+\bse 
+    b_n\ket{\cO} = \Res\big[ z^{n+1}\la b(z)\cO(0)\ra\big],
+\ese 
+and so we need something who's OPE with $b(z)$ gives a $1/z$ factor (i.e. so that we end up with $\Res[z^n]$ which vanishes for all $n\geq0$). Well we know just an operator: $c$! 
+
+The question is does $\ket{c}$ meet the $c_n$ condition? We have 
+\bse 
+    c_n\ket{c} = \oint\frac{dz}{2\pi i} z^{n-2} c(z)c(0).
+\ese
+At first site this seems to tell us that 
+\bse 
+    c_n\ket{c} = 0, \qquad \forall n\geq 2,
+\ese 
+however, we need to note that $c(z)c(0)=-c(0)c(z)$, which tells us that $c(z)c(0) \sim z$. So we 
+\bse 
+    c_n\ket{c} = 0, \qquad \forall n\geq1, 
+\ese 
+which is exactly our condition. So we conclude 
+\be 
+\label{eqn:cStateBC}
+    \ket{\downarrow} = \ket{c}.
+\ee 
+
+This if our first result, now what about $\ket{\uparrow}$? This obeys 
+\bse 
+    \begin{split}
+        b_n\ket{\downarrow} & = 0, \qquad \forall n\geq 1 \\
+        c_n\ket{\downarrow} & = 0, \qquad \forall n\geq 0,
+    \end{split}
+\ese 
+which compared to the $\ket{\downarrow}$ conditions might lead us to think that 
+\bse 
+    \ket{\uparrow} = \ket{b}.
+\ese 
+However this is not true. We see this instantly by considering 
+\bse 
+    b_n\ket{b} = \Res\big[ z^{n+1}b(z)b(0)\big],
+\ese 
+which from the same argument as for the $c\ket{c}$ calculation, tells us 
+\bse 
+    b_n\ket{b} = 0 \qquad \forall n\geq -2.
+\ese 
+
+So it's not $\ket{b}$, what else could it be? The answer comes through some careful observation. 
+\bcl 
+    \be 
+    \label{eqn:upStateBC}
+        \ket{\uparrow} = \ket{c\p c}.
+    \ee 
+\ecl 
+
+\bq 
+    We have 
+    \bse 
+        \begin{split}
+            b_n\ket{c\p c} & = \Res\big[ z^{n+1}\la b(z)c(0)\p c(0)\ra \big] \\
+            & \sim \Res\Bigg[ z^{n+1}\Bigg(\frac{1}{z} + \p\bigg(\frac{1}{z}\bigg)\Bigg)\Bigg] \\
+            & = \Res\big[ z^n + z^{n-1}\big],
+        \end{split}
+    \ese 
+    from which we get 
+    \bse 
+        b_n\ket{c\p c} = 0, \qquad \forall n\geq 1,
+    \ese 
+    our required condition. 
+    
+    A similar calculation shows that the $c_n$ condition is met. 
+\eq 
+
+For completeness we see that 
+\be
+\label{eqn:bStateBC}
+    \ket{b} = b_{-1}b_{-2}\ket{\downarrow},
+\ee 
+which requires 
+\bse 
+    \begin{split}
+        b_n\ket{b} & = 0, \qquad \forall n\geq -2, \\
+        c_n\ket{b} & = 0, \qquad \forall n\geq 3.
+    \end{split}
+\ese
+
+We have already seen the $b_n$ condition and the $c_n$ condition follows easily:
+\bse 
+    c_n\ket{b} = \Res\big[ z^{n-2}c(z)b(0)\big] = \Res\big[ z^{n-3}\big],
+\ese 
+and so 
+\bse 
+    c_n\ket{b} = 0, \qquad \forall n\geq 3. 
+\ese 

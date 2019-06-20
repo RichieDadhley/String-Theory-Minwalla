@@ -1,0 +1,263 @@
+\chapter{Ghost Current \& Operator Normal Ordering}
+
+\section{Ghost Current}
+
+\bd 
+    We define the \textbf{ghost current} as the conformal normal order
+    \bse 
+        J_G(z) := \cl c(z)b(z)\cl
+    \ese 
+\ed 
+
+Let's look at the OPE of $J_G$ with $c$ and $b$. We have 
+\bse 
+    J_G(z)c(\omega) = \frac{c(z)}{z-\omega} + ... = \frac{c(\omega)}{z-\omega} + ...,
+\ese 
+where as normal the ellipse is the non-singular terms. Similarly, we have 
+\bse 
+    J_G(z)b(\omega) = -\frac{b(\omega)}{z-\omega} + ...,
+\ese 
+where the minus sign comes from anticommuting $c(z)$ and $b(z)$. These results tell us that 
+\be 
+\label{eqn:GhostChargeCommutation}
+    \begin{split}
+        [Q_G,c] & = c, \\
+        [Q_G,b] & = -b,
+    \end{split}
+\ee 
+where 
+\bse 
+    Q_G := \oint \frac{dz}{2\pi i} J_G(z)
+\ese
+is the \textit{ghost charge}. This tells us that $c$ carries ghost charge $+1$ and $b$ carries ghost charge $-1$.\footnote{If you don't see why, consider the action $Q_Gc\ket{\cO}$, where $\ket{\cO}$ has vanishing ghost charge, i.e. $Q_G\ket{\cO}=0$. Do the same for $b$.}
+
+\br 
+    Note that the ghost charge is a conserved quantity in our $bc$ QFT. This is easily seen from \Cref{eqn:Sghostbc} as every $c$ appears with a $b$ so the transformations\footnote{By transformations we mean that $c\to ce^+$ and $b\to be^-$, analogously to in QFT.} cancel. Of course we need our theory to be ghost charge invariant, as it is the Nambu-Goto action we are trying to study, and this has no knowledge whatsoever about ghost fields, let alone ghost currents!
+\er 
+
+Let's now look at the OPE of $J_G$ with the stress tensor. We have\footnote{Here is an example of where we leave the value of $\l$ unspecified in order to get a result valid for our set of related CFTs, i.e. the ones differing only by the value of $\l$. Also note we have switched the order of $b$ and $\p c$ in the second term of the stree tensor to remove the minus sign.} 
+\bse 
+    \begin{split}
+        T(z)J_G(\omega) & = \big[(1-\l)\cl\p b(z)c(z)\cl + \l\cl \p c(z)b(z)\cl \big] \cl c(\omega)b(\omega) \cl \\
+        & = (1-\l)\big[\cl \p b(z)c(z)\cl \cl c(\omega)b(\omega) \cl\big] + \l \big[\cl \p c(z)b(z)\cl \cl c(\omega)b(\omega)\cl\big].
+    \end{split}
+\ese
+Let's consider each term separately. We have (only considering singular terms)
+\bse 
+    \begin{split}
+        \cl \p b(z)c(z)\cl \cl c(\omega)b(\omega)\cl & = - \cl c(z) \p b(z)\cl \cl c(\omega)b(\omega)\cl \\ 
+        & = -\Bigg[ \p_z\bigg(\frac{1}{z-\omega}\bigg)\bigg(\frac{1}{z-\omega}\bigg) + \cl c(z)b(\omega) \cl \p_z\bigg(\frac{1}{z-\omega}\bigg) + \frac{\cl \p b(z)c(\omega)}{z-\omega} \Bigg] \\
+        & = \frac{1}{(z-\omega)^3} + \frac{\cl c(z)b(\omega)\cl}{(z-\omega)^2} - \frac{\cl \p b(z) c(\omega)\cl }{z-\omega} \\
+        & = \frac{1}{(z-\omega)^3} + \frac{\cl c(\omega)b(\omega)\cl}{(z-\omega)^2} + \frac{\cl \p c(\omega) b(\omega)\cl - \cl \p b(\omega) c(\omega)\cl}{z-\omega} \\
+        & = \frac{1}{(z-\omega)^3} + \frac{J(\omega)}{(z-\omega)^2}+ \frac{\p J(\omega)}{z-\omega},
+    \end{split}
+\ese 
+and 
+\bse 
+    \begin{split}
+        \cl \p c(z)b(z)\cl \cl c(\omega)b(\omega)\cl & = \p_z\bigg(\frac{1}{z-\omega}\bigg)\bigg(\frac{1}{z-\omega}\bigg)  + \cl b(z)c(\omega)\cl \p_z\bigg(\frac{1}{z-\omega}\bigg) + \frac{\cl \p c(z)b(\omega)\cl}{z-\omega} \\
+        & = - \frac{1}{(z-\omega)^3} - \frac{\cl b(z)c(\omega)\cl}{(z-\omega)^2} + \frac{\cl \p c(z)b(\omega)\cl}{z-\omega} \\
+        & = -\frac{1}{(z-\omega)^3} - \frac{\cl b(\omega)c(\omega)\cl}{(z-\omega)^2} + \frac{\cl \p c(\omega)b(\omega)\cl - \cl \p b(\omega)c(\omega)\cl }{z-\omega} \\
+        & = -\frac{1}{(z-\omega)^3} + \frac{\cl c(\omega)b(\omega)\cl}{(z-\omega)^2} + \frac{\cl \p c(\omega)b(\omega)\cl - \cl \p b(\omega)c(\omega)\cl }{z-\omega} \\
+        & = -\frac{1}{(z-\omega)^3} + \frac{J(\omega)}{(z-\omega)^2}+ \frac{\p J(\omega)}{z-\omega},
+    \end{split}
+\ese 
+We then note that the last two terms in both these expressions are identical, and so they will not appear with a $\l$ in the OPE. We are then left with 
+\be
+\label{eqn:TJGOPE}
+    T(z)J_G(\omega) = \frac{(1-2\l)}{(z-\omega)^3} + \frac{J(\omega)}{(z-\omega)^2} + \frac{\p J(\omega)}{z-\omega} + \text{non-singular}.
+\ee 
+
+\br 
+    Note this result tells us that 
+    \bse 
+        L_1(z)J_G(0) = \Res\bigg[z^2\bigg(\frac{(1-2\l)}{z^3} + \frac{J(0)}{z^2} + \frac{\p J(0)}{z}\bigg)\bigg] \neq 0,
+    \ese 
+    (provided $\l\neq1/2$) and so we see that $J_G$ is a secondary operator. 
+\er 
+
+\section{Ghost Anomaly}
+
+Recall that the OPE of the stress tensor with itself contained a $1/z^4$ term, and we showed/argued (at the start of Lecture 7) that this term told us that $T$ must also transform under Weyl transformations as well as diffeomorphisms. We now want to apply the same idea here and argue that the $1/z^3$ term arises from the Weyl transformations on the ghost current. 
+
+Proceeding as we did in Lecture 7, we have 
+\bse 
+    \del_WJ_G(\omega) = \frac{(1-2\l)}{2}\epsilon''(\omega).
+\ese 
+Then recalling that $\del\phi = \epsilon'$, we have 
+\bse 
+    \del_WJ_G(\omega) = \frac{(1-2\l)}{2}\p(\del\phi).
+\ese 
+We then have 
+\bse 
+    \del_W(\p\cdot J_G) = \frac{(1-2\l)}{2}\nabla^2(\del\phi). 
+\ese
+Putting this together with the fact that $J_G$ has weight $(1,0)$, and so $\p\cdot J_G$ has weight $(2,0)$ we see that (after covariantising) 
+\bse 
+    \nabla \cdot J_G \sim R,
+\ese
+the Ricci scalar. We state (without proof\footnote{See Polchinski Vol 1, exercise 3.6, page 119 for help.}) that the proportionality is given by 
+\be 
+\label{eqn:GhostAnomaly}
+    \nabla \cdot J_G = \frac{(1-2\l)}{4}R.
+\ee 
+This is known as the \textit{ghost anomaly}.
+
+\br 
+    \textcolor{red}{There is an aside here about $\l=1/2$ corresponding to free fermions and the Dirac action. Come back and add this in later. (around 30:00-40:00 in video)}
+\er 
+
+\Cref{eqn:GhostAnomaly} tells us that (for a non-flat manifold) the ghost current is not locally conserved. This doesn't sound great. However, there is an even bigger problem: it's possible that the charge isn't even conserved globally. 
+
+Recall\footnote{Or look up if you're not familiar.} that the Euler characteristic (for a closed, orientable surface) is
+\bse 
+    \chi = 2(1-g),
+\ese
+where $g$ is the \textit{genus} of the surface. We can also write the Euler characteristic as
+\bse 
+    \chi = \frac{1}{4\pi}\int d^2\sig \sqrt{g}R,
+\ese 
+and so we see that\footnote{Annoyingly we use $g$ for both the genus and the metric, it should be clear which is which though.} 
+\bse 
+    \int d^2\sig \sqrt{g} \, \nabla \cdot J_G = 2\pi(1-2\l)(1-g).
+\ese 
+
+Now recall that in Lecture 4 we used Noether's theorem to derive the Ward identity. The trick we played there was to let the the infinitesimal $\epsilon$ be a function of the coordinates and then insisted that the result vanished for constant $\epsilon$. This vanishing condition was to do with the fact that $J$ was locally conserved. We no longer have that, and so we see that the action does actually change even for constant $\epsilon$! That is, for $\phi'=\phi+\epsilon\del\phi$
+
+\bse 
+    \frac{S_{\text{ghost}}[\phi']}{S_{\text{ghost}}[\phi]} = \frac{i\epsilon}{2\pi} \int d^2\sig \sqrt{g} \, \nabla \cdot J_G = i(1-2\l)(1-g).
+\ese
+Now we have that 
+\bse 
+    c(\sig) \to e^{i\epsilon} c(\sig), \qand b(\sig) \to e^{-i\epsilon}b(\sig)
+\ese 
+for our transformation. We then imagine inserting $f$ $c$s and $m$ $b$s into our path integral. Then for a non-vanishing path integral, the transformations from the measure (which we assume is nothing, as before), action and insertions must cancel, and so we get 
+\be 
+\label{eqn:cbnumbergenus}
+    f-m +(1-2\l)(1-g) = 0 \qquad \implies \qquad  m-f = (2\l-1)(g-1).
+\ee 
+So for our ghost system (with $\l=2$), we have 
+\be 
+\label{eqn:cbnumbergenusghost}
+    m-f = 3(g-1).
+\ee 
+Finally recall that in Lecture 10 we showed that unless there are the same number of insertions of $c$ as their are moduli and the same number of insertions of $b$ as there are conformal Killing vector fields, our path integral vanishes. We labelled these numbers $f$ and $m$ in Lecture 10. Now the use of $f$ and $m$ in \Cref{eqn:cbnumbergenusghost} is not poor notation, but done deliberately, as the next theorem explains. 
+
+\bt 
+    Let $f$ denote the number of moduli and $m$ the number of conformal Killing vector fields, then the their difference must obey 
+    \bse 
+        m-f=3(g-1),
+    \ese 
+    where $g$ is the genus of the surface. 
+\et 
+
+We do not prove this theorem, but instead just show that it holds for the sphere. 
+
+\bex 
+    We have already seen that for $g=0$ (i.e. the sphere) there are 3 CKVFs (namely $\mathfrak{sl}(2,\C)$). We shall present the proof here in a slightly different way. We know that the $c$s are our CKVFs (they are the unfixed diffeomorphisms that keep us in the same gauge orbit). We also know that they are weight $(1,0)$ holomorphic functions, i.e. 
+    \bse 
+        c = \sum_n a_nz^n,
+    \ese 
+    for some $n$. We obviously require that they are everywhere well defined. Our two problem areas are $z\to0$ and $z\to\infty$. The former condition clearly just requires $n\geq0$, but what about the second condition. Well recall that our notation is $c := c^z$, and so we know 
+    \bse
+        c^z = \frac{\p z}{\p \omega}c^{\omega},
+    \ese
+    for some transformation $z\to\omega(z)$. We take this transformation to be $\omega=1/z$, as this is where the $z\to\infty$ problem arises. We therefore have 
+    \bse 
+        c^{z} = -\omega^2\sum_n \frac{a_n}{\omega^n},
+    \ese 
+    and so we require $n\leq 2$. Putting this together we get 3 allowed values, $n=0,1,2$. 
+    
+    Repeating this calculation for $b:=b_{zz}$, and noting that the indices are down, we have
+    \bse 
+        b_{zz} = \bigg(\frac{\p \omega}{\p z}\bigg)^2b_{\omega\omega},
+    \ese 
+    which gives 
+    \bse 
+        b_{zz} = \frac{1}{\omega^4} \sum_n\frac{a_n}{\omega^n},
+    \ese 
+    which diverges unless $n\leq -4$. But we still obviously require $n\geq0$, and so there are no everywhere well defined $b$ fields. Finally just recall that the $b$s are the moduli, and you have 
+    \bse 
+        0-3=3(0-1),
+    \ese 
+    the required condition. 
+\eex 
+
+\bcl 
+    The number of conformal Killing vector fields on the torus is $1$ and the number of moduli is $1$.
+\ecl 
+
+We do not prove this claim yet,\footnote{\textcolor{red}{Dr. Minwalla says we will return to this later. If he doesn't come back and try prove it.}} but just present it now as a further `proof' of the above theorem, i.e. $1-1=0=3(1-1)$.
+
+\br 
+    Note that the above theorem does not contrast with \Cref{eqn:cbnumbergenus}, in the sense that $\l$ need not be $2$. It simply says that \textit{if} $\l=2$ then the difference in the number of $c$ and $b$ insertions needs to be equal to the difference in the number of moduli and CKVFs, or our path integral must vanish. Of course this is the result we obtained in Lecture 10, just derived from a different approach.  
+\er 
+
+\br 
+    \Cref{eqn:cbnumbergenus} actually gives us a constraint on the allowed values for $\l$ on a surface of well defined genus, namely 
+    \bse 
+        \l = \frac{1}{2}\bigg(1+ \frac{A}{B}\bigg),
+    \ese 
+    where $A=m-f$ and $B=g-1$ are integers.
+\er 
+
+\section{Operator Normal Ordering}
+
+When we first encounter normal ordering it is in QFT and its done with the idea of putting all the annihilation operators to the right, so that it annihilates the vacuum. We introduced conformal normal ordering in order to get expectation values that vanish. We now want to introduce another new type of normal ordering in line with the first; we want to define a normal ordering that annihilates the ground state of our $bc$ CFT.
+
+We have seen that $c_n/b_n$ are annihilation operators for $n>0$. On top of this we have seen that our $bc$ CFT has a doubley degenerate ground state (the states $\ket{\uparrow}$ and $\ket{\downarrow}$. We therefore want to place all the positive $n$ terms to the right. On top of this, we have seen that $b_0$ annihilates $\ket{\downarrow}$ and $c_0$ annihilates $\ket{\uparrow}$. We need to pick which ground state we want to be annihilated, and here we pick $\ket{\downarrow}$. So we want the $b_0$ term to appear on the right. 
+
+Let's work out how this relates to $c(z_1)b(z_2)$ itself. We have the Laurent expansions 
+\bse 
+    c(z) = \sum_{m=-\infty}^{\infty}\frac{c_m}{z^{m-1}}, \qand b(z) = \sum_{m=-\infty}^{\infty}\frac{c_m}{z^{m+2}}.
+\ese 
+Then recalling $\{c_m,b_n\}=\del_{m+n,0}$ and all other anticommutators vanishing, we see that the only terms that need changing in $c(z_1)b(z_2)$ are the 
+\bse 
+    \sum_{m=1}^{\infty} \frac{c_mb_{-m}}{z_1^{m-1}z_2^{-m+2}} = \sum_{m=1}^{\infty} \bigg(\frac{1}{z_1^{m-1}z_2^{-m+2}} - \frac{b_{-m}c_{m}}{z_1^{m-1}z_2^{-m+2}}\bigg)
+\ese 
+terms. Using 
+\bse 
+    \begin{split}
+        \sum_{m=1}^{\infty}\frac{1}{z_1^{m-1}z_2^{-m+2}} & = \frac{z_1}{z_2^2}\sum_{m=1}^{\infty}\bigg(\frac{z_2}{z_1}\bigg)^m \\
+        & = \frac{z_1}{z_2^2} \bigg(\frac{z_2/z_1}{1-z_2/z_1}\bigg) \\
+        & = \frac{z_1}{z_2}\bigg(\frac{1}{z_{12}}\bigg)
+    \end{split}
+\ese 
+we have the following definition.
+\bd 
+    We define the \textbf{operator normal order} of two fields in our $bc$ CFT as 
+    \be 
+    \label{eqn:operatornormalordering}
+        \tcl c(z_1)b(z_2) \tcl := c(z_1)b(z_2) - \frac{z_1}{z_2}\bigg(\frac{1}{z_{12}}\bigg)
+    \ee 
+\ed 
+
+Now, the conformal normal order for our $bc$ CFT is 
+\bse 
+    \cl c(z_1)b(z_2) \cl = c(z_1)b(z_2) - \frac{1}{z_{12}}.
+\ese 
+Therefore the difference is
+\bse 
+    \cl c(z_1)b(z_2)\cl - \tcl c(z_1)b(z_2)\tcl = \frac{1}{z_{12}}\bigg(\frac{z_1}{z_2}-1\bigg) = \frac{1}{z_2}.
+\ese 
+Taking the limit $z_1\to z_2 =z$, we have 
+\bse 
+    J_G^{\text{conf}}(z) - J_G^{\text{op}}(z) = \frac{1}{z}.
+\ese
+Next, we recall that $J_G^{\text{conf}}(z)=\cl c(z)b(z)\cl$, so in the $c/b$ Laurent expansions we have 
+\bse 
+    L_G^{\text{conf}} = \sum_{m=-\infty}^{\infty} \frac{J_m^{\text{conf}}}{z^{m+1}},
+\ese
+and similarly for $J_G^{\text{op}}$. Putting this together with the result above we conclude 
+\bse 
+    J_0^{\text{conf}} - J_0^{\text{op}} = 1.
+\ese
+This result tells us that the ghost charge of the $\ket{\downarrow}$ ground state is $+1$. We can similarly show that the ghost charge of the $\ket{\uparrow}$ ground state is $+2$. 
+
+\br 
+    We actually could have got the above result very quickly at the start of this lecture. We showed that $c$ has ghost charge $+1$ at the start of this lecture and at the end of the last lecture we showed that $\ket{\downarrow}=\ket{c}$ and $\ket{\uparrow}=\ket{c\p c}$. We therefore have: ghost number for $\ket{\downarrow}=+1$, and ghost number for $\ket{\uparrow}=+1+1=+2$.
+\er 
+
+\br 
+    Note that in introducing operator normal ordering, we have broken translation invariance. This is easily seen in \Cref{eqn:operatornormalordering} as $z_1/z_2$ is not translation invariant. It is therefore not a very good tool to use on the radial quantisation plane, but is just presented here to show that conformal normal ordering is indeed related to what we normally think of as normal ordering (i.e. annihilating the ground state).
+\er 
