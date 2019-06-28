@@ -1,0 +1,361 @@
+\chapter{BRST Quantisation II}
+
+\section{Point Particle (Continued)}
+
+So far we have obtained the overall action for the point particle, but we haven't written down the actual BRST transformation. Using $\phi_i=(X^{\mu},e)$ in \Cref{eqn:BRSTTransformation} and \Cref{eqn:BRSTXeVariation} we get 
+\be
+\label{eqn:BRSTTransformationPointParticle}
+    \begin{split}
+        \del_BX^{\mu} & = i\epsilon c\dot{X}^{\mu}, \\
+        \del_Be(\tau) & = i\epsilon\p_{\tau}(ce), \\
+        \del_BB & = 0, \\
+        \del_Bb & = \epsilon B, \\
+        \del_B c & = i\epsilon c\dot{c},
+    \end{split}
+\ee 
+where, as with previous calculations, integrals are used and delta functions taken (note for $\del_Be$ and $\del_Bc$ we also need to use integration by parts).
+
+We now do our gauge fixing, i.e. set $e=1$ by doing the $B$ integral. So our action becomes 
+\be 
+\label{eqn:ActionBRSTPointParticleGaugeFixed}
+    S = \int d\tau \bigg(\frac{1}{2}\dot{X}^2 + \frac{1}{2}m^2 -\dot{b}c\bigg).
+\ee
+This now looks more like our string theory action, where we identify the first two terms as the matter action and the last term as the ghost action. 
+
+Good, but what does this gauge fixing doing to \Cref{eqn:BRSTTransformationPointParticle}? Well obviously $\del_Be$ and $\del_BB$ aren't needed, but what about $\del_Bb$? The right-hand side contains a $B$, which we don't want. So we need to replace it somehow. We do this by taking the $e$ equation of motion of \Cref{eqn:ActionBRSTPointParticle}, 
+\bse
+    \begin{split}
+        0 & = -\frac{1}{2e^2}\dot{X}^2 + \frac{1}{2}m^2 + iB - \dot{b}c  \\
+        \implies B &= \frac{-i}{2}\dot{X}^2 +\frac{i}{2}m^2 -i\dot{b}c,
+    \end{split}
+\ese 
+where in the second line we have fixed gauge (i.e. set $e=1$). So \Cref{eqn:BRSTTransformationPointParticle} simply becomes 
+\be 
+\label{eqn:BRSTTransformationPointParticleGaugeFixed}
+    \begin{split}
+        \del_BX^{\mu} & = i\epsilon c\dot{X}^{\mu} \\
+        \del_Bb & = i\epsilon\bigg(-\frac{1}{2}\dot{X}^2 +\frac{1}{2}m^2 -\dot{b}c\bigg) \\
+        \del_Bc & = i\epsilon c\dot{c}. 
+    \end{split}
+\ee 
+
+\bcl 
+    \Cref{eqn:BRSTTransformationPointParticleGaugeFixed} is a symmetry of \Cref{eqn:ActionBRSTPointParticleGaugeFixed} and it is nilpotent, provided we empose the equations of motion. 
+\ecl 
+
+\bq 
+    First let's show that it is a symmetry. We have
+    \bse 
+        \begin{split}
+            \del_BS & = \int d\tau \, \Big[ \dot{X}_{\mu}\big(\del_B\dot{X}^{\mu}\big) - \del_B\big(\dot{b}c\big) \Big] \\
+            & = \int d\tau \, \Big[ \dot{X}_{\mu}\p_{\tau}\big(\del_BX^{\mu}\big) + \big(\del_Bb\big)\dot{c} - \dot{b}\big(\del_Bc\big)\Big] \\
+            & = \int d\tau \, \Bigg[ i\epsilon  \dot{X}_{\mu}\p_{\tau}\big(c\dot{X}^{\mu}\big) + i\epsilon \bigg(-\frac{1}{2}\dot{X}^2 +\frac{1}{2}m^2 -\dot{b}  c \bigg)\dot{c} - \dot{b} i\epsilon c\dot{c}\Bigg] \\
+            & = i\epsilon \int d\tau \, \Bigg[   \dot{X}_{\mu}\p_{\tau}\big(c\dot{X}^{\mu}\big) + \bigg(-\frac{1}{2}\dot{X}^2 +\frac{1}{2}m^2 - \dot{b}c \bigg)\dot{c} + \dot{b}c\dot{c}\Bigg] \\
+            & = i\epsilon\int d\tau \bigg[ \dot{X}^2\dot{c} + \dot{X}_{\mu}\ddot{X}^{\mu}c - \frac{1}{2}\dot{X}^2\dot{c} +\frac{1}{2}m^2\dot{c} \bigg] \\
+            & = \frac{i\epsilon}{2}\int d\tau \, \p_{\tau}\big( \dot{X}^2c + m^2c\big),
+        \end{split}
+    \ese 
+    where to go from the third to the fourth line we have used $\dot{b}\epsilon = -\epsilon\dot{b}$. We know this result vanishes because the integrand is a total derivative.
+    
+    Now let's show that it's nilpotent. Let's consider $\del_B^2X^{\mu}$ first: 
+     \bse 
+        \begin{split}
+            \del_B^{\epsilon_2}\del_B^{\epsilon_1} X^{\mu} & = i\epsilon_1 \del_B^{\epsilon_2}\big(c\dot{X}^{\mu}\big) \\
+            & = i\epsilon_1\big( (\del_Bc)\dot{X}^{\mu} + c\del_B\dot{X}^{\mu}\big) \\
+            & = i\epsilon_1\big( i\epsilon_2c\dot{c}\dot{X}^{\mu} + ci\epsilon_2\p_{\tau}(c\dot{X}^{\mu})\big) \\
+            & = -\epsilon_1\epsilon_2\big( c\dot{c}\dot{X}^{\mu} - c\dot{c}\dot{X}^{\mu} - cc\ddot{X}^{\mu}\big) \\
+            & = 0,
+        \end{split}
+    \ese 
+    where we have used $c\epsilon_2 = -\epsilon_2c$ and $cc=0$.
+    
+    Next let's check $\del_B^2c$:
+    \bse 
+        \begin{split}
+            \del_B^2c & = i\epsilon_1\del_B^{\epsilon_2}\big(c\dot{c}\big) \\
+            & = i\epsilon_1 \Big[ \big(\del_B^{\epsilon_2}c\big)\dot{c} + c\big(\del_B^{\epsilon_2}\dot{c}\big)\Big] \\
+            & = i\epsilon_1\Big[ i\epsilon_2c\dot{c}\dot{c} + c i\epsilon_2 \p_{\tau}\big(c\dot{c}\big)\Big] \\
+            & = -\epsilon_1\epsilon_2 \big[c\dot{c}\dot{c} - c\dot{c}\dot{c} - cc\dot{c}\big] \\
+            & = 0,
+        \end{split}
+    \ese 
+    where again we have used $c\epsilon_2=-\epsilon_2c$ and $cc=0$.
+    
+    Finally we need to check $\del_B^2b$. This is the most complicated one as its the only one that is of a different form to \Cref{eqn:BRSTTransformation}. Comparing the expression for $\del_Bb$ with the integrand of \Cref{eqn:ActionBRSTPointParticleGaugeFixed}, we see that we are going to get the same calculation as the $\del_BS$ calculation at the start of the proof, \textit{apart from} now the $\dot{X}^2$ term has a negative sign, so we get 
+    \bse 
+        \del_Bb = -\epsilon_1\epsilon_2\bigg[-\frac{3}{2}\dot{c}\dot{X}^2 + \frac{1}{2}m^2\dot{c} -c\ddot{X}\dot{X} \bigg].
+    \ese 
+    There is no way to see how this is going to cancel without imposing some conditions. This is where the caveat of the claim comes: we impose the equations of motion. We have 
+    \bse 
+        \cL = \frac{1}{2}\dot{X}^2 + \frac{1}{2}m^2 - \dot{b}c,
+    \ese 
+    and so the $X^{\mu}$ and $b$ equations of motion are 
+    \bse 
+        \ddot{X}^{\mu} = 0, \qand \dot{c} = 0,
+    \ese 
+    respectively. So if we impose both of these we get 
+    \bse 
+        \del_B^2b=0.
+    \ese
+\eq 
+
+\br 
+    Note that it is only the $\del_Bb$ term that requires us to impose the equations of motion. This makes some kind of sense because the expression for $\del_Bb$ was obtained by using the equations of motion of \Cref{eqn:ActionBRSTPointParticle}, and so only holds when the equations of motion hold.
+\er 
+
+\subsection{The Current} 
+
+So we have seen that our system has a symmetry, and now we want to find what the corresponding current is. Recall that Noether's theorem tells us to basically make $\epsilon$ a function of $\tau$ and then look for the coefficient of the $\dot{\epsilon}$ term in $\del_B S$. We repeat the calculation:
+\bse 
+    \begin{split}
+        \del_BS & = \int d\tau \Big[ \dot{X}_{\mu}\p_{\tau}\big(\del_{B}X^{\mu}\big) + \big(\del_{B}b\big)\dot{c} - \dot{b}\big(\del_Bc\big)\Big] \\
+        & = i\int d\tau \bigg[\dot{X}_{\mu}\p_{\tau}\big(\epsilon c \dot{X}^{\mu}\big) +\epsilon\bigg(-\frac{1}{2}\dot{X}^2 + \frac{1}{2}m^2 -\dot{b}c\bigg)\dot{c} - \dot{b}\epsilon c\dot{c}\bigg] \\
+        & = i\int d\tau \bigg[ \dot{X}^2\dot{\epsilon}c + \dot{X}^2\epsilon\dot{c} + \dot{X}_{\mu}\ddot{X}^{\mu}\epsilon c - \frac{1}{2}\dot{X}^2\epsilon \dot{c} + \frac{1}{2}m^2\epsilon \dot{c} - \epsilon\dot{b}c\dot{c} + \epsilon\dot{b}c\dot{c}\bigg] \\
+        & = i\int d\tau \bigg[ \frac{1}{2}\dot{X}^2\epsilon\dot{c} + \dot{X}_{\mu}\ddot{X}^{\mu}\epsilon c + \dot{X}^2 \dot{\epsilon}c + \frac{1}{2}m^2 \epsilon\dot{c}\bigg] \\
+        & = i \int d\tau \bigg[ \p_{\tau}\bigg(\frac{1}{2}\dot{X}^2\epsilon c + \frac{1}{2}m^2 \epsilon c \bigg) + \frac{1}{2}\dot{X}^2\dot{\epsilon}c - \frac{1}{2}m^2\dot{\epsilon}c \bigg], 
+    \end{split}
+\ese
+where in the last line we have expressed the integrand as a total derivative (so we can drop it) and compensated for it with the last two terms. So we see that 
+\bse 
+    \del_BS = i\int d\tau \, \dot{\epsilon}c \bigg(\frac{1}{2}\dot{X}^2 - \frac{1}{2}m^2\bigg),
+\ese 
+and so our current is 
+\bse 
+    J^0 = ic \bigg(\frac{1}{2}\dot{X}^2 - \frac{1}{2}m^2\bigg).
+\ese 
+This looks \textit{almost} like the Hamiltonian for the point particle in Minkowski, 
+\bse 
+    H = \frac{1}{2}p^2 + \frac{1}{2}m^2,
+\ese 
+with $p=\dot{X}$, the only problem being that pesky minus sign in front of the $m^2$ term. Well what we have to remember is that the integral done above is done in Euclidean space where $X^{\mu}_{\text{Euclidean}}= iX^{\mu}_{\text{Minkowski}}$. Putting this into the above we get (dropping the superscript $0$)
+\bse 
+    J = - ic\bigg(\frac{1}{2}p^2 + \frac{1}{2}m^2\bigg) = -c H.
+\ese 
+We can write this as the charge 
+\be 
+\label{eqn:BRSTChargePointParticle}
+    Q = -cH.
+\ee 
+
+
+\br 
+    In the result for the current above, Dr. Minwalla gets a $\dot{\epsilon}b\dot{c}$ term. I think that he simply made a calculation error in the lectures, but I have included this remark in case it is meant to be there and I have missed something. Fundamentally it makes no difference because the equations of motion tell us $\dot{c}=0$, and so this additional term vanishes anyway. 
+\er 
+
+\subsection{The Hilbert Space \& Cohomology}
+
+The action for our point particle came to the form \Cref{eqn:ActionBRSTPointParticleGaugeFixed}, which looks like the point particle analogy for the string action we have seen before. It is reasonable to assume (and it is true) that the equivalent to \Cref{eqn:cbanticommutator} holds, specifically 
+\bse
+    \{c,b\}= 1.
+\ese 
+Our Hilbert space is therefore the product of the free particle states (i.e. states labelled by the momentum of the particle) and the $\ket{\uparrow}/\ket{\downarrow}$ states we saw previously. That is 
+\bse 
+    \ket{p_{\mu},\uparrow}, \qand \ket{p_{\mu},\downarrow}
+\ese
+form a basis for our Hilbert space. We want to know which states are physical, and therefore we need to compute the cohomology of the BRST operator, \Cref{eqn:BRSTChargePointParticle}.
+
+Recalling that $c\ket{\uparrow}=0$ and $c\ket{\downarrow}=\ket{\uparrow}$, we have 
+\bse 
+    Q\ket{p_{\mu},\uparrow} = 0, \qand Q\ket{p_{\mu},\downarrow} = -\frac{1}{2}\big(p^2+m^2\big)\ket{p_{\mu},\uparrow}.
+\ese 
+The first result tells us that \textit{all} the up states are $Q$ closed and the second condition tells us that the only up states that \textit{aren't} $Q$ exact are those on shell (i.e. $p^2+m^2=0$). 
+
+The fact that there are no $\ket{p_{\mu},\downarrow}$ states on the right-hand sides of the above means that \textit{no} down states are $Q$ exact, and the second condition tells us that the down states are only $Q$ closed when on shell. 
+
+So we see that our cohomology has two types of physical states 
+\bse 
+    \ket{p_{\mu},\uparrow}, \quad p^2+m^2=0, 
+\ese 
+and 
+\bse 
+    \ket{p_{\mu},\downarrow}, \quad p^2+m^2=0.
+\ese
+These look like identical conditions, and so we get two copies of the same spectrum! There is a very important difference between the two though: there is nothing stopping us inserting up states that are not on shell, apart from they will vanish unless we then constrict them to being on shell; whereas we can \textit{only} insert down states that are already on shell. It follows, therefore, any quantity containing an up state must be proportional to $\del(p^2+m^2)$, whereas the down states need not. It turns out that kinematics tells us that\footnote{Apart from when $d=2$, apparently.} no such terms every arise in our QFTs. That is, although we can \textit{technically} insert any up state, we require that any amplitude obtained using them must vanish identically. This condition manifests itself as the additional requirement that physical states obey 
+\bse 
+    b\ket{\psi} = 0
+\ese
+for the point particle.
+
+So our physical states are given by 
+\bse 
+    \ket{p_{\mu},\downarrow}, \quad p^2+m^2=0.
+\ese 
+This matches what we expect from previous dealings with QFT --- the physical states are on shell. 
+
+\section{BRST Quantisation Of The String}
+
+We now need to find the BRST transformation for the string action. We know from previous calculations what $S_1=S_{\text{Poly}}$ and $S_3=S_{\text{ghost}}$ are, but what about $S_2$? This is the gauge fixing condition, and we recall that our gauge fixing was to set the metric to the flat metric, and so we have 
+\bse 
+    S_2 = \frac{i}{4\pi} \int d^2\sig \, \sqrt{g} B^{ab}\big(\del_{ab}-g_{ab}\big).
+\ese
+If we follow the method we did for the point particle where we remove $B^{ab}$ from our BRST transformation using an equation of motion,\footnote{You use the $g_{ab}$ one.} we get the following BRST transformation
+\be 
+\label{eqn:BRSTTransformationString}
+    \begin{split} 
+        \del_BX^{\mu} &= i\epsilon\Big(c\p + \overline{c}\overline{\p} \Big)X^{\mu}, \\
+        \del_Bb & = i\epsilon\Big(T^m + T^g\Big) \\
+        \del_B\overline{b} & = i\epsilon\Big(\overline{T}^X + \overline{T}^g\Big) \\
+        \del_Bc & = i\epsilon c\p c \\
+        \del_B \overline{c} & = i \overline{c}\epsilon\overline{\p}\overline{c},
+    \end{split}
+\ee 
+where $T^m$ and $T^g$ are the matter and ghost stress tensors respectively. It is easy to see the similarlities between this result and \Cref{eqn:BRSTTransformationPointParticleGaugeFixed}, which is why we did the point particle in the first place. 
+
+\br 
+    The equation of motion condition used to remove $B_{ab}$ from the BRST transformations makes $b_{ab}$ traceless. 
+\er 
+
+\bcl 
+    \Cref{eqn:BRSTTransformationString} is a symmetry of the relavent gauge-fixed action and is nil-potent. 
+\ecl 
+
+\bq 
+    We do not do the proof here as it follows analogously to the one presented for the point particle.
+\eq 
+
+We note that \Cref{eqn:BRSTTransformationString} has uncoupled holomorphic and antiholomorphic parts, and so we can expect to get a holomorphic and an antiholomorphic BRST current.\footnote{Well together they are \textit{the} BRST current, but we can split it up into two currents.} As normal, we shall just consider the holomorphic part. 
+
+
+\bp 
+    The BRST current for the string is given by 
+    \be 
+    \label{eqn:BRSTCurrentString}
+        \begin{split}
+            J_B & = c T^m + \frac{1}{2}\cl cT^g\cl + \frac{3}{2}\p^2c \\
+            & = -\frac{1}{\a'}c\cl\p X\p X\cl   + \cl bc\p c\cl + \frac{3}{2}\p^2 c.
+        \end{split}
+    \ee
+\ep 
+
+\br 
+    Before proving this, let's first just make a note on it. The first two terms make some sort of sense given then current for the point particle, but the $\p^2c$ term seems strange. Well we note that it is a total derivative and so will not contribute to the BRST charge, and so has no effect on the physics. The question is, then, "why include it?" The answer is simply that it gives $J_B$ a tensorial form. 
+\er 
+
+\bq 
+    We could obtain \Cref{eqn:BRSTCurrentString} using Noether's theorem on our gauge fixed action. However we shall show it a different way. If $J_B$ is really the current for the BRST transformation, then its OPE with $X$, $b$ and $c$ should give the right-hand sides of \Cref{eqn:BRSTTransformationString} at the pole. So let's check that. 
+    
+    Firstly consider $J_BX^{\mu}$. The only contribution to the OPE will come from the $T^m$ term. Recalling 
+    \bse 
+        \overbrace{X(z)X(\omega)} = -\frac{\a'}{2}\ln(z-\omega),
+    \ese 
+    we have 
+    \bse 
+        \begin{split}
+            J_B(z)X^{\mu}(\omega) & = -\frac{1}{\a'} c(z)\Big[2\overbrace{\p X(z)X^{\mu}(\omega)}\p X(z) + ... \Big] \\
+            & = - \frac{1}{\a'} c(z)\bigg[ 2\bigg(-\frac{\a'}{2}\bigg) \frac{\p X(z)}{(z-\omega)} + ... \bigg] \\
+            \implies \Res\big[J_B(z)X^{\mu}(\omega)\Big] & = c\p X^{\mu},
+        \end{split}
+    \ese 
+    where in the last step we took the Taylor expansion to get $\omega$ as the argument. This is exactly what we need. 
+    
+    Next consider $J_B(z)c(\omega)$. Firstly we note that the $T^m$ term will vanish because there is no contraction between $X$ and $c$ and $c(z)c(\omega)=0$. Similarly the $\p^2c$ term will vanish. Then, using the contraction $b(z)c(\omega)=1/(z-\omega)$, we have 
+    \bse 
+        \begin{split}
+            J_B(z)c(\omega) & =  \cl c(z)\p c(z)\cl \overbrace{b(z)c(\omega)} + ... \\
+            \Res\big[J_B(z)c(\omega)\big] & = c \p c,
+        \end{split}
+    \ese 
+    where we have used $\cl c\p c \cl = c\p c$ as $\la c \p c\ra = 0$.
+    
+    Finally consider $J_B(z)b(\omega)$. 
+    \bse 
+        \begin{split}
+            J_B(z)b(\omega) & = T^m(z)\overbrace{c(z)b(\omega)} + \cl b(z)c(z)\cl \overbrace{\p c(z) b(\omega)} - \cl b(z)\p c(z)\cl \overbrace{c(z)b(\omega)} + \frac{3}{2}\overbrace{\p^2 c(z)b(\omega)} + ... \\
+            & = \frac{1}{(z-\omega)}T^m(z) - \frac{\cl b(z)c(z)\cl}{(z-\omega)^2} - \frac{\cl b(z)\p c(z)\cl}{(z-\omega)} + \frac{3}{(z-\omega)^3} + ... \\
+            & = \frac{T^m(\omega)}{(z-\omega)} - \frac{\cl \p b(\omega) c(\omega)}{(z-\omega)} - \frac{\cl b(\omega)\p c(\omega)\cl}{(z-\omega)} - \frac{\cl b(z)\p c(z)\cl}{(z-\omega)} + \frac{3}{(z-\omega)^3} + ... \\
+            & = \frac{1}{(z-\omega)}\Big[ T^m(\omega) + 2\cl \p c(\omega)b(\omega)\cl + \cl c(\omega)\p b(\omega) \cl\Big] + \frac{3}{(z-\omega)^3} + ... \\
+            & = \frac{1}{(z-\omega)} \Big[ T^m(\omega) + T^g(\omega) \Big] + \frac{3}{(z-\omega)^3} + ... \\
+            \implies \Res\big[J_B(z)b(\omega)\big] & = T^m + T^g,
+        \end{split}
+    \ese 
+    where we have Taylor expanded the $\cl b(z)c(z)\cl$ term and used the fact that $3$ is a constant\footnote{Shocking, I know!} and so the $1/(z-\omega)^3$ term won't contribute to the residue. 
+\eq 
+
+Let's now find the OPE between the stress tensor $T = T^m + T^g$ and $J_B$:
+\bse 
+    \begin{split}
+        T(z)J_B(\omega) & = \Big(T^m(z) + T^g(z)\Big)\Big(c(\omega)T^m(\omega) + \frac{1}{2}\cl c(\omega)T^g(\omega) \cl + \frac{3}{2}\p^2 c(\omega)\Big) \\
+        & = T^m(z)c(\omega)T^m(\omega) + T^g(z)c(\omega)T^m(\omega) + \frac{1}{2}T^g(z)\cl c(\omega)T^g(\omega)\cl + \frac{3}{2}T^g(z)\p^2c(\omega).
+    \end{split}
+\ese 
+Let's consider this term by term.\footnote{Get ready for a loooong calculation...}. Keeping only the singular terms, firstly we have 
+\bse 
+    \begin{split}
+        T^m(z)c(\omega)T^m(\omega) & = c(\omega)\bigg[\frac{c^m/2}{(z-\omega)^4} + \frac{2T^m(\omega)}{(z-\omega)^2} +\frac{\p T^m(\omega)}{(z-\omega)}\bigg].
+    \end{split}
+\ese 
+Next we have 
+\bse 
+    \begin{split}
+        T^g(z)c(\omega)T^m(\omega) & = \bigg[-\frac{c(z)}{(z-\omega)^2} + \frac{2\p c(z)}{(z-\omega)}\bigg]T^m(\omega) \\
+        & = \bigg[-\frac{c(\omega)}{(z-\omega)^2} + \frac{\p c(\omega)}{(z-\omega)}\bigg]T^m(\omega).
+    \end{split}
+\ese 
+Next, using 
+\bse 
+    \begin{split}
+        \frac{1}{2} \cl c(\omega)T^g(\omega)\cl & = \frac{1}{2}\big(2 \cl c(\omega) \p c(\omega) b(\omega)\cl + \cl c(\omega) c(\omega) \p b(\omega) \cl\big) \\
+        & = \cl c(\omega)\p c(\omega) b(\omega) \cl,
+    \end{split}
+\ese
+we have 
+\bse
+    \begin{split}
+        \frac{1}{2}T^g(z)\cl c(\omega) T^g(\omega) \cl & = \big( 2\cl \p c(z)b(z)\cl + \cl c(z)\p b(z)\cl \big)\cl c(\omega)\p c(\omega) b(\omega) \cl \\
+        & = 2\cl \p c(z)b(z)\cl \cl c(\omega)\p c(\omega) b(\omega) \cl + \cl c(z)\p b(z)\cl \cl c(\omega)\p c(\omega) b(\omega) \cl.
+    \end{split}
+\ese 
+Let's consider the two terms separately: 
+\bse 
+    \begin{split}
+        2\cl \p c(z)b(z)\cl \cl c(\omega)\p c(\omega) b(\omega) \cl & = -2\overbrace{b(z)c(\omega)}\overbrace{\p c(z)b(\omega)}\p c(\omega) + 2\overbrace{b(z)\p c(\omega)}\overbrace{\p c(z)b(\omega)}c(\omega) \\ 
+        & \quad + 2\overbrace{b(z)c(\omega)}\p c(z) \p c(\omega) b(\omega) -2\overbrace{b(z)\p c(\omega)}\p c(z) c(\omega) b(\omega) \\
+        & \quad -2\overbrace{\p c(z)b(\omega)}b(z)c(\omega)\p c(\omega) \\
+        & = \frac{2\p c(\omega)}{(z-\omega)^3} - \frac{2c(\omega)}{(z-\omega)^4} + \frac{2\cl \p c(z)\p c(\omega) b(\omega)\cl }{(z-\omega)}  \\
+        & \quad - \frac{2\cl \p c(z)c(\omega)b(\omega)\cl }{(z-\omega)^2} +\frac{2\cl b(z)c(\omega)\p c(\omega)\cl }{(z-\omega)^2} \\
+        & = -\frac{2c(\omega)}{(z-\omega)^4} + \frac{2\p c(\omega)}{(z-\omega)^3}+\frac{4\cl b(\omega)c(\omega)\p c(\omega)\cl }{(z-\omega)^2} \\
+        & \quad + \frac{2\big(\cl b(\omega)\p c(\omega)\p c(\omega)\cl + \cl b(\omega)\p^2c (\omega) \cl + \cl \p b(\omega) c(\omega) \p c(\omega)\cl\Big)}{(z-\omega)} \\
+        & = -\frac{2c(\omega)}{(z-\omega)^4} + \frac{2\p c(\omega)}{(z-\omega)^3}+\frac{4\cl b(\omega)c(\omega)\p c(\omega)\cl }{(z-\omega)^2} +\frac{2\p\cl b(\omega)c(\omega)\p c(\omega)\cl}{(z-\omega)} \\
+        & = -\frac{2c(\omega)}{(z-\omega)^4} + \frac{2\p c(\omega)}{(z-\omega)^3}+\frac{2\cl c(\omega) T^g(\omega)\cl }{(z-\omega)^2} +\frac{\p\cl c(\omega) T^g(\omega)\cl}{(z-\omega)}
+    \end{split}
+\ese 
+and\footnote{Note here that we do keep the $\cl c(z)c(\omega)b(\omega)\cl$ term (i.e. don't just use $c(z)c(\omega)=0$) as we need to take a Taylor expansion, which will give $\p c(\omega) c(\omega)$ and $\p^2c(\omega)c(\omega)$ terms. This mistake cost me about 3 hours of calculation time, so that's why this footnote is here...}
+\bse 
+    \begin{split}
+        \cl c(z)\p b(z)\cl\cl c(\omega)\p c(\omega) b(\omega)\cl & = -\overbrace{\p b(z)c(\omega)}\overbrace{c(z)b(\omega)} \p c(\omega) + \overbrace{\p b(z)\p c(\omega)}\overbrace{c(z)b(\omega)}c(\omega) \\
+        &  \quad + \overbrace{\p b(z)c(\omega)} \cl c(z)\p c(\omega) b(\omega)\cl - \overbrace{\p b(z)\p c(\omega)}\cl c(z) c(\omega) b(\omega)\cl \\
+        & \quad -\overbrace{c(z)b(\omega)} \cl \p b(z) c(\omega) \p c(\omega)\cl \\
+        & = \frac{\p c(\omega)}{(z-\omega)^3} - \frac{2c(\omega)}{(z-\omega)^4} - \frac{\cl c(z) \p c(\omega) b(\omega)\cl}{(z-\omega)^2} + \frac{2\cl c(z)c(\omega)b(\omega)\cl}{(z-\omega)^3} \\
+        & \quad - \frac{\cl \p b(z) c(\omega) \p c(\omega)\cl}{(z-\omega)} \\
+        & = -\frac{2c(\omega)}{(z-\omega)^4} + \frac{\p c(\omega)}{(z-\omega)^3} -\frac{3\cl b(\omega) c(\omega)\p c(\omega)\cl}{(z-\omega)^2} \\
+        & \quad + \frac{-\cl \p b(\omega)c(\omega) \p c(\omega)\cl + \cl \p c(\omega) \p c(\omega) b(\omega)\cl + \cl \p^2 c(\omega) c(\omega) b(\omega)\cl }{(z-\omega)} \\
+        & = -\frac{2c(\omega)}{(z-\omega)^4} + \frac{\p c(\omega)}{(z-\omega)^3} -\frac{3\cl c(\omega) T^g(\omega) \cl}{2(z-\omega)^2} - \frac{\p \cl c(\omega)T^g(\omega)\cl}{2(z-\omega)}.
+    \end{split}
+\ese 
+Putting these together gives 
+\bse 
+    \frac{1}{2}T^g(z)\cl c(\omega)T^g(\omega)\cl = -\frac{4c(\omega)}{(z-\omega)^4} + \frac{3\p c(\omega)}{(z-\omega)^3} + \frac{\cl c(\omega)T^g(\omega)\cl}{2(z-\omega)^2} + \frac{\p \cl c(\omega)T^g(\omega)\cl}{2(z-\omega)}.
+\ese 
+
+Finally, we have 
+\bse 
+    \begin{split}
+        \frac{3}{2}T^g(z) \p^2 c(\omega) & = \frac{3}{2}\big(2\cl \p c(z)b(z)\cl + \cl c(z)\p b(z)\cl\big) \p^2c(\omega) \\
+        & = \frac{3}{2}\bigg[ 2\overbrace{b(z)\p^2c(\omega)}\p c(z) + \overbrace{\p b(z) \p^2 c(\omega)}c(z)\bigg] \\
+        & = \frac{3}{2}\bigg[ \frac{4\p c(z)}{(z-\omega)^3} - \frac{6c(z)}{(z-\omega)^4} \bigg] \\
+        & = \frac{3}{2}\bigg[ -\frac{6c(\omega)}{(z-\omega)^4} - \frac{2\p c(\omega)}{(z-\omega)^3} + \frac{\p^2 c(\omega)}{(z-\omega)^2} + \frac{\p^3 c(\omega)}{(z-\omega)} \bigg] \\
+        & = -\frac{9c(\omega)}{(z-\omega)^4} - \frac{3\p c(\omega)}{(z-\omega)^3} + \frac{3\p^2c(\omega}{3(z-\omega)^2} + \frac{3\p\big(\p^2c(\omega)\big)}{2(z-\omega)}.
+    \end{split}
+\ese 
+
+Putting everything together gives us 
+\bse 
+    \begin{split}
+        T(z)J_B(\omega) & = \frac{c(\omega)}{(z-\omega)^4}\bigg[\frac{c^m}{2}-4-9\bigg] + \frac{3\p c(\omega) - 3\p c(\omega)}{(z-\omega)^3} \\
+        & \quad + \frac{1}{(z-\omega)^2}\bigg[ 2c(\omega)T^m(\omega) - c(\omega)T^m(\omega) + \frac{1}{2}\cl c(\omega)T^g(\omega) + \frac{3}{2}\p^2c(\omega) \bigg] \\
+        & \quad + \frac{1}{(z-\omega)}\bigg[ c(\omega) \p T^m(\omega) + \big(\p c(\omega)\big)T^m(\omega) + \frac{1}{2}\p \cl c(\omega) T^g(\omega)\cl + \frac{3}{2}\p\big(\p^2c(\omega)\big) \bigg] \\
+        \therefore \qquad  T(z)J_B(\omega) & = \frac{c^m-26}{2(z-\omega)^4}c(\omega) + \frac{1}{(z-\omega)}J_B(\omega) + \frac{1}{(z-\omega)}\p J_B(\omega).
+    \end{split}
+\ese 
+
+We see, therefore, that if $J_B(\omega)$ is the a true tensor we require $c^m=26$. This result should be haunting you by now. 

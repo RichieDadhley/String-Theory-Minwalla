@@ -1,0 +1,408 @@
+\chapter{BRST Quantisation I}
+
+Let's recall what we are trying to understand: the scattering amplitude, given by 
+\bse 
+    \begin{split}
+        \cA  =  \int DXDcDb \bigg[\prod_{k=1}^m \int d^2\sig \sqrt{\hat{g}} \bigg(\frac{\p \hat{g}}{\p \tau_k}\bigg)_{\a\beta} b^{\a\beta} \bigg] \bigg[ \prod_{j=1}^f & \prod_{\a=1}^2 c_{\a}(\hat{\sig}_j)  \sqrt{g} V_j(\hat{\sig}_j) \bigg] \\
+        &\times  \bigg[\prod_{j=f+1}^n \int d\sig_j \sqrt{g} V_j(\sig_j)\bigg] e^{-(S_{\text{P}} + S_{\text{g}})}.
+    \end{split}
+\ese 
+So far we have basically understood what all the terms in this expression mean, apart from the $V$s. We have argued previously that they must be diffeomorphism scalars, but must have a Weyl factor opposite to that of $\sqrt{g}$. In other words they need to be $(1,1)$-primary scalars. The obvious question to ask is "$(1,1)$ with respect to which CFT?" That is, are they purely to do with the $X^{\mu}$ CFT or purely the $bc$ CFT, or a mix of both? 
+
+If we remember that the $V$s represent vertices, intuitively we might think `well it's not purely $bc$ as ghost things give us negative norms, and we don't want that!' A similar argument would suggest that we don't want it to be a mix of $X^{\mu}$s and $bc$. 
+
+The next few lectures are going to be leading to answering this question by introducing and using so-called BRST\footnote{Becchi, Rouet, Stora and Tyutin.} quantisation. As the name suggests, BRST quantisation is some quantisation scheme, the question is what does it seek to quantise? The answer is field theories that possess gauge symmetries. This is exactly our case, and so we use it here. 
+
+\section{The BRST Action}
+
+For generality, we shall just label the classical fields by $\phi_i$. Our gauge transformation is 
+\be
+\label{eqn:delphiBRST}
+    \del\phi_i = \epsilon^{\a}\del_{\a}\phi_i,
+\ee 
+for some small $\epsilon$ and where $\a$ includes the coordinate. These gauge transformation satisfy an algebra with structure constants given by 
+\be
+\label{eqn:BRSTGaugeAlgebra}
+    [\del_{\a},\del_{\beta}] = {f^{\g}}_{\a\beta}\del_{\g}.
+\ee 
+
+So we have some action $S[\phi]$ which is invariant under the gauge transformation. But in order to actually work out the path integral, we would need to fix a gauge. We could do this by introducing some functions $F^A$ such that 
+\bse 
+    F^A(\phi_c)=0,
+\ese 
+where again $A$ includes the coordinates. We are basically repeating the Faddeev-Popov calculations from before. So we want to find 
+\bse 
+    Z = \frac{1}{\text{Vol}}\int D\phi e^{-S[\phi]}.
+\ese 
+We introduce 
+\bse 
+    1 = \int D\xi \, \del\Big( F^A\big(\phi_c^{\xi}\big)\Big) \Delta_{FP}\big(\phi_c\big),
+\ese 
+where $\phi_c$ is the needed $\phi$ for the delta function.\footnote{Recall we can do this because $\Delta_{FP}$ is invariant under the gauge transformation, and so we can pick any value in each orbit we like.} We can then consider the infinitesimal gauge transformation $\epsilon^{\a}$ and Taylor expand the $F^A$s, giving, 
+\bse 
+    \frac{1}{\Delta_{FP}} = \int D\epsilon^{\a} \del\Big( F^A\big(\phi_c\big) + \del_{\a}F^A\epsilon^{\a}\Big) = \int D\epsilon^{\a} \del\big( \del_{\a}F^A\epsilon^{\a}\big),
+\ese 
+where 
+\bse 
+    \del_{\a}F^A := \frac{\p F^A}{\p \phi_i}\del_{\a}\phi_i.
+\ese 
+Fourier tranforming gives 
+\bse 
+    \frac{1}{\Delta_{FP}} = \int D\epsilon^{\a}\, DB_A \, \exp\big(-iB_A\del_{\a}F^A\epsilon^{\a}\big).
+\ese 
+Then doing the trick of replacing the Bosonic fields with Fermionic ones and flipping the left-hand side, we get 
+\bse 
+    \Delta_{FP} = \int Dc^{\a} Db_A \exp\big(i b_A\del_{\a}F^Ac^{\a}\big).
+\ese 
+So we have (picking some $\phi$)
+\bse 
+    1 = \int d\xi Dc^{\a} Db_A \del\big(F^A(\phi)\big)\exp\big(i b_A\del_{\a}F^Ac^{\a}\big).
+\ese 
+Now we do not actually do the delta function integral here (as we did earlier in the notes), but instead just Fourier transform to give 
+\bse 
+    1 = \int d\xi DB_ADb_Adc^{\a} \exp\Big(iB_AF^A(\phi) +ib_A\del_{\a}F^A(\phi)c^{\a}\Big),
+\ese 
+and so we get (after doing the $\xi$ integral to remove the Vol factor),
+\bse 
+    \frac{1}{\text{Vol}} \int D\phi \, e^{-S[\phi]} = \int D\phi DB_ADb_Adc^{\a} e^{-S_1-S_2-S_3},
+\ese 
+where $S_1[\phi]$ is our initial action, $S_2$ is our gauge fixing condition
+\bse 
+    S_2 = -iB_AF^A(\phi),
+\ese 
+and $S_3$ is the Faddeev-Popov action
+\bse 
+    S_3 = b_Ac^{\a} \del_{\a}F^A(\phi),
+\ese 
+where $b_A$ has been rescaled to absorb the $i$ factor present above.
+
+\section{The BRST Symmetry}
+
+Now this seems like we've gone backwards: in trying to apply the gauge symmetry we have obtained the same action plus two other actions! So we need to check that there is indeed some symmetry. 
+
+\bcl 
+    The BRST action is invariant under the so-called BRST transformation
+    \be 
+    \label{eqn:BRSTTransformation}
+        \begin{split}
+            \del_B \phi_i & = -i\epsilon c^{\a} \del_{\a}\phi_i, \\
+            \del_BB_A & = 0, \\
+            \del_Bb_A & = \epsilon B_A, \\
+            \del_Bc^{\a} & = \frac{i}{2} \epsilon {f^{\a}}_{\beta\g} c^{\beta}c^{\g},
+        \end{split}
+    \ee 
+    for some small parameter $\epsilon$.
+\ecl 
+
+\br 
+\label{rem:BRSTEpsilonAntisymmetric}
+    Before proving the above, note the $\epsilon$ here is not the same as the bosonic $\epsilon^{\a}$ in \Cref{eqn:delphiBRST}, which has been replaced by the fermionic $c^{\a}$. In fact $\epsilon$ here needs to anticommute with $c$ in order to insure that $\del_B\phi$ remains bosonic. Similarly it must anticommute with $b_A$ so that $\del_Bb_A$ is fermionic. 
+\er 
+
+\bq 
+    By assumption, $S_1$ is invariant as it only sees the $\del_B\phi_i$ and \Cref{eqn:delphiBRST} tells us its invariant under this. So we just need to check that the terms appearing from $S_2$ and $S_3$ cancel. Let's consider each separately: 
+    \bse 
+        \begin{split}
+            \del_BS_2 & = -i \big(\del_BB_A\big)F^A(\phi) -iB_A\del_BF^{A}(\phi) \\
+            & = -iB_A \frac{\p F^A}{\p \phi_i}\del_B\phi_i \\
+            & = -\epsilon B_A\frac{\p F^A}{\p \phi_i} c^{\a}\del_{\a}\phi_i \\
+            & =: -\epsilon B_A c^{\a}\del_{\a}F^A(\phi).
+        \end{split}
+    \ese 
+    Next we have
+    \bse 
+        \begin{split}
+            \del_BS_3 & = \big(\del_Bb_A\big)c^{\a} \del_{\a} F^A(\phi) + b_A\big(\del_Bc^{\a}\big)\del_{\a}F^A(\phi) + b_Ac^{\a}\del_B\big(\del_{\a}F^A(\phi)\big) \\
+            & = \epsilon B_A c^{\a}\del_{\a}F^A(\phi) + \frac{i}{2}\epsilon b_A {f^{\a}}_{\beta\g}c^{\beta}c^{\g} \del_{\a}F^A(\phi) -i b_Ac^{\a}\epsilon c^{\beta}\del_{\beta}\del_{\a}F^A(\phi) \\
+            & = \epsilon\Big[ B_A c^{\a}\del_{\a}F^A(\phi) + \frac{i}{2} b_A {f^{\a}}_{\beta\g}c^{\beta}c^{\g} \del_{\a}F^A(\phi) - i b_Ac^{\beta} c^{\a}\del_{\beta}\del_{\a}F^A(\phi) \Big],
+        \end{split}
+    \ese 
+    where we have used $c^{\a}\epsilon=-\epsilon c^{\a}$ and $c^{\a}c^{\beta}=-c^{\beta}c^{\a}$ to go to the last line. We then note that $c^{\a}c^{\beta}$ is antisymmetric, and so
+    \bse 
+        c^{\beta}c^{\a}\del_{\beta}\del_{\a}F^A(\phi) =  \frac{1}{2}c^{\beta}c^{\a}[\del_{\beta},\del_{\a}]F^A(\phi) = \frac{1}{2}c^{\beta}c^{\a}{f^{\g}}_{\beta\a}\del_{\g}F(\phi).
+    \ese 
+    We see therefore that the last two terms in $\del_BS_3$ cancel and we simply get 
+    \bse 
+        \del_BS_3 = \epsilon B_Ac^{\a}\del_{\a} F^A(\phi).
+    \ese
+    Finally we see that 
+    \bse 
+        \del_BS_2+\del_BS_3 = -\epsilon B_Ac^{\a}\del_{\a} F^A(\phi) +\epsilon B_Ac^{\a}\del_{\a} F^A(\phi) = 0.
+    \ese 
+\eq 
+
+\bp  
+\label{prop:BRSTNilpotent}
+    The BRST transformation is nilpotent. That is 
+    \bse 
+         \del_B^{\epsilon_2}\del_B^{\epsilon_1} =: \del_B^2 = 0,
+    \ese 
+    where the superscripts tells us that we need not take the same value of $\epsilon$ for each application of $\del_B$.
+\ep  
+
+\bq 
+    We just have to show that it holds for each of the terms in \Cref{eqn:BRSTTransformation}. Clearly 
+    \bse 
+        \del_B^2 B_A = 0, \qand \del_B^2b_A = \epsilon_1\del_B^{\epsilon_2}B_A = 0.
+    \ese 
+    Now consider $\del_B^2\phi_i$:
+    \bse 
+        \begin{split}
+            \del_B^2\phi_i & = -i\epsilon_1\del_B^{\epsilon_2}\big(c^{\a}\del_{\a}\phi_i\big) \\
+            & = -i\epsilon_1\bigg[\frac{i}{2}\epsilon_2{f^{\a}}_{\beta\g}c^{\beta}c^{\g} \del_{\a}\phi_i -i c^{\beta}\epsilon_2c^{\a} \del_{\beta}\del_{\a}\phi_i\bigg] \\
+            & = \frac{\epsilon_1\epsilon_2}{2}\Big[ {f^{\a}}_{\beta\g} c^{\beta}c^{\g} \del_{\a}\phi_i - c^{\a}c^{\beta}{f^{\g}}_{\a\beta}\del_{\g}\phi_i\Big] \\
+            & = 0,
+        \end{split}
+    \ese 
+    where we have used the same trick on the last term as in the proof of the above claim. 
+    
+    Finally we have 
+    \bse 
+        \begin{split}
+            \del_B^2c^{\a} & = \frac{i}{2}\epsilon_1{f^{\a}}_{\beta\g}\del_B^{\epsilon_2}\Big(c^{\beta}c^{\g}\Big) \\
+            & = -\frac{1}{4}\epsilon_1 {f^{\a}}_{\beta\g}\Big[\epsilon_2 {f^{\beta}}_{\sig\rho}c^{\sig}c^{\rho}c^{\g} + {f^{\g}}_{\sig\rho}c^{\beta}\epsilon_2c^{\sig}c^{\rho} \Big] \\
+            & = -\frac{1}{4}\epsilon_1\epsilon_2 {f^{\a}}_{\beta\g}\Big[ {f^{\beta}}_{\sig\rho}c^{\sig}c^{\rho}c^{\g} - {f^{\g}}_{\sig\rho}c^{\beta}c^{\sig}c^{\rho} \Big] \\
+            & = \frac{1}{4}\epsilon_1\epsilon_2 \Big[ {f^{\a}}_{\g\beta}{f^{\beta}}_{\sig\rho}c^{\g}c^{\sig}c^{\rho} + {f^{\a}}_{\beta\g}{f^{\g}}_{\sig\rho}c^{\beta}c^{\sig}c^{\rho} \Big] \\
+            & = \frac{1}{2}\epsilon_1\epsilon_2{f^{\g}}_{\sig\rho}{f^{\a}}_{\beta\g}c^{\beta}c^{\sig}c^{\rho},
+        \end{split}
+    \ese 
+    where we have used the fact that ${f^{\a}}_{\beta\g} = {f^{\a}}_{-\g\beta}$, as is easily seen from \Cref{eqn:BRSTGaugeAlgebra}, and then relabelled $\g\leftrightarrow\beta$ in the first term to get to the last line. This looks like a problem (it doesn't appear to be zero...), however we see it does indeed vanish by considering the Jacobi of our algebra. We have 
+    \bse 
+        \big[\del_{\beta},[\del_{\sig},\del_{\rho}]\big] = {f^{\g}}_{\sig\rho}{f^{\a}}_{\beta\g}\del_{\a},
+    \ese 
+    and so the Jacobi identity tells us 
+    \bse 
+        {f^{\g}}_{\sig\rho}{f^{\a}}_{\beta\g} + {f^{\g}}_{\beta\sig}{f^{\a}}_{\rho\g} + {f^{\g}}_{\rho\beta}{f^{\a}}_{\sig\g} = 0.
+    \ese 
+    We then use the anticommutivity of the $c$s to give us 
+    \bse 
+        \begin{split}
+            \del_B^2 c^{\a} & = \frac{1}{6}\epsilon_1\epsilon_2{f^{\g}}_{\sig\rho}{f^{\a}}_{\beta\g}\big[ c^{\beta}c^{\sig}c^{\rho} + c^{\rho}c^{\beta}c^{\sig} + c^{\sig}c^{\rho}c^{\beta} \big] \\
+            & = \frac{1}{6}\epsilon_1\epsilon_2\Big[ {f^{\g}}_{\sig\rho}{f^{\a}}_{\beta\g} + {f^{\g}}_{\beta\sig}{f^{\a}}_{\rho\g} + {f^{\g}}_{\rho\beta}{f^{\a}}_{\sig\g} \Big] c^{\beta}c^{\sig}c^{\rho} \\
+            & = 0,
+        \end{split}
+    \ese 
+    where we have done some relabelling to get the $ff$ terms.
+\eq 
+
+We can express the above result quite nicely in terms of some generator $Q_B$ of the BRST transformation, simply as 
+\be 
+\label{eqn:QBSquared}
+    Q_B^2 = 0.
+\ee 
+We write the action of $Q_B$ on the fields using commutators for the Bosonic fields, e.g. $\del_B\phi_i = \epsilon[Q_B,\phi_i]$, and anticommutators for the Fermionic fields, e.g. $\del_Bb_A = i\epsilon\{Q_B,b_A\}$. Putting this together, \Cref{eqn:BRSTTransformation} can be written
+\be
+\label{eqn:BRSTTransformationQB}
+    \begin{split}
+            \big[Q_B,\phi_i\big] & = -ic^{\a} \del_{\a}\phi_i, \\
+            \big[Q_B,B_A\big] & = 0, \\
+            \big\{Q_B,b_A\big\} & = -iB_A, \\
+            \big\{Q_B,c^{\a}\big\} & = \frac{1}{2}{f^{\a}}_{\beta\g} c^{\beta}c^{\g}. 
+    \end{split}
+\ee 
+
+\br 
+    Note that the anticommutator relations come with a factor of $i$. This will prove importatnt below when proving \Cref{prop:BRSTHermitian}.
+\er 
+
+\br 
+    We should note two assumptions we have made above. Firstly, we have assumed that the structure constants ${f^{\a}}_{\beta\g}$ are indeed constants and not functions of the fields (if they were we would pick up some contribution from then under $\del_B$). Secondly, we have also assumed that there are no additional terms on the right-hand side of \Cref{eqn:BRSTGaugeAlgebra} that are proportional to the equations of motion. Both of these assumptions are needed to show that $Q_B$ is nilpotent. The generalisation of the results is known as the \textit{Batalin–Vilkovisky} (or BV) formalism. We will not discuss this further here.
+\er 
+
+\section{Physical States}
+
+So we have studied our BRST transformation and its symmetry, the question now is "what does this tell us about the physical states that are allowed?" To see why the BRST symmetry is related to such a question, recall that $F^A(\phi)=0$ is our gauge fixing condition. Changing $F^A$ corresponds to changing gauge, and so should have \textit{no effect} on the physical states of the system. That is, any state that is dependent on the choice of gauge is defined to be unphysical. 
+
+So what do we do? Firstly we notice that 
+\bse 
+    i\epsilon\big(S_2+S_3\big) = \del_B\big(b_AF^A\big),
+\ese 
+which can be checked easily. So our total action becomes 
+\bse 
+    S = S_1 -\frac{i}{\epsilon}\del_B\big(b_AF^A\big),
+\ese
+or equivalently 
+\bse 
+    S = S_1 + \big\{Q_B,b_AF^A\big\}.
+\ese 
+If we then take the transition amplitude 
+\bse 
+    \cT_{if}  = \bra{f} e^{-S} \ket{i},
+\ese 
+and consider a small gauge transformation $\del F^A$, we get 
+\bse 
+    \del\cT_{if} = \bra{f}\big\{Q_B,b_A\del F^A\big\}\ket{i},
+\ese 
+which we require to vanish for arbitrary $\del F^A$ for physical states. We therefore require that the physical states be $Q_B$ exact. That is 
+\bse
+    Q_B\ket{\psi} = 0 = \bra{\psi}Q_B^{\dagger}.
+\ese 
+for all \textit{physical} states $\ket{\phi}$.
+
+\bp
+\label{prop:BRSTHermitian}
+    The BRST charge is Hermitian, i.e. 
+    \be 
+    \label{eqn:QBHermitian}
+        Q_B = Q_B^{\dagger}.
+    \ee 
+\ep 
+
+\bq 
+    Firstly we note that 
+    \bse 
+        [A,B]^{\dagger} = -[A^{\dagger},B^{\dagger}], \qand \{A,B\}^{\dagger} = \{A^{\dagger},B^{\dagger}\}
+    \ese
+    Next note that $\phi_i^{\dagger}=\phi_i$, $(c^{\a})^{\dagger}=c^{\a}$, $B_A^{\dagger}=B_A$ and $b_A^{\dagger}=-b_A$.\footnote{Recall that we absorbed a factor of $i$ into $b_A$.} 
+    
+    Using both these results along with \Cref{eqn:BRSTTransformationQB}, we have 
+    \bse 
+        \begin{split}
+            -\big[Q_B^{\dagger},\phi_i\big] & = +ic^{\a}\del_{\a}\phi_i, \\
+            -\big[Q_B^{\dagger},B_A\big] & = 0, \\
+            \big\{Q_B^{\dagger},-b_A\big\} & = +iB_A, \\
+            \big\{Q_B^{\dagger}, c^{\a}\big\} & = \frac{1}{2}{f^{\a}}_{\beta\g} c^{\beta}c^{\g},
+        \end{split}
+    \ese
+    which after some trivial rearranging of sign gives exactly the same form as \Cref{eqn:BRSTTransformationQB}. We therefore see that $Q_B$ and $Q_B^{\dagger}$ give rise to the same symmetry and therefore must be the same generator, i.e. $Q_B=Q_B^{\dagger}$. 
+\eq 
+
+Putting all of this together we get the following result.
+
+\mybox{
+The physical states of a system with a BRST symmetry are left \textit{and} right BRST exact,
+\be 
+\label{eqn:BRSTPhysicalStates}
+    Q_B\ket{\psi} = 0 = \bra{\psi}Q_B.
+\ee 
+}
+This is a very nice result, but it actually becomes nicer when we recall that $Q_B$ is nilpotent, \Cref{eqn:QBSquared}. This tells us that we can take \textit{any} (it need not be a physical state), state, $\ket{\xi}$ say, and if we act on it with $Q_B$ and then add it to a physical state, $\ket{\psi}$ say, then we get \textit{the same} physical state back. 
+\mybox{
+That is our physical states come in \textit{equivalence classes}
+\be
+\label{eqn:BRSTPhysicalStateEquivalenceClass}
+    \begin{split}
+        \ket{\psi} &\sim \ket{\psi} + Q_B\ket{\xi}, \\
+        \bra{\psi} &\sim \bra{\psi} + \bra{\xi}Q_B
+    \end{split}
+\ee
+}
+The above is just the definition of a \textit{BRST cohomology},\footnote{If you are unfamiliar with cohomology, it basically means closed modulo exact. The most common example is the so-called deRham cohomology which is the cohomology of differential forms.} and so we just say that our physical states are elements (i.e. equivalence classes) of the BRST cohomology. 
+
+\br 
+    Note that if $\ket{f}$ is a closed state, then $\bra{f}Q_B\ket{\xi}=0$ for any state $\ket{\xi}$ as $\bra{f}Q_B=0$. We see therefore that 
+    \bse 
+        \| Q_B\ket{\xi}\|^2 = 0.
+    \ese 
+    So all $Q_B$ exact states are \textit{null}. This is an important result as it tells us that two physical states that differ only by a null state will have the same inner product with all other physical states, an obvious requirement. 
+\er 
+
+\subsection{Operator Insertions}
+
+So what about inserting operators into our transition amplitudes? Following a similar process to above, it is clear that we also require that these operators commute with $Q_B$
+\be 
+\label{eqn:BQOperatorCommutator}
+    \big[B_Q,\cO\big] = 0,
+\ee 
+as then we can `move' the $Q_B$ through them and end up hitting some physical state. We also see that  
+\be 
+\label{eqn:BRSTOperatorChange}
+    \cO \to \cO' = \cO + \big[Q_B,\widetilde{\cO}\big],
+\ee 
+for \textit{arbitrary} $\widetilde{\cO}$ (i.e. it need not commute with $B_Q$) will also not change the transition amplitude, i.e.
+\bse 
+    \begin{split}
+        \del\cT_{if} & = \bra{f} \cO_1 ... \big[Q_B,\widetilde{\cO}\big] ... \cO_N\ket{i} \\
+        & = \bra{f} \cO_1 ... Q_B\widetilde{\cO} ... \cO_N\ket{i} - \bra{f} \cO_1 ... \widetilde{\cO}Q_B ... \cO_N\ket{i} \\
+        & = 0,
+    \end{split}
+\ese
+as the first term vanishes by moving the $Q_B$ all the way to the left and the second term vanishes by moving $Q_B$ all the way to the right. 
+
+\Cref{eqn:BQOperatorCommutator} is the statement that $\cO$ is closed, and \Cref{eqn:BRSTOperatorChange} is the statements that $\cO$ is invariant under the addition of an exact term. Again we say that these operators are part of the BRST cohomology class (for operators).
+
+
+\section{BRST Quantisation Of Point Particle}
+
+We have outlined the process of BRST quantisation and now we want to apply it to some physics problem. We will use the point particle as an example as it will make the study of the string much easier. 
+
+Recall \Cref{eqn:PointActionEinbein}, 
+\bse 
+    S = \frac{1}{2}\int d\tau \big( e^{-1}\dot{X}^2 -em^2\big), 
+\ese 
+where we have used our notation $\dot{X}^2 := \dot{X}^{\mu}\dot{X}_{\mu}$. The gauge symmetry here is, of course, reparameterisation invariance. Consider the small change
+\bse 
+    \tau \to \tau' = \tau + v(\tau).
+\ese 
+This gives 
+\bse 
+    X^{\mu}(\tau) \to X^{\mu}(\tau') \approx X^{\mu}(\tau) - \dot{X}^{\mu}(\tau)v(\tau), \qquad \implies \qquad \del X^{\mu}(\tau) = -\dot{X}^{\mu}(\tau) v(\tau),
+\ese 
+where the minus sign comes from the fact that we are doing an active transformation.
+
+We also have  
+\bse 
+    \begin{split}
+        e(\tau)d\tau & \to e(\tau')d\big(\tau+v(\tau)\big) \\
+        & = \big(e(\tau)-\dot{e}(\tau)v(\tau)\big)\big(d\tau -\dot{v}(\tau)d\tau\big) \\
+        \implies \del e & = -\p_{\tau}\big(e(\tau)v(\tau)\big),
+    \end{split}
+\ese
+where we have dropped the term quadratic in $v$ and its derivative.
+
+We need to identify what the $\a$ index is for the BRST procedure; it was meant to include the basis for the transformations, which here is shifting $\tau$ to any other value $\tau_1$. With some thought we see that 
+\bse 
+    \del_{\a} \tau = \del(\tau-\a), \qquad \implies \qquad v(\tau) = \int d\a \, \del(\tau-\a)v(\a),
+\ese 
+where the integral is done because reparameterisations are continuous.\footnote{That is, the summation convention becomes an integral.} In other words, the fields vary as 
+\be 
+\label{eqn:BRSTXeVariation}
+    \del_{\a} X^{\mu}(\tau) = -\del(\tau-\a)\p_{\tau}X^{\mu}(\tau), \qand \del_{\a}e(\tau) = -\p_{\tau}\big(\del(\tau-\a)e(\tau)\big).
+\ee
+Our commutator is given by 
+\bse 
+    \begin{split}
+        [\del_{\a},\del_{\beta}]X^{\mu}(\tau) & = \del_{\a}\big(-\del(\tau-\beta)\p_{\tau}X^{\mu}(\tau)\big) - \del_{\beta}\big(-\del(\tau-\a)\p_{\tau}X^{\mu}(\tau)\big) \\
+        & = -\big(\del(\tau-\a)\p_{\tau}\del(\tau-\beta) - \del(\tau-\beta)\p_{\tau}\del(\tau-\a)\big)\p_{\tau}X^{\mu}(\tau).
+    \end{split}
+\ese
+We then want to identify this with 
+\bse 
+    [\del_{\a},\del_{\beta}]X^{\mu}(\tau) = \int d\g {f^{\g}}_{\a\beta}\del_{\g}X^{\mu}(\tau),
+\ese 
+where again the integral is because of the continuous nature of our symmetry. We therefore see 
+\be 
+\label{eqn:StrucutreConstantsBRSTPointParticle}
+    {f^{\g}}_{\a\beta} := \del(\g-\a)\p_{\a}\big[\del(\g-\beta)\big] - \del(\g-\beta)\p_{\beta}\big[\del(\g-\a)\big]
+\ee  
+does the job, as 
+\bse 
+    \begin{split}
+        [\del_{\a},\del_{\beta}]X^{\mu}(\tau) & = \int d\g \Big(\del(\g-\a)\p_{\a}\big[\del(\g-\beta)\big] - \del(\g-\beta)\p_{\beta}\big[\del(\g-\a)\big]\Big)\del_{\g}X^{\mu}(\tau) \\
+        & = \int d\g \Big(\del(\g-\a)\p_{\a}\big[\del(\g-\beta)\big] - \del(\g-\beta)\p_{\beta}\big[\del(\g-\a)\big]\Big)\big(-\del(\tau-\g)\p_{\tau}X^{\mu}(\tau)\big) \\
+        & = -\big(\del(\tau-\a)\p_{\tau}\del(\tau-\beta) - \del(\tau-\beta)\p_{\tau}\del(\tau-\a)\big)\p_{\tau}X^{\mu}(\tau).
+    \end{split}
+\ese 
+
+We will take out gauge fixing condition to be $e=1$ (as this will related well to the string). Therefore we have $F^A(\tau)=e(\tau)-1$ which gives us 
+\bse 
+    \begin{split}
+        S_2 & = -iB_AF^A(\tau) \\
+        & = -i\int d\tau B(\tau)\big(e(\tau)-1\big),
+    \end{split}
+\ese 
+and 
+\bse 
+    \begin{split}
+        S_3 & = b_Ac^{\a}\del_{\a}F^A(\tau) \\
+        & = \int d\tau \, b(\tau)c(\a)\del_{\a}\big(e(\tau)-1) \\
+        & = \int d\tau \, b(\tau)c(\a) \big[ -\p_{\tau}\big(\del(\tau-\a)e(\tau) \big] \\
+        & = \int d\tau \, e(\tau)\dot{b}(\tau)c(\tau),
+    \end{split}
+\ese 
+where we have used integration by parts. This gives our complete action as 
+\be 
+\label{eqn:ActionBRSTPointParticle}
+    S = \int d\tau \bigg( \frac{1}{2}e^{-1}\dot{X}^2 + \frac{1}{2}em^2 + iB(e-1) - e\dot{b}c\bigg),
+\ee 
+where we have dropped the arguments for notational convenience. 
