@@ -1,0 +1,225 @@
+\chapter{BRST Quantisation III}
+
+Last lecture we stated the BRST current $J_B$ and calculated some of its OPEs. We now want to continue this and calculate a few more. First we want to look at the OPE with a holomorphic, primary, matter operator of weight $h$. 
+
+This OPE is very straight forward, as it is only the $T^m(z)$ in $J_B(z)$ that contributes to the OPE, so we get 
+\begin{equation*}
+    \begin{split}
+        J_B(z)\cO(\omega) & = c(z)\bigg[\frac{h\cO(\omega)}{(z-\omega)^2} + \frac{\p \cO(\omega)}{(z-\omega)}\bigg] \\
+        & = \frac{hc(\omega)\cO(\omega)}{(z-\omega)^2} + \frac{h\p c(\omega) \cO(\omega) + c(\omega)\p \cO(\omega)}{(z-\omega)},
+    \end{split}
+\end{equation*} 
+where we have expanded the $c(z)$ and only kept the singular terms to get to the second line. So the commutator with the BRST charge is
+\bse 
+    \big[Q_B,\cO\big] = h\p c \cO + c\p \cO,
+\ese
+which for the special case $h=1$ just becomes 
+\be
+\label{eqn:BRSTChargeMatterPrimaryCommutator}
+    \big[Q_B,\cO|_{h=1}\big] = \p\big(c\cO\big).
+\ee 
+A similar result holds for the anti-holomorphic operators.
+
+\br 
+\label{rem:BRSTPrimaryTotalDerivative}
+    We shall return to this in more detail later, but as some instructive foresight, this result is important as it tells us that the vertex insertions to our scattering amplitude that appear within an integral, i.e. 
+    \bse 
+        \int d\sig_j \sqrt{g} V_j(\sig_j),
+    \ese 
+    are BRST invariant if $V$ is a primary operator of weight $(1,1)$. This is just because, under BRST transformation, we just get a total derivative within our integral, and so, provided there are no domain issues, the integral vanishes. 
+\er 
+
+In light of the above remark, the next natural thing to calculate is the OPE with $c\cO$, as this is how the rest of our vertex operators appear in the scattering amplitude. We have 
+\bse 
+    \begin{split}
+        J_B(z)c(\omega)\cO(\omega) & = \frac{h\cl c(z)c(\omega)\cO(\omega)\cl}{(z-\omega)^2} + \frac{\cl c(z)c(\omega) \p\cO(\omega)\cl}{(z-\omega)} + \frac{\cl c(z)\p c(z)\cO(\omega)\cl}{(z-\omega)} \\
+        & = \frac{h\cl \p c(\omega) c(\omega) \cO(\omega)\cl}{(z-\omega)} + \frac{\cl c(\omega)\p c(\omega) \cO(\omega)\cl}{(z-\omega)} \\
+        & = \frac{\cl c(\omega) \p c(\omega) \cO(\omega)\cl}{(z-\omega)}\big(1-h\big),
+    \end{split}
+\ese 
+where again we have Taylor expanded and also used $c(\omega)c(\omega)=0$. So the BRST charge commutator is 
+\be 
+\label{eqn:BRSTcPrimaryCommutator}
+    \big[Q_B,c\cO\big] = c \p c\cO \big(1-h\big),
+\ee 
+which again obviously vanishes if $h=1$. 
+
+\br 
+    Note that, in contrast to \Cref{rem:BRSTPrimaryTotalDerivative} we now need the commutator to vanish exactly for $h=1$ as the $cV$ insertions in our scattering amplitude do not come with an integral. 
+\er 
+
+Next, we consider the Laurent series of $b(\omega)$:
+\bse 
+    b(\omega) = \sum_{n=-\infty}^{\infty} \frac{b_n}{\omega^{n+2}} \qquad \implies \qquad b_n = \oint \frac{d\omega}{2\pi i} \omega^{m+1}b(\omega).
+\ese 
+Consider the anticommutator with the BRST charge, who's (holomorphic part) can be written as 
+\bse 
+    Q_B = \oint \frac{dz}{2\pi i} J_B(z).
+\ese 
+Using the standard contour method, we have\footnote{Note we take the limit $z\to \omega$. This means we don't have to worry about Taylor expanding the $\omega^{n+1}$ term and can simply just take the residue from the OPE.}
+\bse 
+    \begin{split}
+        \big\{Q_B,b_m\big\} & = \oint \frac{d\omega}{2\pi i} \Res\bigg[ \omega^{n+1} \bigg(\frac{T(\omega)}{(z-\omega)} + \frac{J_B(\omega)}{(z-\omega)^2} + \frac{3}{(z-\omega)^3}\bigg)\bigg] \\
+        & = \oint \frac{d\omega}{2\pi i} \omega^{n+1}T(\omega) \\
+        & = L_n,
+    \end{split}
+\ese
+where $L_n$ is the Laurent expansion of the \textit{full} stress-tensor, i.e. 
+\bse 
+    L_n = L_n^m + L_n^g,
+\ese 
+where $m$ and $g$ denote matter and ghost respectively. 
+
+The important part of this result for us is that 
+\bse 
+%\label{eqn:BRSTChargeb0Anticommutator}
+    \big\{ Q_B, b_0\big\} = L_0.
+\ese 
+Why is this result important? Well, recall that our physical states\footnote{At least for the point particle, and we shall assume that the same is true for the string. We will show this is true later.} must obey 
+\bse
+    Q_B\ket{\psi} = 0 \qand b_0\ket{\psi} = 0,
+\ese 
+and so they must also obey 
+\be 
+\label{eqn:L0psi}
+    L_0\ket{\psi} = 0.
+\ee 
+
+The next important thing to note is that 
+\bse 
+    L_0 J_B = J_B,
+\ese 
+as can easily be checked using the result at the end of the last lecture, and so $Q_B$, which is given by the integral of $J_B$, does not change the $L_0$ value of the states, i.e.
+\bse
+    \big[Q_B,L_0\big] = 0.
+\ese 
+So we can consider our cohomology in levels, labelled by the $L_0$ value. To clarify, acting on any state (not just physical ones) with $Q_B$ will not change the $L_0$ eigenvalue, and so states with the same $L_0$ value form closed subsets under action of $Q_B$. Our physical states require $L_0\ket{\psi}=0$, and so we simply just restrict ourselves to this case. 
+
+\section{The Cohomology Classes Of Physical States}
+
+\subsection{The Tachyon}
+
+So let's start with the lowest state. First we could try the state that corresponds to the vacuum in both the ghost and the matter sector. The vacuum for the ghost sector is the $\ket{\downarrow} = \ket{c}$ state\footnote{Recall that we don't consider the $\ket{\uparrow}$ states as physical. We can therefore label the vacuum state simply as $\ket{0}$ without having to worry if its $\ket{\uparrow}$ or $\ket{\downarrow}$.} The vacuum for the matter sector just has no excitations. So our ground state is $\ket{c;0}$, where the semicolon is used to separate the ghost sector from the matter sector. However this cannot be a physical state, as a quick calculation shows
+\bse 
+    L_0^gc = - c,
+\ese 
+and so $c$ has weight $-1$ under $L_0$. 
+
+We therefore need to insert some primary operator in the matter sector that has $L_0$ weight $+1$.\footnote{We clearly needed to insert some kind of matter operator, otherwise our system would be purely ghost, which we certainly do not want.} Another quick calculation shows that, for a matter primary operator of weight $h$, we have 
+\bse 
+    L_0^m\cO = h\cO,
+\ese 
+and so we need a primary operator of weight $h=1$. That is, the lowest physical state we can have is
+\bse 
+    \ket{\psi} = \ket{c\cO}.
+\ese 
+
+As we are ultimately interested in propagators, let's consider the matter state corresponding to $e^{ik\cdot X}$. Our $L_0$ condition means that we require 
+\bse 
+    \frac{\a'k^2}{4} =1,
+\ese 
+as the left-hand side is the weight of this operator.\footnote{Note this is the mass-shell condition, which we clearly want if the state is to be physical.} We shall denote this state by 
+\bse 
+    \ket{ce^{ik\cdot X}} =\ket{0;k},
+\ese 
+where the $0$ indicates the fact that we are in the vacuum of the ghost sector and $k$ is the momentum of the state in the matter sector.
+
+\bp 
+    Each $\ket{0;k}$ state corresponds to a cohomology class.
+\ep 
+
+\bq 
+    We have already shown that this state is $Q_B$ closed (as both $L_0$ and $b_0$ annihilate it), 
+    \bse 
+        Q_B\ket{0;k} = 0,
+    \ese 
+    and so we now just need to check for non-exactness. Suppose the state was exact, then there would exist some other state $\ket{\psi}$ such that 
+    \bse 
+        Q_B\ket{\psi} = \ket{0;k}.
+    \ese 
+    However, the only part of $J_B$ (and therefore $Q_B$) that acts on the matter sector is $T^m$, which we have seen in Lecture 8 doesn't change the momentum of the state. We therefore require 
+    \bse 
+        \ket{\psi} \sim_m \ket{k},
+    \ese 
+    where $\sim_m$ is meant to indicate we just mean the matter part of the state. 
+    
+    We just showed above that $Q_B$ does not change the $L_0$ value, and so we require $L_0\ket{\psi} =0$. We clearly have $L_0^m\ket{\psi} = \ket{\psi}$, and so we require $L_0^g\ket{\psi}=-\ket{\psi}$. That is, we need the ghost part of the state to have weight $-1$ under $L_0$. There is only two choices for this, $\ket{c}$ and $\ket{c\p c}$, as $b$ has weight $+2$ and derivatives have weight $+1$ (i.e. $L_0\ket{\p c} = 0$). We can only use $\ket{c}$ as its the only one that is annihilated by $b_0$, and so we therefore have 
+    \bse 
+        \ket{\psi} \sim \ket{c;k} = \ket{0;k},
+    \ese 
+    where we have used our notation. This gives 
+    \bse 
+        Q_B\big(A\ket{0;k}\big) = \ket{0;k},
+    \ese 
+    for some constant $A$. However, we know $\ket{0;k}$ is closed and so we are forced to choose the trivial result $\ket{0;k}=0$. 
+\eq 
+
+\br 
+\label{rem:BRSTWellDefinedk}
+    The above proof actually proves another important result; because $Q_B$ does not change the value of $k$, we can further divide our $L_0$ states into states with equal $k$. That is, it is a well defined idea to consider the BRST cohomology for a given value of $k$. 
+\er 
+
+The above states are the Tachyon states; they don't have any $\a/\widetilde{\a}$ excitations and so correspond to the level $N=\widetilde{N}=0$. We see this by using the decomposition \Cref{eqn:GroundState}, i.e.\footnote{We replace the semicolon in Lecture 3's notation with a comma so that the semicolon now separates ghost from matter.}
+\bse 
+    \ket{0;k} = \ket{0;0,k}.
+\ese 
+The part after the semicolon is just the definition of the Tachyon.
+
+\br 
+    We could also see that we are dealing with Tachyons from the condition 
+    \bse 
+        \frac{\a' k^2}{4} = 1 \qquad \implies \qquad k^2 = \frac{4}{\a'}.
+    \ese 
+    Putting this together with $k^2=-m^2$, we have 
+    \bse 
+        m^2 = - \frac{4}{\a'} = - \frac{26-2}{6\a'},
+    \ese 
+    which is \Cref{eqn:TachyonMass} with $d=26$.
+\er 
+
+\subsection{First Excited State}
+
+We now want to consider the case where we include an excitation of the ground state. This can come in three ways: we can use $c_{-1}$, $b_{-1}$ or $\a_{-1}/\widetilde{\a}_{-1}$. For simplicity of notation, we shall just write the $\a$s and drop the $\widetilde{\a}$s, but we must remember that our level matching condition requires them to come together. 
+
+The question is, what condition do we need to place on the weight, and therefore on $k^2$, of the matter operator? We know that all $\a_{-1}$, $b_{-1}$ and $c_{-1}$ are raising operators and so will contribute $+1$ to the $L_0$ value. We still have the $-1$ contribution from $\ket{c}$, and so we now require $h=0$ for the primary operator. That is, our general state is 
+\be 
+\label{eqn:BRSTMasslessGeneralState}
+    \ket{\psi} = \big( e_{\mu}\a^{\mu}_{-1} + \beta b_{-1} + \g c_{-1}\big)\ket{0;k}, \qquad k^2 = 0.
+\ee
+This is the set of massless states. 
+
+\br 
+    If you are not happy with using the fact that the operators are raising operators above, you can show it explicitly. For example, we saw towards the end of Lecture 11 that 
+    \bse 
+        c_n\ket{c} = \oint \frac{dz}{2\pi i} z^{n-2}c(z)c(0),
+    \ese 
+    which gives 
+    \bse 
+        c_{-1}\ket{c} = -c(0)\p^2 c(0).
+    \ese 
+    You can then use this to show that 
+    \bse 
+        T^g(z)\big(c_{-1}\ket{c}\big)(\omega) \sim \frac{2\cl c(\omega)\p c(\omega)\cl}{(z-\omega)^3} - \frac{\cl c(\omega)\p^3c(\omega)\cl + \p^2c(\omega)\p c(\omega)\cl}{(z-\omega)},
+    \ese 
+    which has no $1/z^2$ term and so 
+    \bse 
+        L_0^gc_{-1}\ket{c} = 0,
+    \ese 
+    and so we require $h=0$ for the primary operator.
+    
+    Similar calculations will give the same kind of result for the other two terms. 
+\er 
+
+Using \Cref{rem:BRSTWellDefinedk}, we can consider the cohomology for these massless states independently of any massive states (i.e. consider just $k^2=0$ states). You can show (to save space, the calculation is not done here, but it follows exactly the same ideas as all the other calculations done) that 
+\be 
+\label{eqn:BRSTChargealphabcminus1}
+    \begin{split}
+        Q_B\big(\a^{\mu}_{-1}\ket{0;k}\big) & = \sqrt{2\a'} k^{\mu} c_{-1}\ket{0;k} \\
+        Q_B\big(b_{-1}\ket{0;k}\big) & = \sqrt{2\a'} k_{\mu}\a^{\mu}_{-1}\ket{0;k} \\
+        Q_B\big(c_{-1}\ket{0;k}\big) & = 0 
+    \end{split}
+\ee
+
+\br 
+    If you plan to tey show the above results (and its worth doing if you haven't been doing the calculations this far yourself), note you can save yourself a bit of time by doing them in the order presented. That is, once you show the $\a^{\mu}_{-1}\ket{0;k}$ equation, the $c_{-1}\ket{0;k}$ condition follows via the nilpotency of the BRST charge.
+\er 

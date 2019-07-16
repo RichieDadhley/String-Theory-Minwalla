@@ -144,7 +144,8 @@ First let's find the OPE with $b/c$. We have
     \begin{split}
         T_{\l}(z)c(\omega) & = \Big[(1-\l)\cl\p b(z)c(z)\cl c(\omega)\Big] - \Big[\l \cl b(z)\p c(z)\cl c(\omega)\Big] \\
         & = \Big[(\l-1)\cl c(z)\p b(z)\cl c(\omega)\Big] + \Big[\l \cl \p c(z) b(z)\cl c(\omega)\Big] \\
-        & = -\frac{(\l-1)c(z)}{(z-\omega)^2} + \frac{\l \p c(z)}{z-\omega} + ...,
+        & = -\frac{(\l-1)c(z)}{(z-\omega)^2} + \frac{\l \p c(z)}{z-\omega} + ... \\
+        & = \frac{(1-\l)c(\omega)}{(z-\omega)^2} + \frac{\p c(\omega)}{z-\omega},
     \end{split}
 \ese 
 from which we see that $\l=2$ if we want $c$ to be a weight $(-1,0)$ operator, i.e. we want the first coefficient to be $-1$. 
@@ -154,7 +155,8 @@ For $b$ we have
     \begin{split}
         T_{\l}(z)b(\omega) & = \Big[(1-\l)\cl\p b(z)c(z)\cl b(\omega)\Big] - \Big[\l \cl b(z)\p c(z)\cl b(\omega)\Big] \\
         & = \frac{(1-\l)\p b(z)}{z-\omega} + \frac{\l b(z)}{(z-\omega)^2} + ... \\
-        & = \frac{\l b(z)}{(z-\omega)^2} + \frac{(1-\l)\p b(z)}{z-\omega} + ...,
+        & = \frac{\l b(z)}{(z-\omega)^2} + \frac{(1-\l)\p b(z)}{z-\omega} + ... \\
+        & = \frac{\l b(\omega)}{(z-\omega)^2} + \frac{\p b(\omega)}{z-\omega},
     \end{split}
 \ese 
 again from which we see we need $\l=2$ for $b$ to be have weight $(2,0)$. 
@@ -307,10 +309,10 @@ We therefore have
     \begin{split}
         \big\{c_n(z_1), b_m(z_2)\big\} & = \bigg(\oint \frac{dz_1}{2\pi i}\oint\frac{dz_2}{2\pi i} - \oint \frac{dz_2}{2\pi i}\oint\frac{dz_1}{2\pi i}\bigg) z_1^{n-2}z_2^{m+1} c(z_1)b(z_2) \\
         & = \oint \frac{dz_2}{2\pi i} \Res\bigg[\frac{z_1^{n-2}z_2^{m+1}}{z_{12}}\bigg] \\
-        & = \oint \frac{dz_2}{2\pi i} z_1^{n-2}z_2^{m+1},
+        & = \oint \frac{dz_2}{2\pi i} z_2^{n-2}z_2^{m+1},
     \end{split}
 \ese 
-which vanishes unless $(n-2)+(m+1)=-1$. Using this along with the fact that the OPE of $c$ with itself and $b$ with itself vanish, we have
+where we have Taylor expanded the $z_1$ in the residue, and used the fact that only the leading order term contributes to the residue. This vanishes unless $(n-2)+(m+1)=-1$. Using this along with the fact that the OPE of $c$ with itself and $b$ with itself vanish, we have
 \mybox{
 \be 
 \label{eqn:cbanticommutator}
@@ -348,7 +350,7 @@ We also have
 \ese 
 So we see that the $n=0$ part of the algebra forms a closed system with two states. Our vacuum state, therefore, is two-fold degenerate. That is, we can have either $\ket{\uparrow}$ or $\ket{\downarrow}$ as our starting point and build on these using the creation operators $c_n/b_n$ for $n<0$. 
 
-This looks an awful lot like the spin state system (hence the labelling using arrows). Just as we say $\ket{\uparrow}$ has spin $+1/2$ and $\ket{\downarrow}$ has spin $-1/2$ for the spin system, we associate a \textit{ghost number} to the states $\ket{\uparrow}/\ket{\downarrow}$ here. We shall say $\ket{\uparrow}$ has ghost number $+1$ and $\ket{\downarrow}$ has ghost number $-1$. 
+This looks an awful lot like the spin state system hence the labelling using arrows). Just as we say $\ket{\uparrow}$ has spin $+1/2$ and $\ket{\downarrow}$ has spin $-1/2$ for the spin system, we associate a \textit{ghost number} to the states $\ket{\uparrow}/\ket{\downarrow}$ here. We shall say $\ket{\uparrow}$ has ghost number $+1$ and $\ket{\downarrow}$ has ghost number $-1$. 
 
 \br 
     Note that although we have an infinite number of excitations (as $n$ can take any value from $-\infty$ to $\infty$), we do not have the `double infinity' that we had for the bosonic fields.\footnote{See footnote 6 in Lecture 7.} This is because we cannot apply the same $c_n/b_n$ more then once without annihilating the system (as $c_n^2=0=b_n^2$). That is the \textit{occupation number} for each excitation state in the ghost system is $0$ or $1$. This is of course the characteristic behaviour of a fermionic state. 

@@ -172,7 +172,7 @@ and
 \ese
 These look like identical conditions, and so we get two copies of the same spectrum! There is a very important difference between the two though: there is nothing stopping us inserting up states that are not on shell, apart from they will vanish unless we then constrict them to being on shell; whereas we can \textit{only} insert down states that are already on shell. It follows, therefore, any quantity containing an up state must be proportional to $\del(p^2+m^2)$, whereas the down states need not. It turns out that kinematics tells us that\footnote{Apart from when $d=2$, apparently.} no such terms every arise in our QFTs. That is, although we can \textit{technically} insert any up state, we require that any amplitude obtained using them must vanish identically. This condition manifests itself as the additional requirement that physical states obey 
 \bse 
-    b\ket{\psi} = 0
+    b_0\ket{\psi} = 0
 \ese
 for the point particle.
 
@@ -228,6 +228,7 @@ We note that \Cref{eqn:BRSTTransformationString} has uncoupled holomorphic and a
 \ep 
 
 \br 
+\label{rem:BRSTCurrentTensorial}
     Before proving this, let's first just make a note on it. The first two terms make some sort of sense given then current for the point particle, but the $\p^2c$ term seems strange. Well we note that it is a total derivative and so will not contribute to the BRST charge, and so has no effect on the physics. The question is, then, "why include it?" The answer is simply that it gives $J_B$ a tensorial form. 
 \er 
 
@@ -262,13 +263,14 @@ We note that \Cref{eqn:BRSTTransformationString} has uncoupled holomorphic and a
         \begin{split}
             J_B(z)b(\omega) & = T^m(z)\overbrace{c(z)b(\omega)} + \cl b(z)c(z)\cl \overbrace{\p c(z) b(\omega)} - \cl b(z)\p c(z)\cl \overbrace{c(z)b(\omega)} + \frac{3}{2}\overbrace{\p^2 c(z)b(\omega)} + ... \\
             & = \frac{1}{(z-\omega)}T^m(z) - \frac{\cl b(z)c(z)\cl}{(z-\omega)^2} - \frac{\cl b(z)\p c(z)\cl}{(z-\omega)} + \frac{3}{(z-\omega)^3} + ... \\
-            & = \frac{T^m(\omega)}{(z-\omega)} - \frac{\cl \p b(\omega) c(\omega)}{(z-\omega)} - \frac{\cl b(\omega)\p c(\omega)\cl}{(z-\omega)} - \frac{\cl b(z)\p c(z)\cl}{(z-\omega)} + \frac{3}{(z-\omega)^3} + ... \\
-            & = \frac{1}{(z-\omega)}\Big[ T^m(\omega) + 2\cl \p c(\omega)b(\omega)\cl + \cl c(\omega)\p b(\omega) \cl\Big] + \frac{3}{(z-\omega)^3} + ... \\
-            & = \frac{1}{(z-\omega)} \Big[ T^m(\omega) + T^g(\omega) \Big] + \frac{3}{(z-\omega)^3} + ... \\
+            & = \frac{T^m(\omega)}{(z-\omega)} - \frac{\cl b(\omega)c(\omega)\cl}{(z-\omega)^2} - \frac{\cl \p b(\omega) c(\omega)\cl + \cl b(\omega)\p c(\omega)\cl}{(z-\omega)} - \frac{\cl b(z)\p c(z)\cl}{(z-\omega)} + \\
+            & \quad \frac{3}{(z-\omega)^3} + ... \\
+            & = \frac{1}{(z-\omega)}\Big[ T^m(\omega) + 2\cl \p c(\omega)b(\omega)\cl + \cl c(\omega)\p b(\omega) \cl\Big] + \frac{\cl c(\omega)b(\omega)\cl}{(z-\omega)^2} +  \frac{3}{(z-\omega)^3} + ... \\
+            & = \frac{1}{(z-\omega)} \Big[ T^m(\omega) + T^g(\omega) \Big] + \frac{J_G(\omega)}{(z-\omega)^2} + \frac{3}{(z-\omega)^3} + ... \\
             \implies \Res\big[J_B(z)b(\omega)\big] & = T^m + T^g,
         \end{split}
     \ese 
-    where we have Taylor expanded the $\cl b(z)c(z)\cl$ term and used the fact that $3$ is a constant\footnote{Shocking, I know!} and so the $1/(z-\omega)^3$ term won't contribute to the residue. 
+    where we have Taylor expanded the $\cl b(z)c(z)\cl$ term and used the definitions of $T^m$, $T^g$ and $J_G$.
 \eq 
 
 Let's now find the OPE between the stress tensor $T = T^m + T^g$ and $J_B$:
@@ -354,8 +356,17 @@ Putting everything together gives us
         T(z)J_B(\omega) & = \frac{c(\omega)}{(z-\omega)^4}\bigg[\frac{c^m}{2}-4-9\bigg] + \frac{3\p c(\omega) - 3\p c(\omega)}{(z-\omega)^3} \\
         & \quad + \frac{1}{(z-\omega)^2}\bigg[ 2c(\omega)T^m(\omega) - c(\omega)T^m(\omega) + \frac{1}{2}\cl c(\omega)T^g(\omega) + \frac{3}{2}\p^2c(\omega) \bigg] \\
         & \quad + \frac{1}{(z-\omega)}\bigg[ c(\omega) \p T^m(\omega) + \big(\p c(\omega)\big)T^m(\omega) + \frac{1}{2}\p \cl c(\omega) T^g(\omega)\cl + \frac{3}{2}\p\big(\p^2c(\omega)\big) \bigg] \\
-        \therefore \qquad  T(z)J_B(\omega) & = \frac{c^m-26}{2(z-\omega)^4}c(\omega) + \frac{1}{(z-\omega)}J_B(\omega) + \frac{1}{(z-\omega)}\p J_B(\omega).
+        \therefore \qquad  T(z)J_B(\omega) & = \frac{c^m-26}{2(z-\omega)^4}c(\omega) + \frac{1}{(z-\omega)^2}J_B(\omega) + \frac{1}{(z-\omega)}\p J_B(\omega).
     \end{split}
 \ese 
+We see, therefore, that if $J_B(\omega)$ is the a true tensor we require $c^m=26$.\footnote{This result is actually somewhat backwards. Really we should use the fact that we know $c^m=26$ in order to ask the question "what do we include in the definition of $J_B$ in order for it to be a tensor?" The answer obviously turns out to be $\frac{3}{2}\p^2c$.}  This result should be haunting you by now.
 
-We see, therefore, that if $J_B(\omega)$ is the a true tensor we require $c^m=26$. This result should be haunting you by now. 
+The next OPE to consider is $J_B$ with itself. The calculation is equally as long (or perhaps longer) then the above, but shares much of the same steps. For this reason we shall not present the calculation here but simply quote the result: 
+\bse 
+    J_B(z)J_B(\omega) = - \frac{c^m-18}{2(z-\omega)^3}\cl c(\omega)\p c(\omega)\cl - \frac{c^m-18}{4(z-\omega)^2}\cl c(\omega)\p^2 c(\omega)\cl - \frac{c^m-26}{12(z-\omega)}\cl c(\omega)\p^3 c(\omega)\cl
+\ese 
+The single pole term tells us that the anticommutator of $Q_B$ with itself vanishes if, and only if, $c^m=26$, i.e. 
+\bse 
+    \big\{Q_B,Q_B\big\} = 0 \qquad \iff \qquad c^m=26.
+\ese 
+So our BRST charge is only nilpotent when we have a matter central charge of $26$. 

@@ -1,0 +1,248 @@
+\chapter{No Ghost Theorem}
+
+\section{Finishing Off The String BRST States}
+
+At the end of the last lecture we showed that for our bosonic string, the BRST charge acts as \Cref{eqn:BRSTChargealphabcminus1}. \Cref{eqn:BRSTMasslessGeneralState} tells us that we have $26+2=28$ independent states --- 26 from the $\a^{\mu}_{-1}$s and 2 from the $c_{-1}$ and $b_{-1}$. We know from our discussion towards the start of the course, that we should only have 24 states (remember we showed that our states form a $24\otimes 24$ representation of $SO(24)$), so we need to fix this somehow.
+
+We do this by considering the cohomology. Using both \Cref{eqn:BRSTChargealphabcminus1} and \Cref{eqn:BRSTMasslessGeneralState}, our BRST closed condition for physical states becomes
+\bse 
+    0 = Q_B\ket{\psi} = \sqrt{2\a'}\big( e_{\mu}k^{\mu} c_{-1} + \beta k_{\mu}\a^{\mu}_{-1} \big) \ket{0;k},
+\ese
+which forces us to impose the conditions 
+\bse 
+    e\cdot k = 0, \qand \beta = 0.
+\ese 
+This clearly removes the $b_{-1}$ states\footnote{Well, more specifically, it gives them zero norm.} and gives us a condition on the $e_{\mu}$, which in turn gives us a relation between the 26 $\a^{\mu}_{-1}$ states. We therefore now have $25+1=26$ independent states. 
+
+Ok, good, but we still need to remove another 2, and one of them needs to be the $c_{-1}$ state (as this wasn't present in our $SO(24)$ representation). These two states are removed by now imposing the non-exactness of our physical states. \Cref{eqn:BRSTChargealphabcminus1} shows us that the $c_{-1}$ state is exact, and so is equivalent to the zero state in the cohomology class.\footnote{So again it is a state of zero norm.} We also see that the $\a^{\mu}_{-1}$ states are exact if $e_{\mu} \propto k_{\mu}$, and so we place a further restriction on the $\a^{\mu}_{-1}$s. We now have $24+0=24$ states.\footnote{Or 24 positive norm states and 2 zero norm states.}
+
+That is, our physical states become\footnote{The subscript $p$ is included to show we mean physical states.}
+\bse 
+    \ket{\psi_p} = \sqrt{2\a'} e_{\mu}\a^{\mu}_{-1} \ket{0;k}, \qquad e \cdot k = 0, \qand e_{\mu} \sim e^{\prime}_{\mu} + Ak_{\mu},
+\ese 
+where the second condition is an equivalence class condition, with $A$ being some constant.
+
+\br 
+    Our equivalence class condition is actually very interesting and has a nice tie in with electromagnetism. The momentum $k_{\mu}$ is given by the derivative of our $X$ scalar fields. So we can think of our equivalence class condition as saying $e_{\mu}$ is equivalent up to the derivative of a scalar field. This is exactly the gauge invariance of the electromagnetic vector potential in Lorenz gauge, i.e. $A_{\mu} \sim A_{\mu}^{\prime} +\p_{\mu}f$. In fact, if you were to approach QED using BRST quantisation, you would arrive exactly at this result. So we see that the BRST symmetry of our string theory has the BRST of QED (in 26 dimensions) built into it.  
+\er 
+
+\subsection{Inner Products}
+
+We can see the above result nicely by considering the inner product of our space. Let's assume we use an orthogonal basis, then our general state \Cref{eqn:BRSTMasslessGeneralState} \textit{before} we place any restrictions on it has the inner product, 
+\bse 
+    \braket{\psi}{\psi} = e^*\cdot e + \beta^*\g + \g^*\beta,
+\ese 
+where we have used 
+\bse
+    \big[\a_m^{\mu}, \a_{n}^{\nu}\big] = m\, \eta^{\mu\nu}\del_{m+n,0}, \qquad \big\{c_1,c_{-1}\big\} = \big\{b_1,b_{-1}\big\} = 0 \qand \big\{c_1,b_{-1}\big\} = \big\{c_1,b_{-1}\big\}  = 1.
+\ese
+This gives us 26 positive norm states (the 26 states corresponding to the $\a^{\mu}_{-1}$s) and 2 negative norm states (the $b_{-1}$ and $c_{-1}$ states). 
+
+If we then consider \textit{only} the $Q_B$ closed condition, we drop the $b_{-1}$ states and impose the condition $e\cdot k=0$. This latter condition can be satisfied in two ways: we can either have $e_{\mu}$ being orthogonal to $k_{\mu}$ or, as we have $k^2=0$, we can have $e_{\mu}$ being proportional to $k_{\mu}$. So our general state becomes 
+\bse 
+    \ket{\psi_1} = \big(e^{\perp}_{\mu}\a^{\mu}_{-1} + e^{\parallel}_{\mu} \a^{\mu}_{-1} + \g c_{-1}\big)\ket{0;k}.
+\ese 
+Again using an orthogonal basis, our inner product becomes 
+\bse 
+    \braket{\psi_1}{\psi_1} = e_{\perp}^*\cdot e_{\perp} + e_{\parallel}^*\cdot e_{\parallel} = e_{\perp}^*\cdot e_{\perp} 
+\ese 
+where we have used the fact that $e^{\parallel}_{\mu}\propto k_{\mu}$ and so squares to zero. It is clear that there is only 1 state that is parallel to $k_{\mu}$ (that is we decompose our 25 $\a^{\mu}_{-1}$ states into a 1+24 split), so we now have 24 positive norm states (the $e^{\perp}_{\mu}$s) and 2 zero norm states (the $e^{\parallel}$ and $c_{-1}$). 
+
+This is better, but we don't want zero norm states. We then notice that these zero norm states are \textit{exactly} the states that are $Q_B$ exact, and so we can mod them out, giving us 24 states, all of which have positive norm. 
+
+\section{No Ghost Theorem}
+
+What we now want to show is that at every level the BRST cohomology has positive inner product and that it is isomorphic to the spectra in light-cone gauge. This is the content of the \textit{no ghost theorem}. We have of course just shown this for level 0 and level 1. 
+
+So we need to find the cohomology of $Q_B$ and show it obeys the above two conditions. How do we do this? The answer is to consider it in two steps: first consider a simplified BRST operator, which we denote $Q_1$ for reasons that will be explained shortly, and find it's cohomology and show it obeys the above properties; then show that the cohomology of $Q_1$ is isomorphic to the cohomology of the full $Q_B$.
+
+We start by defining the light-cone oscillators 
+\bse 
+    \a^{\pm}_m := \frac{1}{\sqrt{2}}\big(\a^0_m \pm \a^1_m\big),
+\ese 
+where $\{0,1\}$ are two basis directions used to define the light-cone. These satisfy the following commutation relations 
+\bse 
+    \big[ \a^+_m,\a^-_n \big] = -m \del_{m+n,0} = \big[\a^-_m,\a^+_n\big], \qand \big[\a^+_m,\a^+_n\big] = 0 = \big[\a^-_m,\a^-_n\big].
+\ese 
+
+Next we define the quantum number 
+\be 
+\label{eqn:Nlc}
+    N^{lc} := \sum_{m=-\infty}^{\infty} \frac{1}{m} \tcl \a^+_{-m}\a^-_m\tcl,
+\ee 
+where of course $m=0$ is not included in the sum. We can rewrite the sum above using only positive $m$ as 
+\bse 
+    N^{lc} = \sum_{m=1}^{\infty} \frac{1}{m} \big( \a^+_{-m}\a^-_{m} - \a^-_{-m}\a^+_m \big),
+\ese 
+where we have used the $\tcl \tcl$ to put all the $+m$ subscripts to the right. Now image we acted this on a state with $\a^+_{-k}$, then the second term vanishes (as we can move $\a^+_m$ through $\a^+_{-k}$ and annihilate the ground state), whereas the first term gives a contribution with weight $-k$. The factor $k$ is cancelled by the $1/m$ in the sum, and so we just get 
+\bse 
+    N^{lc}\a^+_{-k}\ket{0} = -\a^+{-k}\ket{0}.
+\ese 
+Similarly we have 
+\bse 
+    N^{lc}\a^-_{-k}\ket{0} = \a^-{-k}\ket{0},
+\ese 
+and so we see that $N^{lc}$ counts the number of $+$ excitations minus the number of $-$ excitations.
+
+The next question we ask is "what is the $N^{lc}$ charge of $Q_B$?" Of course we can check this explicitly, but its insightful to notice something first: $N^{lc}$ looks \textit{almost} like the boost generators, which would of course commute with $Q_B$ (as it is Lorentz invariant). The emphasis on almost is down to the fact that our sum does not include $m=0$, and therefore the centre-of-mass piece is not included. So our commutator will vanish up to the this $m=0$ piece. 
+
+We see this more explicitly by considering an expression for $Q_B$ in terms of the Laurent expansion coefficients of $T^m/c/b$. Recall that 
+\bse 
+    Q_B = \oint \frac{dz}{2\pi i} J_B(z),
+\ese 
+and 
+\bse 
+    J_B = \cl cT^m\cl + \cl b c \p c \cl + \frac{3}{2}\p^2 c.
+\ese 
+We can use the Laurent expansions\footnote{Note the superscript $m$ on $T^m$ is there to indicate that it is the matter (i.e. not the ghost) stress tensor. It is not an index like the $n$ is.} 
+\bse 
+    T^m = \sum_{n} \frac{L^m_n}{z^{n+2}}, \qquad c = \sum_n \frac{c_n}{z^{n-1}}, \qand b = \sum_n \frac{b_n}{z^{n+2}}
+\ese 
+to obtain a Laurent expansion for $J_B$ and, by taking the $1/z$ coefficient, obtain an expression for $Q_B$ in terms of $L^m_n$, $c_n$ and $b_n$. The full calculation of this is done in the lecture video, however here we shall only do the bit we need for our discussion; we want to find the commutator with $N^{lc}$, which is expressed solely in terms of the $\a$s, and so the pure ghost part of $Q_B$ will have vanishing $N^{lc}$ charge. In other words, there are no $\a^{\pm}$s in the $\cl bc\p c\cl $ or $\p^2c$ parts of $J_B$ and so both the number of $+$ excitations and the number of $-$ excitations are zero. 
+
+So considering just the $\cl cT^m\cl$ term, we have 
+\bse 
+    Q_B = \oint \frac{dz}{2\pi i} \cl  \sum_{\ell,n} \frac{c_{\ell}}{z^{\ell-1}} \frac{L^m_n}{z^{n+2}} \cl = \sum_n \cl c_n L^m_{-n}\cl.
+\ese
+Then we use the result\footnote{I can't quite prove this result. If anyone reading this can give me a proper proof, I would be very grateful. I would update these notes and give you credit obviously.}
+\bse 
+    L^m_n \sim \sum_{\ell} \a^-_{-(n+\ell)} \a^+_{\ell}, 
+\ese
+we see that there are three possible values for the $N^{lc}$ charge of $Q_B$: $+1$, $0$ and $-1$. To clarify, unless we have either (or both) $\ell=0$ or $n+\ell=0$, the sum for $L^m_n$ has the same number of $+$ excitations as it does $-$ excitations, and so the $N^{lc}$ charge vanishes. This leaves us the two cases of 
+\bse 
+    \a^-_{-m}\a^+_0, \qand \a^-_0\a^+_{-m},
+\ese 
+which give a $N^{lc}$ charge of $+1$ and $-1$ respectively. We can therefore decompose our BRST into three terms, characterised by their $N^{lc}$ charge: 
+\bse 
+    Q_B = Q_1 + Q_0 + Q_{-1},
+\ese 
+where the subscript tells us the $N^{lc}$ charge, i.e. 
+\bse 
+    \big[ N^{lc}, Q_j\big] = j Q_j.
+\ese 
+The one we will focus on is
+\bse 
+    Q_1 := -\sqrt{2\a'} k^+ \sum_{m\neq0} c_m\a^-_{-m}.
+\ese 
+
+\br 
+    Note that each of the $Q_j$ also increase the ghost number by 1. We see this with the $Q_1$ expression straight away: $m<0$ creates a $c$ and $m>0$ destroys a $b$, both of which increase the ghost number by $1$. The same exact thing holds for $Q_0$ and $Q_{-1}$.  
+\er 
+
+\subsection{$Q_1$ Cohomology}
+
+We said at the start of this section that we were going to consider the cohomology of a simplified BRST operator, $Q_1$, and find its cohomology. The first thing we need to ask is "does $Q_1$ have a cohomology?" That is, we need to check that it is nilpotent. Well, consider the following:
+\bse 
+    Q_B^2 = Q_1^2 + \{Q_1,Q_0\} + \{Q_1,Q_{-1}\} + Q_0^2 + \{Q_0,Q_{-1}\} + Q_{-1}^2.
+\ese
+We know this must vanish (as $Q_B$ is nilpotent), the question is what does it tell us about the terms on the right-hand side? Well we can group these into terms with the same $N^{lc}$ charge. The grouping is clearly just 
+\bse 
+    0 = \underbrace{Q_1^2}_{+2} + \underbrace{\{Q_1,Q_0\}}_{+1} + \underbrace{\{Q_1,Q_{-1}\} + Q_0^2}_{0} + \underbrace{\{Q_0,Q_{-1}\}}_{-1} + \underbrace{Q_{-1}^2}_{-2}.
+\ese 
+The equality holds identically, and so each grouped part must itself vanish, so we conclude that $Q_1$ is indeed nilpotent and so has a cohomology.  
+
+\br 
+    Note, because we have an expression for $Q_1$, we could have actually just shown the nilpotency by showing explicitly that $\{Q_1,Q_1\}=0$, which follows straight forwardly as it only contains $c$s and no $b$s. 
+\er 
+
+So we want to find the cohomology of $Q_1$. We could do this explicitly, but instead we shall follow a useful trick of mathematics. We define what is essentially the adjoint of $Q_1$, 
+\bse 
+    R := \frac{1}{\sqrt{2\a'}k^+} \sum_{m\neq0} b_m\a^+_{-m},
+\ese 
+as well as the operator
+\bse 
+    S := \{Q_1,R\}.
+\ese 
+Now note that 
+\bse 
+    \begin{split}
+        \big[Q_1,S\big] & = Q_1\big(Q_1R+RQ_1\big) - \big(Q_1R+RQ_1\big)Q_1 \\
+        & = Q_1RQ_1-Q_1RQ_1 \\
+        & = 0,
+    \end{split}
+\ese 
+and so we can look at the cohomology within the eigenspaces of the $S$ operator, with the full cohomology of $Q_1$ being given by the union of all the results. 
+
+The useful thing to first do is to write $S$. Using the relation
+\bse 
+    \{A,BC\} = \{A,B\}C -B[A,C],
+\ese 
+and similarly for $\{AB,C\}$, we can show 
+\bse 
+    \begin{split}
+        S & = - \sum_{m,n\neq 0} \big( -m b_nc_m + \a^-_{-m}\a^+_{-n} \big) \del_{m+n,0} \\
+        & = \sum_{m,n\neq 0} \big( m b_nc_m - \a^-_{-m}\a^+_{-n} \big) \del_{m+n,0} \\
+        & = \sum_{m=1}^{\infty} m b_{-m}c_m + mc_{-m}b_m - \a^-_{-m}\a^+_{m} -\a^+_{-m}\a^-_m.
+    \end{split}
+\ese 
+If we then define $N_{bm}$ to be the number of $b_m$ oscillators and similarly for $N_{cm}$, $N^+_m$ and $N^-_m$, we get 
+\be
+\label{eqn:SQ1}
+    S = \sum_{m=1}^{\infty} m\big( N_{bm} + N_{cm} +N^+_m + N^-_m\big),
+\ee 
+where we get the prefactor $-m$ for $N^{\pm}_m$ from the commutation relation between $\a^+_m$ and $\a^-_n$. 
+
+Now suppose $\ket{\psi}$ is a physical state, it must therefore be $Q_1$ closed, and so 
+\bse 
+    S\ket{\psi} = Q_1R\ket{\psi}. 
+\ese 
+Now, we want $\ket{\psi}$ to be an eigenstate of $S$. Let it's eigenvalue be $s$, then 
+\bse 
+    s\ket{\psi} = Q_1R\ket{\psi},
+\ese 
+so \textit{for all} $s\neq 0$, $\ket{\psi}$ is a $Q_1$-exact state and so is not in the cohomology. 
+
+What about $s=0$, is this exact? Well $Q_1$ contains a $c$ in its definition, and so carries ghost charge $+1$. Combining this with the fact that all the terms on the right-hand side of \Cref{eqn:SQ1} are non-negative, we see that it is impossible for a state that has $s=0$ to be $Q_1$-exact. In other words, if $\ket{\psi}$ was $Q_1$-exact then there would exist a $\ket{\xi}$ such that $\ket{\psi}=Q_1\ket{\xi}$. If $\ket{\psi}$ is in the kernel of $S$, we must have $S\ket{\xi}=-1$, but this is not possible. Therefore every element of the kernel of $S$ is $Q_1$-closed but is not $Q_1$-exact. 
+
+So the kernel of $S$ is the cohomology of $Q_1$. The non-negative nature of the terms on the right-hand side of \Cref{eqn:SQ1} force us to conclude each term vanishes itself within our cohomology. We therefore conclude that our cohomology does not allow longitudinal excitations or ghost excitations. This is exactly the case we ended up at at the end of the previous section, but now our result holds for any excitation level. 
+
+\br 
+    The above calculation is completely analogous to the study of so-called \textit{harmonic forms} in differential geometry. These will not be discussed here,\footnote{Mainly because I haven't quite got to that part of Renteln's book yet.} but this remark is just included to show that the above method is more versatile then just this specific calculation. 
+\er 
+
+\subsection{$Q_B$ Cohomology}
+
+So we have successfully shown the no ghost theorem! Well, not quite. What we have shown is that $Q_1$ satisfies the no ghost theorem, but $Q_1$ is not the full BRST charge, $Q_B$ is. We therefore need to show that the cohomologies of these two charges are isomorphic.
+
+We define 
+\bse 
+    \widetilde{S} := \{Q_B,R\} = S + U, \qquad U := \{Q_0+Q_{-1},R\}.
+\ese 
+Following the same arguments as above, we see that the cohomology of $Q_B$ is the kernel of $\widetilde{S}$. So what is the kernel of $\widetilde{S}$? We see, from the fact that $R$ has $N^{lc}$ charge $-1$, that $U$ has $N^{lc}$ charge $-1$ (for the $Q_0$ part) or $-2$ (for the $Q_{-1}$ part). In other words, $U$ lowers the value of $N^{lc}$ by either one or two units. We therefore see, in a basis where $S$ is the diagonal of $N^{lc}$, that $U$ is lower triangular. It is a fact that the kernel of a lower triangular matrix can be no larger then the kernel of its diagonal part. In other words, the kernel of $\widetilde{S}=S+U$ can, at most, be isomorphic to the kernel of $S$. 
+
+\bl 
+    The kernel of $\widetilde{S}$ is indeed isomorphic to the kernel of $S$.
+\el 
+
+\bq 
+    Let $\ket{\psi}$ be an element in the kernel of $S$. Then define 
+    \bse 
+        \ket{\chi} := \big( \b1 - S^{-1}U + S^{-1}US^{-1}U - ...\big)\ket{\psi}.
+    \ese 
+    Firstly we note that the action of $S^{-1}$ is valid as $S(U\ket{\psi}) \in \{-1,-2\}$. This is clearly a one-to-one relationship, and so $\{\ket{\chi}\} \cong \{\ket{\psi}\}$. Finally, we have 
+    \bse 
+        \begin{split}
+            \widetilde{S}\ket{\chi} & = \big(S+U\big)\ket{\chi} \\
+            & = \big(S + U - SS^{-1}U - US^{-1}U + SS^{-1}US^{-1}U + US^{-1}US^{-1} - ...\big) \ket{\psi} \\
+            & = 0,
+        \end{split}
+    \ese 
+    where all but the first term cancel, and then we have used $S\ket{\psi}=0$. This tell us that the kernel of $S$ is isomorphic to a subset of the kernel of $\widetilde{S}$. Putting this together with the comment made before the Lemma (that the kernel of $\widetilde{S}$ is a subset of the kernel of $S$) we see conclude 
+    \bse 
+        \ker S \cong \ker \widetilde{S}.
+    \ese
+\eq 
+
+So we have shown that the cohomology of $Q_B$ is isomorphic to the cohomology of $Q_1$, which is isomorphic to the Hilbert space in light-cone gauge. This is brilliant! We just need to check that the inner product on our cohomology is positive definite (so we don't have any ghosts kicking about). The key to showing this is to realise that the adjoint does not change $+\longleftrightarrow -$ in $\a^{\pm}_m$, but instead simply acts as
+\bse 
+    \big(\a^{\pm}_{m}\big)^{\dagger} = \a^{\pm}_{-m}.
+\ese 
+Therefore the inner product between two states is only non-vanishing if their $N^{lc}$ charges sum to zero. To further clarify, consider the example of the inner product of $\a^-_{-1}\ket{0}$ with itself:
+\bse 
+    \bra{0}\big(\a^-_{-1}\big)^{\dagger} \a^-_{-1}\ket{0} = \bra{0} \a^-_{1}\a^-_{-1}\ket{0} = \bra{0} \a^-_{-1}\a^-_{1}\ket{0} = 0,
+\ese 
+where we have used $[\a^-_m,\a^-_n]=0$. Putting this result together with the fact that $U\ket{\psi}$ has $N^{lc}$ charge $-1$ or $-2$, we see that the only non-vanishing contribution to the inner product of any state in the cohomology of $Q_B$ is the $\b1$ part, that is
+\bse 
+    \braket{\chi}{\chi} = \braket{\psi}{\psi}.
+\ese 
+The right-hand side is positive definite (as they are exactly the states of the light-cone Hilbert space) and so we conclude that the inner product for the cohomology of $Q_B$ is positive definite. 
