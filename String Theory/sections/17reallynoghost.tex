@@ -1,0 +1,216 @@
+\chapter{OCQ States \& Transition Functions}
+
+\section{There Are Really No Ghosts}
+
+We actually slightly misused our result above. We said that if we could show our inner product was positive definite that "we don't have any ghosts kicking about". We can not quite make this statement yet. For example, it could turn out that we do have ghosts states, however there is some rule that insists they come with matter states such that the \textit{total} inner product is positive. That is the magnitude of the inner product from the ghost part of the state is smaller then that of the matter part. 
+
+So how do we go about showing that there really are no ghosts? We begin by giving the full expression for $Q_B$ in terms of the Laurent expansions\footnote{Again the calculation for this is done in the video for lecture 16, but to save space we don't do it here.}
+\be
+\label{eqn:QBLaurentExpansion}
+    Q_B = \sum_{n=-\infty}^{\infty} c_n L^m_{-n} +\sum_{m,n=-\infty}^{\infty}\frac{(m-n)}{2}\tcl b_{-(m+n)}c_nc_m\tcl  - c_0.
+\ee 
+Note the operator normal ordering colons on the middle term. This will prove important in just a mo. Now let's imagine acting this on the state
+\bse 
+    \ket{\psi} = \ket{\downarrow}\otimes\ket{\phi},
+\ese 
+where $\ket{\phi}$ is some arbitrary matter state. As we are in the ghost vacuum, any operation with $c_{n}/b_{n}$ for $n>0$ will annihilate the system, as will $b_0$. Therefore we can just take out the bits of $Q_B$ that remain. 
+
+For the first term this clearly just restricts the sum to $n\geq0$, and the $c_0$ term isn't effected, but what about the middle term? Well with a bit of thought, we see that every term in these summations will annihilate the state. This comes simply from the fact that the three subscripts sum to $0$ and so at at least one of them must be positive. The only exception being $m=n=0$, but in this case we have $b_0$ which annihilates the state (as the term appears within operator normal ordering).\footnote{In fact this term vanishes for two other reasons: firstly the coefficient $(m+n)=0$ and secondly because $c_0^2=0$. Take your pick of your fave.} 
+
+So if $\ket{\psi}$ is meant to be a state in our cohomology (i.e. $Q_B$-closed), we have
+\bse 
+    Q_B\ket{\psi} = \sum_{n=0}^{\infty} c_{-n}\big(L^m_{n} - \del_{n,0}\big) \ket{\downarrow}\otimes\ket{\phi} = 0.
+\ese 
+It follows, from the fact that we have removed all the terms that annihilate the ghost vacuum, that 
+\bse 
+    L^m_n\ket{\phi} = 0, \quad \forall n\geq1, \qand \big(L^m_0-1\big)\ket{\phi} = 0.
+\ese 
+These two conditions tell us that the dual operator to $\ket{\phi}$ is, respectively, a primary operator and that it has holomorphic weight $+1$. Of course playing the same game with $\widetilde{Q}_B$ will tell us that the antiholomorphic weight is also $+1$. 
+
+This is a step towards the result we have seen many times so far: namely that $(1,1)$ primary operators are allowed in our scattering amplitudes. We say "a step towards" because we have only shown that these states are $Q_B$-closed. We need to check when such states are $Q_B$-exact so we can mod-out such states. 
+
+\bp 
+    Let $\ket{\chi}$ be a matter state. Then the matter state $\ket{\phi}$ is $Q_B$-exact only if 
+    \bse 
+        \ket{\phi} = \sum_{k>0}L^m_{-k}\ket{\chi}.
+    \ese 
+\ep 
+
+\bq 
+    We can show this two ways. 
+    \ben 
+        \item Assuming $\ket{\phi}=L^m_{-k}\ket{\chi}$, then the inner product is
+        \bse 
+            \begin{split}
+                \braket{\phi}{\phi} & = \braket{\phi}{L^m_{-k}\chi} \\
+                & = \braket{L^m_k\phi}{\chi} \\
+                & = 0,
+            \end{split}
+        \ese 
+        where we have used $(L^m_{-k})^*=L^m_k$ and the fact that $\ket{\phi}$ is primary. So such states are null. We have previously shown that the states in the $Q_B$ cohomology are positive definite, so null states must be exact. 
+        \item Assume $L^m_{-k}\ket{\chi}=Q_B\ket{\xi}$ for some state $\ket{\xi}$. Now if we want $\ket{\phi}=L^m_{-k}\ket{\chi}$ to hold, we require that $\ket{\chi}$ be in the ghost vacuum (as $\ket{\phi}$ is and $L^m_{-k}$ can't change that). However, every term in $Q_B$ has one more $c$ than $b$, and so in order to get $Q_B\ket{\xi}$ to be in the ghost vacuum we require that $\ket{\xi}$ have one more $b$ than $c$. We only have two options:
+        \bse 
+            \ket{\xi} = \sum_k b_k \ket{\rho}, \qand \ket{\xi} = \sum_{k,\ell,p} \tcl b_k b_{\ell} c_p \tcl \ket{\rho},
+        \ese 
+        for some purely matter state $\ket{\rho}$, as $Q_B$ contains at most 2 $c$s and 1 $b$; that is if we had 3 $b$s and 2 $c$s in $\ket{\xi}$, then the best $Q_B$ could do is reduce it to 1 $b$ and 1 $c$ both with positive index. 
+        
+        Now, as $\ket{\rho}$ is a purely matter state, it follows that we require all the $b$/$c$ indices to be negative (otherwise we just annihilate $\ket{\rho}$). This places then means we need all the $b$/$c$ indices in $Q_B$ to be positive. We have already seen that this cannot be done for the middle term of $Q_B$ and so we are only left with the possibility of 
+        \bse 
+            \ket{\xi} = \sum_{k>0} b_{-k}\ket{\rho}.
+        \ese 
+        Now act on this with $Q_B$, 
+        \bse 
+            Q_B\ket{\xi} = \sum_{n,k>0} c_nL^m_{-n}b_{-k} \ket{\rho} = \sum_{k>0}L^m_{-k} \ket{\rho}.
+        \ese 
+        This is just the statement we wanted, namely that $\ket{\phi} = L_{-k}\ket{\chi} = Q_B\ket{\xi}$ and so is $Q_B$-exact.
+    \een 
+\eq 
+
+\br 
+    The second proof highlights the "only" part of the proposition, i.e. we showed only the $\ket{\xi}=\sum_{-k}\ket{\rho}$ states will do, and all other possibilities necessarily vanish.
+\er 
+
+So what we have shown is that the $Q_B$ cohomology contains $(1,1)$ primary operators that are ghost vacuum states modulo primary descendant states. What we want to say is that \textit{every} class in the cohomology contains at least one such term, i.e. each class has a representative that contains no ghosts. We do this by considering the representatives of the form \Cref{eqn:StateSUExpansion}, and defining the quantum number 
+\bse 
+    N' := 2N^- + N_b + N_c.
+\ese 
+Now, from \Cref{eqn:SQ1} and the fact that $\ket{\psi}$ is in the kernel of $S$, we see straight away that $N'\ket{\psi} = 0$. It is trivially true that $S$ doesn't change the $N'$ value, and so it is just $U$ that we need to worry about. 
+
+Recall that $U := \{Q_0+Q_{-1},R\}$. \Cref{eqn:R} tells us that $R$ changes the value of $N'$ by $-1$: for $m>0$ we reduce $N_c$ by one unit and for $m<0$ we reduce $N^-$ by one unit and increase $N_b$ by one unit. So now we just need to work out what $Q_0+Q_{-1}$ does. To do this consider the each term in \Cref{eqn:QBLaurentExpansion}. The easiest term is the $c_0$ term, which just increases $N_c$ by 1, and so gives $N'=+1$. Next consider the middle term; with a bit of thought we see that all that matters for the $N'$ value is the number of positive indices vs. the number of negative ones, and therefore this term can have either $N'=\pm1$. Finally consider the first term. Using \Cref{eqn:LmLaurent}, we can write it as 
+\bse 
+    \sum_{n=-\infty}^{\infty} \sum_{\ell} c_n \a^-_{\ell}\a^+_{-(n+\ell)}.
+\ese
+
+\bcl 
+    The highest $N'$ value this can take is $+1$. 
+\ecl
+
+\bq 
+    Clearly if we don't create a $-$ excitation (i.e. increase $N^-$), this term will never give $N'>1$. We therefore require $\ell<0$. If we then had $n>0$, the $c_n$ term would decrease $N_b$, giving us (at most)\footnote{As if $n<|\ell|$ then the $\a^+_{-(n+\ell)}$ term will decrease $N^-$.} $N'=+1$. So we need to take $n<0$, but this then means that the $\a^+_{-(n+\ell)}$ has a positive index and so reduces $N^-$. So we see the highest value it can take it $+1$. 
+\eq 
+Putting all of this together we see that the maximal $N'$ value that every term in $Q_B$, and therefore in $Q_0+Q_{-1}$, can take is $+1$. Putting this together with the $R$ result we have that the $N'$ value of $U$ is non-positive definite. However, by definition, $N'$ is non-negative definite and so we are forced to conclude that $U$ has vanishing $N'$ value. Finally we see that  every state in our representation, \Cref{eqn:StateSUExpansion}, must have vanishing $N'$ value, and more specifically must have $N_c=0=N_b$. There really are no ghosts!
+
+This is a really important and nice result, so we repeat what we have done here one more time for clarity. We showed that the cohomology of $Q_1$ was exactly the kernel of $S$. We then showed that the cohomology of $Q_1$ and the cohomology of $Q_B$ were isomorphic, and there existed a representation in every class of the form \Cref{eqn:StateSUExpansion}. Next, we showed that the cohomology contains states purely (i.e. are ghost vacuum) dual to $(1,1)$ primary operators modulo primary descendants. Finally we showed that the representations \Cref{eqn:StateSUExpansion} were indeed of this form, telling us that \textit{every class} of our cohomology contains at least one element that has no ghost excitations, and is dual to a $(1,1)$ matter primary operator. These states are known as \textit{OCQ-type} states.
+
+\br 
+    The rest of this lecture typed here actually appears in the video for lecture 18. I have decided to just include this here because during lecture 18 Dr. Minwalla wraps up the discussion of the Bosonic string (for now) and moves on to study the Fermionic (or \textit{super-}) string. I just thought it would be nice to have the next lecture begin a new rather then do it in the middle of one. 
+\er 
+
+\section{From Metrics to Transition Functions}
+
+Before moving on to the superstring, we want to make one last comment on our Bosonic scattering amplitudes. We have just shown (once again) that the operator insertions must be $(1,1)$ matter primary operators. The bit we haven't really talked too much about is the integral over the moduli:
+\bse 
+    \big(b,\hat{g}\big) = \int d\tau_k \prod_{k=1}^{m} \int d^2\sig \sqrt{\hat{g}} \bigg(\frac{\p \hat{g}}{\p \tau_k}\bigg)_{\a\beta} b^{\a\beta}.
+\ese 
+This section aims to show how we recast this integral over Weyl inequivalent metrics in terms of transition maps between patches on a complex manifold. This might seem at first like a very strange thing to try and do, but it is indeed common practice (particularly with mathematicians) and is an example of what are known as \textit{Beltrami Differentials}. 
+
+First, let's quickly consider the case of just changing our metric in the above expression. From the tracelessness of $b^{\a\beta}$ it follows that any transformation of the form 
+\bse 
+    \del_k\hat{g}_{\a\beta} \propto \hat{g}_{\a\beta} 
+\ese 
+will vanish. These are the Weyl transformations, and so in what follows we can essentially forget about Weyl factors.
+
+So how do we go about changing this to a condition on the transition functions? Well first let's clarify what it is we want to do. As it stands, we have some complex manifold which we can describe using a set of coordinate patches and their relevant transition functions. For a given point in our moduli space, $\tau_0$, we can use conformal transformations to make the metric Weyl-equivalent in each patch separately. That is, for the $m$-th patch 
+\bse 
+    \hat{g}_m(\tau_0) = e^{\phi(z_m,\overline{z}_m)} dz_md\overline{z}_m.
+\ese 
+If we are going to do this on every patch, it follows immediately that we require our transition functions to be holomorphic --- if they were not we would get $(dz_n)^2$ and $(d\overline{z}_n)^2$ terms in the metric on the $n$-th patch. We want to enforce that this Weyl-equivalence always holds and any deviation from it due to changing moduli point shall be absorbed into the transition functions.
+
+\subsection{Transition Functions}
+
+So, let's consider a small moduli change to the coordinates, 
+\bse 
+    \begin{split}
+        z'_m & = z_m + \del \tau_k v_{km}^{z_m}(z_m,\overline{z}_m) \\
+        \overline{z}'_m & = \overline{z}_m + \del \tau_k v_{km}^{\overline{z}_m}(z_m,\overline{z}_m),
+    \end{split}
+\ese 
+where $v_{km}$ is a vector, as the upper index indicates, and where the $m$ reminds us that it is only defined on the $m$-th patch. This transformation clearly changes our metric condition with
+\be 
+\label{eqn:MetricModuliChange}
+    \del_k\hat{g}_m(\tau_0 +\del\tau_k) \propto \del\tau_k\big( \p_{z_m}v^{\overline{z}_m}_{km} (dz_m)^2 + \p_{\overline{z}_m}v^{z_m}_{km} (d\overline{z}_m)^2\big).
+\ee 
+
+\br
+    Note that the above result tells us that we need $v_{km}^{z_m}$ to \textit{not} be holomorphic, as otherwise the derivative just vanishes! Similarly we need $v_{km}^{\overline{z}_m}$ be not be antiholomorphic. 
+\er 
+
+These new terms in the metric are unwanted (we only want $dzd\overline{z}$ terms), and so we need to find a way to absorb them into the transition function. How does one go about doing that? Well the answer comes from noticing that these terms were generated by the changes in $z_m$ by changing the moduli. That is it is 
+\bse 
+    \frac{\p z_m}{\p \tau_k} = v_{km}^{z_m}, \qand \frac{\p \overline{z}_m}{\p \tau_k} = v_{km}^{\overline{z}_m}
+\ese 
+that are to blame. This is a nice relationship and something we can simply add in to our transition function. That is, instead of considering a transition function that goes from $(z',\overline{z}')$, we consider one going from $(z,\overline{z})$ and account for the difference in the two by adding in the above terms. 
+
+This seems great, but we then we remember the remark made above: $v_{km}^{z_m}$ is not holomorphic, and so if we just add these terms to our transition function, we will break our required holomorphicity! This forces us to also transform the patch we are transforming to, labelled $n$. The argument follows exactly as above, but now we have to take away the additional term to go get to a Weyl-equivalent flat metric on patch $n$. So the total change to the (holomorphic part of the) transition function is 
+\bse 
+    \del_k f_{mn}^{z_m} = v_{km}^{z_{m}} - v_{kn}^{z_m}, \qand \del_k f_{mn}^{\overline{z}_m} = v_{km}^{\overline{z}_{m}} - v_{kn}^{\overline{z}_m},
+\ese 
+where we have used $z_m$ for both superscripts so that the subtraction makes sense (i.e. we're not using the $(z_n,\overline{z}_n)$ coordinates for the $v_{kn}$ term). We then just enforce the condition that this total subtraction term be holomorphic, modulo the terms where $v_{km}^{z_m}/v_{kn}^{z_m}$ are themselves holomorphic (and similarly for the antiholomorphic parts).
+
+\subsection{Metrics}
+
+We now just need to check that this is indeed the same thing as what we get from changing the metric itself. Well, as we've already said we don't need to worry about the Weyl factors, and so from \Cref{eqn:MetricModuliChange} we get 
+\bse 
+    \big(b,\hat{g}\big) = \int d^2 \sig \Big[  b^{\overline{z}_m\overline{z}_m}\p_{\overline{z}_m}v_{km}^{z_m} + b^{z_mz_m}\p_{z_m}v_{km}^{\overline{z}_m} \Big]. 
+\ese 
+We then integrate by parts, and use the fact that we are only considering patches and so we \textit{do} get a boundary term, to give 
+\bse 
+    \big(b,\hat{g}\big) = \frac{1}{2\pi i}\oint_{C_m} \Big( dz_m b_{z_mz_m} v_{km}^{z_m} - b_{\overline{z}_m\overline{z}_m} v_{km}^{\overline{z}_m}\Big),
+\ese 
+where we have used the metric to lower the indices on $b$, and where $C_m$ is the counterclockwise contour around patch $m$. 
+
+Again we also have to do this for patch $n$, giving us an analogous result. Then, as both contours go round anticlockwise, in the overlap region they go against each other and so we must take their difference. So overall we get 
+\bse 
+    \begin{split}
+        \big(b,\hat{g}\big) & = \frac{1}{2\pi i} \sum_{(mn)} \int_{C_{mn}} \Big[ dz_m b_{z_mz_m}\big(v_{km}^{z_m}-v_{kn}^{z_m}\big) - d\overline{z}_m b_{\overline{z}_m\overline{z}_m}\big(v_{km}^{\overline{z}_m}-v_{kn}^{\overline{z}_m}\big)\Big] \\
+        & = \frac{1}{2\pi i} \sum_{(mn)} \int_{C_{mn}} \Big[ dz_m b_{z_mz_m} \del_kf_{mn}^{z_m} - d\overline{z}_m b_{\overline{z}_m\overline{z}_m}\del_kf_{mn}^{\overline{z}_m}\Big],
+    \end{split}
+\ese
+where $C_{mn}$ is the counterclockwise boundary of the overlap region and where the sum is done over all overlapping regions in a symmetric way. 
+
+\begin{figure}
+    \begin{center}
+        \btik 
+            \draw[thick] (-4,-2.5) -- (-4,2.5) -- (4,2.5) -- (4,-2.5) -- (-4,-2.5);
+            \draw[thick] (-1.5,0) circle [radius=2];
+            \node at (-1.5,0) {\large{$m$}};
+            \draw[thick] (1.5,0) circle [radius=2];
+            \node at (1.5,0) {\large{$n$}};
+            \draw[blue, decoration={markings, mark=at position 0.0 with {\arrow{>}}}, postaction={decorate}] (-1.5,0) circle (1.8cm);
+            \node at (-1.5,1.5) {\large{\textcolor{blue}{$C_m$}}};
+            \draw[red, decoration={markings, mark=at position 0.5 with {\arrow{>}}}, postaction={decorate}] (1.5,0) circle (1.8cm);
+            \node at (1.5,1.5) {\large{\textcolor{red}{$C_m$}}};
+        \etik 
+    \end{center}
+    \caption{A pictorial example of two overlapping patches and the contours. $C_{mn}$ is the contour inside the overlap region.}
+\end{figure}
+
+If we had three overlapping regions ($m$, $n$ and $p$, say), we would simply consider all three overlap contours and the point that they meet. With a bit of thought we can convince ourselves that this meeting point can be shifted around in the overlap region without affecting anything. 
+
+\subsection{Vertex Insertions}
+
+We can make a final note on the use of the above idea. We have replaced our integration over the different metrics with an integration over transition functions between patches, the question we want to ask is "can we use these patches to replace the integration over the vertex insertion positions?" The answer is "yes", and is quite simply done. We simply take our manifold with its patch structure and insert our operator wherever it's meant to go. We then introduce a new small patch centred around this vertex position and then encode this position by the new transition functions (i.e. the ones between this new patch and the original ones). As we move the insertion around, our patch also moves and so our transition functions change. 
+
+This seems nice, but why would we do it? The answer is seen easiest by giving an example. Let's imagine the vertex is inserted in the original patch $m$ at a position $z_V$. We then introduce our new patch around $z_V$, i.e. $V$ is at $z'=0$. Clearly the coordinates in $m$ and the new patch are just given by 
+\bse 
+    z_m = z' + z_V.
+\ese 
+This looks exactly like our moduli change in coordiantes above, and so we just consider 
+\bse 
+    \bigg(\frac{\p z'}{\p z_V}\bigg)\bigg|_{z} = -1.
+\ese 
+Our ghost insertion therefore just gives a factor of $b$. 
+
+Brilliant, apart from our scattering formula doesn't have an insertion of $b$ for the operators! Well, this is easily fixed using the identity 
+\bse 
+    \oint dz b(z) c(0) = 1.
+\ese 
+In other words we replace 
+\bse 
+    V(z) \to c(0) V(0),
+\ese 
+and then integrate over the different moduli for the transition functions. This is why we do this: now every vertex insertion in our scattering amplitude comes as a $cV$, instead of some being $cV$ and some being $V$. Equally we have put the vertex positions and the metric moduli on the same footing, so our scattering amplitude looks a lot more symmetric.  
+
+\section{Coupling Constant}
+
+\textcolor{red}{Dr. Minwalla talks briefly about the coupling constant for String theory, but to be honest I find his conversation a bit vague, so haven't included anything here yet. This is just a note to self to come back and add something if he doesn't discuss it in more detail later.}

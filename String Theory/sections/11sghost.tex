@@ -75,10 +75,10 @@ Now if we transform into $(z,\overline{z})$ coordinates, and use that $b$ is tra
 \be
     b := b_{zz}, \qquad \overline{b} := b_{\overline{z}\overline{z}}, \qquad c := c_z, \qquad \overline{c} := c_{\overline{z}},
 \ee 
-we have 
+we have\footnote{Using $d^2\sig=\frac{1}{2}d^2z$.} 
 \be 
 \label{eqn:Sghostbc}
-    S_{\text{ghost}} = \frac{1}{2\pi} \int d^2z \Big( b\overline{\p}c + \overline{b}\p c\Big),
+    S_{\text{ghost}} = \frac{1}{4\pi} \int d^2z \Big( b\overline{\p}c + \overline{b}\p \overline{c}\Big),
 \ee 
 where we have used our $\p/\overline{\p}$ notation.\footnote{Note that $\p = \p_z$ with the index down, so they are flipped for the raised indices, i.e. $\overline{\p} = \p^z$.} 
 
@@ -117,12 +117,13 @@ where we have used the anticommuting property to get a minus sign when moving th
     \end{split}
 \ese 
 These should look familiar from the bosonic field discussion, and so we have 
-\bse 
+\be 
+\label{eqn:bcOPE}
     \begin{split}
         \la c(z_1)b(z_2) \ra  & = \frac{1}{z_{12}} \\
         \la b(z_1)c(z_2) \ra & = \frac{1}{z_{12}}.
     \end{split}
-\ese 
+\ee 
 Note that we have used the anticommutativity and $z_{12}=-z_{21}$ to flip some signs around. The easiest way to remember the result is that $z_1$ always appears on the left and $z_2$ on the right, as above. 
 
 \section{The Stress Tensor}
@@ -217,6 +218,7 @@ which tells us
 }
 
 \br 
+\label{rem:LambdaOPECoefficient}
     If we hadn't put $\l=2$ into the expressions above, we would have ended up with the result fourth-power singularity being 
     \bse 
         \frac{-1 +6\l -6\l^2}{(z-\omega)^4}.

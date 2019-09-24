@@ -124,7 +124,11 @@ We then extend the integration definitions to a function of $n$ Grassmann variab
 \bse 
     \int \psi^{a_1}\psi^{a_2}...\psi^{a_n} d^n\psi = \int \psi^{a_1}\psi^{a_2}...\psi^{a_n} d\psi^{a_n}d\psi^{a_{n-1}}...d\psi^{a_1} = \epsilon^{a_1a_2...a_n},
 \ese
-where the Levi-Civita symbol is there to account for the minus signs picked up under exchange. Note that it is only when \textit{all} the variables are in the integrand that we don't get a vanishing answer. 
+where the Levi-Civita symbol is there to account for the minus signs picked up under exchange. 
+
+\br 
+    Note that it is only when \textit{all} the variables are in the integrand that we don't get a vanishing answer. It is for this reason it is often useful to think of the integral of Grassman variables as being a formal symbol for differentiation. For the latter case it is clear that we need all the variables there in order to not get a vanishing answer. 
+\er 
 
 Now consider the case of a Gaussian integral with Grassmann variables, 
 \bse 
@@ -251,11 +255,15 @@ We can use the position fixings talked about in the last section to fix the posi
 \mybox{
 \bse 
     \begin{split}
-        \cA  =  \int DXDcDb \bigg[\prod_{k=1}^m \int d^2\sig \sqrt{\hat{g}} \bigg(\frac{\p \hat{g}}{\p \tau_k}\bigg)_{\a\beta} b^{\a\beta} \bigg] \bigg[ \prod_{j=1}^f & \prod_{\a=1}^2 c_{\a}(\hat{\sig}_j)  \sqrt{g} V_j(\hat{\sig}_j) \bigg] \\
+        \cA  =  \int d^m\tau DXDcDb \bigg[\prod_{k=1}^m \int d^2\sig \sqrt{\hat{g}} \bigg(\frac{\p \hat{g}}{\p \tau_k}\bigg)_{\a\beta} b^{\a\beta} \bigg] & \bigg[ \prod_{j=1}^f \prod_{\a=1}^2 c_{\a}(\hat{\sig}_j)  \sqrt{g} V_j(\hat{\sig}_j) \bigg] \\
         &\times  \bigg[\prod_{j=f+1}^n \int d\sig_j \sqrt{g} V_j(\sig_j)\bigg] e^{-(S_{\text{P}} + S_{\text{g}})}
     \end{split}
 \ese 
 }
+
+\br 
+    Note that an integral over the different moduli is included. This is an obvious requirement if we want the full scattering amplitude.
+\er 
 
 \br 
     There is a nice result in here about the number of vertex insertions compared to the number of points we fix. We will see that $f$ is a fixed number and for the sphere it is $f=3$. If we then only consider inserting $n=2$ vertex operators, we see that there is a position left unfixed by something and so we end up with an infinite result. This is just the condition that if we consider the amplitude for a propagator (which for us is clearly just two insertions) and impose the mass-shell condition (which we do here, as will become clearer later) we get an infinite result. 

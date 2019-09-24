@@ -76,11 +76,11 @@ where of course $m=0$ is not included in the sum. We can rewrite the sum above u
 \ese 
 where we have used the $\tcl \tcl$ to put all the $+m$ subscripts to the right. Now image we acted this on a state with $\a^+_{-k}$, then the second term vanishes (as we can move $\a^+_m$ through $\a^+_{-k}$ and annihilate the ground state), whereas the first term gives a contribution with weight $-k$. The factor $k$ is cancelled by the $1/m$ in the sum, and so we just get 
 \bse 
-    N^{lc}\a^+_{-k}\ket{0} = -\a^+{-k}\ket{0}.
+    N^{lc}\a^+_{-k}\ket{0} = -\a^+_{-k}\ket{0}.
 \ese 
 Similarly we have 
 \bse 
-    N^{lc}\a^-_{-k}\ket{0} = \a^-{-k}\ket{0},
+    N^{lc}\a^-_{-k}\ket{0} = \a^-_{-k}\ket{0},
 \ese 
 and so we see that $N^{lc}$ counts the number of $+$ excitations minus the number of $-$ excitations.
 
@@ -100,14 +100,15 @@ We can use the Laurent expansions\footnote{Note the superscript $m$ on $T^m$ is 
 \ese 
 to obtain a Laurent expansion for $J_B$ and, by taking the $1/z$ coefficient, obtain an expression for $Q_B$ in terms of $L^m_n$, $c_n$ and $b_n$. The full calculation of this is done in the lecture video, however here we shall only do the bit we need for our discussion; we want to find the commutator with $N^{lc}$, which is expressed solely in terms of the $\a$s, and so the pure ghost part of $Q_B$ will have vanishing $N^{lc}$ charge. In other words, there are no $\a^{\pm}$s in the $\cl bc\p c\cl $ or $\p^2c$ parts of $J_B$ and so both the number of $+$ excitations and the number of $-$ excitations are zero. 
 
-So considering just the $\cl cT^m\cl$ term, we have 
+So considering just the $\cl cT^m\cl$ term, we have\footnote{Note on the last equality we dropped the conformal normal ordering colons. This is simply because $L^m$ and $c_n$ have vanishing OPE and so it is the same with or without the colons.}
 \bse 
-    Q_B = \oint \frac{dz}{2\pi i} \cl  \sum_{\ell,n} \frac{c_{\ell}}{z^{\ell-1}} \frac{L^m_n}{z^{n+2}} \cl = \sum_n \cl c_n L^m_{-n}\cl.
+    Q_B = \oint \frac{dz}{2\pi i} \cl  \sum_{\ell,n} \frac{c_{\ell}}{z^{\ell-1}} \frac{L^m_n}{z^{n+2}} \cl = \sum_n c_n L^m_{-n}.
 \ese
 Then we use the result\footnote{I can't quite prove this result. If anyone reading this can give me a proper proof, I would be very grateful. I would update these notes and give you credit obviously.}
-\bse 
-    L^m_n \sim \sum_{\ell} \a^-_{-(n+\ell)} \a^+_{\ell}, 
-\ese
+\be
+\label{eqn:LmLaurent}
+    L^m_n \sim \sum_{\ell} \a^-_{\ell} \a^+_{-(n+\ell)}, 
+\ee
 we see that there are three possible values for the $N^{lc}$ charge of $Q_B$: $+1$, $0$ and $-1$. To clarify, unless we have either (or both) $\ell=0$ or $n+\ell=0$, the sum for $L^m_n$ has the same number of $+$ excitations as it does $-$ excitations, and so the $N^{lc}$ charge vanishes. This leaves us the two cases of 
 \bse 
     \a^-_{-m}\a^+_0, \qand \a^-_0\a^+_{-m},
@@ -146,9 +147,10 @@ The equality holds identically, and so each grouped part must itself vanish, so 
 \er 
 
 So we want to find the cohomology of $Q_1$. We could do this explicitly, but instead we shall follow a useful trick of mathematics. We define what is essentially the adjoint of $Q_1$, 
-\bse 
+\be
+\label{eqn:R}
     R := \frac{1}{\sqrt{2\a'}k^+} \sum_{m\neq0} b_m\a^+_{-m},
-\ese 
+\ee 
 as well as the operator
 \bse 
     S := \{Q_1,R\}.
@@ -216,9 +218,10 @@ Following the same arguments as above, we see that the cohomology of $Q_B$ is th
 
 \bq 
     Let $\ket{\psi}$ be an element in the kernel of $S$. Then define 
-    \bse 
+    \be 
+    \label{eqn:StateSUExpansion}
         \ket{\chi} := \big( \b1 - S^{-1}U + S^{-1}US^{-1}U - ...\big)\ket{\psi}.
-    \ese 
+    \ee 
     Firstly we note that the action of $S^{-1}$ is valid as $S(U\ket{\psi}) \in \{-1,-2\}$. This is clearly a one-to-one relationship, and so $\{\ket{\chi}\} \cong \{\ket{\psi}\}$. Finally, we have 
     \bse 
         \begin{split}

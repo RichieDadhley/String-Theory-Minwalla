@@ -1,0 +1,110 @@
+\chapter{Starting The Superstring}
+
+Everything seems quite nice with the Bosonic string, but there are two problems we need to address. The first we have seen many times, its them damn Tachyons, but the second is something we haven't yet mentioned; we don't seem to have any clear way\footnote{I say clear way, as Dr. Minwalla claims you can do it by considering D-branes in some fashion.} to introduce Fermions into our theory. As we will shall see, both of these problems can be resolved if we introduce a Fermionic field onto the worldsheet of the string.
+
+\section{Free Fermion Theory}
+
+The first thing we need to do, then, is study the theory of a free Fermion in $(1+1)$-dimensions. We will work in Lorentzian space and then analytically continue as before. Consider the Dirac action in 2d flat space, 
+\bse 
+    S_D = \frac{1}{2\pi}\int d^2\sig \, \overline{\psi} \slashed{\p} \psi.
+\ese 
+We shall work with real gamma matrices and set 
+\bse 
+    \gamma^0 = i\sig_2, \qand \gamma^1 = \sig_1,
+\ese 
+where $\sig_1/\sig_2$ are the Pauli matrices. Expanding the Dirac action out, we have
+\bse 
+    \int d^2\sig \, \psi^{\dagger}\gamma^0\big(\gamma^0\p_0 + \gamma^1\p_1\big)\psi = \int d^2\sig \psi^{\dagger}\big(-\b1 \p_0 + \sig_3\p_1\big) \psi.
+\ese 
+Then using 
+\bse 
+    \psi = \begin{pmatrix}
+        \psi_+ \\
+        \psi_-
+    \end{pmatrix}, \qand \p_{\pm} := -\p_0 \mp \p_1,
+\ese 
+we have 
+\bse 
+    S_D = \frac{1}{2\pi}\int d^2\sig \, \big(\psi_+\p_-\psi_+ + \psi_-\p_+\psi_-\big),
+\ese 
+where we have used the fact that $\psi$ is real (as all the gammas are real). Analytically continuing gives us\footnote{Remembering $d^2\sig=\frac{1}{2}d^2z$}
+\be 
+\label{eqn:DiracAction}
+    S_D = \frac{1}{4\pi}\int d^2z \big(\psi\overline{\p}\psi + \overline{\psi}\p\overline{\psi}\big),
+\ee 
+where we have used the $\p/\overline{\p}$ notation along with $\psi:=\psi_z$ and $\overline{\psi}:=\psi_{\overline{z}}$.
+
+The equations of motion for \Cref{eqn:DiracAction} are simply 
+\be 
+\label{eqn:DiracEoM}
+    \overline{\p}\psi = 0, \qand \p \overline{\psi} = 0.
+\ee 
+
+\br 
+\label{rem:DiracDone}
+    Note, if we had used a complex spinor, we would have obtained 
+    \bse 
+        S_D = \frac{1}{4\pi} \int d^2z \big(\psi^*\overline{\p}\psi + \overline{\psi^*}\p\overline{\psi}\big).
+    \ese 
+    Identifying $\psi/\psi^*$ with $c/b$ respectively, this action is of exactly the same form as our $bc$ ghost system. This starts what \Cref{rem:Dirac} was referring to.
+\er 
+
+We now proceed as we have done before to find the correlation function by considering the following\footnote{As normal we just consider the holomorphic part for now.}
+\bse 
+    0 = \frac{1}{Z}\int D\psi \frac{\del}{\del\psi(z')}\Bigg[\psi(z)\exp\bigg(-\frac{1}{2\pi}\int d^2\sig\psi\overline{\p}\psi\bigg)\Bigg] = \del(z-z') + \frac{1}{\pi} \big\la \psi(z')\overline{\p}\psi(z)\big\ra,
+\ese
+where the plus sign in the second term comes from two minus signs (the anticommutivitiy of $\psi$ and the minus in the exponential), and we get a factor of 2 using integration by parts. Note also that we have used $d^2\sig$, as this gives us our standard definition for the delta function with no factors of $2$ floating about. We have seen this relation before, and so we can conclude straight away that 
+\be 
+\label{eqn:PsiCorrelation}
+    \big\la \psi(z_1)\psi(z_2)\big\ra = \frac{1}{z_{12}}.
+\ee 
+
+So we have the correlation function, the next thing to ask is "What is the stress tensor?"
+
+\bcl 
+    The stress tensor for the free (real) Fermionic is 
+    \be 
+    \label{eqn:FreeFermionicStressTensor}
+        T := -\frac{1}{2}\cl \psi\p\psi\cl .
+    \ee 
+\ecl 
+
+\bq 
+    Let's compute the $T(z_1)T(z_2)$ OPE:\footnote{Dr. Minwalla uses the argument that $(\p\psi)^2=0$ in his proof. I don't see why this is the case, and have shown it without this condition. If anyone knows why that condition holds, I would appreciate an explanation.}
+    \bse 
+        \begin{split}
+             T(z_1)T(z_2) & = \frac{1}{4} \cl \psi(z_1)\p_1\psi(z_1)\cl\cl\psi(z_2)\p_2\psi(z_2)\cl \\
+             & = \frac{1}{4} \bigg( -\frac{1}{z_{12}^4} + \frac{2}{z_{12}^4} + \frac{2\cl\psi(z_1)\psi(z_2)\cl}{z_{12}^3} +  \frac{\cl\p_1\psi(z_1)\psi(z_2)\cl-\cl\psi(z_1)\p_2\psi(z_2)\cl}{z_{12}^2} \\
+             & \qquad \qquad - \frac{\cl \p_1\psi(z_1)\p_2\psi(z_2)\cl}{z_{12}}\bigg) \\
+             & =\frac{1}{4} \bigg( \frac{2}{z_{12}^4} + \frac{2\cl \p_2 \psi(z_2) \psi(z_2)\cl}{z_{12}^2} + \frac{\cl \p_2^2\psi(z_2)\psi(z_2)\cl}{z_{12}} + \frac{\cl \p_2\psi(z_2)\psi(z_2)\cl - \cl \psi(z_2)\p_2\psi(z_2)\cl}{z_{12}^2} \\
+             & \qquad + \frac{\cl \p_2^2\psi(z_2)\psi(z_2)\cl -\cl \p_2\psi(z_2)\p_2\psi(z_2)\cl}{z_{12}} - \frac{\cl \p_2\psi(z_2)\p_2\psi(z_2)\cl}{z_{12}}\bigg) \\
+             & = \frac{1}{4}\bigg( \frac{2}{z_{12}^4} - \frac{4\cl\psi(z_2)\p_2\psi(z_2)\cl}{z_{12}^2} -\frac{2\big(\cl\psi(z_2)\p_2^2\psi(z_2)\cl + \cl\p_2\psi(z_2)\p_2\psi(z_2)\cl\big)}{z_{12}}\bigg),
+        \end{split}
+    \ese 
+    where we have expanded around $z_2$ on the third line and used the fact that $\psi(z_2)\psi(z_2)=0$. Finally plugging \Cref{eqn:FreeFermionicStressTensor} back in, we have 
+    \bse 
+        T(z_1)T(z_2) = \frac{1/2}{z_{12}^4} + \frac{2T(z_2)}{z_{12}^2} + \frac{\p_2 T(z_2)}{z_{12}},
+    \ese
+    which confirms that $T$ is a stress tensor. 
+\eq 
+
+\br 
+\label{rem:DiracLambdaValue}
+    Note from \Cref{rem:LambdaOPECoefficient} we have 
+    \bse 
+        \frac{1}{2} = -1 + 6\l - 6\l^2 \qquad \implies \l^2 -\l +\frac{1}{4} = 0,
+    \ese 
+    which tells us the free Fermion system can be further related to the $bc$ system with $\l=1/2$. This is the result mentioned in \Cref{rem:Dirac}.
+\er 
+
+\br 
+    Dr. Minwalla gives a brief explanation at the end of the lecture why introducing Fermions on the worldsheet could give rise to Fermions in spacetime. I have chosen to leave this explanation out for now and instead focus more on showing it when it comes round to it. \textcolor{red}{Give section reference once done.}
+\er 
+
+\section{Brief Justification Of Supersymmetry}
+
+As we will see next lecture, the way we proceed to is write down an action that contains both Bosonic variables and Fermionic ones. We will give the Fermionic variables a spacetime index (i.e. $\psi\to\psi^{\mu}$), and so have $d$ different Fermionic excitation directions. This is exactly what we did for the Bosonic string, however we argued (several times) that it is important that we only get $(d-2)$ physical excitation directions. We achieved this by using our gauge symmetries (i.e. by gauging by our conformal group). 
+
+However, we are now all out of symmetries and so we appear to be a bit buggered for the Fermionic excitations. This is where supersymmetry comes in. We introduce supersymmetry as a method to allow for further gauge conditions so that we can reduce the Fermionic oscillations. That is, we will gauge by the so-called \textit{superconformal group}.
+
+This all sounds very intimidating to the supersymmetry novice\footnote{As I am.}, however it really shouldn't be. In fact the above description is where supersymmetry came from! Despite this historical fact, superstring theory is often presented (as it will be here) assuming supersymmetry is a thing and using it. This is perhaps the best way to learn supersymmetry in a hands on manner, so do not be deterred. 

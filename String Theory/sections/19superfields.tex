@@ -1,0 +1,273 @@
+\chapter{Superspace \& Superfields}
+
+\section{Superspace}
+
+We start by introducing two new `coordinate' labels on our worldsheet, $\th$ and $\overline{\th}$. We use the inverted commas as they aren't really coordinates on the worldsheet (like the $z/\overline{z}$ are). All of our actions will appear as integrals of the form 
+\bse
+    \int d^2z d^2\th,
+\ese 
+where $\th$ are Grassman/Fermionic variables. We can therefore just integrate over the $\th/\overline{\th}$ and get back a purely Bosonic integral. A manifold that has both a ordinary complex coordinate ($z$) and one anticommuting coordinate ($\th$) is known as a \textit{supermanifold}.
+
+We need to remember that Grassman integrals should really be thought of as a derivative, and so the integral will vanish unless a product of $\th$ and $\overline{\th}$ appears in the integrand. We need to adopt a sign convention for this integral and in these notes we shall use 
+\be 
+\label{eqn:ThetaIntegralConvention}
+    d^2\th = d\overline{\th}d\th \qquad \implies \qquad \int d^2\th \th\overline{\th} = 1. 
+\ee 
+
+All of our fields will be variables of both $z/\overline{z}$ and $\th/\overline{\th}$, and we shall consider Taylor expansions of these fields. We will only get four kinds of terms: ones with no $\th$ or $\overline{\th}$, ones with only one $\th$, ones with only one $\overline{\th}$, and ones with one $\th$ and one $\overline{\th}$. Every other term vanishes from $\th^2=0=\overline{\th}^2$.
+
+
+We define the \textit{superoperators}
+\be 
+\label{eqn:QSuperOperator}
+    Q := \frac{\p}{\p\th} - \th \frac{\p}{\p z}, \qand \overline{Q} := \frac{\p}{\p\overline{\th}} - \overline{\th} \frac{\p}{\p \overline{z}}.
+\ee
+These operators mix the various Taylor expansion coefficients, and will also shift the fields. Let's just consider $Q$, and determine its square: 
+\bse 
+    \begin{split}
+        Q^2 & = \frac{\p^2}{\p\th^2} + \th^2\frac{\p^2}{\p z^2} - \th\frac{\p^2}{\p z\p\th} - \frac{\p}{\p\th}\bigg(\th\frac{\p}{\p z}\bigg) \\
+        & = - \th\frac{\p^2}{\p z\p\th} - \frac{\p}{\p z} + \th\frac{\p^2}{\p\th\p z} \\
+        & = -\frac{\p}{\p z},
+    \end{split}
+\ese 
+where we have used the fact that $\th^2=0$ to remove the first two terms (the $\p_{\th}^2$ term effectively vanishes as it would need to remove two $\th$ terms, but they never appear) and then used the antisymmetric nature of $\th$ to get the plus sign from the product rule. Similarly we get 
+\bse 
+    \overline{Q}^2 = -\frac{\p}{\p\overline{z}}.
+\ese 
+We can also easily see 
+\bse 
+    \big\{Q,\overline{Q}\big\} = 0.
+\ese 
+
+So we have two anticommuting operators that square to translations on the plane. We can therefore think of $Q/\overline{Q}$ as the square-root of translations on the plane. 
+
+\section{Superfields}
+
+\bd[Superfield]
+    We define a \textit{superfield} as a field whose variation under a superconformal transformation is given by $Q$ (or $\overline{Q}$ for antiholomorphic fields) acting on the field, i.e.\footnote{Both Dr. Minwalla and Polchinski use $\mathbf{X}$ for the superfields. I have decided to use $\Phi$ just to make the distinction between a superfield and a bosonic field clear.}
+    \be 
+    \label{eqn:Superfield}
+        \del\Phi = Q\phi.
+    \ee 
+\ed 
+
+\bd[Supersymmetric] 
+    We say a superfield is supersymmetric if 
+    \bse 
+        \int d^2z d^2\th \del \Phi = 0.
+    \ese 
+\ed 
+
+\br 
+    \textcolor{red}{I am not overly sure what the strict definition of a superfield is. From the videos it appears the above definition is what I need, but I'm sort of piecing things together. I'm going to try find out soon what it's proper definition is and change anything needed. This is just a note to self to do that.}
+\er 
+
+Let's now consider a general field in a Taylor expansion,
+\be 
+\label{eqn:GeneralSuperfield}
+    \Phi^{\mu} = X^{\mu} + i\th\psi^{\mu} + i\overline{\th}\overline{\psi}^{\mu} + \th\overline{\th}F^{\mu},
+\ee
+where $X$ and $F$ are symmetric (Bosonic) variables, $\psi$ is a antisymmetric (Fermionic) one and $\mu$ is a spacetime index. As mentioned before, this is the most general expression we can have, as $\th^2=0=\overline{\th}^2$. We want to find the conditions under which this field is a superfield. Consider the action of $Q$ on $\Phi$ (dropping the index for notational convenience):
+\be
+\label{eqn:QOnGeneralSuperfield}
+    Q\Phi = -\th\p_zX + i\psi - i\th\overline{\th}\p_z\overline{\psi} + \overline{\th}F,
+\ee 
+so, using 
+\bse 
+    \del\Phi = \del X + i\th\del\psi + i\overline{\th}\del\overline{\psi} + \th\overline{\th}\del F,
+\ese 
+if we identify 
+\bse 
+    \begin{split}
+        \del X & = i\psi \\
+        \del \psi & = i\p_zX \\
+        \del \overline{\psi} & = -iF \\
+        \del F & = i\p_z\overline{\psi}
+    \end{split}
+\ese 
+then we get a  superfield, i.e. $Q\Phi=\del\Phi$.
+
+\br 
+    Note the above set of expressions show us explicitly that $Q$ rotates Bosons to Fermions and visa versa. 
+\er 
+
+\bl 
+    All superfields are supersymmetric. 
+\el 
+
+\bq 
+    From \Cref{eqn:GeneralSuperfield}, we see that 
+    \bse 
+        \int d^2z d^2\th \Phi = \int dz^2 F,
+    \ese 
+    as it is only the $F$ term that has both $\th$ and $\overline{\th}$. We have just shown that $\del F$ is a total derivative in $z$, and so its integral over $d^2z$ vanishes. 
+\eq 
+
+\bl 
+    The product of two superfields is supersymmetric. 
+\el 
+
+\bq 
+    Let
+    \bse 
+        \Phi_1 = X_1 + i\th\psi_1 + i\overline{\th}\overline{\psi}_2 + \th\overline{\th}F_1,
+    \ese
+    and similarly for $\Phi_2$. Leibniz tells us 
+    \bse 
+        Q(\Phi_1\Phi_2) = (Q\Phi_1)\Phi_2 + \Phi_1(Q\Phi_2).
+    \ese 
+    Then, using \Cref{eqn:GeneralSuperfield} and \Cref{eqn:QOnGeneralSuperfield}, we have 
+    \bse 
+        Q(\Phi_1\Phi_2) = \Big( -\th\p_zX_1 + i\psi_1 - i\th\overline{\th}\p_z\overline{\psi}_1 + \overline{\th}F_1 \Big)\Big( X_2 + i\th\psi_2 + i\overline{\th}\overline{\psi}_2 + \th\overline{\th}F_2 \Big) + (1\longleftrightarrow 2).
+    \ese 
+    As with the previous proof, we only need to consider the terms that have $\th\overline{\th}$, leaving us with 
+    \bse 
+        \int d^2z \Big(-i\big(\p_zX_1\big)\overline{\psi}_2 + i\psi_1F_2 - iX_1\big(\p_z\overline{\psi}_2\big) - iF_1\psi_2 + (1\longleftrightarrow 2)\Big),
+    \ese 
+    where for the minus sign on the $F_1\psi_2$ term comes from $\overline{\th}\th=-\th\overline{\th}$. Putting in the $(1\longleftrightarrow 2)$ terms in and cancelling, we are left with 
+    \bse 
+        -i \int d^2 z \Big( \big(\p_zX_1\big)\overline{\psi}_2 + X_1\big(\p_z\overline{\psi}_2\big) +  \big(\p_zX_2\big)\overline{\psi}_1 + X_2\big(\p_z\overline{\psi}_1\big) \Big) = -i \int d^2 z \p_z \big( X_1\overline{\psi}_2 + X_2\overline{\psi}_1\big),
+    \ese
+    which is the integral of a total derivative, so it vanishes. 
+\eq 
+
+What we want to look for supersymmetric Lagrangians. It would obviously be very nice if these Lagrangians contained derivatives (so we can build kinetic terms), the question is `what kind of derivative?' Well it would be very nice if they anticommuted with $Q/\overline{Q}$, so we can easily move $Q$ through our derivative. The first obvious candidate is simply $\p_z/\p_{\overline{z}}$, however these won't do. Why? Well consider an action:
+\bse 
+    S = \int d^2z d^2\th \p \Phi \overline{\p} \Phi.
+\ese
+This needs to be unitless (as we're working in units $\hbar=c=1$). Being a scalar field, $[\Phi]=0$, so we don't need to worry about that. What about the measure? Well $[d^2z]=-2$, but Grassman measures, being like derivatives, have positive dimension, therefore using $[\th]=-1/2$\footnote{Can see this from the $Q$ equation.} we have $[d^2\th]=+1$. We therefore require that $[D]=1/2$, but $[\p]=+1$, and so it won't do. 
+
+\bp 
+    The so-called \textit{superderivatives}
+    \be 
+    \label{eqn:Superderivative}
+        D := \frac{\p}{\p\th} + \th\frac{\p}{\p z}, \qand \overline{D} := \frac{\p}{\p\overline{\th}} + \overline{\th}\frac{\p}{\p \overline{z}}
+    \ee 
+    will anticommute with $Q/\overline{Q}$ and have dimension $+1/2$.
+\ep 
+
+\bq 
+    First let's check the dimension: $[\th]=-1/2$ and $[\p_z]=+1$ therefore $[\th\p_z]=+1/2$. Equally $[\p_{\th}]=+1/2$. Now we need to check they anticommute. Consider the holomorphic expressions:
+    \bse 
+        \begin{split}
+            \big\{Q,D\big\} & = \big(\p_{\th} -\th\p_z\big)\big(\p_{\th} +\th\p_z\big) + \big(\p_{\th} + \th\p_z\big)\big(\p_{\th} - \th\p_z\big) \\
+            & = \Big[\p_{\th}\big(\th\p_z) - \th\p_z\p_{\th}\Big] + \Big[ -\p_{\th}\big(\th\p_z) +\th\p_z\p_{\th}\Big] \\
+            & = 0,
+        \end{split}
+    \ese 
+    where again we have used $\th^2=0$ and the fact that $\p_{\th}^2$ wont contribute. The antiholomorphic expressions follow analogously. 
+\eq 
+
+Following the same calculation as for $Q/\overline{Q}$, we see that 
+\bse 
+    D^2 = \frac{\p}{\p z}, \qquad \overline{D}^2 = \frac{\p}{\p\overline{z}}, \qand \big\{D,\overline{D}\big\} = 0.
+\ese 
+
+\bl 
+    The superderivative of a superfield is supersymmetric. 
+\el 
+
+\bq 
+    Following the same idea as the previous proofs, and using $\{Q,D\}=0$, the only $\th\overline{\th}$ term that remains is $\p_zF$, which is a total derivative and so vanishes.
+\eq 
+
+\bp 
+    The product $D\Phi^{\mu} \overline{D}\Phi_{\mu}$ is supersymmetric. 
+\ep 
+
+\bq 
+    By direct calculation, we have (dropping the indices)
+    \bse 
+        \begin{split}
+            D\Phi & = \th\p_z X + i\psi + i \th\overline{\th}\p_z\overline{\psi} + \overline{\th}F, \\
+            \overline{D}\Phi & = \overline{\th}\p_{\overline{z}} X + i\overline{\psi} - i \th\overline{\th}\p_{\overline{z}}\psi - \th F.
+        \end{split}
+    \ese 
+    Now, we only need to consider the terms in the product that only have a $\overline{\th}$ as the action of $Q$ will give them a $\th$ then we can do the $d^2\th$ integral. This leaves us with 
+    \bse 
+        \int d^2zd^2\th Q\big(D\Phi\overline{D}\Phi\big) = i\int d^2z \p\big(\psi\p_{\overline{z}}X - F\overline{\psi}\big),
+    \ese 
+    which vanishes as the right-hand side is a total derivative.
+\eq 
+
+We therefore have the supersymmetric action
+\be 
+\label{eqn:SupersymmetricAction}
+    \frac{1}{4\pi}\int d^2zd^2\th D\Phi^{\mu} \overline{D}\Phi_{\mu} = \frac{1}{4\pi}\int dz^2 \Big( \p_z X^{\mu} \p_{\overline{z}} X_{\mu} + \psi^{\mu}\p_{\overline{z}} \psi_{\mu} + \overline{\psi}\p_{z}\overline{\psi} + F^{\mu}F_{\mu}\Big).
+\ee 
+The first term on the right-hand side is exactly our Bosonic action.\footnote{Really we need to associate $X^{\mu} \to \sqrt{2/a'} X^{\mu}$, but for simplicity (and to also follow the videos and Polchinski easier) we just set $\a'=2$.} The $F$ term is just some auxiliary field (it has no kinetic term and doesn't couple to anything else). It is just determined by the equation of motion (which we'll see in a second actually just sets it to zero). The middle two terms correspond exactly to the Dirac action, \Cref{eqn:DiracAction}. We can also recover all of the equations of motion from the equation of motion of \Cref{eqn:SupersymmetricAction}; 
+\be
+\label{eqn:SupersymmetricEoM}
+    \overline{D}D\Phi^{\mu} = 0.
+\ee
+Expanding this out gives 
+\bse 
+    -\th\overline{\th}\p_{\overline{z}}\p X^{\mu} + i\overline{\th}\p_{\overline{z}}\psi^{\mu} - i\th\p_z\overline{\psi}^{\mu} + F^{\mu} = 0,
+\ese 
+which considering each coefficient separately gives our Bosonic and Fermionic equations of motion along with $F=0$. This final condition, along with the fact that it is auxiliary, means we can just forget about $F$.
+
+\br 
+    Note the above conditions on $F$ only apply because we only have the kinetic term in our action. We can therefore think of $F$ as being related to potential terms.
+\er 
+
+\section{The Superfield OPE}
+
+Recall the correlation functions for the Bosonic case could only be functions of the difference $z_{12}$. This comes from the fact that the correlation function must be annihilated by $\p_{z_1}+\p_{z_2}$. We now want to derive a similar result but for the correlation functions of our super fields. So we need to look for something that lies in the kernel of 
+\bse 
+    D_1 + D_2 := \frac{\p}{\p \th_1} + \th_1\frac{\p}{\p z_1} + \frac{\p}{\p \th_2} + \th_2\frac{\p}{\p z_2}.
+\ese 
+First consider a function that doesn't depend on $z_1$ or $z_2$. This just gives us an analogous story to the Bosonic case and so this function must depend only on $\th_{12}:=\th_1-\th_2$.
+
+Now suppose the function does depend on $z_{12}$. From the antisymmetric nature of the $\th$s, it follows that we want the $\th$ dependence to be the product $\th_1\th_2$. So our function is of the form
+\bse 
+    f(z_1,\th_1,z_2,\th_2) = f(z_{12} -\th_1\th_2).
+\ese 
+For clarity, let's check explicitly, 
+\bse 
+    \big(D_1+D_2\big)\big(z_1-z_2-\th_1\th_2) = \th_1-\th_2+\th_2-\th_1 = 0,
+\ese 
+where the sign on the last term comes from anticommuting $\th_1$ with the $\th_2$ derivative.
+
+Now we want our correlation function $\la\Phi(z_1,\th_1)\Phi(z_2,\th_2)\ra$ to reduce to the correlation function \Cref{eqn:ExpectationXX} when we set $\th_1=0=\th_2$. Given the above conditions for the form of the dependence of correlation functions, the obvious candidate is (recall footnote 3, i.e. we set $\a'=2$)
+\bse 
+    \big\la \Phi(z_1,\th_1)\Phi(z_2,\th_2)\big\ra = -\ln |z_{12}-\th_1\th_2|^2 = -\ln(z_{12}-\th_1\th_2) - \ln(\overline{z}_{12} - \overline{\th}_1\overline{\th}_2).
+\ese 
+So considering just the holomorphic part, we can take the Taylor expansion, again only keeping the leading order terms because $\th^2=0$, we have 
+\bse 
+    \big\la \Phi(z_1,\th_1)\Phi(z_2,\th_2)\big\ra = -\ln(z_{12}) + \frac{\th_1\th_2}{z_{12}}.
+\ese 
+Comparing this with\footnote{We don't need the holomorphic part for this part of the argument.}
+\bse 
+    \big\la \Phi(z_1,\th_1)\Phi(z_2,\th_2)\big\ra = \big\la \big(X(z_1) + i\th_2\psi(z_1)\big)\big(X(z_2) + i\th_2\psi(z_2)\big)\ra,
+\ese 
+we conclude 
+\bse 
+    \begin{split}
+        \big\la X(z_1)X(z_2)\big\ra & = -\ln(z_{12}), \\
+        \big\la \psi(z_1)\psi(z_2)\big\ra & = \frac{1}{z_{12}}
+    \end{split}
+\ese 
+and the correlators between $X$ and $\psi$ vanishing. This is exactly what we wanted. Note we get a positive sign for the $\psi$ correlator as we have $i^2=-1$ but then $\th_2$ has to pass through $\psi_1$.
+
+\section{The Stress Tensor}
+
+The stress tensor played a very important role in the development of string theory, and we now want to look at a similar structure on our superspace.
+
+Now, recall that the Bosonic stress tensor came from varying the action with respect to the metric, \Cref{eqn:StressEnergyTensor}, and gave us a spin-$2$ field. The Fermionic equivalent comes from studying supergravity and gives us a spin-$3/2$ field. We shall denote these $T_B$ and $T_F$, respectively. As we are working in superspace, we want to consider some construction of both $T_B$ and $T_F$. The obvious thing to try is 
+\be
+\label{eqn:SuperStressTensor}
+    T := \frac{1}{2}T_F + \th T_B,
+\ee 
+where the $1/2$ factor is included for consistency with Polchinski. We similarly define the antiholomorphic $\overline{T}$.
+
+\br 
+\label{rem:TBTFConfusion}
+    The above notation can be very confusing,\footnote{I am still trying to make sure this is correct, so take this with a pinch of salt. \textcolor{red}{Red to remind me to change this when I know.}} but what we need to pay attention to is where the different $T$s come from. By definition $T_B$ is the one and only stress tensor for our field, and despite the Bosonic $`B'$ will actually contain $\psi$s (just consider varying \Cref{eqn:SupersymmetricAction}). $T_F$ is just some field introduced onto our space, and $T$ is some superspace structure made from both of them. 
+\er 
+
+The next question we ask is about the form of the expressions in the OPE of $T$ with itself. Being a spin-$3/2$ field, the most singular term with have $1/(z_{12}-\th_1\th_2)^3$. What we need to work out is what can appear on the numerator. The result has to be supersymmetric, so we can only really use $T$, $D_{\th}$, $\th_{12}$,  and $\p_z$.\footnote{Note we \textit{cannot} use $\p_{\th}$ as $Q$ does not commute with it, but it does commute with $\p_z$.} The numerators need to have integer spin, so it follows that the general expression is 
+\bse 
+    T(z_1,\th_1)T(z_2,\th_2) \sim \frac{A}{(z_{12}-\th_1\th_2)^3} + \frac{B D_2T(z_2,\th_2)}{(z_{12}-\th_1\th_2)} + \frac{C\th_{12}T(z_2,\th_2)}{(z_{12}-\th_1\th_2)^2} + \frac{E\th_{12}\p_{z_2}T(z_2,\th_2)}{(z_{12}-\th_1\th_2)}.
+\ese 
+
+Next lecture we will expand this out and compare it to what we know, namely correlator for a stress tensor, to fix the factors $A,B,C$ and $E$. 

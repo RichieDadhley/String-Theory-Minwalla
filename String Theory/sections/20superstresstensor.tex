@@ -1,0 +1,250 @@
+\chapter{Super Stress Tensor}
+
+We ended the last lecture by stating that the general expression for the $TT$ OPE is
+\be 
+\label{eqn:SuperTTOPE}
+    T(z_1,\th_1)T(z_2,\th_2) \sim \frac{A}{(z_{12}-\th_1\th_2)^3} + \frac{B D_2T(z_2,\th_2)}{(z_{12}-\th_1\th_2)} + \frac{C\th_{12}T(z_2,\th_2)}{(z_{12}-\th_1\th_2)^2} + \frac{E\th_{12}\p_{z_2}T(z_2,\th_2)}{(z_{12}-\th_1\th_2)}.
+\ee 
+By simply relabelling we also have 
+\be 
+\label{eqn:SuperTTOPEFlipped}
+    T(z_2,\th_2)T(z_1,\th_1) \sim -\frac{A}{(z_{12}-\th_1\th_2)^3} - \frac{B D_1T(z_1,\th_1)}{(z_{12}-\th_1\th_2)} - \frac{C\th_{12}T(z_1,\th_1)}{(z_{12}-\th_1\th_2)^2} + \frac{E\th_{12}\p_{z_1}T(z_1,\th_1)}{(z_{12}-\th_1\th_2)},
+\ee 
+where $\th_2\th_1=-\th_1\th_2$ and $\th_{21}=-\th_{12}$ have been used. Combining these results with the fact that $T$ is antisymmetric, i.e.
+\bse 
+    T(z_1,\th_1)T(z_2,\th_2) + T(z_2,\th_2)T(z_1,\th_1) = 0,
+\ese 
+gives 
+\bse 
+    \frac{C\th_{12}\big(T(z_2,\th_2)-T(z_1,\th_1)\big)}{(z_{12}-\th_1\th_2)^2} + \frac{B\big(D_2T(z_2,\th_2)-D_1T(z_1,\th_1)\big)}{(z_{12}-\th_1\th_2)} +  \frac{E\th_{12}\big(\p_{z_2}T(z_2,\th_2)+\p_{z_1}T(z_1,\th_1)\big)}{(z_{12}-\th_1\th_2)} = 0.
+\ese 
+
+Now, we want to compare the above to something we know in order to try determine the coefficients. The obvious thing is the form of the OPE of general stress tensor with itself, 
+\bse 
+    T(z_1)T(z_2) \sim \frac{c/2}{(z_{12})^4} + \frac{2T(z_2)}{(z_{12})^2} + \frac{\p_{z_2}T(z_2)}{z_{12}}.
+\ese 
+We therefore want to just have $z_{12}$ in the denominator, and so we use the expansion\footnote{Again note all higher terms vanish as $\th^2=0$.}
+\be
+\label{eqn:SuperDenominatorExpansion}
+    \frac{1}{(z_{12}-\th_1\th_2)^n} = \frac{1}{(z_{12})^n} + \frac{n\th_1\th_2}{(z_{12})^{n+1}}
+\ee
+along with \Cref{eqn:SuperStressTensor}. Using these, and expanding everything around $z_2$, we get
+\bse 
+    \begin{split}
+        \frac{C\th_{12}\big(T(z_2,\th_2)-T(z_1,\th_1)\big)}{(z_{12}-\th_1\th_2)^2} & = \frac{C\th_{12}\Big[\frac{1}{2}T_F(z_2)+\th_2T_B(z_2) - \frac{1}{2}T_F(z_1) - \th_1T_B(z_1)\Big]}{(z_{12})^2} \\
+        & = \frac{C\th_{12}\big[T_F(z_2)-T_F(z_1)\big]}{2(z_{12})^2} + \frac{C\th_1\th_2\big[T_B(z_2)-T_B(z_1)\big]}{(z_{12})^2} \\
+        & = -\frac{C\th_{12}\p_{z_2}T_F(z_2)}{2z_{12}} - \frac{C\th_1\th_2\p_{z_2}T_B(z_2)}{z_{12}},
+    \end{split}
+\ese 
+where care has been taken to get the signs correct for the $T_B$ term on the second line. Similarly we get 
+\bse
+    \begin{split}
+        \frac{B\big(D_2T(z_2,\th_2)-D_1T(z_1,\th_1)\big)}{(z_{12}-\th_1\th_2)} & = -\frac{\th_{12}\p_{z_2}T_F(z_2)}{2z_{12}} - \frac{\th_1\th_2\p_{z_2}T_B(z_2)}{z_{12}}, \\
+        \frac{E\th_{12}\big(\p_{z_2}T(z_2,\th_2)+\p_{z_1}T(z_1,\th_1)\big)}{(z_{12}-\th_1\th_2)} & = \frac{E\th_{12}\p_{z_2}T_F(z_2)}{z_{12}} + \frac{2E\th_1\th_2\p_{z_2}T_B(z_2)}{z_{12}}.
+    \end{split}
+\ese 
+Comparing the $\th_{12}$ and the $\th_1\th_2$ coefficients separetly both give 
+\be 
+\label{eqn:CBERelationSuperStress}
+    C + B - 2E = 0.
+\ee 
+
+\section{OPEs}
+
+\subsection{$T_BT_B$}
+
+So we have a condition relating $C,B$ and $E$? What about $A$, and is there anything more we can say? The answer comes by recalling \Cref{rem:TBTFConfusion}; $T_B$ is the stress tensor for our system, and so has an OPE of the form
+\bse 
+    T_B(z_1)T_B(z_2) \sim \frac{c/2}{(z_{12})^4} + \frac{2T_B(z_2)}{(z_{12})^2} + \frac{\p_2T_B(z_2)}{z_{12}}.
+\ese 
+From \Cref{eqn:SuperStressTensor}, its the $\th_1\th_2$ term in the $TT$ OPE that needs to correspond to this. The easiest one to see is the 4-th power: simply use \Cref{eqn:SuperDenominatorExpansion} on the $A$ term 
+\bse 
+    \frac{A}{(z_{12}-\th_1\th_2)^3} = \frac{3\th_1\th_2A}{(z_{12})^4} + \frac{A}{(z_{12})^3},
+\ese 
+which tells us 
+\be 
+\label{eqn:AValueSuper}
+    A = \frac{c}{6}
+\ee 
+
+Next, direct calculation gives
+\bse 
+    \begin{split}
+        \frac{BD_2T(z_z,\th_2)}{(z_{12}-\th_1\th_2)} & \sim \frac{B\th_1\th_2T_B(z_2)}{(z_{12})^2}, \\
+        \frac{C\th_{12}T(z_2,\th_2)}{(z_{12}-\th_1\th_2)^2} & \sim \frac{C\th_1\th_2T_B(z_2)}{(z_{12})^2}, \\
+        \frac{E\th_{12}\p_{z_2}T(z_2,\th_2)}{(z_{12}-\th_1\th_2)} & \sim \frac{E\p_{z_2}T_B}{z_{12}},
+    \end{split}
+\ese 
+which tell us 
+\be
+\label{eqn:EValueSuper}
+    C + B = 2, \qand E = 1,
+\ee 
+which agrees with \Cref{eqn:CBERelationSuperStress}.
+
+\subsection{$T_BT_F$}
+
+Next let's try find the $T_BT_F$ OPE. $T_F$ was a field of weight $3/2$, and so, as $T_B$ is the stress tensor, we expect
+\bse 
+    T_B(z_1)T_F(z_2) \sim \frac{3/2 T_F(z_2)}{(z_{12})^2} + \frac{\p_{z_2}T_F(z_2)}{z_{12}}.
+\ese 
+The $T_BT_F$ OPE will come from the $\th_1$ term in the expansion of \Cref{eqn:SuperTTOPE}. Direct calculation gives 
+\bse 
+    \frac{C\th_{12}T(z_2,\th_2)}{(z_{12}-\th_1\th_2)^2} \sim \frac{\th_1CT_F(z_2)}{2(z_{12})^2}, \qand \frac{E\th_{12}\p_{z_2}T(z_2,\th_2)}{(z_{12}-\th_1\th_2)} \sim \frac{\th_1E\p_{z_2}T_F(z_2)}{2z_{12}},
+\ese
+which, being careful to remove the factor of $1/2$ in \Cref{eqn:SuperStressTensor}, gives us $E=1$ again and 
+\be
+\label{eqn:CBValuesSuper}
+    C = 3/2 \qquad \implies \qquad B = 1/2.
+\ee 
+
+The $T_FT_B$ OPE just follows by antisymmetry; 
+\bse 
+    T_F(z_2)T_B(z_1) = - T_B(z_1)T_F(z_2).
+\ese 
+We can check this using \Cref{eqn:SuperTTOPEFlipped}. It's the $\th_1$ term we want, and simple calculation gives us 
+\bse 
+    T_F(z_2)T_B(z_1) \sim - \frac{CT_F(z_1)}{(z_{12})^2} -\frac{B\p_{z_1}T_F(z_1)}{z_{12}} + \frac{E\p_{z_1}T_F(z_1)}{z_{12}},
+\ese 
+which using the values of $C,B$ and $E$ and expanding around $z_2$ gives 
+\bse 
+    \begin{split}
+        T_F(z_2)T_B(z_1) & \sim -\frac{3/2T_F(z_2)}{(z_{12})^2} - \frac{3/2\p_{z_2}T(z_2)}{z_{12}} - \frac{1/2\p_{z_2}T_F(z_2)}{z_{12}} + \frac{\p_{z_2}T_F(z_2)}{z_{12}} \\
+        & = -\frac{3/2 T_F(z_2)}{(z_{12})^2} - \frac{\p_{z_2}T_F(z_2)}{z_{12}} \\
+        & =- T_B(z_1)T_F(z_2).
+    \end{split}
+\ese 
+
+\subsection{$T_FT_F$}
+
+Finally let's find the $T_FT_F$ OPE. We have all the values of $A,B,C$ and $E$ and so we just get this by considering the term in \Cref{eqn:SuperTTOPE} that doesn't have any $\th$s. Being careful to include the two factors of $2$ from \Cref{eqn:SuperStressTensor}, direct calculation just gives us 
+\bse 
+    T_F(z_1)T_F(z_2) \sim \frac{4A}{(z_{12})^3} + \frac{4BT_B}{z_{12}} = \frac{2c}{3(z_{12})^3} + \frac{2T_B}{z_{12}}.
+\ese 
+
+\br 
+    Note that the OPE between two $T_F$s, which are just fields on our superspace, gives rise to the stress tensor, $T_B$. This is something we have not seen so far in the course. 
+\er 
+
+\section{The Form of $T_B$ \& $T_F$}
+
+We now want to give some explicit form for $T_B$ and $T_F$ for our action \Cref{eqn:SupersymmetricAction}. Of course we can obtain these by varying the action, but here we shall just claim the results and show the obey they OPEs above. 
+
+\bcl 
+    Reinserting the $\a'$, and leaving the relevant normal ordering colons implicit, we claim that 
+    \bse 
+        \begin{split}
+            T_B & = -\frac{1}{\a'} \p X^{\mu} \p X_{\mu} - \frac{1}{2} \psi^{\mu} \p \psi_{\mu}, \\
+            T_F & = i \sqrt{\frac{2}{\a'}}\psi^{\mu}\p X_{\mu}
+        \end{split}
+    \ese 
+    satisfy the above OPEs.
+\ecl 
+
+\bq 
+    The $T_BT_B$ term is clear: we just have the Bosonic and Fermionic stress tensors added in a decoupled way, so the OPE terms just add, giving us a central charge of $c=1+1/2=3/2$. 
+    
+    We can also easily see the $T_BT_F$ OPE: the $\p X \p X$ part of $T_B$ just sees the weight $1$ primary field $\p X$ in $T_F$, and the $\psi\p\psi$ part of $T_B$ just sees the weight $1/2$ primary field $\psi$ in $T_F$. The product of these two gives rise to a weight $3/2$ primary field, which agrees with our OPE above.
+    
+    So we just need to check the $T_FT_F$ OPE. Using 
+    \bse 
+        \psi(z_1)\psi(z_2) = \frac{1}{z_{12}}, \qand \p X(z_1) \p X(z_2) = -\frac{\a'}{2(z_{12})^2},
+    \ese
+    we have 
+    \bse 
+        \begin{split}
+            T_F(z_1)T_F(z_2) & \sim -\frac{2}{\a'}\Bigg[ \bigg(-\frac{\a'}{2}\bigg)\frac{1}{(z_{12})^2}\frac{1}{z_{12}} + \bigg(-\frac{\a'}{2}\bigg)
+            \frac{\psi(z_1)\psi(z_2)}{z_{12}^2} + \frac{\p X(z_1)\p X(z_2)}{z_{12}}\Bigg] \\
+            & = \frac{1}{(z_{12})^3} - \frac{\psi(z_2)\p\psi(z_2)}{z_{12}} - \frac{2}{\a'} \frac{\p X(z_2)\p X(z_2)}{z_{12}} \\
+            & = \frac{1}{(z_{12})^3} - \frac{2T_B}{z_{12}},
+        \end{split}
+    \ese 
+    where on the second line we have used $(\p\psi)\psi = -\psi\p\psi$. This agrees with our $T_FT_F$ OPE if we pick $c=3/2$, which we required from the $T_BT_B$ OPE. 
+\eq 
+
+\br 
+    \textcolor{red}{Dr. Minwalla then tries to show that $T=1/2T_F + \th T_B$ is a superfield. He does this by considering $D\Phi\p\Phi$. If I follow through the calculation myself don't quite get the right answer. I get
+    \bse 
+        \frac{1}{2}D\Phi\p\Phi = \frac{1}{2} i\psi\p X + \frac{i\th}{2} \big(\p X\p X - i\psi\p\psi).
+    \ese 
+    The first term is $1/2T_F$ but the second term has the $i$ at the front, the sign on the $\p X\p X$ term is wrong and we also have an $i$ on the $\psi\p\psi$. I've probably just done something silly, and I will try fix this, but if anyone reading can show the result, I would massively appreciate the working. (credit will be given obviously)}
+\er 
+
+\section{The Ghosts}
+
+\subsection{The Action}
+
+So we have managed to supersymmetrise the matter part of our string theory, but that's not the only part; we need to deal with the ghosts!
+
+Recall that $[b]=2$ and $[c]=-1$. These results came from the fact that $[b]=[g]=2$ and that $c$ was a vector field. We want some supersymmetric extension of these. We have just seen above that the extension of the metric is a dimension $3/2$ field, so we want some $\beta$ such that $[\beta]=3/2$. Similarly, Vector fields will become spinor fields, and so we want some $\g$ such that $[\g]=-1/2$. 
+
+\br 
+    We can, in fact, express the above results for our 1-parameter family of CFTs, that is using $\l$. We had $[b]=\l$ and $[c]=1-\l$, so it follows that we want $[\beta]=\l-1/2$ and $[\g]=3/2-\l$. 
+\er 
+
+We now want to define superfields that are some combination of these objects, in the same way $T$ is made up of $T_F$ and $T_B$. By simple dimensional arguments, we arrive at 
+\be 
+    B := \beta +\th b, \qand C = c +\th\g.
+\ee 
+We want to construct an action that reduces to our ghost action for $\th=0$. We can find the form using dimensional arguments: we have $[B]=\l-1/2$ and $[C]=1-\l$, and we clearly want one of each and a derivative. Following the same argument as for the mass part, we can't use $\overline{\p}$ and must instead use $\overline{D}$.\footnote{Note its the barred $D$, as we want to get $b\overline{\p}c$.} We therefore arrive at the ghost-type action
+\be 
+\label{eqn:SupersymmetricGhostAction}
+    S = \frac{1}{4\pi} \int d^2zd^2\th \Big(B\overline{D}C + \overline{B}D\overline{C}\Big),
+\ee 
+where the antiholomorphic terms have been included.
+
+Let's check that this does indeed give us our ghost action, \Cref{eqn:Sghostbc}. Considering just the holomorphic part:
+\bse 
+    \begin{split}
+        \frac{1}{4\pi} \int d^2zd^2\th \, B\overline{D}C & = \frac{1}{4\pi} \int d^2zd^2\th \Big( \big(\beta + \th b\big) \big(\p_{\overline{\th}} +\overline{\th}\p_{\overline{z}}\big) \big(c+\th\g\big) \Big) \\
+        & = \frac{1}{4\pi}\int d^2zd^2\th \Big(\big(\beta+\th b\big)\big(\overline{\th}\p_{\overline{z}}c + \overline{\th}\th\p_{\overline{z}}\g\big)\Big) \\
+        & = \frac{1}{4\pi}\int d^2z \, b\p_{\overline{z}}c - \frac{1}{4\pi}\int d^2z \, \beta\p_{\overline{z}}\g,
+    \end{split}
+\ese
+where we have used the convention \Cref{eqn:ThetaIntegralConvention} to get the correct signs. The first term is exactly what we wanted. Of course the antiholomorphic part follows exactly the same. 
+
+Now note the two terms on the right-hand side of the above expression \textit{seem} to be exactly the same, but there is one important difference; $b$ and $c$ anticommute but $\beta$ and $\g$ commute! This actually has a subtle impact on our proposed action: we just wrote $B\overline{D}C$ and powered on, but what if we'd chosen $C\overline{C}$? Well the result would just have come out to be 
+\bse 
+    \frac{1}{4\pi} \int d^2zd^2\th \, C\overline{D}B = \frac{1}{4\pi}\int d^2z \, c\p_{\overline{z}}b - \frac{1}{4\pi}\int d^2z \, \g\p_{\overline{z}}\beta. 
+\ese 
+Now, using integration by parts and the anticommutator, we can just switch $b$ and $c$ in the first term. However $\g$ and $\beta$ commute, and so we \textit{cannot} remove the minus sign picked up from the integration by parts!
+
+\subsection{The OPE}
+
+Now let's find the OPE of $B$ and $C$. Well $[BC]=1/2$, and so the only thing we can have is 
+\bse 
+    B(z_1)C(z_2) \sim \frac{A\th_{12}}{z_{12}-\th_1\th_2} = \frac{A\th_{12}}{z_{12}},
+\ese
+where we used \cref{eqn:SuperDenominatorExpansion}. We don't have any exact exchange statistics for $B$ and $C$ and so we must consider the $CB$ OPE separately. The dimensional argument still holds and so we also have 
+\bse 
+    C(z_1)B(z_2) \sim \frac{E\th_{12}}{z_{12}}.
+\ese 
+Now let's expand these out and compare it to our $bc$ OPEs to find $A$ and $E$, and then use these to find other OPEs. We have
+\bse 
+    \begin{split}
+        B(z_1)C(z_2) & = \beta(z_1) c(z_2) + \th_2\beta(z_1)\g(z_2) + \th_1b(z_1)c(z_2) + \th_1\th_2b(z_1)\g(z_2), \\
+        C(z_1)B(z_2) & = c(z_1)\beta(z_2) - \th_2c(z_1)b(z_2) + \th_1\g(z_1)\beta(z_2) + \th_1\th_2\g(z_1) b(z_2).
+    \end{split}
+\ese 
+Comparing coefficients tells us 
+\bse 
+    \begin{split}
+        b(z_1)c(z_2) & \sim \frac{A}{z_{12}}, \qquad \qquad  c(z_1)b(z_2)  \sim \frac{E}{z_{12}}, \\
+        \beta(z_1)\g(z_2) & \sim -\frac{A}{z_{12}}, \qquad \qquad \g(z_1)\beta(z_2) \sim \frac{E}{z_{12}},
+    \end{split}
+\ese 
+and all other OPEs vanishing. The known $bc$ OPE, \Cref{eqn:bcOPE}, then tell us $A=1 = E$, ans so we arrive at 
+\be 
+\label{eqn:BetaGammaOPE}
+    \beta(z_1)\g(z_2) \sim -\frac{1}{z_{12}}, \qand \g(z_1)\beta(z_2) \sim \frac{1}{z_{12}}. 
+\ee 
+These results agree with the symmetric nature of $\beta$ and $\g$, i.e. 
+\bse 
+    \beta(z_2)\g(z_1) = -\frac{1}{z_{21}} = +\frac{1}{z_{12}} = \g(z_1)\beta(z_2).
+\ese
+
+Note we could have arrived at \Cref{eqn:BetaGammaOPE} in the usual way (i.e.take a derivative with an insertion). The relative minus sign between $\beta\g$ and $\g\beta$ then stems from the integration by parts to go from $\beta\overline{\p}\g$ to $\g\overline{\p}\beta$. We therefore see a perhaps more important impact of us just starting with $B\overline{D}C$ in the action and powering on. If we had instead chosen to use $C\overline{D}C$ we would arrive at 
+\bse 
+    \g(z_1)\beta(z_2) \sim -\frac{1}{z_{12}}, \qand \beta(z_1)\g(z_2) \sim \frac{1}{z_{12}},
+\ese 
+which is the opposite to \Cref{eqn:BetaGammaOPE}. So it is important to pay attention to which convention we use in the action. 
