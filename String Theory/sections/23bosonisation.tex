@@ -1,0 +1,268 @@
+\chapter{Bosonisation}
+
+So far what we have done is to introduce both Bosons and Fermions into our theory, and have seen that they take very similar forms but with a few differences. Perhaps the most notable is the OPEs,
+\bse
+    X^\mu(z,\overline{z})X^\nu(0) \sim -\frac{\a'}{2}\eta^{\mu\nu} \ln |z|^2, \qquad \psi^{\mu}(z)\psi^{\nu}(0) \sim \frac{\eta^{\mu\nu}}{z},
+\ese
+where, remembering \Cref{rem:PsiComponentsOPE}, we have been careful to include the indices.
+
+On top of this, $X$ and $\psi$ don't have the same central charge: $c_X=1$ but $c_{\psi^{\mu}}=1/2$. The aim of this lecture is going to be to show that if we consider \textit{complex} Fermionic fields 
+\be 
+\label{eqn:ComplexFermions}
+    \psi = \frac{1}{\sqrt{2}}\big(\psi^1 + i \psi^2\big), \qquad \psi^* = \frac{1}{\sqrt{2}}\big(\psi^1 - i \psi^2\big),
+\ee 
+we can make a proper connection between the two theories; indeed we will see they are actually essentially \textit{the same} theory. That is we will show that the actions 
+\bse 
+    S_X = \frac{1}{4\pi\a'} \int d^2z (\p X)^2, \qand S_{\psi} = \frac{1}{2\pi} \int d^2z \psi^*\p \psi
+\ese
+behave identically.
+
+\br 
+    \textbf{Notation warning}: In these notes I have used $\psi^*$ to indicate the complex conjugate. Polchinski uses a bar instead. The reason I am using a star here is because I have been using $\overline{\psi}$ to indicate the antiholomorphic fields. Polchinski uses a tilde for this purpose. I am (at least currently) too lazy to go back and change all my bars to tildes, so instead use the star. I am just pointing this out for two reasons: 1) to make comparisons to Polchinski easier, and 2) it is possible I will copy a formula from Polchinski with the bar notation by accident, so please be careful with what it really means. 
+\er 
+
+\br 
+    Note the inspiration for the form of \Cref{eqn:ComplexFermions} could come from considering the central charge, as $c_{\psi} = c_{\psi^1}+c_{\psi^2} = 1 = c_X$.
+\er 
+
+\section{Abstract Boson Theory}
+
+The above relation tells us essentially what we are trying to do is show that instead of considering $\psi$ as some complex Fermionic field, we can think of it as a Bosonic field. We will label an abstract Bosonic field by $H$, and normalise it such that (considering just the holomorphic part)
+\be 
+\label{eqn:HHOPE}
+    H(z)H(0) \sim - \ln z.
+\ee 
+This is just equivalent to working with $\a'=2$ above. 
+
+Now consider the operators $e^{\pm iH(z)}$. Firstly note from \Cref{eqn:SpinWeights,eqn:ScalingDimension,eqn:WeighteikX}, along with $\a'=2$, both these operators have scaling dimension and spin dimension $+1/2$. The antiholomorphic equivalents $e^{\pm i\overline{H}(\overline{z})}$ has scaling dimension $+1/2$ and spin dimension $-1/2$. This looks very nice, considering we want to relate our Fermionic fields to them! 
+
+We can work out the OPEs easily as 
+\bse
+    \begin{split}
+        e^{iH(z)}e^{-iH(0)} & = e^{i(-i)H(z)H(0)} \tcl e^{iH(z)-iH(0)}\tcl \\
+        & = e^{-\ln z} \tcl e^{iH(z)-iH(0)}\tcl \\
+        & = \frac{1}{z} + ...,
+    \end{split}
+\ese 
+where to get to the last line we have taken a Taylor expansion of the normal ordered part, and used the fact that every term is non-singular. Similar calculations follow through for the other OPEs and we get
+\be 
+\label{eqn:ExpHHOPE}
+    \begin{split}
+        e^{iH(z)}e^{-iH(0)} & \sim \frac{1}{z} \\
+        e^{iH(z)}e^{iH(0)} & \sim \cO(z) \\
+        e^{-iH(z)}e^{-iH(0)} & \sim \cO(z)
+    \end{split}
+\ee 
+We can summarise this above result as 
+\be 
+\label{eqn:ExpHHOPEEpsilon}
+    e^{i\epsilon_iH(z_i)}e^{i\epsilon_jH(z_j)} \sim (z_{ij})^{\epsilon_i\epsilon_j},
+\ee 
+where $\epsilon_i \in \{-1,1\}$. 
+
+Now let's consider the product of $2m$ such terms, with $m$ positive power and $m$ negative power terms. It follows from the scaling dimension argument above, that this product is of the form\footnote{This formula is a bit wrong, the $z$ in the denominator on the right-hand side should be of the form $z_{ij}$, but we just want to indicate the form of the expression, so abuse the notation.} 
+\bse 
+    \prod_{i=1}^{2m}e^{i\epsilon_iH(z_i)} = \frac{1}{z^m}\tcl e^{i(...)} \tcl, \qquad \sum_{i=1}^{2m}\epsilon_i = 0,
+\ese 
+where the $(...)$ in the normal ordered exponential contains all the $H$ terms. Using \Cref{eqn:ExpHHOPEEpsilon} it follows that we can write this result as 
+\bse 
+    \prod_{i=1}^{2m} e^{i\epsilon_iH(z_i)} = \prod_{i<j} (z_{ij})^{\epsilon_i\epsilon_j} \tcl e^{i(...)}\tcl.
+\ese 
+Finally, using the fact that the vacuum expectation value of $e^{iA}$ is one, we get 
+\be 
+\label{eqn:ExpHVacuumExpectationValue}
+    \bigg\la \prod_{i=1}^{2m} e^{i\epsilon_iH(z_i)} \bigg\ra = \prod_{i<j} (z_{ij})^{\epsilon_i\epsilon_j}.
+\ee 
+This result can also be obtained just using \Cref{eqn:ExpHHOPEEpsilon}, and the fact that the correlation function must vanish when the operators are far away from each other.\footnote{This is just used to set the coefficient to a constant, instead of being some polynomial in $z$ which would blow up at large $z$.} This fact will be useful in just a moment. 
+
+\section{Complex Fermion Theory}
+
+Now let's look more closely at our complex Fermion theory, \Cref{eqn:ComplexFermions}. Using \Cref{eqn:PsiComponetsOPE}, we see that 
+\be 
+    \begin{split}
+        \psi(z)\psi^*(0) & \sim \frac{1}{z} \\
+        \psi(z)\psi(0) & \sim \cO(z) \\
+        \psi^*(z)\psi^*(0) & \sim \cO(z),
+    \end{split}
+\ee 
+where the $\cO(z)$ comes from the fact that the order $0$ term vanishes, via antisymmetry of $\psi/\psi^*$. We see, therefore, that the complex Fermions have \textit{exactly} the same OPE structure as the exponentiated abstract Bosons, \Cref{eqn:ExpHHOPE}.
+
+So we have shown that their OPEs match, but this isn't enough to make the two theories equivalent as CFTs. The next step is to check for equivalence between local operators.
+
+Note that local operators with integer $k_R$ and $k_L$ can be formed by repeated operator products of the $e^{\pm iH(z)}$ and $e^{\pm i\overline{H}(\overline{z})}$ operators. Equally note that any operator in Fermion theory built out of the Fermions and their derivatives can be built out of repeated products of the $\psi, \psi^*, \overline{\psi},$ and $\overline{\psi}^*$ at different $z$ values. The derivative terms come from taking Taylor expansions (see below for the stress tensor, for example). Finally, the fact that \Cref{eqn:ExpHVacuumExpectationValue} can be derived solely from the OPE structures means it must also hold for the Fermion theory. This tells us that the Bosonic operators have the same expectation value as their Fermionic counterparts, i.e. replacing $e^{iH(z)}$ with $\psi(z)$, etc. will give the same expectation value. We therefore have an equivalence of local operators. 
+
+The last ingredient we need to check are the stress tensors. Consider the product 
+\bse 
+    \begin{split}
+        e^{iH(z)}e^{-iH(-z)} & = \frac{1}{2z}\tcl e^{iH(z) - iH(-z)} \tcl \\
+        & = \frac{1}{2z}\Big[ 1 + 2iz\p H(0) + \frac{1}{2}(2i)^2 z^2  \big(\p H(0)\big)^2 + \cO(z^3) \Big] \\
+        & = \frac{1}{2z} + i\p H(0) - z \big(\p H(0)\big)^2 + \cO(z^2) \\
+        & = \frac{1}{2z} + i\p H(0) + 2zT_B^H(0) + \cO(z^2)
+    \end{split}
+\ese  
+where we have Taylor expanded around $z=0$, and used \Cref{eqn:StressTensorFreeBoson} (with $\a'=2$) to identify the stress tensor. 
+
+Now let's consider the same thing but for the complex Fermions: 
+\bse 
+    \begin{split}
+        \psi(z)\psi^*(-z) & = \frac{1}{2z}\tcl \psi(z)\psi^*(-z)\tcl \\
+        & = \frac{1}{2z}\Big[1 + 2z\psi(0)\psi^*(0) + \frac{1}{2}z^2 \big(\p\psi(0)\psi^*(0) - \psi(0)\p\psi^*(0) \big) + \cO(z^3)\Big] \\
+        & = \frac{1}{2z} + \psi(0)\psi^*(0) + 2zT_B^{\psi}(0) + \cO(z^2),
+    \end{split}
+\ese 
+where we have used 
+\bse 
+    \begin{split}
+        \p\psi\psi^* - \psi\p\psi^* & = \frac{1}{2} \Big[ \big(\p\psi^1 + i\p\psi^2\big)\big(\psi^1-i\psi^2\big) - \big(\psi^1+i\psi^2\big)\big(\p\psi^1-i\p\psi^2\big) \Big] \\
+        & = -\psi^{\mu}\p\psi_{\mu}\\
+        & = 2T_B^{\psi}
+    \end{split}
+\ese
+where we have used the anticommutivity property $\p\psi^{\mu}\psi_{\mu} = - \psi^{\mu}\p\psi_{\mu}$.
+
+So we see if we identify $\psi\cong e^{iH}$ and $\psi^*\cong e^{-iH}$, we also identify 
+\be
+\label{eqn:PsiHEquivalences}
+    \psi\psi^* \cong i\p H, \qand T_B^{\psi} \cong T_B^H.
+\ee 
+
+\br 
+    Note the relation $\psi\psi^*\cong i\p H$ makes sense as $\psi\psi^*$ is the Noether current of the complex Fermion system and $i\p H$ corresponds to the shift symmetry of the Bosonic system. 
+\er 
+
+\subsection{NS or R?}
+
+One thing we haven't asked about the above procedure is `what sector do our Fermionic states belong to?' In other words, are the operators we talk about above dual to states in the NS sector or states in the R sector? The answer is the NS sector. We shall demonstrate this for a couple states. 
+
+The first thing we have to note is that the NS sector does not contain zero-modes, i.e. $\psi_0$ does not appear on the right-hand side of \Cref{eqn:NSRPlaneLaurentExpansion}. Therefore we just define the ground state to be the one annihilated by all $\psi_r$ with $r>0$, 
+\bse 
+    \psi_r^*\ket{0}_{NS} = \psi_r\ket{0}_{NS} = 0, \qquad \forall r \in \{ \Z^+ + 1/2\}.
+\ese 
+We then define the creation operators to be $\psi_r^{\mu}$ with $r<0$. So in order to show that the operators we are talking about above live in the NS sector we need to show they are dual to states of the form $\psi_{-1/2}\ket{0}_NS$, etc. 
+
+First let's consider the simple state $\ket{\psi}$. We use \Cref{eqn:NSRPlaneLaurentExpansion} with $v=1/2$. Inverting this gives 
+\bse 
+    \psi_r = \oint \frac{dz}{2\pi i} z^{r-1/2} \psi(z), \qand \psi_r^* = \oint \frac{dz}{2\pi i} z^{r-1/2} \psi^*(z).
+\ese 
+Consider the action of $\psi_r^*$ first: 
+\bse 
+    \begin{split}
+        \psi_r^* \ket{\psi} & = \oint \frac{dz}{2\pi i} z^{r-1/2} \psi^*(z) \psi(0) \\
+        & = \oint \frac{dz}{2\pi i} z^{r-1/2} \bigg[ \frac{1}{z} + ... \bigg] \\
+        & = \begin{cases}
+            0 & \forall r > 1/2 \\
+            1 & r = 1/2 \\
+            \neq 0 & \forall r \leq -1/2.
+        \end{cases}
+    \end{split}
+\ese
+So we see there the annihilation operator $\psi_{-1/2}^*$ doesn't annihilate the state. This suggests 
+\bse 
+    \ket{\psi} = \psi_{1/2}\ket{0}_{NS}.
+\ese 
+We can further check this by considering the action of $\psi_r$: 
+\bse 
+    \begin{split}
+        \psi_r\ket{\psi} & = \oint \frac{dz}{2\pi i} z^{r-1/2} \psi(z)\psi(0) \\
+        & = \oint \frac{dz}{2\pi i} z^{r-1/2}\big[ \cO(z) + ... \big], 
+    \end{split}
+\ese 
+so $\psi_{-1/2}\ket{\psi} = 0$, which confirms the above result (as $(\psi_r)^2=0$). An analogous calculation will give $\ket{\psi^*} = \psi_{-1/2}^*\ket{0}_{NS}$.
+
+For further peace of mind, let's consider state with a derivative, namely $\ket{\p\psi}$. Acting with $\psi_r^*$ we have 
+\bse 
+    \begin{split}
+        \psi_r^*\ket{\p\psi} & = \oint \frac{dz}{2\pi i} z^{r-1/2} \psi^*(z)\p\psi(0) \\
+        & = \oint \frac{dz}{2\pi i} z^{r-1/2} \bigg[ -\frac{1}{z^2} + ... \bigg] \\
+        & = \begin{cases}
+            0 & \forall r > 3/2 \\
+            -1 & r = 3/2 \\
+            0 & r = 1/2 \\
+            \neq 0 & r \leq -1/2,
+        \end{cases}
+    \end{split}
+\ese 
+where the minus sign comes from the fact that the derivative acts on the second argument (i.e. consider $z_1$ and $z_2$ with $\p_2$). Note also the result for $r=1/2$, which comes from the fact that we have nothing on the numerator to expand. This suggests that 
+\bse 
+    \ket{\p\psi} = \psi_{-3/2}\ket{0}_{NS}.
+\ese 
+We can't check this result using $\psi_r$ as we need to know the actual form of the $\psi(z)\psi(0)$ OPE to at least second order. However, this was just to show that the states are related to the NS sector, so we wont bother doing all that. 
+
+\br 
+    This idea, that all the operators we can think of in the Fermionic theory appear to be in the NS sector, actually highlights the importance of Bosonisation for the R sector. That is, if we want to scatter something in the R sector, we need to operator, but we've just shown that if we consider the Fermions they are all NS, so instead we consider the Bosonised theory. The obvious question is `what form do these Boson operators take?' The answer is they are of the form $e^{\pm i kH(z)}$ where now $k \in \R\setminus\Z$, i.e. real, non-integer numbers.
+\er 
+
+\subsection{Ground States}
+
+In nod to the remark made above, let's have a look at the ground states of for a general theory of general periodicity. That is let our fields on the cylinder obey 
+\bse 
+    \psi(\sig + 2\pi) = e^{2\pi i v}\psi(\sig), \qand \psi^*(\sig + 2\pi) = e^{-2\pi i v}\psi^*(\sig),
+\ese 
+where we now let $v\in[0,1)$. Again we take the Laurent expansion on the plane to give 
+\bse 
+    \psi = \sum_{r\in\Z+v} \frac{\psi_r}{z^{m+1/2}}, \qand \psi^* = \sum_{r\in\Z-v} \frac{\psi_r^*}{z^{m+1/2}}.
+\ese 
+Note that we take $\Z-v$ for the complex-conjugated field. Now we define the vacuum state by 
+\bse 
+    \psi_r\ket{0} = \psi_r^*\ket{0} = 0 \qquad \forall r>0.
+\ese 
+If we set $r=n\pm v$, for $n\in\Z$, then the above condition becomes 
+\bse 
+    \begin{split}
+        \psi_{n+v}\ket{0} & = 0 \qquad \forall n\geq 0 \\
+        \psi^*_{n-v}\ket{0} & = 0 \qquad \forall n\geq 1.
+    \end{split}
+\ese 
+Similarly we would want the creation expressions to hold, these become
+\bse 
+    \begin{split}
+        \psi_{n+v}\ket{0} & \neq 0 \qquad \forall n \leq -1 \\
+        \psi_{n-v}^*\ket{0} & \neq 0 \qquad \forall n \leq 0.
+    \end{split}
+\ese 
+
+So we want to find the operator dual to $\ket{0}$, which we shall denote $\cO$. To do this just consider the action of $\psi_{n+v}$ and $\psi_{n-v}^*$ on the state:
+\bse 
+    \begin{split}
+        \psi_{n+v}\ket{0} & = \oint \frac{dz}{2\pi i} z^{n+v-1/2} \psi(z)\cO(0), \\
+        \psi_{n-v}^*\ket{0} & = \oint \frac{dz}{2\pi i} z^{n-v-1/2} \psi^*(z)\cO(0).
+    \end{split}
+\ese 
+Now use our Boson identification $\psi(z) \cong e^{iH(z)}$ and $\psi^*(z) \cong e^{-iH(z)}$ in the above formulas. If we then made $\cO$ some exponential of $H$ we could use the OPE to get factors or $1/z$. With a little thought, the answer is to choose 
+\be 
+\label{eqn:FermionBosonisationGroundStateOPerator}
+    \cO(z) = e^{-i(v-1/2)H(z)}.
+\ee 
+Let's just check this works: 
+\bse 
+    \begin{split}
+        \psi_{n+v}\ket{0} & = \oint \frac{dz}{2\pi i} z^{n+v-1/2} e^{iH(z)}e^{-i(v-1/2)H(0)} \\
+        & = \oint \frac{dz}{2\pi i} z^{n+v-1/2} z^{-(v-1/2)} \cl e^{iH(z) - i(v-1/2)H(0)} \cl \\
+        & = \oint \frac{dz}{2\pi i} z^n \cl ... \cl 
+    \end{split}
+\ese 
+which vanishes for $n\geq0$ and does not vanish for $n\leq -1$. Similarly we get 
+\bse 
+    \psi_{n-v}^*\ket{0} = \oint \frac{dz}{2\pi i } z^{n-1} \cl ... \cl,
+\ese
+which vanishes for $n\geq1$ and doesn't for $n\leq0$. These are exactly the conditions we want, and so \Cref{eqn:FermionBosonisationGroundStateOPerator} is the operator dual to the ground state. 
+
+Note this result tells us that the ground state for the NS sector (which has $v=1/2$) is the identity operator and the ground state for the R sector (which has $v=0$) is 
+\be 
+\label{eqn:OperatorGroundStateRSector}
+    \cO_R = e^{iH/2}.
+\ee 
+
+Now the energy of an operator of the form \Cref{eqn:FermionBosonisationGroundStateOPerator} is the scaling dimension (plus some shift). The scaling dimension is
+\bse 
+    \Delta = \frac{(v-1/2)^2}{2}.
+\ese 
+This tells us that the vacuum of the NS sector has zero energy (as the identity does). However it is more interesting for the R sector as  
+\bse 
+    \cO_R = e^{iH/2}, \qand \psi^*\cO_R = e^{-iH/2}
+\ese 
+have the same energy! So our ground state energy becomes degenerate. This does not happen for any other value of $v$, and is in fact a consequence of the zero-modes of the R sector. 
+
+\br 
+    \textcolor{red}{I need to understand the R sector ground states a little better and expand on the point above. This is just a note to self to do that.}
+\er 

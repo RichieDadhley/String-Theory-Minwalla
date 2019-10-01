@@ -130,12 +130,13 @@ Note that we have used the anticommutativity and $z_{12}=-z_{21}$ to flip some s
 The next job is to find the stress tensor. We do actually have the specific form of the action, and so we could just vary this w.r.t. the metric and obtain the stress tensor. However, we shall derive the result here using an alternative method as it is instructive to see for similar cases but where the action is not known. The method is essentially to guess the answer and then to check it works out.\footnote{By which we mean that we will check it obeys the Virasoro algebra and that $b$ and $c$ have the correct weights.} 
 
 We have seen that the (holomorphic part of the) stress tensor has weight $(2,0)$. We have also seen that $b$ and $c$ have weight $(2,0)$ and $(-1,0)$, so if we are to make $T$ from these two objects, we want one of each and a derivative (which increases the weight by one, recall). We take our guess to be\footnote{Of course this is not really a guess, and is done in hindsight of knowing the answer.}
-\bse 
+\be 
+\label{eqn:GhostStressTensorLambda}
     \begin{split}
         T_{\l}(z) & = \cl\p b(z)c(z)\cl - \l\cl\p\big(b(z)c(z)\big)\cl \\
         & = (1-\l)\cl \p b(z) c(z)\cl - \l \cl b(z) \p c(z)\cl,
     \end{split}
-\ese 
+\ee 
 where $\lambda\in\R$ is some constant. It turns out that different values of $\lambda$ will correspond to different conformal field theories, and so (after we establish the required $\lambda$ for our theory) we will tend to leave it in explicitly, and only insert the value at stages for checks about our theory. 
 
 \subsection{Primary Fields}
@@ -235,6 +236,7 @@ Now let's recap what we have said and done. We started this lecture by reminding
 This is exactly the result \Cref{eqn:d26}.
 
 \subsection{$d=26$?}
+\label{sec:d26?}
 
 There is a important point Dr. Tong brings up that is worth noting here. What we have really shown (from lecture 4 onwards) is that each bosonic term contributes $+1$ to the central charge and that $c_{\text{ghost}}=-26$. We then got excited about reproducing \Cref{eqn:d26} and said that we conclude that there are 26 boson terms. It is this last part that we are not fully justified in doing. 
 

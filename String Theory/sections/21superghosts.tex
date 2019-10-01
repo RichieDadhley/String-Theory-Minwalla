@@ -1,0 +1,214 @@
+\chapter{Ghost Super Stress Tensor}
+
+So far we have taken our free Boson theory and formed the supersymmetric extension, with $T_B^M$ and $T_F^M$\footnote{The superscript is for `matter'.} given by \Cref{eqn:TBTFValues}. We have also written the action for the ghost system, and used it to find the OPEs between $c, b, \beta$ and $\g$, but we are yet to find the super stress tensor terms, i.e. we need to find $T_B^G$ and $T_F^G$. That is the aim of this lecture. 
+
+\section{Ghost Super Stress Tensor}
+
+We have already seen that $[T^M]=+3/2$, and so it follows that we need to construct $T^G=\frac{1}{2}T_F^G+\th T_B^G$ such that it has dimension $3/2$. Recalling what we did for the mass system, we are going to want to match the expression for the $T^GT^G$ OPE with the known one for the $bc$ stress tensor. For generality, we shall do this for our one-parameter family of super CFTs, that is we will leave the value of $\l$ arbitrary and compare to \Cref{eqn:GhostStressTensorLambda}.
+
+So what do we do? The answer is, we essentially list all the possible supersymmetric weight $3/2$ terms that contain $1$ $B$ and $1$ $C$ (as otherwise it will never match \Cref{eqn:GhostStressTensorLambda}) and then expand out to get the form of $T_B^G$ and $T_F^G$. Recalling $[BC]=1/2$, $[D]=1/2$ and $[\p_z]=1$, we guess
+\bse 
+    T^G = pDCDB + q \big(\p_z C\big) B + r C\p_zB,
+\ese 
+for some, to be determined, constants $p,q$ and $r$. Of course we define $\overline{T}^G$ in a similar way. We now expand this out and look for terms with/without a $\th$ prefactor in order to identify $T_F^G/T_B^G$. Direct expansion gives us (using our notation $\p:=\p_z$)
+\begin{equation}
+\label{eqn:TBTFGhostUndetermined}
+    \begin{split}
+        T_B^G & = p\big[-b\p c + \g\p\beta\big] + q\big[b\p c + \beta\p\g\big] + r\big[-c\p b + \g\p\beta\big] \\
+        & = (q-p)b\p c -rc\p b + (p+r)\g\p\beta + q\beta\p\g, \\
+        \frac{1}{2}T_F^G & = p\g b + q\beta\p c + rc\p\beta,
+    \end{split}
+\end{equation} 
+where the antisymmetry nature of $cb$ has been used carefully to get the signs right. Comparing the middle line with \Cref{eqn:GhostStressTensorLambda}, we can identify 
+\be 
+\label{eqn:rpqvalues}
+    r = (1-\l), \qand (p-q) = \l. 
+\ee 
+We can use this to rewrite our expression for $T^G$ in terms of $\l$ and either $p$ or $q$. We shall use $q$, giving us 
+\bse 
+    T^G = (\l+q)DCDB + q\big(\p C\big)B + (1-\l)C\p B.
+\ese 
+
+This is good, but we still need to find the value of $q$ and a relation for the central charge. We can do both of these things by considering the $T_F^GT_F^G$ OPE,\footnote{Dr. Minwalla considers the full $T^GT^G$ OPE, this will of course work, but I found it takes a considerable more effort.} and comparing it to \Cref{eqn:TFTFOPEGeneral}. From \Cref{eqn:TBTFGhostUndetermined,eqn:rpqvalues} we have (using subscripts to indicate the $z$ dependence)
+\begin{equation*}
+    \begin{split}
+        \frac{1}{4}T_F^G(z_1)T_F^G(z_2) & = q(\l+q) \Big[ \g_1b_1\beta_1\p_2c_2 + \beta_1\p_1c_1\g_2b_2\Big] + (\l+q)(1-\l)\Big[\g_1\beta_1c_2\p_2\beta_2 + c_1\p_1\beta_1\g_2b_2\Big] \\
+        & = \frac{2(\l+q)(q+1-\l)}{(z_{12})^3} + q(\l+q)\bigg(\frac{\g_1\beta_2-\beta_1\gamma_2}{(z_{12})^2} + \frac{b_1\p_2c_2 - \p_1c_1b_2}{z_{12}} \bigg) \\
+        & \hspace{4.5cm} + (\l+q)(1-\l) \bigg( \frac{b_1c_2 + c_1b_2}{(z_{12})^2} + \frac{\g_1\p_2\beta_2+\p_1\beta_1\g_2}{z_{12}}\bigg) \\
+        & = \frac{2(\l+q)(q+1-\l)}{(z_{12})^3} + \frac{1}{z_{12}}\Big[ q(\l+q)\beta_2\p_2\g_2 + (\l+q)(2-2\l-q)\g_2\p_2\beta_2 \\
+        & \hspace{4cm} + (\l+q)(\l-1+2q)b_2\p_2c_2 + (\l+q)(\l-1)c_2\p_2b_2\Big],
+    \end{split}
+\end{equation*} 
+where we have obviously used the OPEs between $b,c,\g$ and $\beta$ to get to the second line, and then expanded around $z_2$ and cancelled on the third line. Comparing the $1/(z_{12})^3$ term to \Cref{eqn:TFTFOPEGeneral}, we see 
+\bse 
+    8(\l+q)(q+1-\l) = \frac{2c}{3} \qquad \implies \qquad c = 12\big(q^2 - \l^2 + q + \l\big).
+\ese 
+Then comparing the $\beta_2\p_2\g_2$ terms, we have 
+\be
+\label{eqn:qvalue}
+    4q(\l+q) = 2q, \qquad \implies \qquad q = -\l + \frac{1}{2}.
+\ee 
+So putting this into our expression for the central charge gives us 
+\be 
+\label{eqn:GhostSuperCentralChargeLambda}
+    c = 9-12\l. 
+\ee 
+Finally putting \Cref{eqn:qvalue} into \Cref{eqn:rpqvalues} and then these into \Cref{eqn:TBTFGhostUndetermined}, we get\footnote{\textcolor{red}{Polchinski gets a slightly different answer to me for $T_F^G$. I have checked mine several times and can't see where I'm going wrong. This is a note to say check again later. If any readers can get his result from what I have, please let me know!}}
+\be 
+    \begin{split}
+        T_B^G & = (\p b)c - \l\p(bc) + \g\p\beta + \frac{1}{2}\big(1-2\l\big)\p(\g\beta), \\
+        T_F^G & = \g b + (1-2\l)\beta\p c + 2(1-\l)c\p\beta,
+    \end{split}
+\ee 
+where we have grouped the written $T_B^G$ in a similar form to the first line of \Cref{eqn:GhostStressTensorLambda}.
+
+\section{Critical Dimension of Superstring}
+
+We now want to consider our specific case of $\l=2$ and ask what the dimension of the whole system is? Putting $\l=2$ into \Cref{eqn:GhostSuperCentralChargeLambda} give us 
+\be 
+\label{eqn:GhostSuperCentralCharge}
+    c_{\text{ghost}} = -15.
+\ee 
+Now, keeping the comments made in \Cref{sec:d26?} in mind, i.e. we are assuming that we are removing the entire ghost central charge with matter states, and the fact that we have $c=+3/2$ for our supersymmetric matter tells us that our critical dimension is 
+\mybox{
+\be 
+\label{eqn:d10}
+    d=10.
+\ee 
+}
+
+\subsection{Light-Cone Procedure}
+
+Recall that at the start of the course we arrived at the critical dimension for the free Bosonic string quite intuitively using light-cone quantisation. We now want to show that this method follows through for the superstring and will give us $d=10$, in agreement with \Cref{eqn:d10}.
+
+First let's quickly review what we did. We arrived at a formula for the mass of the string excitations
+\bse 
+    m^2 = \frac{4}{\a'}\bigg( N + (d-2)\sum_{n=1}^{\infty} \frac{n}{2L}\bigg),
+\ese 
+where $N$ is the number operator, $n/2$ was the zero point energy, and $L$ was the embedding length of the string. We then said this sum was divergent and so we needed to regulate the momentum using some function $f(p/\Lambda)$. We did this using the Euler–Maclaurin formula and showed 
+\bse 
+    \sum_{n=1}^{\infty}\frac{n}{L}f\bigg(\frac{p}{\Lambda}\bigg) = AL\Lambda^2 - \frac{1}{12L},
+\ese 
+and argued that the first term on the right-hand side could be removed with a redefinition of the cosmological constant. The last term, however, could not be removed and so was physical. This gave us, after setting $L=1$, \Cref{eqn:LevelMatchingNormalOrder} which reads
+\bse 
+    m^2 = \frac{4}{\a'}\bigg(N-\frac{d-2}{24}\bigg).
+\ese 
+We then used Wigner's classification to show that, in order to maintain Poincar\'{e} invariance. This lead us to conclude that the first excited state, $N=1$, must be massless, and so $d=26$. 
+
+We now want to redo this process (albeit a lot quicker now that we know what we're doing) for the superstring. So what has changed? Obviously we now have Fermions in the theory, and they contribute to the zero point energy. We need to be careful though, as we are putting these Fermions onto the string worldsheet and so we need to consider boundary conditions. For the Boson this was not a problem as we always take them to be periodic, but Fermions can be either periodic or antiperiodic! 
+
+\bd[Ramond \& Neveu-Schwarz Sectors]
+    Let $\sig\sim \sig+2\pi$ be our equivalence relation on the cylinder. Then the Ramond (R) sector is defined by 
+    \be 
+    \label{eqn:Ramond}
+        \psi^{\mu}(\sig+2\pi) = \psi^{\mu}(\sig),
+    \ee 
+    and the Neveu-Schwarz (NS) sector is defined by
+    \be 
+    \label{eqn:NeveuSchwarz}
+        \psi^{\mu}(\sig+2\pi) = -\psi^{\mu}(\sig).
+    \ee 
+    That is the R sector contains the periodic Fermions and the NS sector contains the antiperiodic Fermions. 
+\ed 
+
+\subsubsection{Neveu-Schwarz Sector}
+
+First lets consider the NS sector. These have negative energy that comes in half integers. So our mass-squared formula becomes\footnote{Note we can take $n=0$ in the sum as the Bosonic term vanishes for $n=0$.} 
+\bse 
+    m^2 = \frac{4}{\a'} \Bigg[ N + \frac{d-2}{2}\sum_{n=0}^{\infty}\bigg( \frac{n}{L} - \frac{2n+1}{2L}\bigg)\Bigg], 
+\ese 
+where now $N = N_B + \frac{1}{2}N_F$, where $N_B$ and $N_F$ are the Boson and Fermion number operators respectively.\footnote{Note the half in front of $N_F$.} Of course we regularise the $n/L$ term in exactly the same way as just recapped, giving us a $-1/12$ contribution. What about the other term in the sum? Well we need the complete version of the Euler–Maclaurin formula, which tells us
+\bse 
+    \frac{f(0)}{2} + f(1) + f(2) + ... = \int_0^{\infty} f(x) dx - \frac{1}{12} f'(0) + ...,
+\ese 
+where the $f(0)/2$ term didn't appear for the Bosonic case as $f(0)=0$ there. We therefore define 
+\bse 
+    f(x) := xg\bigg(\frac{x}{\Lambda}\bigg),
+\ese
+where $g(x/\Lambda)$ is the regulator, and split the regulated Fermionic sum\footnote{We'll leave the overall minus sign out until the end.} into
+\bse 
+    \begin{split}
+        \sum_{n=0}^{\infty} f\bigg(\frac{2n+1}{2L}\bigg) & = \frac{f(0)}{2} + \frac{f(0)}{2} + f(1) + f(2) + ... \\
+        & = \frac{1}{4L} + \int_0^{\infty} \bigg(\frac{2n+1}{2L}\bigg)g\bigg(\frac{2n+1}{2L\Lambda}\bigg) dn - \frac{1}{12L},
+    \end{split}
+\ese 
+where we have used the fact that on the derivative term if we act on $g$ we will pull out a factor of $1/\Lambda$ so in the limit $\Lambda\to\infty$ this term is negligible. The same reason has been used to ignore all higher derivatives. 
+
+We now need to deal with the integral term. First we do the change of variable 
+\bse 
+    y = \frac{2n+1}{2},
+\ese
+giving us 
+\bse 
+    \int_0^{\infty} \bigg(\frac{2n+1}{2L}\bigg)g\bigg(\frac{2n+1}{2L\Lambda}\bigg) dn = \int_{1/2}^{\infty} \frac{y}{L} g\bigg(\frac{y}{L\Lambda}\bigg) dy,
+\ese 
+which looks very similar to the Bosonic integral we had at the start of the course, with one important difference; the lower limit is $1/2$ not $0$. We then replace the right-hand side with 
+\bse 
+    \int_{1/2}^{\infty} \frac{y}{L} g\bigg(\frac{y}{L\Lambda}\bigg) dy = \int_0^{\infty} \frac{y}{L} g\bigg(\frac{y}{L\Lambda}\bigg) dy - \int_0^{1/2} \frac{y}{L} g\bigg(\frac{y}{L\Lambda}\bigg) dy.
+\ese 
+Then we make the in the final term on the right-hand side $y/\Lambda\to0$ in both integration limits and so $g(y/L\Lambda)\to1$. Doing that integral, and then using the argument that the first term on the right-hand side is the same as in the Bosonic case, then gives us 
+\bse 
+    \int_0^{\infty} \bigg(\frac{2n+1}{2L}\bigg)g\bigg(\frac{2n+1}{2L\Lambda}\bigg) dn = AL^2\Lambda -\frac{1}{8L}.
+\ese 
+Putting this all together (and dropping the $AL^2\Lambda$ term by the same argument as for the Bosonic case) we arrive at 
+\bse 
+    \sum_{n=0}^{\infty} f\bigg(\frac{2n+1}{2L}\bigg) = \frac{1}{4L} - \frac{1}{12L} - \frac{1}{8L} = \frac{1}{24L}.
+\ese 
+So our mass-squared condition becomes
+\be 
+\label{eqn:MassSquaredNeveuSchwarz}
+    m^2 = \frac{4}{\a'}\Bigg[ N + \frac{d-2}{2}\bigg( -\frac{1}{12} - \frac{1}{24}\bigg)\Bigg] = \frac{4}{\a'} \bigg( N - \frac{d-2}{16}\bigg).
+\ee 
+Finally we impose the condition that the first excited state must be massless. The first excited state has $N=1/2$, which gives us $d=10$, our desired result! It is also true that the higher excited states do indeed form representations of SO$(d-1)$, as required for them to not be massless.
+
+\subsubsection{Ramond Sector}
+
+Now let's look at the Ramond sector. These still have negative energy in supersymmetry, however now they have the same periodicity as the Bosons and so come in integer multiples as well. Therefore our mass condition just becomes 
+\be 
+\label{eqn:MassSquaredRamond}
+    m^2 = \frac{4}{\a'} \bigg(N + \frac{d-2}{2L}\sum_{n=0}^{\infty}\big(n-n\big)\bigg) = \frac{4}{\a'}N,
+\ee 
+and so now it is $N=0$ that corresponds to the massless state. 
+
+\section{Neveu-Schwarz vs. Ramond}
+
+We have just seen that we can have two different periodicities for our Fermions on the worldsheet. Now recalling that our action contains the product $\psi\overline{\p}\psi$, we are left with four possibilities for our theory: we could have NS-NS, NS-R, R-NS or R-R. The obvious question is `which one do we use?' We will answer this question in much more detail over the next few lectures, but for now we give a brief discussion of what we might be thinking. 
+
+\br 
+    These different options are sometimes labelled as a doublet $(v,\widetilde{v})$ where $v=1/2$ for the NS sector and $v=0$ for the R sector. We will not do this here, but this comment is just for relation to other sources.
+\er 
+
+\subsection{The Tachyon Returns?}
+
+The R sector seems to have one physical advantage to the NS sector: all of the states are massive and so there is no Tachyon. By contrast, subbing $N=0$ into \Cref{eqn:MassSquaredNeveuSchwarz} gives 
+\be 
+    m^2_{\text{Tachyon}} = -\frac{2}{\a'},
+\ee 
+which is half the result we get for the Bosonic string, but is still negative! 
+
+We may therefore think that we need to restrict ourselves to only considering the R sector, however as we will see, when we consider the general theory (with both periodic and antiperiodic Fermions) and make some condition, we will project out this Tachyon in the NS sector. It will also turn out that this process will make our \textit{spacetime} supersymmetric. This will be rather surprising\footnote{Or perhaps not, now that you know!} as at no point did we supersymmetrise anything to do with the spacetime.
+
+To clarify, what we have done is introduce objects onto the worldsheet and quantised them. This has resulted in Bosons and Fermions existing on the spacetime, but under no particular relation. It will turn out that the conditions we imply later will also have an impact on how these Bosons and Fermions appear on our spacetime, with the result being that they must appear in a supersymmetric fashion.
+
+\br
+    \textcolor{red}{I think this is the idea. I haven't got there yet, so this is just a note to remind myself to come and change anything that needs changing later on. }
+\er 
+
+\subsection{Periodicity On The Plane}
+
+We might also think the R sector seems nicer to work with because it is periodic. However, we have to remember that almost all of our calculations are done on the plane, and, as we shall now show, it turns out that the R sector is antiperiodic on the plane and the NS sector is periodic on the plane. 
+
+This above claim comes simply from the transformation property along with the fact that $\psi$ is a weight $(1/2,0)$ primary. Recall that the plane is related to the cylinder via radial quantisation:
+\bse 
+    z = \exp^{-i\omega}, \qquad \omega = \sig + i\tau.
+\ese 
+Now, being a weight $(1/2,0)$ primary $\psi(z)$ is related to $\psi(\omega)$ via 
+\bse 
+    \psi(z) = \bigg(\frac{\p \omega}{\p z}\bigg)^{1/2} \psi(\omega) = z^{-1/2} \psi(\omega).
+\ese 
+Therefore the Laurent expansions therefore take the form 
+\be 
+\label{eqn:NSRPlaneLaurentExpansion}
+    \psi(z) = \sum_{r\in \Z + v} \frac{\psi_r}{z^{r+1/2}},
+\ee 
+where $v=0$ for the R sector and $v=1/2$ for the NS sector. We therefore see the periodicity condition flips when we transform to the plane: NS is periodic while R is antiperiodic. 
