@@ -1,0 +1,200 @@
+\chapter{Compactified Free Boson Theory}
+
+Last lecture we showed that abstractly there is a relation between the free Fermion theory and the exponential Boson theory. However this was all rather abstract and we want to show this equivalence of \textit{theories} much cleaner. In order to do that, we need to take a detour and study the free Boson theory with target space periodically identified. That is we want to put the free Boson theory on the compactified background $\R^{1,24}\times S^1$.
+
+\section{Windings}
+
+Let's work with our spacetime normalised theory, i.e. with the action
+\bse 
+    S = \frac{1}{4\pi\a'} \int d^2\sig (\p X)^2.
+\ese
+We shall just work with a single dimension, i.e. just one $X$,\footnote{Dr. Tong considers the full 26 dimensional theory in section 8.2, so the interested reader is directed there.} and so our periodic condition is simply 
+\be  
+\label{eqn:periodicX}
+    X(\sig) \sim X(\sig) + 2\pi w R, \qquad w\in\Z,
+\ee 
+where $R$ is the `radius of the worldsheet'. We have already thoroughly studied the free Boson theory, and so we just need to ask "what difference does this periodic identification make?" Another way to phrase this question is "what steps/results were periodicity dependant?" The answer is our mode expansions. Recall we expanded the fields out as \Cref{eqn:FourierModesNormalised}, which combine to give\footnote{There's no $\mu$ index because we're only considering one field.}
+\bse 
+    X = X_0 + \a' p\tau + i\sqrt{\frac{\a'}{2}}\sum_{n\neq0} \frac{\a_n}{n}e^{-in\sig_+} + i\sqrt{\frac{\a'}{2}}\sum_{n\neq0}\frac{\widetilde{\a}_n}{n}e^{-in\sig_-}.
+\ese 
+
+There are two effects of \Cref{eqn:periodicX}. Firstly, as $p$ is the conjugate momentum, we require 
+\bse 
+    p = \frac{n}{R}, \qquad n \in \Z,
+\ese 
+which simply comes from the fact that the wavefunction contains a $e^{ip\cdot X}$ term, and the wavefunction must be single valued. The second thing we notice is that our mode expansion is no longer the most general thing we can have. That is, \Cref{eqn:periodicX} tells us that we can include a $w\sig R$ term to the mode expansion. That is our previous condition 
+\bse 
+    X(\sig+2\pi) = X(\sig)
+\ese 
+is contained within 
+\bse 
+    X(\sig) = ... + w\sig R + ...
+\ese 
+under the equivelence \Cref{eqn:periodicX}. We call $w$ the \textit{winding number} as it tells us how many times the string is wound around the unit circle. 
+
+Now note that each $w$ corresponds to a topologically different sector, and so we can decompose our mode expansion in terms of the winding number. In other words, we have 
+\be
+\label{eqn:XModeExpansionWithWindingNumber}
+    X^{(w)} = X_0 + \frac{\a'n}{R}\tau + w\sig R +  i\sqrt{\frac{\a'}{2}}\sum_{n\neq0} \frac{\a_n}{n}e^{-in\sig_+} + i\sqrt{\frac{\a'}{2}}\sum_{n\neq0}\frac{\widetilde{\a}_n}{n}e^{-in\sig_-}.
+\ee 
+You might ask "is there no effect on the oscillator part of the mode expansion?" The answer is no, ans is seen simply by assuming their was. Suppose $X \to X + w\sig R + \widetilde{X}$. Now our action is quadratic, so in general we would get some cross terms between $X+w\sig R$ and $\widetilde{X}$, however we already know that $X+w\sig R$ satisfies our equations of motion, and so we require that these cross terms vanish. We can therefore\footnote{Note we are imposing the equations of motion at the action level, which you shouldn't really do, but it works fine here.} strip the $\widetilde{X}$ part out and obtain 
+\bse 
+    S = \frac{1}{4\pi\a'} \int d^2\sig \big(\p (X+w\sig R)\big)^2 + \frac{1}{4\pi\a'} \int d^2\sig (\p \widetilde{X})^2.
+\ese 
+The final term is exactly of our original action form and has no information about the winding number, and so is the same for every winding sector. 
+
+Now recall that in \Cref{eqn:FourierModesNormalised} we decomposed the field into left moving and right moving parts. For the momentum piece, the left moving part came with a $\sig_+$ and similarly the right moving part came with a $\sig_-$. We now want to do a similar thing here, but also taking account for the new $m\sig R$ term. If we define
+\be 
+\label{eqn:pLpR}
+    p_L = \frac{n}{R} + \frac{wR}{\a'}, \qand p_R = \frac{n}{R} - \frac{wR}{\a'}
+\ee 
+we get 
+\bse 
+    \begin{split}
+        X_L(\sig_+) & = \frac{1}{2}X_0 + \frac{1}{2}\a' p_L\sig_+ + i\sqrt{\frac{\a'}{2}}\sum_{n\neq0} \frac{\a_n}{n}e^{-in\sig_+} \\
+        X_R(\sig_-) & = \frac{1}{2}X_0 + \frac{1}{2}\a' p_R\sig_- + i\sqrt{\frac{\widetilde{\a}'}{2}}\sum_{n\neq0} \frac{\a_n}{n}e^{-in\sig_-}.
+    \end{split}
+\ese 
+
+\section{Operators}
+
+The question we now ask is "what changes about the operators of our theory?" Well recall that the operators for the free theory were of the form $e^{ipX}$ and derivatives on $X$. The derivative terms stemmed from the oscillator part of the mode expansions, and so they are unaffected. However, the $e^{ipX}$ operators were really specific cases of $e^{ip_LX_L} e^{ip_RX_R}$ with $p_L=p_R = p$. Clearly, then, these operators will change to the more general expression with $p_L/p_R$ given by \Cref{eqn:pLpR}. 
+
+Now, noting that $\sig_{\pm}$ is equivalent to the difference between $z$ and $\overline{z}$, we run into the same problem as at the end of the last lecture: we have to ask if these operators are mutually local. That is, consider the operator 
+\bse 
+    V_1 = e^{ip_L^1X_L} e^{ip_R^1X_R}, \qquad \qquad p^1_{L/R} = \frac{n_1}{R} \pm \frac{w_1R}{\a'},
+\ese 
+and ask whether its OPE with itself is single valued. Given \Cref{eqn:MutuallyLocalKCondition}, we check\footnote{Note that here we need to reinsert $\a'$ in OPE and so we get $z^{\frac{\a'}{2}p_L^1p_L^2}$ and similarly for $\overline{z}$. The $\a'$ here cancels with the $\a'$ in the $p_L/p_R$ definitions.} 
+\bse 
+    \frac{\a'}{2} \big(p_L^1p_L^2 - p_R^1p_R^2\big) = n_1w_2 - n_2w_1 \in \Z,
+\ese 
+and so the result is single valued. So in this case we are alright to separate the left-moving and right-moving parts as we have above. 
+
+We can express this result using the terminology of lattices. Let $L$ be a lattice. Then we define the \textit{dual lattice to $L$}, $D_L$, via the condition that for $d\in D_L$
+\bse 
+    (d,\ell) \in \Z \qquad \forall \ell\in L,
+\ese 
+where the round brackets is the inner product. If we define our $L$ to be a 2D lattice with $p_L$ and $p_R$ as axes and our inner product includes the factor of $\a'/2$, then we see $L\se D_L$. That is, the lattice is contained within its own dual lattice.
+
+\section{Modula Invariance Of Partition Function}
+
+On physical grounds, we now need to check if the partition function for our theory is modula invariant. To explain what we mean, let's make a quick detour to discuss QFT in the Euclidean 2-plane with periodic conditions. 
+
+\subsection{QFT On 2-Torus}
+
+A 2-torus can be made in the complex plane by considering the following identifications 
+\bse 
+    z = z + 2\pi, \qand z = z + 2\pi \tau,
+\ese 
+where $\tau\in\C\setminus\R$. For example, for the flat 2-torus we would take $\tau=i$. Now the partition function for this theory only depends on the actual geometry of the 2-torus and not on how we generate it, so we check what conditions on $\tau$ give rise to the same geometric 2-torus. 
+
+The first one is clear: if we take $\tau\to \tau +1$, we still get the same identification and generate the same 2-torus. We show this in the diagram below, where we see that either of the $\tau$ arrows gives the same identification of points in $\C$. 
+
+\begin{center}
+    \btik 
+        \draw[thick, ->] (0,0) -- (4.5,0);
+        \node at (4.5,-0.2) {\text{Re}};
+        \draw[thick, ->] (0,0) -- (0,3.5);
+        \node at (-0.3,3.5) {\text{Im}};
+        \draw[thick] (0,0) -- (3,0) -- (4,3) -- (1,3) -- (0,0);
+        \node at (0,-0.2) {\large{$0$}};
+        \node at (3,-0.2) {\large{$2\pi$}};
+        \draw[ultra thick, ->] (0,0) -- (1,3);
+        \node at (0.3,1.5) {\large{$\tau$}};
+        \draw[ultra thick, ->] (0,0) -- (4,3);
+        \node at (2,1) {\large{$\tau+1$}};
+    \etik 
+\end{center}
+
+The second identification is less easy to see, but comes from considering firstly rotating the above drawing so that the $\tau$ arrow points along the real axis. We would then need to scale the whole drawing by $1/|\tau|$ so that we still have a $2\pi$ identification along the real line. We are alright to do this because for the string we are considering a conformal theory and so an overall scaling is fine. This gives the following shape in the complex plane and we identify the arrow as $\tau$.
+
+\begin{center}
+    \btik 
+        \draw[thick, rotate around={-72:(0,0)}] (0,0) -- (3,0) -- (4,3) -- (1,3) -- (0,0);
+        \draw[ultra thick, ->, rotate around={-72:(0,0)}] (0,0) -- (3,0);
+        \node at (0.3,-1.5) {\large{$\tau$}};
+    \etik 
+\end{center}
+
+\noindent This corresponds to flipping the sign of the imaginary part of $\tau$ and dividing by $|\tau|$. This is just $\tau \to 1/\tau$.\footnote{To see this just let $\tau=x+iy$ and plug it in.} We can then take any combination of these two identifications, and we get the general rule 
+\bse 
+    \tau \to \frac{a\tau + b}{c\tau + d}, \qquad \qquad ad-bc=1
+\ese 
+with $a,b,c,d\in\Z$. We could write $a,b,c,d$ as a $2x2$ matrix with det$M$=1 If we do this, we also note that if we take $a=d=-1$ and $c=b=0$ we get $\tau\to \tau$ and so the we need to mod out by multiplications of $-\b1_{2\times 2}$. This corresponds to changing the sign of $\tau$ giving exactly the same generation of the 2-torus (that is, we `go around the torus in the other direction'). 
+
+Now we actually want to impose the condition $\Im\tau >0$ so that our partition function has the correct exponential sign\footnote{Basically the partition function is of the form $Z= \exp(2\pi i \tau L_0) \exp(-2\pi i\tau^*\overline{L}_0)$, so the non-phase part is $\exp(-2\pi\Im(\tau)(L_0+\overline{L}_0))$. Then identifying $L_0+\overline{L}_0$ with the Hamiltonian, if we want $Z = \exp(-\beta H)$, we need to take $\Im(\tau)>0$.} and so we use the above modding to get $\tau\to -1/\tau$. 
+
+\subsection{Back To The String}
+
+The partition function for the string is given by\footnote{\textcolor{red}{Note to self, find out why this is true.}}
+\bse 
+    Z = \Tr\big(q^{L_0}\overline{q}^{\overline{L}_0}\big), \qquad q = e^{2\pi i\tau}, \qquad \overline{q}= e^{2\pi i\tau^*}.
+\ese 
+From this we see that $\tau\to\tau+1$ gives 
+\bse 
+    Z \to \Tr\Big(q^{L_0}\overline{q}^{\overline{L}_0} e^{2\pi i(L_0-\overline{L}_0)}\Big).
+\ese 
+Our physical condition that the partition function be invariant then tells us that 
+\be 
+    \big(L_0-\overline{L}_0\big) \in\Z
+\ee 
+is a necessary condition for our theory. So using 
+\bse 
+    L_0 = \frac{\a'p_L^2}{4}, \qand \overline{L}_0 = \frac{\a'p_R^2}{4},
+\ese
+we require 
+\bse 
+    \frac{\a'}{4}\big(p_L^2 + p_R^2\big) \in\Z.
+\ese
+Simply using \Cref{eqn:pLpR}, we have 
+\bse 
+    \frac{\a'}{4}\big(p_L^2 + p_R^2\big) = nw,
+\ese 
+which is indeed an integer. 
+
+Now note that the above is a condition on a \textit{single} vector in our lattice, not on two vectors as was the case for the mutually local condition. We can change the above condition to be 
+\bse 
+    \|p\|^2 := (p,p) = \frac{\a'}{2}\big(p_L^2 + p_R^2\big) \in 2\Z, 
+\ese 
+and so the norm of the vectors on a lattice are \textit{even} integers. We call such a lattice an \textit{even lattice}.
+
+\bl 
+    An even lattice lies within its dual. 
+\el 
+
+\bq 
+    Let $p_1,p_2\in L$ then $p_1+p_2\in L$ and so 
+    \bse 
+        \|p_1+p_2\|^2 \in 2\Z,
+    \ese 
+    but we also have that $\|p_1\|^2,\|p_2\|^2\in 2\Z$ and so 
+    \bse 
+        \|p_1+p_2\|^2 - \|p_1\|^2 - \|p_2\|^2 = 2(p_1,p_2) \in 2\Z,
+    \ese 
+    which is $(p_1,p_2)\in\Z$, which implies $L\se D_L$.
+\eq 
+
+This result tells us that our $L_0-\overline{L}_0$ condition implies our mutually local condition. 
+
+\textcolor{red}{Dr. Minwalla now shows that the partition function is also modula invariant under $\tau\to -1/\tau$. I follow roughly his arguments but definitely not enough to be confident writing it up at this stage. In order to save myself some time for now, I'm just accepting that its true and will return to this point later and fill in this. Red text to remind me to do so. }
+
+\section{Brief Intro To T-Duality}
+
+Recall \Cref{eqn:pLpR}. If we set
+\bse 
+    R = \frac{\a'}{R'}
+\ese 
+for some $R'$ then a quick calculation gives 
+\bse 
+    p_L = \frac{nR'}{\a'} + \frac{w}{R'}, \qand p_R = \frac{nR'}{\a'} - \frac{w}{R'}.
+\ese 
+Then we note that $n$ and $w$ are just labels for integers and so we can freely rename $n \leftrightarrow w$, which shows us that 
+\bse 
+    p_L \to p_L, \qand p_R \to - p_R.
+\ese 
+This is actually a specific case of a more general symmetry, known as \text{T-duality}, which says that the free Boson theory is invariant under the interchange 
+\bse 
+    X_L \to X_L, \qand X_R \to - X_R.
+\ese 
+
+This is the statement that string theory on a circle of radius $R$ is the same as string theory on a circle of radius $\a/R$. It corresponds to the interchange of momentum and winding. We shall return to T-duality later in the course.

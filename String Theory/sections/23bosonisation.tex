@@ -138,7 +138,7 @@ The first thing we have to note is that the NS sector does not contain zero-mode
 \bse 
     \psi_r^*\ket{0}_{NS} = \psi_r\ket{0}_{NS} = 0, \qquad \forall r \in \{ \Z^+ + 1/2\}.
 \ese 
-We then define the creation operators to be $\psi_r^{\mu}$ with $r<0$. So in order to show that the operators we are talking about above live in the NS sector we need to show they are dual to states of the form $\psi_{-1/2}\ket{0}_NS$, etc. 
+We then define the creation operators to be $\psi_r^{\mu}$ with $r<0$. So in order to show that the operators we are talking about above live in the NS sector we need to show they are dual to states of the form $\psi_{-1/2}\ket{0}_{NS}$, etc. 
 
 First let's consider the simple state $\ket{\psi}$. We use \Cref{eqn:NSRPlaneLaurentExpansion} with $v=1/2$. Inverting this gives 
 \bse 
@@ -158,7 +158,7 @@ Consider the action of $\psi_r^*$ first:
 \ese
 So we see there the annihilation operator $\psi_{-1/2}^*$ doesn't annihilate the state. This suggests 
 \bse 
-    \ket{\psi} = \psi_{1/2}\ket{0}_{NS}.
+    \ket{\psi} = \psi_{-1/2}\ket{0}_{NS}.
 \ese 
 We can further check this by considering the action of $\psi_r$: 
 \bse 
@@ -189,7 +189,7 @@ where the minus sign comes from the fact that the derivative acts on the second 
 We can't check this result using $\psi_r$ as we need to know the actual form of the $\psi(z)\psi(0)$ OPE to at least second order. However, this was just to show that the states are related to the NS sector, so we wont bother doing all that. 
 
 \br 
-    This idea, that all the operators we can think of in the Fermionic theory appear to be in the NS sector, actually highlights the importance of Bosonisation for the R sector. That is, if we want to scatter something in the R sector, we need to operator, but we've just shown that if we consider the Fermions they are all NS, so instead we consider the Bosonised theory. The obvious question is `what form do these Boson operators take?' The answer is they are of the form $e^{\pm i kH(z)}$ where now $k \in \R\setminus\Z$, i.e. real, non-integer numbers.
+    This idea, that all the operators we can think of in the Fermionic theory appear to be in the NS sector, actually highlights the importance of Bosonisation for the R sector. That is, if we want to scatter something in the R sector, we need the operator, but we've just shown that if we consider the Fermion theory they are all NS, so instead we consider the Bosonised theory. The obvious question is `what form do these Boson operators take?' The answer is they are of the form $e^{\pm i kH(z)}$ where now $k \in \R\setminus\Z$, i.e. real, non-integer numbers.
 \er 
 
 \subsection{Ground States}
@@ -213,7 +213,7 @@ If we set $r=n\pm v$, for $n\in\Z$, then the above condition becomes
         \psi^*_{n-v}\ket{0} & = 0 \qquad \forall n\geq 1.
     \end{split}
 \ese 
-Similarly we would want the creation expressions to hold, these become
+Similarly we would want the creation expressions to hold, and these become
 \bse 
     \begin{split}
         \psi_{n+v}\ket{0} & \neq 0 \qquad \forall n \leq -1 \\
@@ -261,8 +261,33 @@ This tells us that the vacuum of the NS sector has zero energy (as the identity 
 \bse 
     \cO_R = e^{iH/2}, \qand \psi^*\cO_R = e^{-iH/2}
 \ese 
-have the same energy! So our ground state energy becomes degenerate. This does not happen for any other value of $v$, and is in fact a consequence of the zero-modes of the R sector. 
+have the same energy! So our ground state energy becomes degenerate. This does not happen for any other value of $v$, and is in fact a consequence of the zero-modes of the R sector.
+
+\textcolor{red}{Note, we have seem something like this before with the ghost ground state. More to come on this soon.}
 
 \br 
     \textcolor{red}{I need to understand the R sector ground states a little better and expand on the point above. This is just a note to self to do that.}
 \er 
+
+\section{Mutually Local Operators}
+
+We showed above that the OPE structure for our exponential operators goes like powers of $z$. Now let's suppose that we don't have some nice multiplicative factor in the exponential, the question is "are these operators mutually local?" In other words, we want to know whether the OPE 
+\bse 
+    e^{ikH(z)}e^{ik'H(0)} \sim z^{kk'}
+\ese 
+is single valued. Now radial quantisation tells us that powers of $z$ on the right-hand side contribute $e^{+2\pi i p}$,\footnote{The $2\pi$ comes from the fact we do a closed integral around the origin.} where $p$ is the power, to the phase, and powers of $\overline{z}$ contribute $e^{-2\pi ip}$ to the phase. Therefore our OPE will only be single valued if $zz'$ is an integer. This is clearly not going to hold in general. However, if we were instead to consider 
+\bse 
+    e^{ik\big(H(z)+\overline{H}(\overline{z})\big)} e^{ik'\big(H(0)+\overline{H}(0)\big)} \sim z^{kk'}\overline{z}^{kk'},
+\ese 
+the phase powers cancel and so we do get a single valued answer. This correspond to the two operators being mutually local. 
+
+Clearly this single valued result was a consequence of the fact that we took the powers of $H$ and $\overline{H}$ to be the same. If instead we had considered the operator 
+\bse 
+    e^{ik_1H(z)} e^{ik_2\overline{H}(\overline{z})}
+\ese 
+instead and taking its OPE with a similar operator, we would not, in general, get a single valued result. That is, we would only get a single valued result if 
+\be 
+\label{eqn:MutuallyLocalKCondition}
+    (k_1k_1'-k_2k_2') \in \Z. 
+\ee 
+This has actually \textit{not} been the Ramond sector where we have $k_2=0$ and $k_1=1/2$. This proves that we should actually be more careful when we just say `let's ignore the antiholomorphic part for now'. We will return to this next lecture when we study the periodically identified string and see that there is a relation between the left-moving and right-moving momenta. 
